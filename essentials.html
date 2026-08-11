@@ -1,1 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>60-Second Essentials | Special Olympics Volunteer Guide</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Helvetica, Arial, sans-serif;
+      background: #f5f5f3;
+      color: #1d1d1f;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 22px 22px 70px;
+    }
+
+    /* TOP NAV */
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 4px;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #1d1d1f;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.6;
+    }
+
+    .top-label {
+      font-size: 14px;
+      color: #86868b;
+      font-weight: 600;
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding: 72px 0 42px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .eyebrow {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #86868b;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 68px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin: 0;
+      max-width: 700px;
+    }
+
+    .intro p {
+      font-size: 19px;
+      line-height: 1.5;
+      color: #6e6e73;
+      max-width: 600px;
+      margin-top: 22px;
+    }
+
+    /* MAIN EXPERIENCE */
+
+    .experience {
+      background: #ffffff;
+      border: 1px solid #e1e1dc;
+      border-radius: 30px;
+      overflow: hidden;
+      animation: fadeUp 0.7s 0.08s ease both;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 4px;
+      background: #ececea;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 14.28%;
+      background: #1d1d1f;
+      transition: width 0.4s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .step {
+      display: none;
+      padding: 42px 40px 36px;
+      min-height: 430px;
+      animation: stepIn 0.42s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .step-count {
+      color: #929297;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 38px;
+    }
+
+    .step-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: #f0f0ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 28px;
+    }
+
+    .step h2 {
+      margin: 0 0 16px;
+      font-size: clamp(29px, 6vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .step-text {
+      margin: 0;
+      max-width: 620px;
+      font-size: 19px;
+      color: #515155;
+      line-height: 1.55;
+    }
+
+    .tip {
+      margin-top: 27px;
+      padding: 17px 18px;
+      border-radius: 18px;
+      background: #f5f5f3;
+      color: #3f3f43;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .tip strong {
+      color: #1d1d1f;
+    }
+
+    .watch-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .watch-item {
+      background: #f5f5f3;
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: #47474b;
+      font-size: 16px;
+    }
+
+    /* CONTROLS */
+
+    .controls {
+      padding: 0 40px 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .control-button {
+      border: none;
+      border-radius: 999px;
+      padding: 13px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition:
+        transform 0.15s ease,
+        opacity 0.2s ease;
+    }
+
+    .control-button:active {
+      transform: scale(0.96);
+    }
+
+    .back-button {
+      background: #eeeeeb;
+      color: #1d1d1f;
+    }
+
+    .next-button {
+      background: #1d1d1f;
+      color: white;
+      min-width: 92px;
+    }
+
+    /* FINAL SCREEN */
+
+    .final-check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #1d1d1f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 28px;
+      animation: popIn 0.45s ease both;
+    }
+
+    .final-note {
+      color: #6e6e73;
+      font-size: 17px;
+      margin-top: 25px;
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-top: 24px;
+      text-decoration: none;
+      background: #1d1d1f;
+      color: white;
+      border-radius: 999px;
+      padding: 13px 19px;
+      font-weight: 600;
+      transition: transform 0.15s ease;
+    }
+
+    .home-button:active {
+      transform: scale(0.96);
+    }
+
+    /* BOTTOM NOTE */
+
+    .bottom-note {
+      margin-top: 30px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #86868b;
+      max-width: 650px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes stepIn {
+      from {
+        opacity: 0;
+        transform: translateX(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .page {
+        padding: 18px 16px 55px;
+      }
+
+      .intro {
+        padding: 55px 0 35px;
+      }
+
+      .intro p {
+        font-size: 17px;
+      }
+
+      .experience {
+        border-radius: 24px;
+      }
+
+      .step {
+        padding: 30px 24px 28px;
+        min-height: 450px;
+      }
+
+      .step-count {
+        margin-bottom: 28px;
+      }
+
+      .step-text {
+        font-size: 17px;
+      }
+
+      .controls {
+        padding: 0 24px 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="topbar">
+
+      <a href="index.html" class="back-link">
+        ← Home
+      </a>
+
+      <div class="top-label">
+        60-Second Essentials
+      </div>
+
+    </div>
+
+
+    <header class="intro">
+
+      <div class="eyebrow">
+        MUST READ · BEFORE EVERY SESSION
+      </div>
+
+      <h1>
+        Six things worth remembering.
+      </h1>
+
+      <p>
+        You don't need to memorize a manual.
+        Take a minute before your session and keep these ideas in mind.
+      </p>
+
+    </header>
+
+
+    <main class="experience">
+
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+
+      <!-- STEP 1 -->
+
+      <section class="step active">
+
+        <div class="step-count">1 of 6</div>
+
+        <div class="step-icon">👋</div>
+
+        <h2>See the athlete first.</h2>
+
+        <p class="step-text">
+          Speak directly to the athlete. Use their name.
+          Don't talk only to a parent, coach, or aide when the athlete is right there.
+        </p>
+
+        <div class="tip">
+          <strong>Try:</strong>
+          “Hi Alex. Ready for basketball?”
+        </div>
+
+      </section>
+
+
+      <!-- STEP 2 -->
+
+      <section class="step">
+
+        <div class="step-count">2 of 6</div>
+
+        <div class="step-icon">🙂</div>
+
+        <h2>Your face communicates too.</h2>
+
+        <p class="step-text">
+          Some athletes may pay especially close attention to facial expressions
+          and body language. A serious or frustrated-looking face can sometimes
+          be misunderstood, even when you don't mean anything by it.
+        </p>
+
+        <div class="tip">
+          <strong>Keep it warm.</strong>
+          Smile naturally, show encouragement clearly, and let your expression
+          match the positive message you're trying to send.
+        </div>
+
+      </section>
+
+
+      <!-- STEP 3 -->
+
+      <section class="step">
+
+        <div class="step-count">3 of 6</div>
+
+        <div class="step-icon">◌</div>
+
+        <h2>Give some space. Watch their signals.</h2>
+
+        <p class="step-text">
+          Stay close enough to support the athlete without crowding them.
+          Pay attention to changes in their expression and body language.
+          Those signals can tell you when it's time to slow down or check in.
+        </p>
+
+        <div class="watch-list">
+
+          <div class="watch-item">
+            Tightened eyebrows or a suddenly tense expression
+          </div>
+
+          <div class="watch-item">
+            Pulling or turning away
+          </div>
+
+          <div class="watch-item">
+            Looking uncomfortable or overwhelmed
+          </div>
+
+          <div class="watch-item">
+            A sudden change in movement or behavior
+          </div>
+
+        </div>
+
+        <div class="tip">
+          These signs don't always mean the same thing.
+          <strong>Notice them first, then look at what's happening around the athlete.</strong>
+        </div>
+
+      </section>
+
+
+      <!-- STEP 4 -->
+
+      <section class="step">
+
+        <div class="step-count">4 of 6</div>
+
+        <div class="step-icon">▶</div>
+
+        <h2>Show, don't only tell.</h2>
+
+        <p class="step-text">
+          Long explanations can be hard to follow.
+          Demonstrate the drill, point to where you want the athlete to go,
+          or use the equipment to show what happens next.
+        </p>
+
+        <div class="tip">
+          <strong>Instead of only saying:</strong>
+          “Go over there and pass the ball.”
+          <br><br>
+          <strong>Try:</strong>
+          Point → “Stand here.” → demonstrate one pass.
+        </div>
+
+      </section>
+
+
+      <!-- STEP 5 -->
+
+      <section class="step">
+
+        <div class="step-count">5 of 6</div>
+
+        <div class="step-icon">•••</div>
+
+        <h2>Give them time.</h2>
+
+        <p class="step-text">
+          Ask the question, then pause.
+          Some athletes need extra time to process what you said,
+          decide what they want, move, point, speak, gesture, or use AAC.
+        </p>
+
+        <div class="tip">
+          <strong>Think:</strong>
+          Ask → wait → watch → respond.
+          <br><br>
+          Don't immediately fill the silence for them.
+        </div>
+
+      </section>
+
+
+      <!-- STEP 6 -->
+
+      <section class="step">
+
+        <div class="step-count">6 of 6</div>
+
+        <div class="step-icon">★</div>
+
+        <h2>Encourage more than correct.</h2>
+
+        <p class="step-text">
+          Positive energy can make a big difference.
+          Let the athlete know when they're doing well, trying something new,
+          or communicating what they want.
+        </p>
+
+        <div class="tip">
+          A smile, thumbs up, high five if welcomed, or a simple
+          <strong>“Nice job”</strong> can go a long way.
+          <br><br>
+          Be encouraging without overwhelming them.
+        </div>
+
+      </section>
+
+
+      <!-- FINAL -->
+
+      <section class="step">
+
+        <div class="step-count">Done</div>
+
+        <div class="final-check">✓</div>
+
+        <h2>Ready for the session.</h2>
+
+        <p class="step-text">
+          You won't know exactly what every behavior means — and that's okay.
+          Start by slowing down, watching, and responding to the athlete in front of you.
+        </p>
+
+        <p class="final-note">
+          Connect first. Then coach.
+        </p>
+
+        <a href="index.html" class="home-button">
+          Back to guide
+        </a>
+
+      </section>
+
+
+      <div class="controls">
+
+        <button
+          class="control-button back-button"
+          id="backButton">
+          Back
+        </button>
+
+        <button
+          class="control-button next-button"
+          id="nextButton">
+          Next
+        </button>
+
+      </div>
+
+    </main>
+
+
+    <p class="bottom-note">
+      Every athlete is different. These are starting points, not rules for
+      interpreting every athlete's behavior. When you're unsure, ask the athlete,
+      coach, caregiver, or someone who knows their communication style.
+    </p>
+
+  </div>
+
+
+  <script>
+
+    const steps = document.querySelectorAll(".step");
+    const progressBar = document.getElementById("progressBar");
+    const nextButton = document.getElementById("nextButton");
+    const backButton = document.getElementById("backButton");
+
+    let currentStep = 0;
+
+    function updateStep() {
+
+      steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+      });
+
+      const progress =
+        ((currentStep + 1) / steps.length) * 100;
+
+      progressBar.style.width = progress + "%";
+
+      backButton.style.visibility =
+        currentStep === 0 ? "hidden" : "visible";
+
+      if (currentStep === steps.length - 1) {
+        nextButton.style.display = "none";
+      } else {
+        nextButton.style.display = "block";
+      }
+
+      if (currentStep === steps.length - 2) {
+        nextButton.textContent = "Finish";
+      } else {
+        nextButton.textContent = "Next";
+      }
+
+      window.scrollTo({
+        top: document.querySelector(".experience").offsetTop - 20,
+        behavior: "smooth"
+      });
+    }
+
+
+    nextButton.addEventListener("click", () => {
+
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateStep();
+      }
+
+    });
+
+
+    backButton.addEventListener("click", () => {
+
+      if (currentStep > 0) {
+        currentStep--;
+        updateStep();
+      }
+
+    });
+
+
+    updateStep();
+
+  </script>
+
+</body>
+</html>
