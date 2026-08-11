@@ -2,333 +2,530 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Special Olympics Volunteer Guide</title>
 
+  <link rel="stylesheet" href="style.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    /* Homepage-specific layout */
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Helvetica, Arial, sans-serif;
-      background: #f5f5f3;
-      color: #1d1d1f;
-    }
-
-    .page {
-      max-width: 850px;
-      margin: auto;
-      padding: 24px 22px 70px;
-    }
-
-    header {
-      font-size: 15px;
-      font-weight: 600;
-      color: #6e6e73;
-      padding-top: 5px;
-    }
-
-    .hero {
-      padding: 95px 0 65px;
-      animation: fadeUp 0.7s ease both;
-    }
-
-    .eyebrow {
-      font-size: 15px;
-      font-weight: 600;
-      color: #6e6e73;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(45px, 8vw, 76px);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      max-width: 760px;
-    }
-
-    .subtitle {
-      margin-top: 25px;
-      max-width: 610px;
-      font-size: 20px;
-      line-height: 1.45;
-      color: #6e6e73;
-    }
-
-    .question {
-      margin-top: 20px;
-      margin-bottom: 18px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #6e6e73;
-    }
-
-    .cards {
+    .home-hero {
       display: grid;
-      gap: 15px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 45px;
+
+      padding: 78px 0 55px;
     }
 
-    .card {
-      display: block;
-      position: relative;
-      text-decoration: none;
-      color: #1d1d1f;
-
-      background: white;
-      border: 1px solid #e1e1dc;
-      border-radius: 26px;
-      padding: 29px;
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-
-      animation: fadeUp 0.7s ease both;
+    .home-visual {
+      min-height: 330px;
     }
 
-    .card:nth-child(1) {
-      animation-delay: 0.08s;
+    .home-visual .volunteer {
+      left: 24%;
+      bottom: 58px;
     }
 
-    .card:nth-child(2) {
-      animation-delay: 0.16s;
+    .home-visual .athlete {
+      right: 24%;
+      bottom: 58px;
     }
 
-    .card:nth-child(3) {
-      animation-delay: 0.24s;
+    .connection-line {
+      position: absolute;
+
+      width: 90px;
+      height: 1px;
+
+      left: 50%;
+      top: 47%;
+
+      transform: translateX(-50%);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(29,29,31,.3),
+          transparent
+        );
+
+      animation: connectionPulse 3.2s ease-in-out infinite;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #c9c9c3;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.07);
-    }
+    .hello-bubble {
+      position: absolute;
 
-    .card:active {
-      transform: scale(0.985);
-    }
+      left: 20%;
+      top: 28px;
 
-    .card.primary {
-      background: #1d1d1f;
-      color: white;
-      border-color: #1d1d1f;
-    }
+      padding: 9px 13px;
 
-    .number {
+      border: 1px solid rgba(29,29,31,.09);
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.86);
+
       font-size: 13px;
-      color: #99999e;
-      margin-bottom: 32px;
+      font-weight: 600;
+
+      animation: bubbleFloat 3.8s ease-in-out infinite;
     }
 
-    .primary .number {
-      color: #99999f;
+    .response-bubble {
+      position: absolute;
+
+      right: 19%;
+      top: 73px;
+
+      padding: 9px 13px;
+
+      border: 1px solid rgba(29,29,31,.09);
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.86);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      animation: bubbleFloat 3.8s .6s ease-in-out infinite;
     }
 
-    .card h2 {
-      margin: 0;
-      font-size: 27px;
-      letter-spacing: -0.03em;
+    .home-intro {
+      margin-top: 4px;
     }
 
-    .card p {
-      margin: 9px 45px 0 0;
-      color: #707075;
-      font-size: 16px;
+    .home-question {
+      margin: 34px 0 15px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .07em;
+
+      text-transform: uppercase;
+    }
+
+    .home-card-number {
+      margin-bottom: 30px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .07em;
+    }
+
+    .dark .home-card-number {
+      color: #9d9da2;
+    }
+
+    .home-card-icon {
+      position: absolute;
+
+      right: 25px;
+      top: 24px;
+
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 15px;
+
+      background: #f1f1ee;
+
+      font-size: 19px;
+    }
+
+    .dark .home-card-icon {
+      background: rgba(255,255,255,.10);
+    }
+
+    .must-read-note {
+      margin-top: 15px;
+
+      color: #bdbdc2;
+
+      font-size: 13px;
       line-height: 1.45;
     }
 
-    .primary p {
-      color: #b8b8bd;
+    .tiny-principle {
+      margin-top: 45px;
+      padding: 21px 0;
+
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      color: var(--text-soft);
+
+      font-size: 15px;
+      line-height: 1.45;
     }
 
-    .arrow {
-      position: absolute;
-      right: 28px;
-      bottom: 29px;
-      font-size: 23px;
-      transition: transform 0.2s ease;
+    .tiny-principle-icon {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background: #ededeb;
+
+      font-size: 15px;
     }
 
-    .card:hover .arrow {
-      transform: translateX(4px);
-    }
+    @keyframes bubbleFloat {
 
-    footer {
-      padding-top: 55px;
-      color: #909095;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-
-      to {
-        opacity: 1;
+      0%,
+      100% {
         transform: translateY(0);
       }
+
+      50% {
+        transform: translateY(-5px);
+      }
+
     }
 
-    @media (max-width: 600px) {
+    @keyframes connectionPulse {
 
-      .page {
-        padding: 20px 17px 55px;
+      0%,
+      100% {
+        opacity: .25;
+        transform: translateX(-50%) scaleX(.75);
       }
 
-      .hero {
-        padding: 68px 0 48px;
+      50% {
+        opacity: .8;
+        transform: translateX(-50%) scaleX(1);
       }
 
-      .subtitle {
-        font-size: 18px;
-      }
-
-      .card {
-        padding: 24px;
-        border-radius: 22px;
-      }
-
-      .card h2 {
-        font-size: 24px;
-      }
-
-      .number {
-        margin-bottom: 25px;
-      }
-
-      .arrow {
-        right: 23px;
-        bottom: 24px;
-      }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
+    @media (max-width: 760px) {
+
+      .home-hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+        padding: 58px 0 42px;
       }
+
+      .home-visual {
+        min-height: 260px;
+      }
+
+      .home-visual .volunteer {
+        left: 20%;
+        bottom: 48px;
+      }
+
+      .home-visual .athlete {
+        right: 20%;
+        bottom: 48px;
+      }
+
+      .hello-bubble {
+        left: 14%;
+      }
+
+      .response-bubble {
+        right: 13%;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="page">
+  <div class="page-shell">
 
-    <header>
-      Volunteer Communication Guide
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+      <div class="top-label">
+        Volunteer Communication Guide
+      </div>
+
+      <div class="top-label">
+        Special Olympics
+      </div>
+
     </header>
+
+
+    <!-- HERO -->
 
     <main>
 
-      <section class="hero">
+      <section class="home-hero">
 
-        <div class="eyebrow">
-          Special Olympics
+        <div class="home-intro">
+
+          <div class="eyebrow">
+            Quick guide for volunteers & coaches
+          </div>
+
+          <h1 class="display-title">
+            Connect first.<br>
+            Then coach.
+          </h1>
+
+          <p class="lead hero-copy">
+            A quick, easy guide to help sessions feel smoother,
+            calmer, and more connected — for you and the athlete.
+          </p>
+
         </div>
 
-        <h1>
-          Connect first.<br>
-          Then coach.
-        </h1>
 
-        <p class="subtitle">
-          A quick guide to communicating with athletes clearly,
-          respectfully, and confidently during every session.
-        </p>
+        <!-- ANIMATED HERO VISUAL -->
+
+        <div
+          class="visual-stage home-visual figure-wave figure-smile"
+          aria-label="A volunteer and athlete communicating face to face"
+        >
+
+          <div class="hello-bubble">
+            Hey! Ready?
+          </div>
+
+          <div class="response-bubble">
+            👍
+          </div>
+
+
+          <!-- Volunteer -->
+
+          <div class="person volunteer">
+
+            <div class="person-head">
+
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+              <div class="mouth"></div>
+
+            </div>
+
+            <div class="person-body"></div>
+
+            <div class="arm right"></div>
+
+            <div class="person-leg-left"></div>
+            <div class="person-leg-right"></div>
+
+          </div>
+
+
+          <!-- Athlete -->
+
+          <div class="person athlete">
+
+            <div class="person-head">
+
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+              <div class="mouth"></div>
+
+            </div>
+
+            <div class="person-body"></div>
+
+            <div
+              class="arm left"
+              style="
+                transform: rotate(25deg);
+                width: 34px;
+              "
+            ></div>
+
+            <div class="person-leg-left"></div>
+            <div class="person-leg-right"></div>
+
+          </div>
+
+
+          <div class="connection-line"></div>
+
+          <div class="visual-caption">
+            Communication goes both ways.
+          </div>
+
+        </div>
 
       </section>
 
 
-      <div class="question">
-        What do you need?
-      </div>
+      <!-- THREE MAIN PATHS -->
+
+      <section class="reveal">
+
+        <div class="home-question">
+          What do you need?
+        </div>
 
 
-      <div class="cards">
+        <div
+          class="card-grid"
+          data-stagger
+        >
 
-        <a href="essentials.html" class="card primary">
+          <!-- MUST READ -->
 
-          <div class="number">
-            01 · MUST READ
-          </div>
+          <a
+            href="essentials.html"
+            class="nav-card dark"
+          >
 
-          <h2>
-            60-Second Essentials
-          </h2>
+            <div class="home-card-number">
+              01 · MUST READ
+            </div>
 
-          <p>
-            The most important things to remember before every session.
-          </p>
+            <div class="home-card-icon">
+              ★
+            </div>
 
-          <span class="arrow">→</span>
+            <h2 class="card-title">
+              60-Second Essentials
+            </h2>
 
-        </a>
+            <p class="nav-card-description">
+              The six things worth remembering before every session.
+              Fast, visual, and actually useful.
+            </p>
 
+            <p class="must-read-note">
+              Start here if it's your first session —
+              or if you just want a quick reset.
+            </p>
 
-        <a href="behavior.html" class="card">
+            <span class="card-arrow">
+              →
+            </span>
 
-          <div class="number">
-            02 · DURING A SESSION
-          </div>
-
-          <h2>
-            Understanding Athlete Behavior
-          </h2>
-
-          <p>
-            Jumping, walking away, feeling overwhelmed,
-            not responding, and what you can try.
-          </p>
-
-          <span class="arrow">→</span>
-
-        </a>
+          </a>
 
 
-        <a href="communication.html" class="card">
+          <!-- BEHAVIOR -->
 
-          <div class="number">
-            03 · COMMUNICATION
-          </div>
+          <a
+            href="behavior.html"
+            class="nav-card"
+          >
 
-          <h2>
-            Communication & Activities
-          </h2>
+            <div class="home-card-number">
+              02 · IN THE MOMENT
+            </div>
 
-          <p>
-            Non-speaking athletes, AAC, useful phrases,
-            sports cues, and advice from families.
-          </p>
+            <div class="home-card-icon motion-bounce">
+              ↕
+            </div>
 
-          <span class="arrow">→</span>
+            <h2 class="card-title">
+              Understanding Athlete Behavior
+            </h2>
 
-        </a>
+            <p class="nav-card-description">
+              Jumping, walking away, shutting down, getting overwhelmed —
+              what might be going on and what you can try.
+            </p>
 
-      </div>
+            <span class="card-arrow">
+              →
+            </span>
+
+          </a>
+
+
+          <!-- COMMUNICATION -->
+
+          <a
+            href="communication.html"
+            class="nav-card"
+          >
+
+            <div class="home-card-number">
+              03 · COMMUNICATION
+            </div>
+
+            <div class="home-card-icon">
+              💬
+            </div>
+
+            <h2 class="card-title">
+              Communication & Activities
+            </h2>
+
+            <p class="nav-card-description">
+              Non-speaking athletes, AAC, useful phrases,
+              sports cues, and tips from families.
+            </p>
+
+            <span class="card-arrow">
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- SMALL PHILOSOPHY NOTE -->
+
+      <section class="tiny-principle reveal">
+
+        <div class="tiny-principle-icon">
+          ✓
+        </div>
+
+        <div>
+          You don't have to know exactly what every behavior means.
+          Slow down, pay attention, and respond to the athlete in front of you.
+        </div>
+
+      </section>
 
     </main>
 
 
-    <footer>
-      Every athlete communicates differently. When you're unsure,
-      slow down, pay attention, and ask what works best.
+    <footer class="site-footer">
+
+      Every athlete communicates differently.
+      These are starting points — not a script.
+
     </footer>
 
   </div>
+
+
+  <script src="script.js"></script>
 
 </body>
 </html>
