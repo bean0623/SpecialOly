@@ -1,1 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Understanding Athlete Behavior | Special Olympics Volunteer Guide</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Helvetica, Arial, sans-serif;
+      background: #f5f5f3;
+      color: #1d1d1f;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px 20px 70px;
+    }
+
+    /* TOP BAR */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #1d1d1f;
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.6;
+    }
+
+    .top-label {
+      color: #86868b;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding: 70px 0 42px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .eyebrow {
+      color: #86868b;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 750px;
+      font-size: clamp(42px, 8vw, 70px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .intro p {
+      max-width: 650px;
+      margin-top: 22px;
+      color: #6e6e73;
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    /* REMINDER */
+
+    .reminder {
+      background: #1d1d1f;
+      color: white;
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 34px;
+      animation: fadeUp 0.7s 0.08s ease both;
+    }
+
+    .reminder small {
+      display: block;
+      color: #a9a9ae;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .reminder strong {
+      display: block;
+      font-size: 23px;
+      letter-spacing: -0.025em;
+      margin-bottom: 6px;
+    }
+
+    .reminder p {
+      margin: 0;
+      color: #c8c8cc;
+      line-height: 1.5;
+    }
+
+    /* GRID */
+
+    .section-label {
+      color: #86868b;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .behavior-card {
+      border: 1px solid #e1e1dc;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 180px;
+      cursor: pointer;
+      text-align: left;
+      color: #1d1d1f;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .behavior-card:hover {
+      transform: translateY(-3px);
+      border-color: #c9c9c3;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.06);
+    }
+
+    .behavior-card:active {
+      transform: scale(0.985);
+    }
+
+    .icon {
+      display: block;
+      font-size: 27px;
+      margin-bottom: 34px;
+    }
+
+    .behavior-card strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .behavior-card span:last-child {
+      display: block;
+      color: #77777c;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    /* DETAIL */
+
+    .detail {
+      display: none;
+      background: white;
+      border: 1px solid #dfdfda;
+      border-radius: 28px;
+      padding: 31px;
+      margin-top: 24px;
+      animation: panelIn 0.35s ease;
+    }
+
+    .detail.active {
+      display: block;
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .detail-number {
+      color: #929297;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .close-button {
+      border: none;
+      background: #eeeeeb;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 19px;
+      flex: 0 0 auto;
+    }
+
+    .detail h2 {
+      margin: 0 0 14px;
+      font-size: clamp(30px, 6vw, 43px);
+      letter-spacing: -0.04em;
+      line-height: 1.07;
+    }
+
+    .lead {
+      color: #555559;
+      font-size: 18px;
+      line-height: 1.55;
+      margin-bottom: 27px;
+    }
+
+    .detail h3 {
+      margin: 27px 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .detail p,
+    .detail li {
+      color: #555559;
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    .detail ul {
+      padding-left: 21px;
+    }
+
+    /* OPTION CARDS */
+
+    .possibilities {
+      display: grid;
+      gap: 11px;
+      margin-top: 18px;
+    }
+
+    .possibility {
+      background: #f5f5f3;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .possibility strong {
+      display: block;
+      color: #1d1d1f;
+      margin-bottom: 5px;
+    }
+
+    .possibility p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* TRY / AVOID */
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .action-box {
+      background: #f5f5f3;
+      border-radius: 19px;
+      padding: 18px;
+    }
+
+    .action-box strong {
+      display: block;
+      color: #1d1d1f;
+      margin-bottom: 10px;
+    }
+
+    .action-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .action-box li {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .quote {
+      margin-top: 20px;
+      background: #eeeeeb;
+      border-radius: 17px;
+      padding: 16px 18px;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    /* SAFETY */
+
+    .safety {
+      margin-top: 42px;
+      padding: 25px;
+      border-radius: 23px;
+      background: #ecece8;
+    }
+
+    .safety strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 7px;
+    }
+
+    .safety p {
+      margin: 0;
+      color: #5b5b60;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid #deded9;
+      color: #86868b;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes panelIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        padding: 18px 16px 55px;
+      }
+
+      .intro {
+        padding: 55px 0 34px;
+      }
+
+      .intro p {
+        font-size: 17px;
+      }
+
+      .grid,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .behavior-card {
+        min-height: 150px;
+        padding: 22px;
+      }
+
+      .icon {
+        margin-bottom: 25px;
+      }
+
+      .detail {
+        padding: 24px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="topbar">
+      <a href="index.html" class="back-link">← Home</a>
+
+      <div class="top-label">
+        Understanding Behavior
+      </div>
+    </div>
+
+
+    <header class="intro">
+
+      <div class="eyebrow">
+        DURING A SESSION
+      </div>
+
+      <h1>
+        Start with what you see.
+      </h1>
+
+      <p>
+        Behavior can be communication. Instead of guessing right away,
+        notice what changed, look at the situation, and try one simple response.
+      </p>
+
+    </header>
+
+
+    <div class="reminder">
+
+      <small>START HERE</small>
+
+      <strong>
+        “What happened right before this?”
+      </strong>
+
+      <p>
+        The same behavior can mean excitement for one athlete,
+        stress for another, or something completely different.
+      </p>
+
+    </div>
+
+
+    <div class="section-label">
+      WHAT ARE YOU SEEING?
+    </div>
+
+
+    <main class="grid">
+
+      <button class="behavior-card" data-target="jumping">
+        <span class="icon">↕</span>
+        <strong>Jumping or repeated movement</strong>
+        <span>Excitement, waiting, regulation, or overload?</span>
+      </button>
+
+
+      <button class="behavior-card" data-target="overwhelmed">
+        <span class="icon">◌</span>
+        <strong>Seems overwhelmed</strong>
+        <span>Noise, crowds, transitions, or too much happening at once.</span>
+      </button>
+
+
+      <button class="behavior-card" data-target="walking">
+        <span class="icon">→</span>
+        <strong>Walking away</strong>
+        <span>Stay calm before trying to redirect.</span>
+      </button>
+
+
+      <button class="behavior-card" data-target="notresponding">
+        <span class="icon">•••</span>
+        <strong>Not responding</strong>
+        <span>They may need time, a clearer cue, or another way to communicate.</span>
+      </button>
+
+
+      <button class="behavior-card" data-target="frustrated">
+        <span class="icon">!</span>
+        <strong>Seems frustrated</strong>
+        <span>Slow down and look for what may be making things harder.</span>
+      </button>
+
+
+      <button class="behavior-card" data-target="no">
+        <span class="icon">×</span>
+        <strong>Saying “no”</strong>
+        <span>Notice and respect the message before pushing forward.</span>
+      </button>
+
+    </main>
+
+
+    <!-- JUMPING -->
+
+    <section class="detail" id="jumping">
+
+      <div class="detail-header">
+        <div class="detail-number">01 · JUMPING / REPEATED MOVEMENT</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <h2>
+        Don't assume it means one thing.
+      </h2>
+
+      <p class="lead">
+        Jumping, rocking, pacing, or another repeated movement might be excitement,
+        self-regulation, waiting, stress, or sensory overload.
+        Look at the rest of the situation.
+      </p>
+
+      <div class="possibilities">
+
+        <div class="possibility">
+          <strong>It might be excitement.</strong>
+          <p>
+            Maybe their turn is coming, they just made a basket,
+            or they're about to do something they really enjoy.
+          </p>
+        </div>
+
+        <div class="possibility">
+          <strong>It might help them regulate.</strong>
+          <p>
+            Repeated movement can sometimes help an athlete manage energy,
+            waiting, or sensory input.
+          </p>
+        </div>
+
+        <div class="possibility">
+          <strong>It might be overload.</strong>
+          <p>
+            Look for other clues: covering ears, trying to leave,
+            looking distressed, or having trouble responding.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="two-column">
+
+        <div class="action-box">
+          <strong>Try</strong>
+
+          <ul>
+            <li>Stay calm.</li>
+            <li>Use fewer words.</li>
+            <li>Tell them what's happening next.</li>
+            <li>Give them some space.</li>
+            <li>Reduce noise if they seem overwhelmed.</li>
+          </ul>
+        </div>
+
+        <div class="action-box">
+          <strong>Avoid</strong>
+
+          <ul>
+            <li>Immediately calling it “bad behavior.”</li>
+            <li>Yelling “stop.”</li>
+            <li>Repeating directions rapidly.</li>
+            <li>Assuming they are ignoring you.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- OVERWHELMED -->
+
+    <section class="detail" id="overwhelmed">
+
+      <div class="detail-header">
+        <div class="detail-number">02 · OVERWHELMED</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <h2>
+        Make the situation smaller.
+      </h2>
+
+      <p class="lead">
+        A loud gym, whistles, crowds, unexpected changes,
+        lots of instructions, or being surrounded by people can become too much.
+      </p>
+
+      <h3>Things you might notice</h3>
+
+      <ul>
+        <li>Covering ears</li>
+        <li>Trying to leave</li>
+        <li>Repeated movement becoming more intense</li>
+        <li>Looking tense or distressed</li>
+        <li>Suddenly not responding</li>
+        <li>Crying, yelling, or shutting down</li>
+      </ul>
+
+      <div class="two-column">
+
+        <div class="action-box">
+          <strong>Try</strong>
+
+          <ul>
+            <li>Use a calm voice.</li>
+            <li>Reduce talking.</li>
+            <li>Give them physical space.</li>
+            <li>Move toward a quieter area if appropriate.</li>
+            <li>Offer one simple choice.</li>
+            <li>Give them time.</li>
+          </ul>
+        </div>
+
+        <div class="action-box">
+          <strong>Avoid</strong>
+
+          <ul>
+            <li>Getting louder.</li>
+            <li>Crowding around them.</li>
+            <li>Forcing eye contact.</li>
+            <li>Rapid-fire questions.</li>
+            <li>Unexpected touching or grabbing.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="quote">
+        Try: <strong>“Break or stay?”</strong>
+        or <strong>“Want somewhere quieter?”</strong>
+      </div>
+
+    </section>
+
+
+    <!-- WALKING -->
+
+    <section class="detail" id="walking">
+
+      <div class="detail-header">
+        <div class="detail-number">03 · WALKING AWAY</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <h2>
+        Don't turn it into a battle.
+      </h2>
+
+      <p class="lead">
+        Walking away might mean the athlete needs a break,
+        doesn't understand what is happening, feels uncomfortable,
+        or simply wants some space.
+      </p>
+
+      <h3>Try this</h3>
+
+      <ul>
+        <li>Stay nearby if it is safe.</li>
+        <li>Walk calmly with them instead of immediately demanding they return.</li>
+        <li>Give them a little time.</li>
+        <li>Reconnect using something clear and positive.</li>
+      </ul>
+
+      <div class="quote">
+        “Basketball is next. Want to come see?”
+      </div>
+
+      <p>
+        If you're unsure whether the athlete needs physical guidance,
+        ask first or check with someone who knows them well.
+      </p>
+
+    </section>
+
+
+    <!-- NOT RESPONDING -->
+
+    <section class="detail" id="notresponding">
+
+      <div class="detail-header">
+        <div class="detail-number">04 · NOT RESPONDING</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <h2>
+        Pause before repeating yourself.
+      </h2>
+
+      <p class="lead">
+        Not responding doesn't automatically mean the athlete is ignoring you.
+        They may need more processing time, may not understand the instruction,
+        or may communicate in another way.
+      </p>
+
+      <h3>Try this order</h3>
+
+      <div class="possibilities">
+
+        <div class="possibility">
+          <strong>1. Get their attention.</strong>
+          <p>Say their name naturally.</p>
+        </div>
+
+        <div class="possibility">
+          <strong>2. Give one short instruction.</strong>
+          <p>Keep the language simple.</p>
+        </div>
+
+        <div class="possibility">
+          <strong>3. Wait.</strong>
+          <p>Give them time to process and respond.</p>
+        </div>
+
+        <div class="possibility">
+          <strong>4. Show what you mean.</strong>
+          <p>Point, gesture, or demonstrate.</p>
+        </div>
+
+        <div class="possibility">
+          <strong>5. Offer a choice if it helps.</strong>
+          <p>For example, “Walk or run?”</p>
+        </div>
+
+      </div>
+
+      <div class="quote">
+        Instead of repeating:
+        <strong>“Go stand over there.”</strong>
+        <br><br>
+        Point to the spot and say:
+        <strong>“Stand here.”</strong>
+      </div>
+
+    </section>
+
+
+    <!-- FRUSTRATED -->
+
+    <section class="detail" id="frustrated">
+
+      <div class="detail-header">
+        <div class="detail-number">05 · FRUSTRATED</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <h2>
+        Look for what's making things harder.
+      </h2>
+
+      <p class="lead">
+        The activity might be confusing, difficult, tiring,
+        uncomfortable, too loud, or simply not what they want right now.
+      </p>
+
+      <h3>Try</h3>
+
+      <ul>
+        <li>Use fewer words.</li>
+        <li>Demonstrate instead of explaining again.</li>
+        <li>Offer a short break.</li>
+        <li>Give two simple choices.</li>
+        <li>Notice their face, gestures, and body language.</li>
+        <li>Encourage without adding pressure.</li>
+      </ul>
+
+      <div class="quote">
+        “Want help?”
+        &nbsp;&nbsp;or&nbsp;&nbsp;
+        “Break or one more?”
+      </div>
+
+    </section>
+
+
+    <!-- SAYING NO -->
+
+    <section class="detail" id="no">
+
+      <div class="detail-header">
+        <div class="detail-number">06 · SAYING NO</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <h2>
+        Notice the message first.
+      </h2>
+
+      <p class="lead">
+        “No” isn't always spoken. It might look like shaking their head,
+        pushing something away, turning away, using a hand gesture,
+        selecting something on AAC, or another clear signal.
+      </p>
+
+      <h3>Start by acknowledging it.</h3>
+
+      <div class="quote">
+        “Okay. We can wait a minute.”
+      </div>
+
+      <p>
+        You can encourage the athlete to try again later without acting
+        like their first response never happened.
+      </p>
+
+      <h3>If you're unsure</h3>
+
+      <p>
+        Ask a coach, caregiver, or someone who knows the athlete:
+        <strong>“Is that how they usually tell us no?”</strong>
+      </p>
+
+    </section>
+
+
+    <div class="safety">
+
+      <strong>Safety comes first.</strong>
+
+      <p>
+        If an athlete is at immediate risk of getting hurt,
+        leaving a safe area, or hurting someone else,
+        get the coach or event staff involved right away.
+        This guide is for communication support, not emergency response.
+      </p>
+
+    </div>
+
+
+    <footer>
+      Every athlete is different. These examples are starting points,
+      not a way to diagnose what a behavior “means.”
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    const cards = document.querySelectorAll(".behavior-card");
+    const details = document.querySelectorAll(".detail");
+    const closeButtons = document.querySelectorAll(".close-button");
+
+    cards.forEach(card => {
+
+      card.addEventListener("click", () => {
+
+        const targetId = card.dataset.target;
+        const target = document.getElementById(targetId);
+
+        details.forEach(detail => {
+          detail.classList.remove("active");
+        });
+
+        target.classList.add("active");
+
+        setTimeout(() => {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 50);
+
+      });
+
+    });
+
+
+    closeButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const detail = button.closest(".detail");
+
+        detail.classList.remove("active");
+
+        window.scrollTo({
+          top: document.querySelector(".grid").offsetTop - 25,
+          behavior: "smooth"
+        });
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
