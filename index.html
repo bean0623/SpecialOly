@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Special Olympics Volunteer Communication Guide</title>
+  <title>Special Olympics Volunteer Guide</title>
 
   <style>
     * {
@@ -17,573 +17,208 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: #f7f7f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Helvetica, Arial, sans-serif;
+      background: #f5f5f3;
       color: #1d1d1f;
-      line-height: 1.5;
-    }
-
-    button,
-    a {
-      font: inherit;
     }
 
     .page {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 22px 80px;
+      max-width: 850px;
+      margin: auto;
+      padding: 24px 22px 70px;
     }
-
-    /* HEADER */
 
     header {
-      padding: 24px 0 12px;
-    }
-
-    .brand {
       font-size: 15px;
       font-weight: 600;
       color: #6e6e73;
-      letter-spacing: 0.01em;
+      padding-top: 5px;
     }
 
-    /* HERO */
-
     .hero {
-      padding: 74px 0 54px;
+      padding: 95px 0 65px;
+      animation: fadeUp 0.7s ease both;
     }
 
     .eyebrow {
       font-size: 15px;
       font-weight: 600;
       color: #6e6e73;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 70px);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
       margin: 0;
+      font-size: clamp(45px, 8vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
       max-width: 760px;
-      font-weight: 700;
     }
 
-    .hero p {
+    .subtitle {
+      margin-top: 25px;
+      max-width: 610px;
       font-size: 20px;
       line-height: 1.45;
       color: #6e6e73;
-      max-width: 650px;
-      margin: 25px 0 0;
     }
 
-    .hero-actions {
+    .question {
+      margin-top: 20px;
+      margin-bottom: 18px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #6e6e73;
+    }
+
+    .cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 38px;
+      gap: 15px;
     }
 
-    .hero-button {
+    .card {
       display: block;
-      width: 100%;
-      text-align: left;
+      position: relative;
       text-decoration: none;
-      color: inherit;
-      border: 1px solid #deded8;
-      background: #ffffff;
-      padding: 22px;
-      border-radius: 22px;
+      color: #1d1d1f;
+
+      background: white;
+      border: 1px solid #e1e1dc;
+      border-radius: 26px;
+      padding: 29px;
+
       transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+      animation: fadeUp 0.7s ease both;
     }
 
-    .hero-button:hover {
-      transform: translateY(-2px);
-      border-color: #c7c7c2;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    .card:nth-child(1) {
+      animation-delay: 0.08s;
     }
 
-    .hero-button:active {
+    .card:nth-child(2) {
+      animation-delay: 0.16s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.24s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #c9c9c3;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+    }
+
+    .card:active {
       transform: scale(0.985);
     }
 
-    .hero-button.primary {
+    .card.primary {
       background: #1d1d1f;
       color: white;
       border-color: #1d1d1f;
     }
 
-    .hero-button .button-title {
-      display: block;
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .hero-button .button-subtitle {
-      display: block;
-      font-size: 14px;
-      color: #77777c;
-    }
-
-    .hero-button.primary .button-subtitle {
-      color: #c8c8cc;
-    }
-
-    /* GENERAL */
-
-    section {
-      padding: 60px 0 10px;
-    }
-
-    .section-label {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: #86868b;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 6vw, 46px);
-      letter-spacing: -0.035em;
-      line-height: 1.08;
-      margin: 0 0 14px;
-    }
-
-    .section-intro {
-      font-size: 18px;
-      color: #6e6e73;
-      max-width: 680px;
-      margin: 0 0 28px;
-    }
-
-    /* REFRESHER */
-
-    .refresher {
-      background: #ffffff;
-      border: 1px solid #e4e4df;
-      border-radius: 28px;
-      overflow: hidden;
-    }
-
-    .progress-track {
-      height: 4px;
-      background: #ececea;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 20%;
-      background: #1d1d1f;
-      transition: width 0.35s ease;
-    }
-
-    .refresh-card {
-      padding: 34px;
-      min-height: 290px;
-      display: none;
-      animation: cardIn 0.35s ease;
-    }
-
-    .refresh-card.active {
-      display: block;
-    }
-
-    @keyframes cardIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .step-number {
-      font-size: 14px;
-      color: #86868b;
-      margin-bottom: 22px;
-    }
-
-    .refresh-card h3 {
-      font-size: 31px;
-      margin: 0 0 15px;
-      letter-spacing: -0.025em;
-    }
-
-    .refresh-card p {
-      font-size: 19px;
-      color: #4f4f53;
-      max-width: 570px;
-    }
-
-    .example {
-      padding: 15px 17px;
-      border-radius: 15px;
-      background: #f5f5f3;
-      margin-top: 22px;
-      font-size: 17px;
-    }
-
-    .refresher-controls {
-      padding: 0 34px 30px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .small-button {
-      border: 0;
-      border-radius: 999px;
-      padding: 12px 19px;
-      cursor: pointer;
-      background: #eeeeeb;
-      color: #1d1d1f;
-      transition: transform 0.15s ease;
-    }
-
-    .small-button.next {
-      background: #1d1d1f;
-      color: white;
-    }
-
-    .small-button:active {
-      transform: scale(0.96);
-    }
-
-    /* QUICK HELP */
-
-    .help-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .help-card {
-      border: 1px solid #e0e0db;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 20px;
-      cursor: pointer;
-      text-align: left;
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .help-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.05);
-    }
-
-    .help-card:active {
-      transform: scale(0.985);
-    }
-
-    .help-icon {
-      font-size: 25px;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .help-card strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .help-card span:last-child {
-      color: #77777c;
-      font-size: 14px;
-    }
-
-    /* EXPANDABLE PANELS */
-
-    .detail-panel {
-      display: none;
-      background: #fff;
-      border: 1px solid #e2e2dd;
-      border-radius: 24px;
-      margin-top: 18px;
-      padding: 28px;
-      animation: panelIn 0.3s ease;
-    }
-
-    .detail-panel.active {
-      display: block;
-    }
-
-    @keyframes panelIn {
-      from {
-        opacity: 0;
-        transform: translateY(7px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .detail-panel h3 {
-      font-size: 27px;
-      letter-spacing: -0.02em;
-      margin-top: 0;
-    }
-
-    .detail-panel h4 {
-      margin-top: 26px;
-      margin-bottom: 8px;
-      font-size: 17px;
-    }
-
-    .detail-panel p,
-    .detail-panel li {
-      color: #515155;
-      font-size: 16px;
-    }
-
-    .detail-panel ul {
-      padding-left: 21px;
-    }
-
-    .close-detail {
-      border: 0;
-      background: #eeeeeb;
-      border-radius: 999px;
-      padding: 9px 14px;
-      cursor: pointer;
-      margin-top: 12px;
-    }
-
-    /* IMPORTANT PROTOCOL */
-
-    .protocol {
-      background: #1d1d1f;
-      color: white;
-      border-radius: 30px;
-      padding: 38px;
-    }
-
-    .protocol .section-label {
-      color: #a9a9ae;
-    }
-
-    .protocol .section-intro {
-      color: #c6c6ca;
-    }
-
-    .protocol-list {
-      display: grid;
-      gap: 1px;
-      margin-top: 30px;
-    }
-
-    .protocol-item {
-      padding: 22px 0;
-      border-top: 1px solid #3a3a3c;
-    }
-
-    .protocol-number {
-      color: #929297;
+    .number {
       font-size: 13px;
-      margin-bottom: 7px;
+      color: #99999e;
+      margin-bottom: 32px;
     }
 
-    .protocol-item h3 {
-      margin: 0 0 6px;
-      font-size: 21px;
+    .primary .number {
+      color: #99999f;
     }
 
-    .protocol-item p {
+    .card h2 {
       margin: 0;
-      color: #c8c8cc;
-      max-width: 680px;
+      font-size: 27px;
+      letter-spacing: -0.03em;
     }
 
-    /* CALLOUT */
-
-    .callout {
-      margin: 26px 0;
-      padding: 23px;
-      background: #eeeee9;
-      border-radius: 20px;
+    .card p {
+      margin: 9px 45px 0 0;
+      color: #707075;
+      font-size: 16px;
+      line-height: 1.45;
     }
 
-    .callout strong {
-      display: block;
-      margin-bottom: 7px;
+    .primary p {
+      color: #b8b8bd;
     }
 
-    /* AAC */
-
-    .communication-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 25px;
+    .arrow {
+      position: absolute;
+      right: 28px;
+      bottom: 29px;
+      font-size: 23px;
+      transition: transform 0.2s ease;
     }
 
-    .communication-item {
-      padding: 20px;
-      background: #fff;
-      border: 1px solid #e1e1dc;
-      border-radius: 20px;
-      min-height: 120px;
+    .card:hover .arrow {
+      transform: translateX(4px);
     }
-
-    .communication-item strong {
-      display: block;
-      margin-top: 15px;
-    }
-
-    /* PHRASES */
-
-    .phrase-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 20px;
-    }
-
-    .phrase {
-      background: #fff;
-      border: 1px solid #dededa;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 15px;
-    }
-
-    /* SPORTS */
-
-    .sport {
-      background: #fff;
-      border: 1px solid #e1e1dc;
-      border-radius: 22px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-
-    .sport-button {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 20px;
-      cursor: pointer;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .sport-content {
-      display: none;
-      padding: 0 20px 22px;
-      color: #555559;
-    }
-
-    .sport.open .sport-content {
-      display: block;
-      animation: panelIn 0.25s ease;
-    }
-
-    /* FAMILY */
-
-    .family-quote {
-      background: white;
-      border: 1px solid #e1e1dc;
-      border-radius: 24px;
-      padding: 27px;
-      margin-top: 20px;
-    }
-
-    .family-quote p {
-      font-size: 18px;
-      color: #454549;
-      margin: 0 0 18px;
-    }
-
-    .family-points {
-      padding-left: 21px;
-      color: #555559;
-    }
-
-    /* FOOTER */
 
     footer {
-      border-top: 1px solid #deded9;
-      padding-top: 30px;
-      margin-top: 70px;
-      color: #77777c;
+      padding-top: 55px;
+      color: #909095;
       font-size: 13px;
+      line-height: 1.5;
     }
 
-    /* SCROLL ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition:
-        opacity 0.65s ease,
-        transform 0.65s ease;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @media (max-width: 600px) {
 
-    /* MOBILE */
-
-    @media (max-width: 650px) {
       .page {
-        padding: 0 17px 60px;
+        padding: 20px 17px 55px;
       }
 
       .hero {
-        padding-top: 55px;
+        padding: 68px 0 48px;
       }
 
-      .hero-actions,
-      .help-grid {
-        grid-template-columns: 1fr;
+      .subtitle {
+        font-size: 18px;
       }
 
-      .communication-grid {
-        grid-template-columns: 1fr 1fr;
+      .card {
+        padding: 24px;
+        border-radius: 22px;
       }
 
-      .protocol {
-        padding: 27px 22px;
-        border-radius: 24px;
+      .card h2 {
+        font-size: 24px;
       }
 
-      .refresh-card {
-        padding: 25px;
-        min-height: 320px;
+      .number {
+        margin-bottom: 25px;
       }
 
-      .refresher-controls {
-        padding: 0 25px 24px;
+      .arrow {
+        right: 23px;
+        bottom: 24px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+      * {
+        animation: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -594,889 +229,106 @@
   <div class="page">
 
     <header>
-      <div class="brand">Volunteer Communication Guide</div>
+      Volunteer Communication Guide
     </header>
 
-    <!-- HERO -->
+    <main>
 
-    <main class="hero reveal">
-      <div class="eyebrow">Special Olympics</div>
+      <section class="hero">
 
-      <h1>Connect first.<br>Then coach.</h1>
+        <div class="eyebrow">
+          Special Olympics
+        </div>
 
-      <p>
-        A quick guide for communicating with athletes clearly,
-        respectfully, and confidently during every session.
-      </p>
+        <h1>
+          Connect first.<br>
+          Then coach.
+        </h1>
 
-      <div class="hero-actions">
-        <a class="hero-button primary" href="#refresher">
-          <span class="button-title">60-Second Refresher →</span>
-          <span class="button-subtitle">
-            A quick review before your session.
-          </span>
-        </a>
+        <p class="subtitle">
+          A quick guide to communicating with athletes clearly,
+          respectfully, and confidently during every session.
+        </p>
 
-        <a class="hero-button" href="#help">
-          <span class="button-title">Need help right now?</span>
-          <span class="button-subtitle">
-            Find what you're seeing and what to try.
-          </span>
-        </a>
+      </section>
+
+
+      <div class="question">
+        What do you need?
       </div>
+
+
+      <div class="cards">
+
+        <a href="essentials.html" class="card primary">
+
+          <div class="number">
+            01 · MUST READ
+          </div>
+
+          <h2>
+            60-Second Essentials
+          </h2>
+
+          <p>
+            The most important things to remember before every session.
+          </p>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+        <a href="behavior.html" class="card">
+
+          <div class="number">
+            02 · DURING A SESSION
+          </div>
+
+          <h2>
+            Understanding Athlete Behavior
+          </h2>
+
+          <p>
+            Jumping, walking away, feeling overwhelmed,
+            not responding, and what you can try.
+          </p>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+        <a href="communication.html" class="card">
+
+          <div class="number">
+            03 · COMMUNICATION
+          </div>
+
+          <h2>
+            Communication & Activities
+          </h2>
+
+          <p>
+            Non-speaking athletes, AAC, useful phrases,
+            sports cues, and advice from families.
+          </p>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+      </div>
+
     </main>
-
-    <!-- 60 SECOND REFRESHER -->
-
-    <section id="refresher" class="reveal">
-
-      <div class="section-label">Before your session</div>
-      <h2>Five things to remember.</h2>
-
-      <p class="section-intro">
-        You don't need to memorize a manual. Start with these.
-      </p>
-
-      <div class="refresher">
-
-        <div class="progress-track">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <div class="refresh-card active">
-          <div class="step-number">1 of 5</div>
-
-          <h3>See the athlete first.</h3>
-
-          <p>
-            Speak directly to the athlete. Say their name.
-            Don't talk only to their parent, coach, or aide.
-          </p>
-
-          <div class="example">
-            “Hi Alex. Ready for basketball?”
-          </div>
-        </div>
-
-        <div class="refresh-card">
-          <div class="step-number">2 of 5</div>
-
-          <h3>Keep it simple.</h3>
-
-          <p>
-            Use short phrases and give one instruction at a time.
-            If something isn't landing, make it clearer instead of just saying more.
-          </p>
-
-          <div class="example">
-            “First, line up.”<br>
-            “Next, basketball.”<br>
-            “Then, water.”
-          </div>
-        </div>
-
-        <div class="refresh-card">
-          <div class="step-number">3 of 5</div>
-
-          <h3>Show, don't only tell.</h3>
-
-          <p>
-            Point, gesture, demonstrate the drill, or show the equipment.
-            Sometimes seeing the action makes the instruction much easier to understand.
-          </p>
-
-          <div class="example">
-            Say “Pass” while showing one pass.
-          </div>
-        </div>
-
-        <div class="refresh-card">
-          <div class="step-number">4 of 5</div>
-
-          <h3>Give them time.</h3>
-
-          <p>
-            Ask the question, then wait. Some athletes need more time to process,
-            move, point, speak, or use a device.
-          </p>
-
-          <div class="example">
-            Ask → wait → watch → respond.
-          </div>
-        </div>
-
-        <div class="refresh-card">
-          <div class="step-number">5 of 5</div>
-
-          <h3>Give real choices.</h3>
-
-          <p>
-            Choices make communication easier and give athletes more control over
-            what happens next.
-          </p>
-
-          <div class="example">
-            “Water or rest?”<br>
-            “Again or all done?”<br>
-            “Walk or run?”
-          </div>
-        </div>
-
-        <div class="refresher-controls">
-          <button class="small-button" id="prevButton">
-            Back
-          </button>
-
-          <button class="small-button next" id="nextButton">
-            Next
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- HELP RIGHT NOW -->
-
-    <section id="help" class="reveal">
-
-      <div class="section-label">During a session</div>
-      <h2>What are you seeing?</h2>
-
-      <p class="section-intro">
-        Don't jump straight to “they aren't listening.”
-        Start with what is happening and think about what the athlete may be communicating.
-      </p>
-
-      <div class="help-grid">
-
-        <button class="help-card" data-panel="jumping">
-          <span class="help-icon">↕</span>
-          <strong>Jumping or repeated movement</strong>
-          <span>Excitement? Waiting? Overload?</span>
-        </button>
-
-        <button class="help-card" data-panel="overwhelmed">
-          <span class="help-icon">◌</span>
-          <strong>Seems overwhelmed</strong>
-          <span>Reduce stimulation and give space.</span>
-        </button>
-
-        <button class="help-card" data-panel="walking">
-          <span class="help-icon">→</span>
-          <strong>Walking away</strong>
-          <span>Follow calmly before redirecting.</span>
-        </button>
-
-        <button class="help-card" data-panel="responding">
-          <span class="help-icon">•••</span>
-          <strong>Not responding</strong>
-          <span>Pause before repeating yourself.</span>
-        </button>
-
-        <button class="help-card" data-panel="frustrated">
-          <span class="help-icon">!</span>
-          <strong>Seems frustrated</strong>
-          <span>Slow things down and look for the cause.</span>
-        </button>
-
-        <button class="help-card" data-panel="no">
-          <span class="help-icon">×</span>
-          <strong>Saying “no”</strong>
-          <span>Respect the message first.</span>
-        </button>
-
-      </div>
-
-      <!-- JUMPING -->
-
-      <div class="detail-panel" id="jumping">
-
-        <h3>Jumping or repeated movement</h3>
-
-        <p>
-          Start with one question: <strong>What happened right before this?</strong>
-          The same movement can mean very different things for different athletes.
-        </p>
-
-        <h4>It could be excitement.</h4>
-        <p>
-          Maybe their turn is coming, they just did something well,
-          or they're excited about the next activity.
-          If they're safe and happy, you may not need to stop the movement at all.
-        </p>
-
-        <h4>It could be waiting or uncertainty.</h4>
-        <p>
-          If they've been standing around for a while, give them something concrete:
-          “You're next,” or “Two more people, then your turn.”
-        </p>
-
-        <h4>It could be sensory overload or self-regulation.</h4>
-        <p>
-          Look at the rest of their body language. Are they covering their ears?
-          Trying to leave? Looking distressed? Is the gym especially loud or crowded?
-        </p>
-
-        <h4>What to try</h4>
-        <ul>
-          <li>Stay calm.</li>
-          <li>Use fewer words.</li>
-          <li>Tell them what's happening next.</li>
-          <li>Give them some space.</li>
-          <li>Move somewhere quieter if that seems helpful.</li>
-        </ul>
-
-        <button class="close-detail">Close</button>
-      </div>
-
-
-      <!-- OVERWHELMED -->
-
-      <div class="detail-panel" id="overwhelmed">
-
-        <h3>If an athlete seems overwhelmed</h3>
-
-        <p>
-          The goal isn't to force them back into the activity as quickly as possible.
-          Help the situation feel manageable again.
-        </p>
-
-        <h4>Try this</h4>
-
-        <ul>
-          <li>Reduce noise and talking if you can.</li>
-          <li>Give them some physical space.</li>
-          <li>Use a calm voice and short phrases.</li>
-          <li>Offer simple choices: “Break or stay?” “Water?” “Help?”</li>
-          <li>Give them time before asking another question.</li>
-          <li>Ask a coach, parent, or experienced volunteer what usually helps.</li>
-        </ul>
-
-        <div class="callout">
-          <strong>Avoid adding more pressure.</strong>
-          Don't yell, rapidly repeat directions, force eye contact,
-          or unexpectedly grab or touch the athlete.
-        </div>
-
-        <button class="close-detail">Close</button>
-      </div>
-
-
-      <!-- WALKING -->
-
-      <div class="detail-panel" id="walking">
-
-        <h3>If an athlete walks away</h3>
-
-        <p>
-          Don't immediately turn it into a confrontation.
-          If it's safe, stay nearby and walk with them for a moment.
-        </p>
-
-        <p>
-          Once things feel calmer, reconnect with something concrete and positive:
-        </p>
-
-        <div class="example">
-          “Basketball is next. Want to come see?”
-        </div>
-
-        <p>
-          Give them a reason to reconnect rather than simply repeating
-          “come back” again and again.
-        </p>
-
-        <p>
-          If physical guidance may be needed, check with the athlete or someone
-          who knows them first rather than assuming touch will help.
-        </p>
-
-        <button class="close-detail">Close</button>
-      </div>
-
-
-      <!-- NOT RESPONDING -->
-
-      <div class="detail-panel" id="responding">
-
-        <h3>If the athlete isn't responding</h3>
-
-        <p>
-          They may need more time, may not understand the instruction,
-          may be focused on something else, or may communicate differently.
-        </p>
-
-        <h4>Try this order</h4>
-
-        <ul>
-          <li>Say their name and give one short instruction.</li>
-          <li>Wait.</li>
-          <li>Show or point to what you mean.</li>
-          <li>If needed, repeat or rephrase once.</li>
-          <li>Offer a simple choice.</li>
-        </ul>
-
-        <div class="example">
-          Instead of repeating “Go stand over there,”
-          point to the spot and say, “Stand here.”
-        </div>
-
-        <button class="close-detail">Close</button>
-      </div>
-
-
-      <!-- FRUSTRATED -->
-
-      <div class="detail-panel" id="frustrated">
-
-        <h3>If the athlete seems frustrated</h3>
-
-        <p>
-          Look for the reason before trying to fix the behavior.
-          The activity may be confusing, tiring, uncomfortable, too loud,
-          or simply something they don't want right now.
-        </p>
-
-        <h4>Try</h4>
-
-        <ul>
-          <li>Use fewer words.</li>
-          <li>Show the activity instead of explaining it again.</li>
-          <li>Offer a short break.</li>
-          <li>Give two simple choices.</li>
-          <li>Notice gestures, facial expressions, and body language.</li>
-        </ul>
-
-        <button class="close-detail">Close</button>
-      </div>
-
-
-      <!-- NO -->
-
-      <div class="detail-panel" id="no">
-
-        <h3>If the athlete is telling you “no”</h3>
-
-        <p>
-          “No” may come through speech, a hand gesture, turning away,
-          shaking their head, an AAC device, or another clear signal.
-        </p>
-
-        <p>
-          Acknowledge it first.
-        </p>
-
-        <div class="example">
-          “Okay. We can wait a minute.”
-        </div>
-
-        <p>
-          You can encourage participation later without pretending their first
-          response didn't happen.
-        </p>
-
-        <button class="close-detail">Close</button>
-      </div>
-
-    </section>
-
-
-    <!-- IMPORTANT NONVERBAL PROTOCOL -->
-
-    <section class="reveal">
-
-      <div class="protocol">
-
-        <div class="section-label">
-          Core protocol
-        </div>
-
-        <h2>When an athlete communicates without speech.</h2>
-
-        <p class="section-intro">
-          Not speaking doesn't tell you exactly what someone understands.
-          Talk to the athlete directly, pay attention to how they respond,
-          and learn the communication style that works for them.
-        </p>
-
-        <div class="protocol-list">
-
-          <div class="protocol-item">
-            <div class="protocol-number">01</div>
-            <h3>Say it clearly. Then give it a second.</h3>
-            <p>
-              Don't rush to repeat yourself. Give the athlete time to process.
-              If it doesn't land, try saying it another way or showing what you mean.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">02</div>
-            <h3>Show the activity.</h3>
-            <p>
-              Demonstrate the drill once before asking them to try.
-              Pointing, gestures, and real objects can make instructions much easier to follow.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">03</div>
-            <h3>Watch their body language.</h3>
-            <p>
-              A push-away gesture, turning away, repeated movement, facial expression,
-              or hesitation may be telling you something. Don't assume you know what it means.
-              Look at the situation around it.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">04</div>
-            <h3>Don't turn walking away into a battle.</h3>
-            <p>
-              If it's safe, stay nearby. Give them a little time, then reconnect
-              using something clear and positive about what is happening next.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">05</div>
-            <h3>Use gestures naturally.</h3>
-            <p>
-              Point to the basketball. Mimic drinking when offering water.
-              Nod yes. Shake your head no. Let your body support what you're saying.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">06</div>
-            <h3>Make yes and no easy.</h3>
-            <p>
-              Give the athlete a clear way to answer.
-              That might be nodding, shaking their head, pointing,
-              thumbs up or down, a gesture, speech, or a device.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">07</div>
-            <h3>Build familiarity.</h3>
-            <p>
-              When possible, stay with the same athlete across sessions.
-              New people can take time to get comfortable with.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">08</div>
-            <h3>Get to know them.</h3>
-            <p>
-              Ask simple, real questions. What did they eat for breakfast?
-              What sport do they like? What makes them laugh?
-              Communication gets easier when there's an actual relationship.
-            </p>
-          </div>
-
-          <div class="protocol-item">
-            <div class="protocol-number">09</div>
-            <h3>Bring some energy.</h3>
-            <p>
-              Enthusiasm can make an activity feel inviting.
-              Be encouraging without overwhelming the athlete.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- AAC / COMMUNICATION -->
-
-    <section class="reveal">
-
-      <div class="section-label">Communication & AAC</div>
-      <h2>Speech is only one way to communicate.</h2>
-
-      <p class="section-intro">
-        An athlete may communicate through speech, movement, gestures,
-        pictures, writing, facial expressions, pointing, or a device.
-        Pay attention to all of it.
-      </p>
-
-      <div class="communication-grid">
-
-        <div class="communication-item">
-          👋
-          <strong>Gestures</strong>
-        </div>
-
-        <div class="communication-item">
-          ☝
-          <strong>Pointing</strong>
-        </div>
-
-        <div class="communication-item">
-          🙂
-          <strong>Facial expression</strong>
-        </div>
-
-        <div class="communication-item">
-          ✎
-          <strong>Writing & pictures</strong>
-        </div>
-
-        <div class="communication-item">
-          💬
-          <strong>Speech</strong>
-        </div>
-
-        <div class="communication-item">
-          ▣
-          <strong>AAC devices</strong>
-        </div>
-
-      </div>
-
-      <div class="callout">
-        <strong>If an athlete uses AAC</strong>
-        Give them time to finish. Don't speak for them.
-        Respond to what they're communicating rather than testing them.
-        Keep their communication system available to them.
-      </div>
-
-      <h3>Useful phrases</h3>
-
-      <div class="phrase-list">
-        <span class="phrase">“Show me.”</span>
-        <span class="phrase">“Take your time.”</span>
-        <span class="phrase">“I'll wait.”</span>
-        <span class="phrase">“Do you want help?”</span>
-        <span class="phrase">“Stop or keep going?”</span>
-        <span class="phrase">“Your choice.”</span>
-        <span class="phrase">“Can you show me again?”</span>
-      </div>
-
-    </section>
-
-
-    <!-- SPORTS -->
-
-    <section class="reveal">
-
-      <div class="section-label">During sports</div>
-      <h2>Keep cues short.</h2>
-
-      <p class="section-intro">
-        Tap a sport for a few phrases you can use without overloading the athlete.
-      </p>
-
-      <div class="sport">
-
-        <button class="sport-button">
-          <span>🏀 Basketball</span>
-          <span>+</span>
-        </button>
-
-        <div class="sport-content">
-          “Shoot or pass?”<br><br>
-          “My turn. Your turn.”<br><br>
-          “More shots or water?”<br><br>
-          “Ready?”<br><br>
-          Pair the words with a quick demonstration whenever it helps.
-        </div>
-
-      </div>
-
-
-      <div class="sport">
-
-        <button class="sport-button">
-          <span>🏃 Track</span>
-          <span>+</span>
-        </button>
-
-        <div class="sport-content">
-          “Walk or run?”<br><br>
-          “Ready. Set. Go.”<br><br>
-          “Stop.”<br><br>
-          “Rest or one more?”
-        </div>
-
-      </div>
-
-
-      <div class="sport">
-
-        <button class="sport-button">
-          <span>⚽ Soccer</span>
-          <span>+</span>
-        </button>
-
-        <div class="sport-content">
-          “Kick or pass?”<br><br>
-          “Again?”<br><br>
-          “Goal?”<br><br>
-          “Stop or go?”
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- FAMILY INSIGHT -->
-
-    <section class="reveal">
-
-      <div class="section-label">From families</div>
-      <h2>The people who know the athlete can teach you a lot.</h2>
-
-      <p class="section-intro">
-        Parents, caregivers, coaches, and the athlete themselves may already know
-        what helps communication go smoothly.
-      </p>
-
-      <div class="family-quote">
-
-        <p>
-          One parent shared a few things that make a big difference:
-        </p>
-
-        <ul class="family-points">
-          <li>
-            Give advance warning before a transition or new activity.
-          </li>
-
-          <li>
-            Facial expressions matter. Stay relaxed, smile naturally,
-            and show encouragement.
-          </li>
-
-          <li>
-            Give the athlete some space and watch their own facial expressions
-            and body language.
-          </li>
-
-          <li>
-            If they clearly signal “no,” acknowledge it.
-            Giving them a few minutes may work better than pushing immediately.
-          </li>
-
-          <li>
-            Give time, encouragement, and positive feedback.
-          </li>
-        </ul>
-
-      </div>
-
-      <div class="callout">
-        <strong>Ask when you're unsure.</strong>
-        “What usually helps?” can be one of the best questions a volunteer asks.
-      </div>
-
-    </section>
-
-
-    <!-- RESPECT -->
-
-    <section class="reveal">
-
-      <div class="section-label">Respect</div>
-      <h2>Treat the athlete like an athlete.</h2>
-
-      <div class="protocol-list">
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Speak directly to them.</h3>
-        </div>
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Use age-appropriate language.</h3>
-        </div>
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Speak slower, not louder.</h3>
-        </div>
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Ask before helping physically.</h3>
-        </div>
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Don't pretend you understood. Ask again.</h3>
-        </div>
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Don't answer for them.</h3>
-        </div>
-
-        <div class="protocol-item" style="border-color:#ddddda;">
-          <h3 style="color:#1d1d1f;">Give them time.</h3>
-        </div>
-
-      </div>
-
-    </section>
 
 
     <footer>
-
-      <p>
-        This guide is designed as a quick communication resource for volunteers.
-        Every athlete is different. When you're unsure, ask the athlete,
-        coach, caregiver, or an experienced volunteer what works best.
-      </p>
-
+      Every athlete communicates differently. When you're unsure,
+      slow down, pay attention, and ask what works best.
     </footer>
 
   </div>
-
-
-  <script>
-
-    /* 60 SECOND REFRESHER */
-
-    const refreshCards = document.querySelectorAll(".refresh-card");
-    const progressBar = document.getElementById("progressBar");
-    const nextButton = document.getElementById("nextButton");
-    const prevButton = document.getElementById("prevButton");
-
-    let currentStep = 0;
-
-    function showStep(index) {
-
-      refreshCards.forEach(card => {
-        card.classList.remove("active");
-      });
-
-      refreshCards[index].classList.add("active");
-
-      progressBar.style.width =
-        ((index + 1) / refreshCards.length * 100) + "%";
-
-      prevButton.style.visibility =
-        index === 0 ? "hidden" : "visible";
-
-      nextButton.textContent =
-        index === refreshCards.length - 1
-          ? "Start again"
-          : "Next";
-    }
-
-    nextButton.addEventListener("click", () => {
-
-      if (currentStep === refreshCards.length - 1) {
-        currentStep = 0;
-      } else {
-        currentStep++;
-      }
-
-      showStep(currentStep);
-    });
-
-    prevButton.addEventListener("click", () => {
-
-      if (currentStep > 0) {
-        currentStep--;
-      }
-
-      showStep(currentStep);
-    });
-
-    showStep(0);
-
-
-    /* HELP PANELS */
-
-    const helpCards = document.querySelectorAll(".help-card");
-    const detailPanels = document.querySelectorAll(".detail-panel");
-
-    helpCards.forEach(card => {
-
-      card.addEventListener("click", () => {
-
-        const panelId = card.dataset.panel;
-        const selectedPanel = document.getElementById(panelId);
-
-        detailPanels.forEach(panel => {
-          panel.classList.remove("active");
-        });
-
-        selectedPanel.classList.add("active");
-
-        setTimeout(() => {
-          selectedPanel.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
-        }, 50);
-
-      });
-
-    });
-
-    document.querySelectorAll(".close-detail").forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        button.closest(".detail-panel").classList.remove("active");
-
-      });
-
-    });
-
-
-    /* SPORTS ACCORDIONS */
-
-    document.querySelectorAll(".sport-button").forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        const sport = button.parentElement;
-        const symbol = button.querySelector("span:last-child");
-
-        sport.classList.toggle("open");
-
-        symbol.textContent =
-          sport.classList.contains("open")
-            ? "−"
-            : "+";
-
-      });
-
-    });
-
-
-    /* SCROLL REVEAL */
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const observer = new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.08
-      }
-    );
-
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
-
-  </script>
 
 </body>
 </html>
