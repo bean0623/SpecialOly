@@ -2,307 +2,690 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>60-Second Essentials | Special Olympics Volunteer Guide</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>60-Second Essentials | Volunteer Communication Guide</title>
+
+  <link rel="stylesheet" href="style.css">
 
   <style>
-    * {
-      box-sizing: border-box;
+
+    /* =====================================================
+       ESSENTIALS PAGE — V2
+       ===================================================== */
+
+    .essentials-intro {
+      padding: 66px 0 40px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .essentials-intro .lead {
+      margin-top: 21px;
     }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Helvetica, Arial, sans-serif;
-      background: #f5f5f3;
-      color: #1d1d1f;
-    }
-
-    button,
-    a {
-      font: inherit;
-    }
-
-    .page {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 22px 22px 70px;
-    }
-
-    /* TOP NAV */
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 4px;
-    }
-
-    .back-link {
-      text-decoration: none;
-      color: #1d1d1f;
-      font-size: 15px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      transition: opacity 0.2s ease;
-    }
-
-    .back-link:hover {
-      opacity: 0.6;
-    }
-
-    .top-label {
-      font-size: 14px;
-      color: #86868b;
-      font-weight: 600;
-    }
-
-    /* INTRO */
-
-    .intro {
-      padding: 72px 0 42px;
-      animation: fadeUp 0.7s ease both;
-    }
-
-    .eyebrow {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #86868b;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 8vw, 68px);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin: 0;
-      max-width: 700px;
-    }
-
-    .intro p {
-      font-size: 19px;
-      line-height: 1.5;
-      color: #6e6e73;
-      max-width: 600px;
-      margin-top: 22px;
-    }
-
-    /* MAIN EXPERIENCE */
-
-    .experience {
-      background: #ffffff;
-      border: 1px solid #e1e1dc;
-      border-radius: 30px;
-      overflow: hidden;
-      animation: fadeUp 0.7s 0.08s ease both;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 4px;
-      background: #ececea;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 14.28%;
-      background: #1d1d1f;
-      transition: width 0.4s cubic-bezier(.2,.8,.2,1);
+    .step-shell {
+      margin-top: 6px;
     }
 
     .step {
-      display: none;
-      padding: 42px 40px 36px;
-      min-height: 430px;
-      animation: stepIn 0.42s cubic-bezier(.2,.8,.2,1);
+      min-height: 530px;
     }
 
-    .step.active {
-      display: block;
+
+    /* ---------- PERSON POSITIONING ---------- */
+
+    .scene-person-left {
+      left: 20%;
+      bottom: 28px;
     }
 
-    .step-count {
-      color: #929297;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 38px;
+    .scene-person-right {
+      right: 20%;
+      bottom: 28px;
     }
 
-    .step-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 17px;
-      background: #f0f0ed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 25px;
-      margin-bottom: 28px;
-    }
 
-    .step h2 {
-      margin: 0 0 16px;
-      font-size: clamp(29px, 6vw, 42px);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-    }
+    /* =====================================================
+       STEP 1 — SPEAK TO THE ATHLETE
+       ===================================================== */
 
-    .step-text {
-      margin: 0;
-      max-width: 620px;
-      font-size: 19px;
-      color: #515155;
-      line-height: 1.55;
-    }
+    .name-bubble {
+      position: absolute;
 
-    .tip {
-      margin-top: 27px;
-      padding: 17px 18px;
-      border-radius: 18px;
-      background: #f5f5f3;
-      color: #3f3f43;
-      font-size: 17px;
-      line-height: 1.5;
-    }
+      left: 18%;
+      top: 22px;
 
-    .tip strong {
-      color: #1d1d1f;
-    }
+      padding: 9px 13px;
 
-    .watch-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 25px;
-    }
+      background: rgba(255,255,255,.88);
 
-    .watch-item {
-      background: #f5f5f3;
-      border-radius: 16px;
-      padding: 14px 16px;
-      color: #47474b;
-      font-size: 16px;
-    }
-
-    /* CONTROLS */
-
-    .controls {
-      padding: 0 40px 34px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .control-button {
-      border: none;
+      border: 1px solid rgba(29,29,31,.09);
       border-radius: 999px;
-      padding: 13px 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition:
-        transform 0.15s ease,
-        opacity 0.2s ease;
-    }
 
-    .control-button:active {
-      transform: scale(0.96);
-    }
-
-    .back-button {
-      background: #eeeeeb;
-      color: #1d1d1f;
-    }
-
-    .next-button {
-      background: #1d1d1f;
-      color: white;
-      min-width: 92px;
-    }
-
-    /* FINAL SCREEN */
-
-    .final-check {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #1d1d1f;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 28px;
-      animation: popIn 0.45s ease both;
-    }
-
-    .final-note {
-      color: #6e6e73;
-      font-size: 17px;
-      margin-top: 25px;
-    }
-
-    .home-button {
-      display: inline-block;
-      margin-top: 24px;
-      text-decoration: none;
-      background: #1d1d1f;
-      color: white;
-      border-radius: 999px;
-      padding: 13px 19px;
-      font-weight: 600;
-      transition: transform 0.15s ease;
-    }
-
-    .home-button:active {
-      transform: scale(0.96);
-    }
-
-    /* BOTTOM NOTE */
-
-    .bottom-note {
-      margin-top: 30px;
       font-size: 13px;
-      line-height: 1.55;
-      color: #86868b;
-      max-width: 650px;
+      font-weight: 600;
+
+      animation: floatBubble 3.6s ease-in-out infinite;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
+    .hello-lines {
+      position: absolute;
 
-      to {
-        opacity: 1;
+      left: 48%;
+      top: 60px;
+
+      display: flex;
+      gap: 4px;
+
+      opacity: .38;
+    }
+
+    .hello-line {
+      width: 5px;
+      height: 5px;
+
+      background: var(--text);
+
+      border-radius: 50%;
+
+      animation: helloDot 1.4s ease-in-out infinite;
+    }
+
+    .hello-line:nth-child(2) {
+      animation-delay: .15s;
+    }
+
+    .hello-line:nth-child(3) {
+      animation-delay: .3s;
+    }
+
+
+    /* =====================================================
+       STEP 2 — FACE / EXPRESSION
+       ===================================================== */
+
+    .face-focus {
+      position: absolute;
+
+      left: 50%;
+      top: 47%;
+
+      transform: translate(-50%, -50%);
+
+      width: 128px;
+      height: 128px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      border: 2px solid var(--text);
+
+      animation: faceFloat 4s ease-in-out infinite;
+    }
+
+    .face-focus .big-eye {
+      position: absolute;
+
+      width: 7px;
+      height: 7px;
+
+      top: 47px;
+
+      border-radius: 50%;
+      background: var(--text);
+    }
+
+    .face-focus .big-eye.left {
+      left: 35px;
+    }
+
+    .face-focus .big-eye.right {
+      right: 35px;
+    }
+
+    .big-mouth {
+      position: absolute;
+
+      width: 45px;
+      height: 20px;
+
+      left: 40px;
+      top: 66px;
+
+      border-bottom: 3px solid var(--text);
+      border-radius: 0 0 40px 40px;
+
+      animation: warmSmile 4.5s var(--ease) infinite;
+    }
+
+    .face-rays {
+      position: absolute;
+
+      left: 50%;
+      top: 47%;
+
+      transform: translate(-50%, -50%);
+
+      width: 180px;
+      height: 180px;
+
+      border: 1px solid rgba(72,103,255,.18);
+      border-radius: 50%;
+
+      animation: faceRay 3.3s ease-out infinite;
+    }
+
+    .face-rays.second {
+      animation-delay: 1.1s;
+    }
+
+
+    /* =====================================================
+       STEP 3 — SPACE + WATCH
+       ===================================================== */
+
+    .space-line {
+      position: absolute;
+
+      left: 50%;
+      bottom: 82px;
+
+      width: 90px;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(29,29,31,.34),
+          transparent
+        );
+
+      transform: translateX(-50%);
+
+      animation: spaceBreath 4s ease-in-out infinite;
+    }
+
+    .watch-chip {
+      position: absolute;
+
+      top: 20px;
+      right: 18px;
+
+      padding: 8px 11px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.87);
+
+      border: 1px solid rgba(29,29,31,.08);
+
+      font-size: 12px;
+      font-weight: 600;
+
+      animation: floatBubble 3.8s .4s ease-in-out infinite;
+    }
+
+    .brow-left,
+    .brow-right {
+      position: absolute;
+
+      top: 14px;
+
+      width: 12px;
+      height: 2px;
+
+      background: var(--text);
+
+      transform-origin: center;
+
+      animation: browTense 4.8s ease-in-out infinite;
+    }
+
+    .brow-left {
+      left: 9px;
+    }
+
+    .brow-right {
+      right: 9px;
+    }
+
+
+    /* =====================================================
+       STEP 4 — SHOW FIRST
+       ===================================================== */
+
+    .demo-ball {
+      position: absolute;
+
+      width: 48px;
+      height: 48px;
+
+      right: 14%;
+      bottom: 48px;
+
+      border: 2px solid var(--text);
+      border-radius: 50%;
+
+      background: white;
+
+      animation: ballMove 3.3s var(--ease) infinite;
+    }
+
+    .demo-ball::before,
+    .demo-ball::after {
+      content: "";
+
+      position: absolute;
+
+      background: var(--text);
+
+      opacity: .55;
+    }
+
+    .demo-ball::before {
+      width: 2px;
+      height: 44px;
+
+      left: 21px;
+      top: 0;
+
+      transform: rotate(28deg);
+    }
+
+    .demo-ball::after {
+      width: 38px;
+      height: 2px;
+
+      left: 3px;
+      top: 21px;
+    }
+
+    .demo-arrow {
+      position: absolute;
+
+      right: 32%;
+      bottom: 66px;
+
+      font-size: 25px;
+
+      animation: pointMove 2.2s var(--ease) infinite;
+    }
+
+
+    /* =====================================================
+       STEP 5 — WAIT
+       ===================================================== */
+
+    .wait-scene {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      height: 100%;
+    }
+
+    .wait-circle {
+      width: 126px;
+      height: 126px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(29,29,31,.14);
+      border-radius: 50%;
+
+      background: white;
+
+      animation: slowBreath 4s ease-in-out infinite;
+    }
+
+    .wait-dots.big {
+      gap: 10px;
+    }
+
+    .wait-dots.big .wait-dot {
+      width: 10px;
+      height: 10px;
+    }
+
+
+    /* =====================================================
+       STEP 6 — ENCOURAGEMENT
+       ===================================================== */
+
+    .encourage-star {
+      position: absolute;
+
+      font-size: 24px;
+
+      opacity: 0;
+
+      animation: starPop 3.2s ease-in-out infinite;
+    }
+
+    .encourage-star.one {
+      left: 22%;
+      top: 33px;
+    }
+
+    .encourage-star.two {
+      right: 22%;
+      top: 57px;
+
+      animation-delay: .65s;
+    }
+
+    .encourage-star.three {
+      left: 44%;
+      top: 18px;
+
+      animation-delay: 1.25s;
+    }
+
+    .thumb-bubble {
+      position: absolute;
+
+      left: 50%;
+      top: 41%;
+
+      transform: translate(-50%, -50%);
+
+      width: 96px;
+      height: 96px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 28px;
+
+      background: white;
+      border: 1px solid var(--line);
+
+      font-size: 42px;
+
+      animation: thumbFloat 3s ease-in-out infinite;
+    }
+
+
+    /* =====================================================
+       FINAL SCREEN
+       ===================================================== */
+
+    .ready-visual {
+      display: flex;
+
+      min-height: 230px;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ready-ring {
+      width: 118px;
+      height: 118px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--dark);
+      color: white;
+
+      font-size: 38px;
+
+      animation: readyPop .55s var(--ease) both;
+    }
+
+    .finish-link {
+      display: inline-flex;
+
+      margin-top: 24px;
+
+      padding: 13px 19px;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+
+      background: var(--dark);
+      color: white;
+
+      font-weight: 600;
+
+      transition: transform .18s var(--ease);
+    }
+
+    .finish-link:active {
+      transform: scale(.95);
+    }
+
+
+    /* ---------- QUICK RECAP ---------- */
+
+    .recap {
+      margin-top: 30px;
+      padding: 22px 0;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 10px;
+    }
+
+    .recap-item {
+      padding: 14px;
+
+      border-radius: var(--radius-sm);
+
+      background: #ededeb;
+
+      color: var(--text-soft);
+
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .recap-item strong {
+      display: block;
+
+      color: var(--text);
+
+      margin-bottom: 3px;
+    }
+
+
+    /* =====================================================
+       ANIMATIONS
+       ===================================================== */
+
+    @keyframes floatBubble {
+      0%,
+      100% {
         transform: translateY(0);
       }
+
+      50% {
+        transform: translateY(-5px);
+      }
     }
 
-    @keyframes stepIn {
+    @keyframes helloDot {
+      0%,
+      60%,
+      100% {
+        opacity: .2;
+        transform: translateY(0);
+      }
+
+      30% {
+        opacity: .8;
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes faceFloat {
+      0%,
+      100% {
+        transform:
+          translate(-50%, -50%)
+          translateY(0);
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          translateY(-5px);
+      }
+    }
+
+    @keyframes warmSmile {
+      0%,
+      20% {
+        width: 34px;
+        left: 45px;
+
+        transform: translateY(-5px);
+
+        border-radius: 0;
+      }
+
+      40%,
+      82% {
+        width: 45px;
+        left: 40px;
+
+        transform: translateY(0);
+
+        border-radius: 0 0 40px 40px;
+      }
+
+      100% {
+        width: 34px;
+        left: 45px;
+
+        transform: translateY(-5px);
+
+        border-radius: 0;
+      }
+    }
+
+    @keyframes faceRay {
       from {
-        opacity: 0;
-        transform: translateX(12px);
+        transform:
+          translate(-50%, -50%)
+          scale(.65);
+
+        opacity: .55;
       }
 
       to {
-        opacity: 1;
-        transform: translateX(0);
+        transform:
+          translate(-50%, -50%)
+          scale(1.25);
+
+        opacity: 0;
       }
     }
 
-    @keyframes popIn {
+    @keyframes spaceBreath {
+      0%,
+      100% {
+        width: 60px;
+        opacity: .25;
+      }
+
+      50% {
+        width: 100px;
+        opacity: .7;
+      }
+    }
+
+    @keyframes browTense {
+      0%,
+      55%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      68%,
+      82% {
+        transform: rotate(18deg);
+      }
+    }
+
+    @keyframes ballMove {
+      0%,
+      100% {
+        transform:
+          translateX(0)
+          rotate(0deg);
+      }
+
+      50% {
+        transform:
+          translateX(-18px)
+          rotate(-22deg);
+      }
+    }
+
+    @keyframes slowBreath {
+      0%,
+      100% {
+        transform: scale(.96);
+        box-shadow: 0 0 0 0 rgba(72,103,255,0);
+      }
+
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 12px rgba(72,103,255,.035);
+      }
+    }
+
+    @keyframes starPop {
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(.65) rotate(-8deg);
+      }
+
+      35%,
+      65% {
+        opacity: .8;
+        transform: scale(1) rotate(4deg);
+      }
+    }
+
+    @keyframes thumbFloat {
+      0%,
+      100% {
+        transform:
+          translate(-50%, -50%)
+          translateY(0)
+          rotate(-2deg);
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          translateY(-6px)
+          rotate(2deg);
+      }
+    }
+
+    @keyframes readyPop {
       from {
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(.75);
       }
 
       to {
@@ -311,60 +694,54 @@
       }
     }
 
-    @media (max-width: 600px) {
 
-      .page {
-        padding: 18px 16px 55px;
-      }
+    /* ---------- MOBILE ---------- */
 
-      .intro {
-        padding: 55px 0 35px;
-      }
+    @media (max-width: 700px) {
 
-      .intro p {
-        font-size: 17px;
-      }
-
-      .experience {
-        border-radius: 24px;
+      .essentials-intro {
+        padding: 52px 0 32px;
       }
 
       .step {
-        padding: 30px 24px 28px;
-        min-height: 450px;
+        min-height: auto;
       }
 
-      .step-count {
-        margin-bottom: 28px;
+      .mini-visual {
+        height: 190px;
       }
 
-      .step-text {
-        font-size: 17px;
+      .recap {
+        grid-template-columns: 1fr;
       }
 
-      .controls {
-        padding: 0 24px 25px;
+      .scene-person-left {
+        left: 18%;
       }
+
+      .scene-person-right {
+        right: 18%;
+      }
+
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
   </style>
 </head>
 
+
 <body>
 
-  <div class="page">
+  <div class="page-shell">
 
-    <div class="topbar">
 
-      <a href="index.html" class="back-link">
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+      <a
+        href="index.html"
+        class="back-link"
+      >
         ← Home
       </a>
 
@@ -372,242 +749,552 @@
         60-Second Essentials
       </div>
 
-    </div>
-
-
-    <header class="intro">
-
-      <div class="eyebrow">
-        MUST READ · BEFORE EVERY SESSION
-      </div>
-
-      <h1>
-        Six things worth remembering.
-      </h1>
-
-      <p>
-        You don't need to memorize a manual.
-        Take a minute before your session and keep these ideas in mind.
-      </p>
-
     </header>
 
 
-    <main class="experience">
+    <!-- INTRO -->
+
+    <section class="essentials-intro reveal">
+
+      <div class="eyebrow">
+        Must read · before every session
+      </div>
+
+      <h1 class="page-title">
+        Six things to keep in your back pocket.
+      </h1>
+
+      <p class="lead">
+        No need to memorize a handbook.
+        Take a minute, run through these, and you're good to go.
+      </p>
+
+    </section>
+
+
+    <!-- INTERACTIVE STEPPER -->
+
+    <main
+      class="step-shell reveal"
+      data-stepper
+    >
 
       <div class="progress-track">
-        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-bar"></div>
       </div>
 
 
-      <!-- STEP 1 -->
+      <!-- =================================================
+           STEP 1
+           ================================================= -->
 
       <section class="step active">
 
-        <div class="step-count">1 of 6</div>
-
-        <div class="step-icon">👋</div>
-
-        <h2>See the athlete first.</h2>
-
-        <p class="step-text">
-          Speak directly to the athlete. Use their name.
-          Don't talk only to a parent, coach, or aide when the athlete is right there.
-        </p>
-
-        <div class="tip">
-          <strong>Try:</strong>
-          “Hi Alex. Ready for basketball?”
+        <div class="step-number">
+          1 of 6 · Connect
         </div>
 
-      </section>
+        <div class="step-layout">
 
+          <div>
 
-      <!-- STEP 2 -->
+            <h2 class="section-title">
+              Talk to the athlete.
+            </h2>
 
-      <section class="step">
+            <p class="step-message">
+              Start with them — not the parent, coach, or person standing next to them.
+              Say their name, say hi, and bring them into the conversation from the start.
+            </p>
 
-        <div class="step-count">2 of 6</div>
+            <div class="step-tip">
+              <strong>Keep it simple:</strong><br>
+              “Hey Alex. Ready for basketball?”
+            </div>
 
-        <div class="step-icon">🙂</div>
-
-        <h2>Your face communicates too.</h2>
-
-        <p class="step-text">
-          Some athletes may pay especially close attention to facial expressions
-          and body language. A serious or frustrated-looking face can sometimes
-          be misunderstood, even when you don't mean anything by it.
-        </p>
-
-        <div class="tip">
-          <strong>Keep it warm.</strong>
-          Smile naturally, show encouragement clearly, and let your expression
-          match the positive message you're trying to send.
-        </div>
-
-      </section>
-
-
-      <!-- STEP 3 -->
-
-      <section class="step">
-
-        <div class="step-count">3 of 6</div>
-
-        <div class="step-icon">◌</div>
-
-        <h2>Give some space. Watch their signals.</h2>
-
-        <p class="step-text">
-          Stay close enough to support the athlete without crowding them.
-          Pay attention to changes in their expression and body language.
-          Those signals can tell you when it's time to slow down or check in.
-        </p>
-
-        <div class="watch-list">
-
-          <div class="watch-item">
-            Tightened eyebrows or a suddenly tense expression
           </div>
 
-          <div class="watch-item">
-            Pulling or turning away
+
+          <!-- Animated visual -->
+
+          <div
+            class="mini-visual figure-wave"
+            aria-label="Volunteer greeting an athlete directly"
+          >
+
+            <div class="name-bubble">
+              Hey Alex!
+            </div>
+
+            <div class="hello-lines">
+              <span class="hello-line"></span>
+              <span class="hello-line"></span>
+              <span class="hello-line"></span>
+            </div>
+
+
+            <div class="person scene-person-left">
+
+              <div class="person-head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="mouth"></div>
+              </div>
+
+              <div class="person-body"></div>
+
+              <div class="arm right"></div>
+
+              <div class="person-leg-left"></div>
+              <div class="person-leg-right"></div>
+
+            </div>
+
+
+            <div class="person scene-person-right">
+
+              <div class="person-head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="mouth"></div>
+              </div>
+
+              <div class="person-body"></div>
+
+              <div class="person-leg-left"></div>
+              <div class="person-leg-right"></div>
+
+            </div>
+
           </div>
 
-          <div class="watch-item">
-            Looking uncomfortable or overwhelmed
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           STEP 2
+           Parent insight: facial expression
+           ================================================= -->
+
+      <section class="step">
+
+        <div class="step-number">
+          2 of 6 · Expression
+        </div>
+
+        <div class="step-layout">
+
+          <div>
+
+            <h2 class="section-title">
+              Your face matters.
+            </h2>
+
+            <p class="step-message">
+              Some athletes pay really close attention to your face and body language.
+              If you look tense, annoyed, or upset, they may think it's about them —
+              even when it isn't.
+            </p>
+
+            <div class="step-tip">
+              A warm smile and clear encouragement can change the whole feel of the moment.
+              And honestly, it's okay to make the positive stuff a little obvious.
+            </div>
+
           </div>
 
-          <div class="watch-item">
-            A sudden change in movement or behavior
+
+          <!-- Animated face -->
+
+          <div
+            class="mini-visual"
+            aria-label="A face changing from neutral to a warm smile"
+          >
+
+            <div class="face-rays"></div>
+            <div class="face-rays second"></div>
+
+            <div class="face-focus">
+
+              <div class="big-eye left"></div>
+              <div class="big-eye right"></div>
+
+              <div class="big-mouth"></div>
+
+            </div>
+
+            <div class="visual-caption">
+              Let the warmth show.
+            </div>
+
           </div>
 
         </div>
 
-        <div class="tip">
-          These signs don't always mean the same thing.
-          <strong>Notice them first, then look at what's happening around the athlete.</strong>
+      </section>
+
+
+      <!-- =================================================
+           STEP 3
+           Parent insight: distance + expression
+           ================================================= -->
+
+      <section class="step">
+
+        <div class="step-number">
+          3 of 6 · Space
+        </div>
+
+        <div class="step-layout">
+
+          <div>
+
+            <h2 class="section-title">
+              Give a little space. Watch their face.
+            </h2>
+
+            <p class="step-message">
+              Be close enough to help, but not so close that it feels crowded.
+              Then watch what the athlete is giving you back.
+            </p>
+
+            <div class="step-tip">
+              Tight eyebrows, pulling away, looking tense, or a sudden change in expression
+              can be your cue to slow things down and check in.
+              It doesn't always mean the same thing — just notice it.
+            </div>
+
+          </div>
+
+
+          <!-- Animated spacing visual -->
+
+          <div
+            class="mini-visual figure-space"
+            aria-label="A volunteer giving an athlete comfortable personal space"
+          >
+
+            <div class="watch-chip">
+              Watch the signals
+            </div>
+
+
+            <div class="person scene-person-left">
+
+              <div class="person-head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="mouth"></div>
+              </div>
+
+              <div class="person-body"></div>
+
+              <div class="person-leg-left"></div>
+              <div class="person-leg-right"></div>
+
+            </div>
+
+
+            <div class="person scene-person-right">
+
+              <div class="person-head">
+
+                <div class="brow-left"></div>
+                <div class="brow-right"></div>
+
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+
+                <div class="mouth"></div>
+
+              </div>
+
+              <div class="person-body"></div>
+
+              <div class="person-leg-left"></div>
+              <div class="person-leg-right"></div>
+
+            </div>
+
+
+            <div class="space-line"></div>
+
+          </div>
+
         </div>
 
       </section>
 
 
-      <!-- STEP 4 -->
+      <!-- =================================================
+           STEP 4
+           ================================================= -->
 
       <section class="step">
 
-        <div class="step-count">4 of 6</div>
+        <div class="step-number">
+          4 of 6 · Show
+        </div>
 
-        <div class="step-icon">▶</div>
+        <div class="step-layout">
 
-        <h2>Show, don't only tell.</h2>
+          <div>
 
-        <p class="step-text">
-          Long explanations can be hard to follow.
-          Demonstrate the drill, point to where you want the athlete to go,
-          or use the equipment to show what happens next.
-        </p>
+            <h2 class="section-title">
+              If the words aren't landing, show it.
+            </h2>
 
-        <div class="tip">
-          <strong>Instead of only saying:</strong>
-          “Go over there and pass the ball.”
-          <br><br>
-          <strong>Try:</strong>
-          Point → “Stand here.” → demonstrate one pass.
+            <p class="step-message">
+              Point to the spot. Pick up the ball. Do the drill once.
+              Sometimes seeing what you mean is way easier than listening to another explanation.
+            </p>
+
+            <div class="step-tip">
+              Instead of repeating:
+              <strong>“Go over there and pass the ball.”</strong>
+              <br><br>
+              Point → “Stand here.” → show one pass.
+            </div>
+
+          </div>
+
+
+          <!-- Animated demo -->
+
+          <div
+            class="mini-visual"
+            aria-label="A volunteer demonstrating a ball activity"
+          >
+
+            <div class="person scene-person-left">
+
+              <div class="person-head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="mouth"></div>
+              </div>
+
+              <div class="person-body"></div>
+
+              <div
+                class="arm right"
+                style="transform: rotate(-25deg);"
+              ></div>
+
+              <div class="person-leg-left"></div>
+              <div class="person-leg-right"></div>
+
+            </div>
+
+            <div class="demo-arrow">
+              →
+            </div>
+
+            <div class="demo-ball"></div>
+
+            <div class="visual-caption">
+              Show first. Then try.
+            </div>
+
+          </div>
+
         </div>
 
       </section>
 
 
-      <!-- STEP 5 -->
+      <!-- =================================================
+           STEP 5
+           ================================================= -->
 
       <section class="step">
 
-        <div class="step-count">5 of 6</div>
+        <div class="step-number">
+          5 of 6 · Wait
+        </div>
 
-        <div class="step-icon">•••</div>
+        <div class="step-layout">
 
-        <h2>Give them time.</h2>
+          <div>
 
-        <p class="step-text">
-          Ask the question, then pause.
-          Some athletes need extra time to process what you said,
-          decide what they want, move, point, speak, gesture, or use AAC.
-        </p>
+            <h2 class="section-title">
+              If they need a second, give them a second.
+            </h2>
 
-        <div class="tip">
-          <strong>Think:</strong>
-          Ask → wait → watch → respond.
-          <br><br>
-          Don't immediately fill the silence for them.
+            <p class="step-message">
+              Ask your question, then hang back for a moment.
+              They might be thinking, pointing, finding the words, moving,
+              or getting their AAC ready.
+            </p>
+
+            <div class="step-tip">
+              <strong>Think:</strong><br>
+              Ask → wait → watch → respond.
+              <br><br>
+              You don't need to rush in and fill every quiet second.
+            </div>
+
+          </div>
+
+
+          <!-- Waiting animation -->
+
+          <div
+            class="mini-visual wait-scene"
+            aria-label="Animated dots representing giving someone time to respond"
+          >
+
+            <div class="wait-circle">
+
+              <div class="wait-dots big">
+
+                <span class="wait-dot"></span>
+                <span class="wait-dot"></span>
+                <span class="wait-dot"></span>
+
+              </div>
+
+            </div>
+
+            <div class="visual-caption">
+              Give it a beat.
+            </div>
+
+          </div>
+
         </div>
 
       </section>
 
 
-      <!-- STEP 6 -->
+      <!-- =================================================
+           STEP 6
+           ================================================= -->
 
       <section class="step">
 
-        <div class="step-count">6 of 6</div>
+        <div class="step-number">
+          6 of 6 · Encourage
+        </div>
 
-        <div class="step-icon">★</div>
+        <div class="step-layout">
 
-        <h2>Encourage more than correct.</h2>
+          <div>
 
-        <p class="step-text">
-          Positive energy can make a big difference.
-          Let the athlete know when they're doing well, trying something new,
-          or communicating what they want.
-        </p>
+            <h2 class="section-title">
+              Bring the good energy.
+            </h2>
 
-        <div class="tip">
-          A smile, thumbs up, high five if welcomed, or a simple
-          <strong>“Nice job”</strong> can go a long way.
-          <br><br>
-          Be encouraging without overwhelming them.
+            <p class="step-message">
+              A little encouragement goes a long way.
+              Notice the effort, the communication, the small wins —
+              not just whether the drill came out perfectly.
+            </p>
+
+            <div class="step-tip">
+              A smile. A thumbs-up. “Nice one.”
+              A high five if they want one.
+              <br><br>
+              Keep it genuine. It doesn't need to be a whole production.
+            </div>
+
+          </div>
+
+
+          <!-- Encouragement animation -->
+
+          <div
+            class="mini-visual"
+            aria-label="A thumbs up with small celebratory stars"
+          >
+
+            <span class="encourage-star one">✦</span>
+            <span class="encourage-star two">✦</span>
+            <span class="encourage-star three">✦</span>
+
+            <div class="thumb-bubble">
+              👍
+            </div>
+
+            <div class="visual-caption">
+              Notice the wins.
+            </div>
+
+          </div>
+
         </div>
 
       </section>
 
 
-      <!-- FINAL -->
+      <!-- =================================================
+           FINAL
+           ================================================= -->
 
       <section class="step">
 
-        <div class="step-count">Done</div>
+        <div class="step-number">
+          You're set.
+        </div>
 
-        <div class="final-check">✓</div>
+        <div class="step-layout">
 
-        <h2>Ready for the session.</h2>
+          <div>
 
-        <p class="step-text">
-          You won't know exactly what every behavior means — and that's okay.
-          Start by slowing down, watching, and responding to the athlete in front of you.
-        </p>
+            <h2 class="section-title">
+              Ready for the session.
+            </h2>
 
-        <p class="final-note">
-          Connect first. Then coach.
-        </p>
+            <p class="step-message">
+              You won't always know exactly what an athlete is thinking —
+              and you don't need to.
+            </p>
 
-        <a href="index.html" class="home-button">
-          Back to guide
-        </a>
+            <p class="step-message">
+              Slow down. Pay attention. Stay warm.
+              Work with the person in front of you.
+            </p>
+
+            <a
+              href="index.html"
+              class="finish-link"
+            >
+              Back to the guide →
+            </a>
+
+          </div>
+
+
+          <div class="ready-visual">
+
+            <div class="ready-ring">
+              ✓
+            </div>
+
+          </div>
+
+        </div>
 
       </section>
 
 
-      <div class="controls">
+      <!-- CONTROLS -->
+
+      <div class="step-controls">
 
         <button
-          class="control-button back-button"
-          id="backButton">
+          class="pill-button"
+          data-step-back
+        >
           Back
         </button>
 
         <button
-          class="control-button next-button"
-          id="nextButton">
+          class="pill-button primary"
+          data-step-next
+        >
           Next
         </button>
 
@@ -616,80 +1303,54 @@
     </main>
 
 
-    <p class="bottom-note">
-      Every athlete is different. These are starting points, not rules for
-      interpreting every athlete's behavior. When you're unsure, ask the athlete,
-      coach, caregiver, or someone who knows their communication style.
-    </p>
+    <!-- QUICK RECAP -->
+
+    <section class="recap reveal">
+
+      <div class="recap-item">
+        <strong>Connect</strong>
+        Talk to the athlete first.
+      </div>
+
+      <div class="recap-item">
+        <strong>Watch</strong>
+        Face, body language, space.
+      </div>
+
+      <div class="recap-item">
+        <strong>Show</strong>
+        Don't pile on more words.
+      </div>
+
+      <div class="recap-item">
+        <strong>Wait</strong>
+        Give them a beat.
+      </div>
+
+      <div class="recap-item">
+        <strong>Encourage</strong>
+        Notice the small wins.
+      </div>
+
+      <div class="recap-item">
+        <strong>Adapt</strong>
+        Every athlete is different.
+      </div>
+
+    </section>
+
+
+    <footer class="site-footer">
+
+      Think of these as good starting points, not rules for reading every athlete.
+      When you're unsure, ask the athlete or someone who knows them well.
+
+    </footer>
 
   </div>
 
 
-  <script>
-
-    const steps = document.querySelectorAll(".step");
-    const progressBar = document.getElementById("progressBar");
-    const nextButton = document.getElementById("nextButton");
-    const backButton = document.getElementById("backButton");
-
-    let currentStep = 0;
-
-    function updateStep() {
-
-      steps.forEach((step, index) => {
-        step.classList.toggle("active", index === currentStep);
-      });
-
-      const progress =
-        ((currentStep + 1) / steps.length) * 100;
-
-      progressBar.style.width = progress + "%";
-
-      backButton.style.visibility =
-        currentStep === 0 ? "hidden" : "visible";
-
-      if (currentStep === steps.length - 1) {
-        nextButton.style.display = "none";
-      } else {
-        nextButton.style.display = "block";
-      }
-
-      if (currentStep === steps.length - 2) {
-        nextButton.textContent = "Finish";
-      } else {
-        nextButton.textContent = "Next";
-      }
-
-      window.scrollTo({
-        top: document.querySelector(".experience").offsetTop - 20,
-        behavior: "smooth"
-      });
-    }
-
-
-    nextButton.addEventListener("click", () => {
-
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        updateStep();
-      }
-
-    });
-
-
-    backButton.addEventListener("click", () => {
-
-      if (currentStep > 0) {
-        currentStep--;
-        updateStep();
-      }
-
-    });
-
-
-    updateStep();
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
