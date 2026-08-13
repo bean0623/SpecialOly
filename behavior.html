@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -8,97 +10,137 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Real Situations | Volunteer Communication Guide</title>
+  <title>
+    Real Situations | Volunteer Communication Guide
+  </title>
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 
   <style>
 
     /* =====================================================
-       BEHAVIOR PAGE — V4
-       Compact mobile-first scenario tool
+       BEHAVIOR PAGE — V5
+       Compact mobile scenario tool
        ===================================================== */
 
+
     :root {
-      --green-bg: #e6f8ef;
-      --green-accent: #33a56f;
 
-      --amber-bg: #fff1d9;
-      --amber-accent: #db9237;
+      --green-bg: #e4f8ee;
+      --green-accent: #2fa36c;
 
-      --blue-bg: #e7efff;
-      --blue-accent: #5578da;
+      --amber-bg: #fff0d6;
+      --amber-accent: #d99136;
 
-      --purple-bg: #efe8ff;
-      --purple-accent: #8765d8;
+      --blue-bg: #e5edff;
+      --blue-accent: #5675d8;
 
-      --red-bg: #ffe7e4;
-      --red-accent: #d85143;
+      --purple-bg: #eee7ff;
+      --purple-accent: #8263d2;
+
+      --red-bg: #ffe5e2;
+      --red-accent: #d65347;
+
     }
+
 
     body.sheet-open {
       overflow: hidden;
     }
 
 
+
     /* =====================================================
-       HEADER
+       INTRO
        ===================================================== */
 
+
     .behavior-intro {
-      padding: 42px 0 22px;
+
+      padding:
+        42px 0 22px;
+
     }
+
 
     .behavior-intro .eyebrow {
+
       margin-bottom: 9px;
+
     }
+
 
     .behavior-intro h1 {
-      font-size: clamp(37px, 9vw, 58px);
+
+      font-size:
+        clamp(37px, 9vw, 58px);
+
       line-height: .98;
+
     }
 
+
     .behavior-intro .lead {
+
       max-width: 620px;
-      margin: 14px 0 0;
+
+      margin:
+        14px 0 0;
 
       font-size: 16px;
       line-height: 1.48;
+
     }
 
 
+
     /* =====================================================
-       SMALL START-HERE NOTE
+       START NOTE
        ===================================================== */
 
+
     .start-note {
+
       display: flex;
+
       align-items: center;
+
       gap: 13px;
 
       margin-bottom: 24px;
-      padding: 15px 17px;
+
+      padding:
+        15px 17px;
 
       border-radius: 20px;
 
       background:
         linear-gradient(
           135deg,
-          #1e202a 0%,
-          #2a2d39 100%
+          #1d2029 0%,
+          #292c38 100%
         );
 
       color: white;
 
       box-shadow:
-        0 12px 32px rgba(20, 22, 31, .10);
+        0 13px 32px
+        rgba(18, 20, 29, .10);
+
     }
 
+
     .start-mark {
-      width: 34px;
-      height: 34px;
+
+      width: 36px;
+      height: 36px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -106,176 +148,277 @@
 
       border-radius: 50%;
 
-      background: rgba(255,255,255,.12);
+      background:
+        rgba(255,255,255,.12);
 
       font-size: 18px;
+      font-weight: 700;
+
     }
 
+
     .start-note strong {
+
       display: block;
 
       margin-bottom: 2px;
 
       font-size: 14px;
+
     }
 
+
     .start-note span {
-      color: #cfd2db;
+
+      color: #d0d3dc;
 
       font-size: 13px;
       line-height: 1.35;
+
     }
+
 
 
     /* =====================================================
-       SCENARIO INTRO
+       SCENARIO SECTION
        ===================================================== */
 
+
     .scenario-title {
+
       margin-bottom: 12px;
+
     }
 
+
     .scenario-title h2 {
+
       margin: 0;
 
       font-size: 24px;
+
       letter-spacing: -.035em;
+
     }
 
+
     .scenario-title p {
-      margin: 4px 0 0;
+
+      margin:
+        4px 0 0;
 
       color: var(--muted);
 
       font-size: 14px;
+
     }
+
+
+    .scenario-list {
+
+      display: grid;
+
+      gap: 10px;
+
+    }
+
 
 
     /* =====================================================
-       COMPACT CARDS
+       SCENARIO CARDS
        ===================================================== */
 
-    .scenario-list {
-      display: grid;
-      gap: 10px;
-    }
 
     .scenario-card {
+
       width: 100%;
 
       display: grid;
-      grid-template-columns: 72px 1fr 22px;
+
+      grid-template-columns:
+        72px 1fr 22px;
+
       align-items: center;
 
       gap: 13px;
 
-      min-height: 112px;
+      min-height: 110px;
 
-      padding: 13px 14px;
+      padding:
+        13px 14px;
 
-      border: 1px solid rgba(29,29,31,.055);
+      border:
+        1px solid
+        rgba(29,29,31,.055);
+
       border-radius: 23px;
 
       text-align: left;
+
       cursor: pointer;
 
       transition:
+
         transform .2s var(--ease),
         box-shadow .2s var(--ease);
+
     }
+
 
     .scenario-card:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
 
       box-shadow:
-        0 13px 30px rgba(30, 33, 44, .08);
+        0 13px 30px
+        rgba(30,33,44,.08);
+
     }
+
 
     .scenario-card:active {
-      transform: scale(.985);
+
+      transform:
+        scale(.985);
+
     }
+
 
     .scenario-card.green {
-      background: var(--green-bg);
+
+      background:
+        var(--green-bg);
+
     }
+
 
     .scenario-card.amber {
-      background: var(--amber-bg);
+
+      background:
+        var(--amber-bg);
+
     }
+
 
     .scenario-card.blue {
-      background: var(--blue-bg);
+
+      background:
+        var(--blue-bg);
+
     }
+
 
     .scenario-card.purple {
-      background: var(--purple-bg);
+
+      background:
+        var(--purple-bg);
+
     }
+
 
     .scenario-card.red {
-      background: var(--red-bg);
+
+      background:
+        var(--red-bg);
+
     }
 
 
-    /* ---------- text ---------- */
+
+    /* ---------- card text ---------- */
+
 
     .scenario-copy {
+
       min-width: 0;
+
     }
 
+
     .scenario-label {
+
       margin-bottom: 4px;
 
-      color: rgba(35,38,45,.56);
+      color:
+        rgba(35,38,45,.57);
 
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .055em;
 
       text-transform: uppercase;
+
     }
 
+
     .scenario-copy h3 {
+
       margin: 0;
 
       font-size: 17px;
+
       line-height: 1.12;
+
       letter-spacing: -.025em;
+
     }
 
+
     .scenario-copy p {
+
       display: -webkit-box;
+
       overflow: hidden;
 
-      margin: 5px 0 0;
+      margin:
+        5px 0 0;
 
       color: #5d626d;
 
       font-size: 12.5px;
+
       line-height: 1.35;
 
       -webkit-box-orient: vertical;
+
       -webkit-line-clamp: 2;
+
     }
+
 
     .chevron {
-      color: rgba(29,29,31,.48);
 
-      font-size: 22px;
-      font-weight: 400;
+      color:
+        rgba(29,29,31,.46);
 
-      transition: transform .2s var(--ease);
+      font-size: 23px;
+
+      transition:
+        transform .2s var(--ease);
+
     }
 
-    .scenario-card:hover .chevron {
-      transform: translateX(3px);
+
+    .scenario-card:hover
+    .chevron {
+
+      transform:
+        translateX(3px);
+
     }
+
 
 
     /* =====================================================
        VISUAL BOX
        ===================================================== */
 
+
     .scenario-visual {
+
       position: relative;
 
       width: 72px;
@@ -285,18 +428,24 @@
 
       border-radius: 19px;
 
-      background: rgba(255,255,255,.64);
+      background:
+        rgba(255,255,255,.64);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.7);
+        inset 0 1px 0
+        rgba(255,255,255,.72);
+
     }
+
 
 
     /* =====================================================
        MINI HUMAN
        ===================================================== */
 
+
     .mini-human {
+
       position: absolute;
 
       width: 38px;
@@ -310,9 +459,12 @@
 
       transform-origin:
         center bottom;
+
     }
 
+
     .mini-head {
+
       position: absolute;
 
       width: 24px;
@@ -326,12 +478,15 @@
       background:
         linear-gradient(
           180deg,
-          #e9bb99,
+          #edbf9c,
           #ce906a
         );
+
     }
 
+
     .mini-hair {
+
       position: absolute;
 
       width: 26px;
@@ -346,9 +501,12 @@
       background: #34323a;
 
       z-index: 2;
+
     }
 
+
     .mini-body {
+
       position: absolute;
 
       width: 32px;
@@ -360,10 +518,14 @@
       border-radius:
         12px 12px 9px 9px;
 
-      background: var(--shirt, #6078da);
+      background:
+        var(--shirt, #6078da);
+
     }
 
+
     .mini-leg {
+
       position: absolute;
 
       width: 7px;
@@ -374,29 +536,45 @@
       border-radius: 6px;
 
       background: #30394e;
+
     }
+
 
     .mini-leg.left {
+
       left: 10px;
+
     }
 
+
     .mini-leg.right {
+
       right: 10px;
+
     }
+
 
 
     /* =====================================================
-       SCENARIO 1 — JUMPING
+       1 — JUMPING
        ===================================================== */
 
+
     .jump-person {
+
       --shirt: #38a970;
 
       animation:
-        jumpHuman 1.5s ease-in-out infinite;
+        jumpHuman
+        1.5s
+        ease-in-out
+        infinite;
+
     }
 
+
     .jump-shadow {
+
       position: absolute;
 
       width: 34px;
@@ -405,17 +583,25 @@
       left: 50%;
       bottom: 4px;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       border-radius: 50%;
 
-      background: rgba(31,88,61,.13);
+      background:
+        rgba(31,88,61,.13);
 
       animation:
-        jumpShadow 1.5s ease-in-out infinite;
+        jumpShadow
+        1.5s
+        ease-in-out
+        infinite;
+
     }
 
+
     .jump-line {
+
       position: absolute;
 
       width: 3px;
@@ -423,38 +609,57 @@
 
       border-radius: 999px;
 
-      background: var(--green-accent);
+      background:
+        var(--green-accent);
 
       opacity: .45;
+
     }
 
+
     .jump-line.one {
+
       left: 12px;
       top: 24px;
 
-      transform: rotate(-22deg);
+      transform:
+        rotate(-22deg);
+
     }
 
+
     .jump-line.two {
+
       right: 12px;
       top: 19px;
 
-      transform: rotate(23deg);
+      transform:
+        rotate(23deg);
+
     }
+
 
 
     /* =====================================================
-       SCENARIO 2 — WALKING
+       2 — WALKING
        ===================================================== */
 
+
     .walk-person {
+
       --shirt: #df993c;
 
       animation:
-        walkHuman 2.8s ease-in-out infinite;
+        walkHuman
+        2.8s
+        ease-in-out
+        infinite;
+
     }
 
+
     .walk-path {
+
       position: absolute;
 
       left: 10px;
@@ -471,21 +676,31 @@
           rgba(219,146,55,.08),
           rgba(219,146,55,.58)
         );
+
     }
+
 
 
     /* =====================================================
-       SCENARIO 3 — QUIET / PROCESSING
+       3 — QUIET / PROCESSING
        ===================================================== */
 
+
     .quiet-person {
+
       --shirt: #6078dc;
 
       animation:
-        slowBreathe 3.6s ease-in-out infinite;
+        slowBreathe
+        3.6s
+        ease-in-out
+        infinite;
+
     }
 
+
     .pause-ring {
+
       position: absolute;
 
       width: 42px;
@@ -494,7 +709,8 @@
       left: 50%;
       top: 45%;
 
-      transform: translate(-50%,-50%);
+      transform:
+        translate(-50%,-50%);
 
       border:
         2px solid
@@ -503,26 +719,42 @@
       border-radius: 50%;
 
       animation:
-        pauseRing 2.7s ease-out infinite;
+        pauseRing
+        2.7s
+        ease-out
+        infinite;
+
     }
 
+
     .pause-ring.second {
+
       animation-delay: .8s;
+
     }
+
 
 
     /* =====================================================
-       SCENARIO 4 — OVERLOAD
+       4 — OVERWHELMED
        ===================================================== */
 
+
     .overload-person {
+
       --shirt: #8868d9;
 
       animation:
-        overloadBody 2.5s ease-in-out infinite;
+        overloadBody
+        2.5s
+        ease-in-out
+        infinite;
+
     }
 
+
     .sensory-wave {
+
       position: absolute;
 
       border:
@@ -532,18 +764,27 @@
       border-radius: 50%;
 
       animation:
-        sensoryWave 2.4s ease-out infinite;
+        sensoryWave
+        2.4s
+        ease-out
+        infinite;
+
     }
 
+
     .sensory-wave.one {
+
       width: 38px;
       height: 38px;
 
       left: 17px;
       top: 10px;
+
     }
 
+
     .sensory-wave.two {
+
       width: 58px;
       height: 58px;
 
@@ -551,35 +792,53 @@
       top: 0;
 
       animation-delay: .65s;
+
     }
 
 
+
     /* =====================================================
-       SCENARIO 5 — SAFETY
+       5 — SAFETY
        ===================================================== */
+
 
     .safety-person-left,
     .safety-person-right {
+
       position: absolute;
 
       width: 29px;
       height: 52px;
 
       bottom: 6px;
+
     }
 
+
     .safety-person-left {
+
       left: 8px;
 
       animation:
-        safetyStepLeft 2.6s ease-in-out infinite;
+        safetyStepLeft
+        2.6s
+        ease-in-out
+        infinite;
+
     }
+
 
     .safety-person-right {
+
       right: 8px;
+
+      --small-shirt: #66728d;
+
     }
 
+
     .small-head {
+
       position: absolute;
 
       width: 19px;
@@ -590,9 +849,12 @@
       border-radius: 50%;
 
       background: #d69a76;
+
     }
 
+
     .small-body {
+
       position: absolute;
 
       width: 26px;
@@ -603,14 +865,17 @@
 
       border-radius: 10px;
 
-      background: var(--small-shirt, #d85143);
+      background:
+        var(
+          --small-shirt,
+          #d85143
+        );
+
     }
 
-    .safety-person-right {
-      --small-shirt: #66728d;
-    }
 
     .safety-distance {
+
       position: absolute;
 
       left: 50%;
@@ -619,18 +884,26 @@
       width: 18px;
       height: 3px;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       border-radius: 999px;
 
-      background: var(--red-accent);
+      background:
+        var(--red-accent);
 
       animation:
-        distancePulse 2.2s ease-in-out infinite;
+        distancePulse
+        2.2s
+        ease-in-out
+        infinite;
+
     }
+
 
     .safety-distance::before,
     .safety-distance::after {
+
       content: "";
 
       position: absolute;
@@ -640,251 +913,493 @@
 
       top: -1px;
 
-      border-top: 2px solid var(--red-accent);
-      border-right: 2px solid var(--red-accent);
+      border-top:
+        2px solid
+        var(--red-accent);
+
+      border-right:
+        2px solid
+        var(--red-accent);
+
     }
+
 
     .safety-distance::before {
+
       left: -1px;
-      transform: rotate(-135deg);
+
+      transform:
+        rotate(-135deg);
+
     }
 
+
     .safety-distance::after {
+
       right: -1px;
-      transform: rotate(45deg);
+
+      transform:
+        rotate(45deg);
+
     }
+
+
+
+    /* =====================================================
+       BACKDROP
+       ===================================================== */
+
+
+    .sheet-backdrop {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 998;
+
+      background:
+        rgba(15,17,24,.37);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      backdrop-filter: blur(4px);
+
+      -webkit-backdrop-filter:
+        blur(4px);
+
+      transition:
+        opacity .28s ease;
+
+    }
+
+
+    .sheet-backdrop.open {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
 
 
     /* =====================================================
        BOTTOM SHEET
+       IMPORTANT: iPHONE SCROLL FIX
        ===================================================== */
 
-    .sheet-backdrop {
-      position: fixed;
-
-      inset: 0;
-      z-index: 998;
-
-      background:
-        rgba(15,17,24,.36);
-
-      opacity: 0;
-      pointer-events: none;
-
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-
-      transition:
-        opacity .28s ease;
-    }
-
-    .sheet-backdrop.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
 
     .scenario-sheet {
+
       position: fixed;
 
       left: 50%;
       bottom: 0;
+
       z-index: 999;
 
       width:
         min(720px, 100%);
 
-      max-height: 84vh;
+
+      /*
+        Fallback first.
+        Dynamic viewport height second.
+      */
+
+      height:
+        calc(100vh - 16px);
+
+      height:
+        calc(100dvh - 16px);
+
+      max-height: 820px;
+
 
       overflow-y: auto;
 
+      overflow-x: hidden;
+
+
+      /*
+        Critical for iPhone Safari
+      */
+
+      -webkit-overflow-scrolling:
+        touch;
+
+      touch-action: pan-y;
+
+      overscroll-behavior-y:
+        contain;
+
+
       padding:
-        10px 18px
-        calc(24px + env(safe-area-inset-bottom));
+
+        0 18px
+        calc(
+          25px +
+          env(safe-area-inset-bottom)
+        );
+
 
       border-radius:
         30px 30px 0 0;
 
-      background: #ffffff;
+
+      background:
+        #ffffff;
+
 
       box-shadow:
+
         0 -18px 60px
         rgba(14,17,25,.20);
 
+
       transform:
-        translate(-50%, 105%);
+
+        translate(
+          -50%,
+          105%
+        );
+
 
       transition:
-        transform .36s
-        cubic-bezier(.22,.8,.22,1);
 
-      overscroll-behavior:
-        contain;
+        transform .36s
+        cubic-bezier(
+          .22,
+          .8,
+          .22,
+          1
+        );
+
     }
+
 
     .scenario-sheet.open {
+
       transform:
-        translate(-50%, 0);
+        translate(
+          -50%,
+          0
+        );
+
     }
 
+
+
+    /* =====================================================
+       STICKY SHEET HEADER
+       ===================================================== */
+
+
+    .sheet-sticky {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 20;
+
+      margin:
+        0 -2px;
+
+      padding:
+        9px 2px 12px;
+
+
+      background:
+
+        rgba(
+          255,
+          255,
+          255,
+          .94
+        );
+
+
+      backdrop-filter:
+        blur(16px);
+
+      -webkit-backdrop-filter:
+        blur(16px);
+
+    }
+
+
     .sheet-handle {
+
       width: 40px;
       height: 5px;
 
-      margin: 0 auto 14px;
+      margin:
+        0 auto 13px;
 
       border-radius: 999px;
 
-      background: #d9dade;
+      background:
+        #d9dade;
+
     }
+
 
     .sheet-top {
+
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-start;
 
       gap: 14px;
+
     }
 
+
     .sheet-tag {
+
       display: inline-flex;
 
       margin-bottom: 7px;
-      padding: 7px 10px;
+
+      padding:
+        7px 10px;
 
       border-radius: 999px;
 
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .055em;
 
       text-transform: uppercase;
+
     }
+
 
     .sheet-tag.green {
-      background: var(--green-bg);
+
+      background:
+        var(--green-bg);
+
     }
+
 
     .sheet-tag.amber {
-      background: var(--amber-bg);
+
+      background:
+        var(--amber-bg);
+
     }
+
 
     .sheet-tag.blue {
-      background: var(--blue-bg);
+
+      background:
+        var(--blue-bg);
+
     }
+
 
     .sheet-tag.purple {
-      background: var(--purple-bg);
+
+      background:
+        var(--purple-bg);
+
     }
+
 
     .sheet-tag.red {
-      background: var(--red-bg);
+
+      background:
+        var(--red-bg);
+
     }
 
+
     .sheet-title {
+
       margin: 0;
 
       font-size:
-        clamp(27px, 7vw, 37px);
+        clamp(
+          27px,
+          7vw,
+          37px
+        );
 
       line-height: 1.03;
+
       letter-spacing: -.04em;
+
     }
 
+
     .sheet-close {
+
       width: 38px;
       height: 38px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       flex: 0 0 auto;
 
       border: 0;
+
       border-radius: 50%;
 
-      background: #efefec;
+      background:
+        #efefec;
 
       cursor: pointer;
 
       font-size: 20px;
+
     }
 
 
-    /* ---------- quick meaning ---------- */
+
+    /* =====================================================
+       SHEET CONTENT
+       ===================================================== */
+
+
+    .sheet-content {
+
+      padding-top: 4px;
+
+    }
+
 
     .meaning-line {
-      margin: 15px 0 16px;
-      padding: 13px 15px;
+
+      margin:
+        13px 0 14px;
+
+      padding:
+        13px 15px;
 
       border-radius: 16px;
 
-      background: #f3f4f6;
+      background:
+        #f3f4f6;
 
-      color: #575d68;
+      color:
+        #575d68;
 
       font-size: 14px;
+
       line-height: 1.42;
+
     }
 
+
     .meaning-line strong {
+
       color: #24272e;
+
     }
+
 
 
     /* ---------- do / avoid ---------- */
 
+
     .sheet-actions {
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
 
       gap: 10px;
+
     }
 
+
     .sheet-box {
+
       padding: 15px;
 
       border-radius: 18px;
+
     }
+
 
     .sheet-box.do {
-      background: #eaf7f0;
+
+      background:
+        #eaf7f0;
+
     }
+
 
     .sheet-box.avoid {
-      background: #fff0ee;
+
+      background:
+        #fff0ee;
+
     }
+
 
     .sheet-box h3 {
-      margin: 0 0 8px;
+
+      margin:
+        0 0 8px;
 
       font-size: 15px;
+
     }
 
+
     .sheet-box ul {
+
       margin: 0;
+
       padding-left: 17px;
 
       color: #505660;
 
       font-size: 13.5px;
+
       line-height: 1.48;
+
     }
 
+
     .sheet-box li {
+
       margin-bottom: 5px;
+
     }
+
 
 
     /* ---------- phrase ---------- */
 
+
     .say-box {
+
       margin-top: 10px;
-      padding: 14px 16px;
+
+      padding:
+        14px 16px;
 
       border-radius: 18px;
 
       background:
+
         linear-gradient(
           135deg,
           #1e202a,
@@ -892,9 +1407,12 @@
         );
 
       color: white;
+
     }
 
+
     .say-box span {
+
       display: block;
 
       margin-bottom: 4px;
@@ -902,46 +1420,69 @@
       color: #aeb3c0;
 
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .06em;
 
       text-transform: uppercase;
+
     }
 
+
     .say-box strong {
+
       font-size: 16px;
+
       line-height: 1.4;
+
     }
+
 
 
     /* ---------- safety ---------- */
 
+
     .safety-alert {
+
       margin-top: 10px;
-      padding: 13px 15px;
+
+      padding:
+        13px 15px;
 
       border-radius: 17px;
 
-      background: var(--red-bg);
+      background:
+        var(--red-bg);
 
       color: #74423b;
 
       font-size: 13px;
+
       line-height: 1.45;
+
     }
 
+
     .safety-alert strong {
+
       color: #b83d30;
+
     }
+
 
 
     /* =====================================================
-       BOTTOM NOTE
+       REMINDER
        ===================================================== */
 
+
     .quick-reminder {
+
       margin-top: 20px;
-      padding: 15px 17px;
+
+      padding:
+        15px 17px;
 
       border-radius: 20px;
 
@@ -950,584 +1491,1022 @@
       color: #656b76;
 
       font-size: 13px;
+
       line-height: 1.45;
+
     }
 
+
     .quick-reminder strong {
+
       display: block;
 
       margin-bottom: 2px;
 
       color: #242830;
+
     }
+
 
 
     /* =====================================================
        ANIMATIONS
        ===================================================== */
 
+
     @keyframes jumpHuman {
-      0%,100% {
+
+      0%,
+      100% {
+
         transform:
           translateX(-50%)
           translateY(0);
+
       }
 
+
       47% {
+
         transform:
           translateX(-50%)
           translateY(-10px);
+
       }
+
     }
+
 
     @keyframes jumpShadow {
-      0%,100% {
+
+      0%,
+      100% {
+
         width: 34px;
+
         opacity: .14;
+
       }
+
 
       47% {
+
         width: 22px;
+
         opacity: .05;
+
       }
+
     }
+
 
     @keyframes walkHuman {
-      0%,100% {
+
+      0%,
+      100% {
+
         transform:
           translateX(-75%);
+
       }
+
 
       50% {
+
         transform:
           translateX(-20%);
+
       }
+
     }
 
+
     @keyframes slowBreathe {
-      0%,100% {
+
+      0%,
+      100% {
+
         transform:
           translateX(-50%)
           scale(.97);
+
       }
 
+
       50% {
+
         transform:
           translateX(-50%)
           scale(1.02);
+
       }
+
     }
 
+
     @keyframes pauseRing {
+
       0% {
+
         transform:
           translate(-50%,-50%)
           scale(.6);
 
         opacity: .55;
+
       }
 
+
       100% {
+
         transform:
           translate(-50%,-50%)
           scale(1.5);
 
         opacity: 0;
+
       }
+
     }
+
 
     @keyframes sensoryWave {
+
       0% {
-        transform: scale(.72);
+
+        transform:
+          scale(.72);
+
         opacity: .55;
+
       }
+
 
       100% {
-        transform: scale(1.4);
+
+        transform:
+          scale(1.4);
+
         opacity: 0;
+
       }
+
     }
 
+
     @keyframes overloadBody {
-      0%,100% {
+
+      0%,
+      100% {
+
         transform:
           translateX(-50%)
           rotate(0);
+
       }
 
+
       35% {
+
         transform:
           translateX(-50%)
           rotate(-2deg);
+
       }
 
+
       68% {
+
         transform:
           translateX(-50%)
           rotate(2deg);
+
       }
+
     }
+
 
     @keyframes safetyStepLeft {
-      0%,100% {
-        transform: translateX(0);
+
+      0%,
+      100% {
+
+        transform:
+          translateX(0);
+
       }
 
+
       50% {
-        transform: translateX(-5px);
+
+        transform:
+          translateX(-5px);
+
       }
+
     }
+
 
     @keyframes distancePulse {
-      0%,100% {
+
+      0%,
+      100% {
+
         width: 18px;
+
         opacity: .55;
+
       }
 
+
       50% {
+
         width: 25px;
+
         opacity: 1;
+
       }
+
     }
+
 
 
     /* =====================================================
        DESKTOP
        ===================================================== */
 
-    @media (min-width: 720px) {
+
+    @media
+    (min-width: 720px) {
+
 
       .scenario-list {
+
         grid-template-columns:
           1fr 1fr;
+
       }
+
 
       .scenario-card {
+
         min-height: 120px;
+
       }
 
+
       .scenario-card.red {
-        grid-column: 1 / -1;
+
+        grid-column:
+          1 / -1;
+
       }
 
     }
+
+
+
+    /* =====================================================
+       PHONE
+       ===================================================== */
+
+
+    @media
+    (max-width: 600px) {
+
+
+      .scenario-sheet {
+
+        width:
+          calc(100% - 10px);
+
+        bottom: 5px;
+
+
+        height:
+          calc(100vh - 15px);
+
+        height:
+          calc(100dvh - 15px);
+
+
+        border-radius:
+          27px;
+
+      }
+
+
+      .sheet-sticky {
+
+        border-radius:
+          27px 27px 0 0;
+
+      }
+
+    }
+
 
 
     /* =====================================================
        SMALL PHONE
        ===================================================== */
 
-    @media (max-width: 420px) {
+
+    @media
+    (max-width: 420px) {
+
 
       .page-shell {
-        width: calc(100% - 26px);
+
+        width:
+          calc(100% - 26px);
+
       }
 
+
       .scenario-card {
-        min-height: 105px;
+
+        min-height: 104px;
 
         grid-template-columns:
           64px 1fr 18px;
 
-        padding: 11px 12px;
+        padding:
+          11px 12px;
 
         border-radius: 20px;
+
       }
 
+
       .scenario-visual {
+
         width: 64px;
         height: 64px;
 
         border-radius: 17px;
+
       }
+
 
       .scenario-copy h3 {
+
         font-size: 16px;
+
       }
+
 
       .scenario-copy p {
+
         font-size: 12px;
+
       }
+
 
       .sheet-actions {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
 
-      .scenario-sheet {
-        max-height: 87vh;
+
+      .sheet-title {
+
+        font-size: 27px;
+
       }
 
     }
 
+
   </style>
+
 </head>
 
 
 <body>
+
 
   <div class="page-shell">
 
 
     <!-- TOP BAR -->
 
+
     <header class="topbar">
+
 
       <a
         href="index.html"
         class="back-link"
       >
+
         ← Home
+
       </a>
 
+
       <div class="top-label">
+
         Real Situations
+
       </div>
+
 
     </header>
 
 
+
     <!-- HERO -->
 
-    <section class="behavior-intro reveal">
+
+    <section
+      class="behavior-intro reveal"
+    >
+
 
       <div class="eyebrow">
+
         Quick help in the moment
+
       </div>
 
+
       <h1 class="page-title">
+
         Real situations.<br>
         Quick responses.
+
       </h1>
 
+
       <p class="lead">
-        Pick what looks closest to what's happening.
+
+        Pick what looks closest
+        to what's happening.
         We'll keep the answer short.
+
       </p>
 
+
     </section>
+
 
 
     <!-- START NOTE -->
 
-    <section class="start-note reveal">
+
+    <section
+      class="start-note reveal"
+    >
+
 
       <div class="start-mark">
+
         ?
+
       </div>
+
 
       <div>
 
+
         <strong>
-          First question: what just happened?
+
+          First question:
+          what just happened?
+
         </strong>
 
+
         <span>
-          Context usually tells you more than the behavior by itself.
+
+          Context usually tells you
+          more than the behavior
+          by itself.
+
         </span>
 
+
       </div>
+
 
     </section>
 
 
+
     <!-- SCENARIOS -->
+
 
     <section class="reveal">
 
+
       <div class="scenario-title">
 
+
         <h2>
+
           What are you seeing?
+
         </h2>
 
+
         <p>
+
           Tap one.
+
         </p>
 
+
       </div>
+
 
 
       <div class="scenario-list">
 
 
+
         <!-- 1 JUMPING -->
+
 
         <button
           class="scenario-card green"
           data-sheet="jumping"
         >
 
+
           <div class="scenario-visual">
+
 
             <div class="jump-shadow"></div>
 
+
             <div class="jump-line one"></div>
+
             <div class="jump-line two"></div>
 
-            <div class="mini-human jump-person">
+
+            <div
+              class="mini-human jump-person"
+            >
+
 
               <div class="mini-hair"></div>
+
               <div class="mini-head"></div>
+
               <div class="mini-body"></div>
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+
+              <div
+                class="mini-leg left"
+              ></div>
+
+
+              <div
+                class="mini-leg right"
+              ></div>
+
 
             </div>
 
+
           </div>
+
 
 
           <div class="scenario-copy">
 
+
             <div class="scenario-label">
+
               Common
+
             </div>
 
+
             <h3>
+
               Jumping in place + yelling
+
             </h3>
 
+
             <p>
-              Excited, waiting, regulating, or overwhelmed.
+
+              Excited, waiting,
+              regulating, or overwhelmed.
+
             </p>
 
+
           </div>
 
+
           <div class="chevron">
+
             ›
+
           </div>
+
 
         </button>
 
 
+
         <!-- 2 WALKING -->
+
 
         <button
           class="scenario-card amber"
           data-sheet="walking"
         >
 
+
           <div class="scenario-visual">
+
 
             <div class="walk-path"></div>
 
-            <div class="mini-human walk-person">
+
+            <div
+              class="mini-human walk-person"
+            >
+
 
               <div class="mini-hair"></div>
+
               <div class="mini-head"></div>
+
               <div class="mini-body"></div>
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+
+              <div
+                class="mini-leg left"
+              ></div>
+
+
+              <div
+                class="mini-leg right"
+              ></div>
+
 
             </div>
 
+
           </div>
+
 
 
           <div class="scenario-copy">
 
+
             <div class="scenario-label">
+
               Common
+
             </div>
 
+
             <h3>
+
               Walking away
+
             </h3>
 
+
             <p>
-              They may need space, a break, or a clearer next step.
+
+              They may need space,
+              a break, or a clearer
+              next step.
+
             </p>
 
+
           </div>
 
+
           <div class="chevron">
+
             ›
+
           </div>
+
 
         </button>
 
 
+
         <!-- 3 QUIET -->
+
 
         <button
           class="scenario-card blue"
           data-sheet="quiet"
         >
 
+
           <div class="scenario-visual">
 
-            <div class="pause-ring"></div>
-            <div class="pause-ring second"></div>
 
-            <div class="mini-human quiet-person">
+            <div class="pause-ring"></div>
+
+            <div
+              class="pause-ring second"
+            ></div>
+
+
+            <div
+              class="mini-human quiet-person"
+            >
+
 
               <div class="mini-hair"></div>
+
               <div class="mini-head"></div>
+
               <div class="mini-body"></div>
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+
+              <div
+                class="mini-leg left"
+              ></div>
+
+
+              <div
+                class="mini-leg right"
+              ></div>
+
 
             </div>
 
+
           </div>
+
 
 
           <div class="scenario-copy">
 
+
             <div class="scenario-label">
+
               Give it a beat
+
             </div>
 
+
             <h3>
+
               Quiet + not responding
+
             </h3>
 
+
             <p>
-              They may be processing or getting ready to respond.
+
+              They may be processing
+              or getting ready
+              to respond.
+
             </p>
 
+
           </div>
 
+
           <div class="chevron">
+
             ›
+
           </div>
+
 
         </button>
 
 
+
         <!-- 4 OVERWHELMED -->
+
 
         <button
           class="scenario-card purple"
           data-sheet="overwhelmed"
         >
 
+
           <div class="scenario-visual">
 
-            <div class="sensory-wave one"></div>
-            <div class="sensory-wave two"></div>
 
-            <div class="mini-human overload-person">
+            <div
+              class="sensory-wave one"
+            ></div>
+
+
+            <div
+              class="sensory-wave two"
+            ></div>
+
+
+            <div
+              class="mini-human overload-person"
+            >
+
 
               <div class="mini-hair"></div>
+
               <div class="mini-head"></div>
+
               <div class="mini-body"></div>
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+
+              <div
+                class="mini-leg left"
+              ></div>
+
+
+              <div
+                class="mini-leg right"
+              ></div>
+
 
             </div>
 
+
           </div>
+
 
 
           <div class="scenario-copy">
 
+
             <div class="scenario-label">
+
               Watch for this
+
             </div>
 
+
             <h3>
+
               Seems overwhelmed
+
             </h3>
 
+
             <p>
-              Noise, crowds, talking, or change may be piling up.
+
+              Noise, crowds, talking,
+              or change may be piling up.
+
             </p>
 
+
           </div>
 
+
           <div class="chevron">
+
             ›
+
           </div>
+
 
         </button>
 
 
+
         <!-- 5 SAFETY -->
+
 
         <button
           class="scenario-card red"
           data-sheet="safety"
         >
 
+
           <div class="scenario-visual">
+
 
             <div class="safety-person-left">
 
+
               <div class="small-head"></div>
+
               <div class="small-body"></div>
 
+
             </div>
+
 
             <div class="safety-distance"></div>
 
+
             <div class="safety-person-right">
 
+
               <div class="small-head"></div>
+
               <div class="small-body"></div>
+
 
             </div>
 
+
           </div>
+
 
 
           <div class="scenario-copy">
 
+
             <div class="scenario-label">
+
               Safety first
+
             </div>
 
+
             <h3>
-              Tries to hit, push, or grab
+
+              Tries to hit,
+              push, or grab
+
             </h3>
 
+
             <p>
-              Create space and bring in the coach or staff right away.
+
+              Create space and bring
+              in the coach or staff.
+
             </p>
 
+
           </div>
 
+
           <div class="chevron">
+
             ›
+
           </div>
+
 
         </button>
 
+
       </div>
 
+
     </section>
 
 
-    <!-- QUICK REMINDER -->
 
-    <section class="quick-reminder reveal">
+    <!-- REMINDER -->
+
+
+    <section
+      class="quick-reminder reveal"
+    >
+
 
       <strong>
+
         Every athlete is different.
+
       </strong>
 
-      If you already know what works for them, use it.
-      If you're unsure, ask the coach, caregiver, or the athlete.
+
+      If you already know what works
+      for them, use it.
+
+      If you're unsure,
+      ask the athlete,
+      coach, or caregiver.
+
 
     </section>
+
 
 
     <footer class="site-footer">
 
-      Notice first. Respond second.
+      Notice first.
+      Respond second.
 
     </footer>
 
+
   </div>
+
 
 
   <!-- ===================================================
        BACKDROP
        =================================================== -->
+
 
   <div
     class="sheet-backdrop"
@@ -1535,486 +2514,979 @@
   ></div>
 
 
+
   <!-- ===================================================
        SHEET 1 — JUMPING
        =================================================== -->
 
+
   <section
     class="scenario-sheet"
     id="sheet-jumping"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
   >
 
-    <div class="sheet-handle"></div>
 
-    <div class="sheet-top">
+    <div class="sheet-sticky">
 
-      <div>
 
-        <div class="sheet-tag green">
-          Jumping + yelling
+      <div class="sheet-handle"></div>
+
+
+      <div class="sheet-top">
+
+
+        <div>
+
+
+          <div class="sheet-tag green">
+
+            Jumping + yelling
+
+          </div>
+
+
+          <h2 class="sheet-title">
+
+            Start with the context.
+
+          </h2>
+
+
         </div>
 
-        <h2 class="sheet-title">
-          Start with the context.
-        </h2>
 
-      </div>
+        <button
+          class="sheet-close"
+          aria-label="Close"
+        >
 
-      <button class="sheet-close">
-        ×
-      </button>
+          ×
 
-    </div>
+        </button>
 
-
-    <div class="meaning-line">
-
-      <strong>Could be:</strong>
-      excitement, waiting energy, self-regulation,
-      or things starting to feel like too much.
-
-    </div>
-
-
-    <div class="sheet-actions">
-
-      <div class="sheet-box do">
-
-        <h3>
-          Do now
-        </h3>
-
-        <ul>
-          <li>Stay relaxed.</li>
-          <li>Give them some room.</li>
-          <li>Say what's coming next.</li>
-          <li>Keep your words short.</li>
-        </ul>
 
       </div>
 
 
-      <div class="sheet-box avoid">
+    </div>
 
-        <h3>
-          Avoid
-        </h3>
 
-        <ul>
-          <li>Shouting “stop.”</li>
-          <li>Crowding them.</li>
-          <li>Assuming they're misbehaving.</li>
-        </ul>
+
+    <div class="sheet-content">
+
+
+      <div class="meaning-line">
+
+
+        <strong>
+          Could be:
+        </strong>
+
+        excitement,
+        waiting energy,
+        self-regulation,
+        or things starting
+        to feel like too much.
+
 
       </div>
 
+
+
+      <div class="sheet-actions">
+
+
+        <div class="sheet-box do">
+
+
+          <h3>
+
+            Do now
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Stay relaxed.
+            </li>
+
+            <li>
+              Give them some room.
+            </li>
+
+            <li>
+              Say what's coming next.
+            </li>
+
+            <li>
+              Keep your words short.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+
+        <div class="sheet-box avoid">
+
+
+          <h3>
+
+            Avoid
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Shouting “stop.”
+            </li>
+
+            <li>
+              Crowding them.
+            </li>
+
+            <li>
+              Assuming they're
+              misbehaving.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="say-box">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “You're good —
+          your turn is coming.”
+
+        </strong>
+
+
+      </div>
+
+
     </div>
 
-
-    <div class="say-box">
-
-      <span>Try saying</span>
-
-      <strong>
-        “You're good — your turn is coming.”
-      </strong>
-
-    </div>
 
   </section>
+
 
 
   <!-- ===================================================
        SHEET 2 — WALKING
        =================================================== -->
 
+
   <section
     class="scenario-sheet"
     id="sheet-walking"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
   >
 
-    <div class="sheet-handle"></div>
 
-    <div class="sheet-top">
+    <div class="sheet-sticky">
 
-      <div>
 
-        <div class="sheet-tag amber">
-          Walking away
+      <div class="sheet-handle"></div>
+
+
+      <div class="sheet-top">
+
+
+        <div>
+
+
+          <div class="sheet-tag amber">
+
+            Walking away
+
+          </div>
+
+
+          <h2 class="sheet-title">
+
+            Don't make it a standoff.
+
+          </h2>
+
+
         </div>
 
-        <h2 class="sheet-title">
-          Don't make it a standoff.
-        </h2>
 
-      </div>
+        <button
+          class="sheet-close"
+          aria-label="Close"
+        >
 
-      <button class="sheet-close">
-        ×
-      </button>
+          ×
 
-    </div>
+        </button>
 
-
-    <div class="meaning-line">
-
-      <strong>Could be:</strong>
-      needing a break, being confused,
-      wanting space, or being done for a bit.
-
-    </div>
-
-
-    <div class="sheet-actions">
-
-      <div class="sheet-box do">
-
-        <h3>
-          Do now
-        </h3>
-
-        <ul>
-          <li>Stay nearby if it's safe.</li>
-          <li>Keep your tone easy.</li>
-          <li>Offer one simple choice.</li>
-          <li>Reconnect with what's next.</li>
-        </ul>
 
       </div>
 
 
-      <div class="sheet-box avoid">
+    </div>
 
-        <h3>
-          Avoid
-        </h3>
 
-        <ul>
-          <li>Repeating “come back.”</li>
-          <li>Following too close.</li>
-          <li>Grabbing unless safety requires it.</li>
-        </ul>
+
+    <div class="sheet-content">
+
+
+      <div class="meaning-line">
+
+
+        <strong>
+          Could be:
+        </strong>
+
+        needing a break,
+        being confused,
+        wanting space,
+        or being done for a bit.
+
 
       </div>
 
+
+
+      <div class="sheet-actions">
+
+
+        <div class="sheet-box do">
+
+
+          <h3>
+
+            Do now
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Stay nearby
+              if it's safe.
+            </li>
+
+            <li>
+              Keep your tone easy.
+            </li>
+
+            <li>
+              Offer one simple choice.
+            </li>
+
+            <li>
+              Reconnect with
+              what's next.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+
+        <div class="sheet-box avoid">
+
+
+          <h3>
+
+            Avoid
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Repeating “come back.”
+            </li>
+
+            <li>
+              Following too close.
+            </li>
+
+            <li>
+              Grabbing unless
+              safety requires it.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="say-box">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “Want a break,
+          or want to come
+          see basketball?”
+
+        </strong>
+
+
+      </div>
+
+
     </div>
 
-
-    <div class="say-box">
-
-      <span>Try saying</span>
-
-      <strong>
-        “Want a break, or want to come see basketball?”
-      </strong>
-
-    </div>
 
   </section>
+
 
 
   <!-- ===================================================
        SHEET 3 — QUIET
        =================================================== -->
 
+
   <section
     class="scenario-sheet"
     id="sheet-quiet"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
   >
 
-    <div class="sheet-handle"></div>
 
-    <div class="sheet-top">
+    <div class="sheet-sticky">
 
-      <div>
 
-        <div class="sheet-tag blue">
-          Not responding
+      <div class="sheet-handle"></div>
+
+
+      <div class="sheet-top">
+
+
+        <div>
+
+
+          <div class="sheet-tag blue">
+
+            Not responding
+
+          </div>
+
+
+          <h2 class="sheet-title">
+
+            More time.
+            Fewer words.
+
+          </h2>
+
+
         </div>
 
-        <h2 class="sheet-title">
-          More time. Fewer words.
-        </h2>
 
-      </div>
+        <button
+          class="sheet-close"
+          aria-label="Close"
+        >
 
-      <button class="sheet-close">
-        ×
-      </button>
+          ×
 
-    </div>
+        </button>
 
-
-    <div class="meaning-line">
-
-      <strong>Could be:</strong>
-      processing, confusion, overload,
-      or getting ready to respond another way.
-
-    </div>
-
-
-    <div class="sheet-actions">
-
-      <div class="sheet-box do">
-
-        <h3>
-          Do now
-        </h3>
-
-        <ul>
-          <li>Say their name once.</li>
-          <li>Give one clear cue.</li>
-          <li>Point or show.</li>
-          <li>Wait.</li>
-        </ul>
 
       </div>
 
 
-      <div class="sheet-box avoid">
+    </div>
 
-        <h3>
-          Avoid
-        </h3>
 
-        <ul>
-          <li>Rapid-fire directions.</li>
-          <li>Getting louder.</li>
-          <li>Answering for them too fast.</li>
-        </ul>
+
+    <div class="sheet-content">
+
+
+      <div class="meaning-line">
+
+
+        <strong>
+          Could be:
+        </strong>
+
+        processing,
+        confusion,
+        overload,
+        or getting ready
+        to respond another way.
+
 
       </div>
 
+
+
+      <div class="sheet-actions">
+
+
+        <div class="sheet-box do">
+
+
+          <h3>
+
+            Do now
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Say their name once.
+            </li>
+
+            <li>
+              Give one clear cue.
+            </li>
+
+            <li>
+              Point or show.
+            </li>
+
+            <li>
+              Wait.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+
+        <div class="sheet-box avoid">
+
+
+          <h3>
+
+            Avoid
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Rapid-fire directions.
+            </li>
+
+            <li>
+              Getting louder.
+            </li>
+
+            <li>
+              Answering for them
+              too fast.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="say-box">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “Alex, stand here.
+          Take your time.”
+
+        </strong>
+
+
+      </div>
+
+
     </div>
 
-
-    <div class="say-box">
-
-      <span>Try saying</span>
-
-      <strong>
-        “Alex, stand here. Take your time.”
-      </strong>
-
-    </div>
 
   </section>
+
 
 
   <!-- ===================================================
        SHEET 4 — OVERWHELMED
        =================================================== -->
 
+
   <section
     class="scenario-sheet"
     id="sheet-overwhelmed"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
   >
 
-    <div class="sheet-handle"></div>
 
-    <div class="sheet-top">
+    <div class="sheet-sticky">
 
-      <div>
 
-        <div class="sheet-tag purple">
-          Overwhelmed
+      <div class="sheet-handle"></div>
+
+
+      <div class="sheet-top">
+
+
+        <div>
+
+
+          <div class="sheet-tag purple">
+
+            Overwhelmed
+
+          </div>
+
+
+          <h2 class="sheet-title">
+
+            Make the moment smaller.
+
+          </h2>
+
+
         </div>
 
-        <h2 class="sheet-title">
-          Make the moment smaller.
-        </h2>
 
-      </div>
+        <button
+          class="sheet-close"
+          aria-label="Close"
+        >
 
-      <button class="sheet-close">
-        ×
-      </button>
+          ×
 
-    </div>
+        </button>
 
-
-    <div class="meaning-line">
-
-      <strong>Could be:</strong>
-      too much noise, too much talking,
-      too many people, or too much change.
-
-    </div>
-
-
-    <div class="sheet-actions">
-
-      <div class="sheet-box do">
-
-        <h3>
-          Do now
-        </h3>
-
-        <ul>
-          <li>Say less.</li>
-          <li>Give space.</li>
-          <li>Keep your voice calm.</li>
-          <li>Offer water, a break, or quiet.</li>
-        </ul>
 
       </div>
 
 
-      <div class="sheet-box avoid">
+    </div>
 
-        <h3>
-          Avoid
-        </h3>
 
-        <ul>
-          <li>Touching without warning.</li>
-          <li>Forcing eye contact.</li>
-          <li>Several people talking at once.</li>
-        </ul>
+
+    <div class="sheet-content">
+
+
+      <div class="meaning-line">
+
+
+        <strong>
+          Could be:
+        </strong>
+
+        too much noise,
+        too much talking,
+        too many people,
+        or too much change.
+
 
       </div>
 
+
+
+      <div class="sheet-actions">
+
+
+        <div class="sheet-box do">
+
+
+          <h3>
+
+            Do now
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Say less.
+            </li>
+
+            <li>
+              Give space.
+            </li>
+
+            <li>
+              Keep your voice calm.
+            </li>
+
+            <li>
+              Offer water,
+              a break, or quiet.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+
+        <div class="sheet-box avoid">
+
+
+          <h3>
+
+            Avoid
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Touching without warning.
+            </li>
+
+            <li>
+              Forcing eye contact.
+            </li>
+
+            <li>
+              Several people
+              talking at once.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="say-box">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “Want a break?”
+
+          or
+
+          “Water or quiet spot?”
+
+        </strong>
+
+
+      </div>
+
+
     </div>
 
-
-    <div class="say-box">
-
-      <span>Try saying</span>
-
-      <strong>
-        “Want a break?” or “Water or quiet spot?”
-      </strong>
-
-    </div>
 
   </section>
+
 
 
   <!-- ===================================================
        SHEET 5 — SAFETY
        =================================================== -->
 
+
   <section
     class="scenario-sheet"
     id="sheet-safety"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
   >
 
-    <div class="sheet-handle"></div>
 
-    <div class="sheet-top">
+    <div class="sheet-sticky">
 
-      <div>
 
-        <div class="sheet-tag red">
-          Safety first
+      <div class="sheet-handle"></div>
+
+
+      <div class="sheet-top">
+
+
+        <div>
+
+
+          <div class="sheet-tag red">
+
+            Safety first
+
+          </div>
+
+
+          <h2 class="sheet-title">
+
+            Create space.
+
+          </h2>
+
+
         </div>
 
-        <h2 class="sheet-title">
-          Create space.
-        </h2>
 
-      </div>
+        <button
+          class="sheet-close"
+          aria-label="Close"
+        >
 
-      <button class="sheet-close">
-        ×
-      </button>
+          ×
 
-    </div>
+        </button>
 
-
-    <div class="meaning-line">
-
-      <strong>Could be:</strong>
-      distress, overload, fear,
-      frustration, or a strong “no.”
-
-    </div>
-
-
-    <div class="sheet-actions">
-
-      <div class="sheet-box do">
-
-        <h3>
-          Do now
-        </h3>
-
-        <ul>
-          <li>Step back.</li>
-          <li>Keep your voice calm.</li>
-          <li>Move other athletes back.</li>
-          <li>Get the coach or staff immediately.</li>
-        </ul>
 
       </div>
 
 
-      <div class="sheet-box avoid">
+    </div>
 
-        <h3>
-          Avoid
-        </h3>
 
-        <ul>
-          <li>Grabbing back.</li>
-          <li>Arguing.</li>
-          <li>Cornering them.</li>
-          <li>Handling a risky situation alone.</li>
-        </ul>
+
+    <div class="sheet-content">
+
+
+      <div class="meaning-line">
+
+
+        <strong>
+          Could be:
+        </strong>
+
+        distress,
+        overload,
+        fear,
+        frustration,
+        or a strong “no.”
+
 
       </div>
 
+
+
+      <div class="sheet-actions">
+
+
+        <div class="sheet-box do">
+
+
+          <h3>
+
+            Do now
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Step back.
+            </li>
+
+            <li>
+              Keep your voice calm.
+            </li>
+
+            <li>
+              Move other athletes back.
+            </li>
+
+            <li>
+              Get the coach
+              or staff immediately.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+
+        <div class="sheet-box avoid">
+
+
+          <h3>
+
+            Avoid
+
+          </h3>
+
+
+          <ul>
+
+            <li>
+              Grabbing back.
+            </li>
+
+            <li>
+              Arguing.
+            </li>
+
+            <li>
+              Cornering them.
+            </li>
+
+            <li>
+              Trying to handle
+              a risky situation alone.
+            </li>
+
+          </ul>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="say-box">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “I'm giving you space.
+          Coach is coming.”
+
+        </strong>
+
+
+      </div>
+
+
+
+      <div class="safety-alert">
+
+
+        <strong>
+
+          If there's an
+          immediate risk of injury:
+
+        </strong>
+
+
+        Follow the coach
+        or event staff's
+        safety procedures
+        and get help right away.
+
+
+      </div>
+
+
     </div>
 
-
-    <div class="say-box">
-
-      <span>Try saying</span>
-
-      <strong>
-        “I'm giving you space. Coach is coming.”
-      </strong>
-
-    </div>
-
-
-    <div class="safety-alert">
-
-      <strong>
-        If there's an immediate risk of injury:
-      </strong>
-
-      follow the coach/event staff's safety procedures
-      and get help right away.
-
-    </div>
 
   </section>
 
 
+
+  <!-- SHARED SCRIPT -->
+
+
   <script src="script.js"></script>
+
+
+
+  <!-- BEHAVIOR PAGE SCRIPT -->
+
 
   <script>
 
-    /* =====================================================
-       BOTTOM SHEET INTERACTION
-       ===================================================== */
 
     const scenarioCards =
       document.querySelectorAll(
         "[data-sheet]"
       );
 
+
     const scenarioSheets =
       document.querySelectorAll(
         ".scenario-sheet"
       );
 
+
     const backdrop =
       document.getElementById(
         "sheetBackdrop"
       );
+
 
     const closeButtons =
       document.querySelectorAll(
@@ -2022,69 +3494,163 @@
       );
 
 
+    let currentSheet = null;
+
+
+
     function closeSheets() {
+
 
       scenarioSheets.forEach(
         sheet => {
-          sheet.classList.remove("open");
+
+
+          sheet.classList.remove(
+            "open"
+          );
+
+
+          sheet.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+
         }
       );
 
-      backdrop.classList.remove("open");
+
+      backdrop.classList.remove(
+        "open"
+      );
+
 
       document.body.classList.remove(
         "sheet-open"
       );
 
+
+      currentSheet = null;
+
+
     }
+
 
 
     function openSheet(id) {
 
+
       closeSheets();
+
 
       const sheet =
         document.getElementById(
           "sheet-" + id
         );
 
+
       if (!sheet) return;
 
-      backdrop.classList.add("open");
 
-      sheet.classList.add("open");
+      currentSheet = sheet;
+
+
+      backdrop.classList.add(
+        "open"
+      );
+
+
+      sheet.classList.add(
+        "open"
+      );
+
+
+      sheet.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
 
       document.body.classList.add(
         "sheet-open"
       );
 
+
+      /*
+        Always begin at top of sheet,
+        regardless of page scroll position.
+      */
+
+
+      sheet.scrollTop = 0;
+
+
+      /*
+        Focus close button
+        after animation begins.
+      */
+
+
+      setTimeout(
+        () => {
+
+          const closeButton =
+            sheet.querySelector(
+              ".sheet-close"
+            );
+
+
+          if (closeButton) {
+
+            closeButton.focus();
+
+          }
+
+        },
+        220
+      );
+
+
     }
 
 
-    scenarioCards.forEach(card => {
 
-      card.addEventListener(
-        "click",
-        () => {
-
-          openSheet(
-            card.dataset.sheet
-          );
-
-        }
-      );
-
-    });
+    scenarioCards.forEach(
+      card => {
 
 
-    closeButtons.forEach(button => {
+        card.addEventListener(
+          "click",
+          () => {
 
-      button.addEventListener(
-        "click",
-        closeSheets
-      );
 
-    });
+            openSheet(
+              card.dataset.sheet
+            );
+
+
+          }
+        );
+
+
+      }
+    );
+
+
+
+    closeButtons.forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          closeSheets
+        );
+
+
+      }
+    );
+
 
 
     backdrop.addEventListener(
@@ -2093,18 +3659,28 @@
     );
 
 
+
     document.addEventListener(
       "keydown",
       event => {
 
-        if (event.key === "Escape") {
+
+        if (
+          event.key === "Escape"
+        ) {
+
           closeSheets();
+
         }
+
 
       }
     );
 
+
   </script>
 
+
 </body>
+
 </html>
