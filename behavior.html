@@ -16,58 +16,110 @@
 
   <link rel="stylesheet" href="style.css">
 
+
   <style>
 
     /* =====================================================
-       BEHAVIOR PAGE — V6
-       Full-screen mobile modal system
+       BEHAVIOR PAGE — V7
+       TRUE PAGE-SWITCHING VERSION
+       No popup. No modal. No second scroll area.
        ===================================================== */
 
+
     :root {
+
       --green-bg: #e4f8ee;
-      --green-accent: #2fa36c;
+      --green-strong: #2fa36c;
 
       --amber-bg: #fff0d6;
-      --amber-accent: #d99136;
+      --amber-strong: #d99136;
 
       --blue-bg: #e5edff;
-      --blue-accent: #5675d8;
+      --blue-strong: #5675d8;
 
       --purple-bg: #eee7ff;
-      --purple-accent: #8263d2;
+      --purple-strong: #8263d2;
 
       --red-bg: #ffe5e2;
-      --red-accent: #d65347;
+      --red-strong: #d65347;
 
-      --modal-dark: #20232c;
     }
 
 
     /* =====================================================
-       PAGE INTRO
+       VIEW SWITCHING
+       ===================================================== */
+
+    .behavior-view {
+      display: none;
+    }
+
+    .behavior-view.active {
+      display: block;
+
+      animation:
+        viewEnter .28s
+        cubic-bezier(.22,.8,.22,1)
+        both;
+    }
+
+
+    @keyframes viewEnter {
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =====================================================
+       HOME VIEW
        ===================================================== */
 
     .behavior-intro {
-      padding: 42px 0 22px;
+
+      padding:
+        42px 0 22px;
+
     }
+
 
     .behavior-intro .eyebrow {
+
       margin-bottom: 9px;
+
     }
+
 
     .behavior-intro h1 {
-      font-size: clamp(37px, 9vw, 58px);
+
+      font-size:
+        clamp(37px, 9vw, 58px);
+
       line-height: .98;
+
     }
 
+
     .behavior-intro .lead {
+
       max-width: 620px;
 
-      margin: 14px 0 0;
+      margin:
+        14px 0 0;
 
       font-size: 16px;
       line-height: 1.48;
+
     }
+
 
 
     /* =====================================================
@@ -75,21 +127,25 @@
        ===================================================== */
 
     .start-note {
+
       display: flex;
+
       align-items: center;
+
       gap: 13px;
 
       margin-bottom: 24px;
 
-      padding: 15px 17px;
+      padding:
+        15px 17px;
 
       border-radius: 20px;
 
       background:
         linear-gradient(
           135deg,
-          #1d2029 0%,
-          #292c38 100%
+          #1d2029,
+          #292c38
         );
 
       color: white;
@@ -97,13 +153,17 @@
       box-shadow:
         0 13px 32px
         rgba(18,20,29,.10);
+
     }
 
+
     .start-mark {
+
       width: 36px;
       height: 36px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -116,188 +176,253 @@
 
       font-size: 18px;
       font-weight: 700;
+
     }
 
+
     .start-note strong {
+
       display: block;
 
       margin-bottom: 2px;
 
       font-size: 14px;
+
     }
 
+
     .start-note span {
+
       color: #d0d3dc;
 
       font-size: 13px;
       line-height: 1.35;
+
     }
+
 
 
     /* =====================================================
-       SCENARIOS
+       SCENARIO MENU
        ===================================================== */
 
     .scenario-title {
+
       margin-bottom: 12px;
+
     }
 
+
     .scenario-title h2 {
+
       margin: 0;
 
       font-size: 24px;
+
       letter-spacing: -.035em;
+
     }
 
+
     .scenario-title p {
-      margin: 4px 0 0;
+
+      margin:
+        4px 0 0;
 
       color: var(--muted);
 
       font-size: 14px;
+
     }
 
+
     .scenario-list {
+
       display: grid;
+
       gap: 10px;
+
     }
+
 
 
     /* =====================================================
-       CARDS
+       COMPACT SCENARIO CARD
        ===================================================== */
 
     .scenario-card {
+
       width: 100%;
 
       display: grid;
 
       grid-template-columns:
-        72px 1fr 20px;
+        68px 1fr 20px;
 
       align-items: center;
 
       gap: 13px;
 
-      min-height: 108px;
+      min-height: 102px;
 
-      padding: 12px 14px;
+      padding:
+        11px 13px;
 
       border:
         1px solid
         rgba(29,29,31,.05);
 
-      border-radius: 23px;
+      border-radius: 22px;
 
       text-align: left;
+
       cursor: pointer;
 
       transition:
-        transform .2s var(--ease),
-        box-shadow .2s var(--ease);
+        transform .18s ease,
+        box-shadow .18s ease;
+
     }
 
-    .scenario-card:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 13px 30px
-        rgba(30,33,44,.08);
-    }
 
     .scenario-card:active {
+
       transform: scale(.985);
+
     }
+
 
     .scenario-card.green {
-      background: var(--green-bg);
+
+      background:
+        var(--green-bg);
+
     }
+
 
     .scenario-card.amber {
-      background: var(--amber-bg);
+
+      background:
+        var(--amber-bg);
+
     }
+
 
     .scenario-card.blue {
-      background: var(--blue-bg);
+
+      background:
+        var(--blue-bg);
+
     }
+
 
     .scenario-card.purple {
-      background: var(--purple-bg);
+
+      background:
+        var(--purple-bg);
+
     }
+
 
     .scenario-card.red {
-      background: var(--red-bg);
+
+      background:
+        var(--red-bg);
+
     }
 
-
-    /* ---------- card text ---------- */
 
     .scenario-copy {
+
       min-width: 0;
+
     }
 
+
     .scenario-label {
+
       margin-bottom: 4px;
 
-      color: rgba(35,38,45,.57);
+      color:
+        rgba(35,38,45,.55);
 
-      font-size: 10px;
+      font-size: 9.5px;
+
       font-weight: 800;
 
       letter-spacing: .055em;
+
       text-transform: uppercase;
+
     }
+
 
     .scenario-copy h3 {
+
       margin: 0;
 
-      font-size: 17px;
-      line-height: 1.12;
+      font-size: 16px;
+
+      line-height: 1.13;
+
       letter-spacing: -.025em;
+
     }
 
+
     .scenario-copy p {
-      margin: 5px 0 0;
+
+      margin:
+        4px 0 0;
 
       color: #5d626d;
 
-      font-size: 12.5px;
-      line-height: 1.35;
+      font-size: 12px;
+
+      line-height: 1.3;
+
     }
+
 
     .chevron {
-      color: rgba(29,29,31,.46);
+
+      color:
+        rgba(29,29,31,.42);
 
       font-size: 23px;
+
     }
+
 
 
     /* =====================================================
-       MINI VISUALS
+       VISUAL BOX
        ===================================================== */
 
     .scenario-visual {
+
       position: relative;
 
-      width: 72px;
-      height: 72px;
+      width: 68px;
+      height: 68px;
 
       overflow: hidden;
 
-      border-radius: 19px;
+      border-radius: 18px;
 
       background:
         rgba(255,255,255,.64);
 
-      box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.72);
     }
 
 
-    /* ---------- human ---------- */
+
+    /* =====================================================
+       MINI PERSON
+       ===================================================== */
 
     .mini-human {
+
       position: absolute;
 
       width: 38px;
@@ -311,9 +436,12 @@
 
       transform-origin:
         center bottom;
+
     }
 
+
     .mini-head {
+
       position: absolute;
 
       width: 24px;
@@ -330,9 +458,12 @@
           #edbf9c,
           #ce906a
         );
+
     }
 
+
     .mini-hair {
+
       position: absolute;
 
       width: 26px;
@@ -347,9 +478,12 @@
       background: #34323a;
 
       z-index: 2;
+
     }
 
+
     .mini-body {
+
       position: absolute;
 
       width: 32px;
@@ -363,9 +497,12 @@
 
       background:
         var(--shirt, #6078da);
+
     }
 
+
     .mini-leg {
+
       position: absolute;
 
       width: 7px;
@@ -376,30 +513,44 @@
       border-radius: 6px;
 
       background: #30394e;
+
     }
+
 
     .mini-leg.left {
+
       left: 10px;
+
     }
 
+
     .mini-leg.right {
+
       right: 10px;
+
     }
+
 
 
     /* =====================================================
-       CARD 1 — JUMPING
+       JUMPING VISUAL
        ===================================================== */
 
     .jump-person {
+
       --shirt: #38a970;
 
       animation:
-        jumpHuman 1.5s
-        ease-in-out infinite;
+        jumpHuman
+        1.5s
+        ease-in-out
+        infinite;
+
     }
 
+
     .jump-shadow {
+
       position: absolute;
 
       width: 34px;
@@ -417,54 +568,34 @@
         rgba(31,88,61,.13);
 
       animation:
-        jumpShadow 1.5s
-        ease-in-out infinite;
+        jumpShadow
+        1.5s
+        ease-in-out
+        infinite;
+
     }
 
-    .jump-line {
-      position: absolute;
-
-      width: 3px;
-      height: 12px;
-
-      border-radius: 999px;
-
-      background:
-        var(--green-accent);
-
-      opacity: .45;
-    }
-
-    .jump-line.one {
-      left: 12px;
-      top: 24px;
-
-      transform:
-        rotate(-22deg);
-    }
-
-    .jump-line.two {
-      right: 12px;
-      top: 19px;
-
-      transform:
-        rotate(23deg);
-    }
 
 
     /* =====================================================
-       CARD 2 — WALKING
+       WALKING VISUAL
        ===================================================== */
 
     .walk-person {
+
       --shirt: #df993c;
 
       animation:
-        walkHuman 2.8s
-        ease-in-out infinite;
+        walkHuman
+        2.8s
+        ease-in-out
+        infinite;
+
     }
 
+
     .walk-path {
+
       position: absolute;
 
       left: 10px;
@@ -473,37 +604,43 @@
 
       height: 2px;
 
-      border-radius: 999px;
-
       background:
         linear-gradient(
           90deg,
-          rgba(219,146,55,.08),
-          rgba(219,146,55,.58)
+          transparent,
+          rgba(219,146,55,.65)
         );
+
     }
+
 
 
     /* =====================================================
-       CARD 3 — WAIT
+       WAIT VISUAL
        ===================================================== */
 
     .quiet-person {
+
       --shirt: #6078dc;
 
       animation:
-        slowBreathe 3.6s
-        ease-in-out infinite;
+        slowBreathe
+        3.6s
+        ease-in-out
+        infinite;
+
     }
 
+
     .pause-ring {
+
       position: absolute;
 
       width: 42px;
       height: 42px;
 
       left: 50%;
-      top: 45%;
+      top: 44%;
 
       transform:
         translate(-50%,-50%);
@@ -515,28 +652,35 @@
       border-radius: 50%;
 
       animation:
-        pauseRing 2.7s
-        ease-out infinite;
+        pauseRing
+        2.7s
+        ease-out
+        infinite;
+
     }
 
+
     .pause-ring.second {
+
       animation-delay: .8s;
+
     }
+
 
 
     /* =====================================================
-       CARD 4 — OVERLOAD
+       OVERLOAD VISUAL
        ===================================================== */
 
     .overload-person {
+
       --shirt: #8868d9;
 
-      animation:
-        overloadBody 2.5s
-        ease-in-out infinite;
     }
 
+
     .sensory-wave {
+
       position: absolute;
 
       border:
@@ -546,93 +690,125 @@
       border-radius: 50%;
 
       animation:
-        sensoryWave 2.4s
-        ease-out infinite;
+        sensoryWave
+        2.4s
+        ease-out
+        infinite;
+
     }
 
+
     .sensory-wave.one {
+
       width: 38px;
       height: 38px;
 
-      left: 17px;
+      left: 15px;
       top: 10px;
+
     }
+
 
     .sensory-wave.two {
-      width: 58px;
-      height: 58px;
 
-      left: 7px;
-      top: 0;
+      width: 56px;
+      height: 56px;
+
+      left: 6px;
+      top: 1px;
 
       animation-delay: .65s;
+
     }
+
 
 
     /* =====================================================
-       CARD 5 — SAFETY
+       SAFETY VISUAL
        ===================================================== */
 
-    .safety-person-left,
-    .safety-person-right {
+    .safety-person {
+
       position: absolute;
 
-      width: 29px;
-      height: 52px;
+      width: 26px;
+      height: 49px;
 
-      bottom: 6px;
+      bottom: 7px;
+
     }
 
-    .safety-person-left {
-      left: 8px;
+
+    .safety-person.left {
+
+      left: 7px;
 
       animation:
-        safetyStepLeft 2.6s
-        ease-in-out infinite;
+        moveApart
+        2.5s
+        ease-in-out
+        infinite;
+
     }
 
-    .safety-person-right {
-      right: 8px;
 
-      --small-shirt: #66728d;
+    .safety-person.right {
+
+      right: 7px;
+
     }
 
-    .small-head {
+
+    .safety-head {
+
       position: absolute;
 
-      width: 19px;
-      height: 19px;
+      width: 18px;
+      height: 18px;
 
-      left: 5px;
+      left: 4px;
 
       border-radius: 50%;
 
       background: #d69a76;
+
     }
 
-    .small-body {
+
+    .safety-body {
+
       position: absolute;
 
-      width: 26px;
-      height: 28px;
+      width: 24px;
+      height: 27px;
 
       left: 1px;
-      top: 19px;
+      top: 18px;
 
-      border-radius: 10px;
+      border-radius: 9px;
 
       background:
-        var(--small-shirt, #d85143);
+        var(--safety-shirt, #d65347);
+
     }
 
-    .safety-distance {
+
+    .safety-person.right {
+
+      --safety-shirt: #6a748c;
+
+    }
+
+
+    .distance-line {
+
       position: absolute;
 
-      left: 50%;
-      top: 33px;
-
-      width: 18px;
+      width: 20px;
       height: 3px;
+
+      left: 50%;
+      top: 34px;
 
       transform:
         translateX(-50%);
@@ -640,307 +816,294 @@
       border-radius: 999px;
 
       background:
-        var(--red-accent);
+        var(--red-strong);
 
       animation:
-        distancePulse 2.2s
-        ease-in-out infinite;
+        distancePulse
+        2s ease-in-out infinite;
+
     }
+
 
 
     /* =====================================================
-       FULL-SCREEN MODAL
+       DETAIL PAGE
        ===================================================== */
 
-    .scenario-modal {
-      position: fixed;
+    .detail-page {
 
-      inset: 0;
+      min-height: 100vh;
 
-      z-index: 1000;
+      padding-bottom:
+        calc(
+          40px +
+          env(safe-area-inset-bottom)
+        );
 
-      width: 100%;
-      height: 100vh;
-      height: 100dvh;
-
-      display: flex;
-      flex-direction: column;
-
-      background: #fff;
-
-      opacity: 0;
-
-      visibility: hidden;
-      pointer-events: none;
-
-      transform:
-        translateY(12px);
-
-      transition:
-        opacity .24s ease,
-        transform .28s cubic-bezier(.22,.8,.22,1),
-        visibility .24s;
-    }
-
-    .scenario-modal.open {
-      opacity: 1;
-
-      visibility: visible;
-      pointer-events: auto;
-
-      transform:
-        translateY(0);
     }
 
 
-    /* =====================================================
-       MODAL HEADER
-       NEVER SCROLLS
-       ===================================================== */
-
-    .modal-header {
-      position: relative;
-      z-index: 10;
-
-      flex:
-        0 0 auto;
+    .detail-top {
 
       padding:
-        calc(
-          14px +
-          env(safe-area-inset-top)
-        )
-        18px
-        13px;
+        18px 0 20px;
 
-      background:
-        rgba(255,255,255,.96);
-
-      border-bottom:
-        1px solid
-        rgba(29,29,31,.07);
-
-      backdrop-filter:
-        blur(18px);
-
-      -webkit-backdrop-filter:
-        blur(18px);
     }
 
-    .modal-topline {
-      display: flex;
 
-      align-items: center;
-      justify-content: space-between;
+    .detail-back {
 
-      gap: 14px;
-    }
-
-    .modal-tag {
       display: inline-flex;
 
-      padding: 7px 10px;
-
-      border-radius: 999px;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      letter-spacing: .055em;
-      text-transform: uppercase;
-    }
-
-    .modal-tag.green {
-      background:
-        var(--green-bg);
-    }
-
-    .modal-tag.amber {
-      background:
-        var(--amber-bg);
-    }
-
-    .modal-tag.blue {
-      background:
-        var(--blue-bg);
-    }
-
-    .modal-tag.purple {
-      background:
-        var(--purple-bg);
-    }
-
-    .modal-tag.red {
-      background:
-        var(--red-bg);
-    }
-
-    .modal-close {
-      width: 38px;
-      height: 38px;
-
-      display: flex;
       align-items: center;
-      justify-content: center;
 
-      flex: 0 0 auto;
+      gap: 5px;
+
+      padding:
+        9px 13px;
 
       border: 0;
 
-      border-radius: 50%;
+      border-radius: 999px;
 
       background: #efefec;
 
-      color: #303238;
+      color: #24262c;
+
+      font: inherit;
+
+      font-size: 13px;
+      font-weight: 650;
 
       cursor: pointer;
 
-      font-size: 21px;
-      line-height: 1;
     }
+
 
 
     /* =====================================================
-       THIS IS THE ONLY PART THAT SCROLLS
+       COLOR HERO
        ===================================================== */
 
-    .modal-scroll {
-      flex: 1 1 auto;
+    .detail-hero {
 
-      min-height: 0;
-
-      overflow-y: auto;
-      overflow-x: hidden;
-
-      -webkit-overflow-scrolling:
-        touch;
-
-      overscroll-behavior-y:
-        contain;
-
-      touch-action:
-        pan-y;
-
-      padding:
-        20px 18px
-        calc(
-          30px +
-          env(safe-area-inset-bottom)
-        );
-    }
-
-    .modal-content {
-      width: min(680px, 100%);
-
-      margin: 0 auto;
-    }
-
-
-    /* =====================================================
-       MODAL TITLE
-       ===================================================== */
-
-    .modal-title {
-      margin: 0 0 14px;
-
-      font-size:
-        clamp(31px, 8vw, 43px);
-
-      line-height: 1.02;
-      letter-spacing: -.045em;
-    }
-
-    .meaning-line {
       margin-bottom: 12px;
 
-      padding: 13px 15px;
+      padding:
+        22px 20px 24px;
 
-      border-radius: 17px;
+      border-radius: 28px;
 
-      background: #f2f3f5;
-
-      color: #5c626d;
-
-      font-size: 14px;
-      line-height: 1.43;
     }
 
-    .meaning-line strong {
-      color: #24272e;
+
+    .detail-hero.green {
+
+      background:
+        var(--green-bg);
+
     }
+
+
+    .detail-hero.amber {
+
+      background:
+        var(--amber-bg);
+
+    }
+
+
+    .detail-hero.blue {
+
+      background:
+        var(--blue-bg);
+
+    }
+
+
+    .detail-hero.purple {
+
+      background:
+        var(--purple-bg);
+
+    }
+
+
+    .detail-hero.red {
+
+      background:
+        var(--red-bg);
+
+    }
+
+
+    .detail-tag {
+
+      display: inline-block;
+
+      margin-bottom: 9px;
+
+      padding:
+        7px 10px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.60);
+
+      color:
+        rgba(30,33,40,.66);
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: .055em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .detail-hero h1 {
+
+      margin:
+        0 0 10px;
+
+      font-size:
+        clamp(
+          32px,
+          9vw,
+          49px
+        );
+
+      line-height: .98;
+
+      letter-spacing: -.045em;
+
+    }
+
+
+    .detail-hero p {
+
+      margin: 0;
+
+      max-width: 660px;
+
+      color: #575d68;
+
+      font-size: 15px;
+
+      line-height: 1.48;
+
+    }
+
 
 
     /* =====================================================
-       DO / AVOID
+       ACTION BLOCKS
        ===================================================== */
 
-    .modal-actions {
+    .detail-actions {
+
       display: grid;
 
       grid-template-columns:
         1fr 1fr;
 
       gap: 10px;
+
     }
 
-    .modal-box {
-      padding: 15px;
 
-      border-radius: 19px;
+    .detail-box {
+
+      padding:
+        16px 16px 15px;
+
+      border-radius: 21px;
+
     }
 
-    .modal-box.do {
-      background: #eaf7f0;
+
+    .detail-box.do {
+
+      background:
+        #eaf7f0;
+
     }
 
-    .modal-box.avoid {
-      background: #fff0ee;
+
+    .detail-box.avoid {
+
+      background:
+        #fff0ee;
+
     }
 
-    .modal-box h3 {
-      margin: 0 0 8px;
 
-      font-size: 15px;
+    .detail-box h2 {
+
+      margin:
+        0 0 8px;
+
+      font-size: 16px;
+
+      letter-spacing: -.02em;
+
     }
 
-    .modal-box ul {
+
+    .detail-box ul {
+
       margin: 0;
 
-      padding-left: 17px;
+      padding-left: 18px;
 
-      color: #505660;
+      color: #535963;
 
-      font-size: 13.5px;
-      line-height: 1.48;
+      font-size: 14px;
+
+      line-height: 1.5;
+
     }
 
-    .modal-box li {
+
+    .detail-box li {
+
       margin-bottom: 5px;
+
     }
+
 
 
     /* =====================================================
        TRY SAYING
        ===================================================== */
 
-    .say-box {
+    .try-saying {
+
       margin-top: 10px;
 
-      padding: 14px 16px;
+      padding:
+        15px 17px;
 
-      border-radius: 19px;
+      border-radius: 21px;
 
       background:
         linear-gradient(
           135deg,
-          #20232c,
-          #2c303b
+          #1e212a,
+          #2b2e39
         );
 
       color: white;
+
     }
 
-    .say-box span {
+
+    .try-saying span {
+
       display: block;
 
       margin-bottom: 5px;
@@ -948,45 +1111,66 @@
       color: #adb3c0;
 
       font-size: 10px;
+
       font-weight: 800;
 
       letter-spacing: .06em;
+
       text-transform: uppercase;
+
     }
 
-    .say-box strong {
-      font-size: 16px;
+
+    .try-saying strong {
+
+      font-size:
+        clamp(
+          16px,
+          4.5vw,
+          19px
+        );
+
       line-height: 1.4;
+
     }
+
 
 
     /* =====================================================
-       SAFETY
+       SAFETY ALERT
        ===================================================== */
 
     .safety-alert {
+
       margin-top: 10px;
 
-      padding: 13px 15px;
+      padding:
+        14px 16px;
 
-      border-radius: 18px;
+      border-radius: 19px;
 
       background:
         var(--red-bg);
 
-      color: #74423b;
+      color: #75433d;
 
       font-size: 13px;
+
       line-height: 1.45;
+
     }
 
+
     .safety-alert strong {
+
       display: block;
 
       margin-bottom: 3px;
 
-      color: #b83d30;
+      color: #b33d32;
+
     }
+
 
 
     /* =====================================================
@@ -994,27 +1178,35 @@
        ===================================================== */
 
     .quick-reminder {
-      margin-top: 20px;
 
-      padding: 15px 17px;
+      margin-top: 18px;
 
-      border-radius: 20px;
+      padding:
+        14px 16px;
+
+      border-radius: 19px;
 
       background: #eef2f8;
 
-      color: #656b76;
+      color: #666c76;
 
       font-size: 13px;
+
       line-height: 1.45;
+
     }
 
+
     .quick-reminder strong {
+
       display: block;
 
       margin-bottom: 2px;
 
       color: #242830;
+
     }
+
 
 
     /* =====================================================
@@ -1025,242 +1217,245 @@
 
       0%,
       100% {
+
         transform:
           translateX(-50%)
           translateY(0);
+
       }
 
       47% {
+
         transform:
           translateX(-50%)
-          translateY(-10px);
+          translateY(-9px);
+
       }
 
     }
+
 
     @keyframes jumpShadow {
 
       0%,
       100% {
+
         width: 34px;
+
         opacity: .14;
+
       }
 
       47% {
+
         width: 22px;
+
         opacity: .05;
+
       }
 
     }
+
 
     @keyframes walkHuman {
 
       0%,
       100% {
+
         transform:
           translateX(-75%);
+
       }
 
       50% {
+
         transform:
           translateX(-20%);
+
       }
 
     }
+
 
     @keyframes slowBreathe {
 
       0%,
       100% {
+
         transform:
           translateX(-50%)
           scale(.97);
+
       }
 
       50% {
+
         transform:
           translateX(-50%)
           scale(1.02);
+
       }
 
     }
 
+
     @keyframes pauseRing {
 
       0% {
+
         transform:
           translate(-50%,-50%)
           scale(.6);
 
         opacity: .55;
+
       }
 
       100% {
+
         transform:
           translate(-50%,-50%)
           scale(1.5);
 
         opacity: 0;
+
       }
 
     }
+
 
     @keyframes sensoryWave {
 
       0% {
-        transform:
-          scale(.72);
 
-        opacity: .55;
+        transform: scale(.75);
+
+        opacity: .5;
+
       }
 
       100% {
-        transform:
-          scale(1.4);
+
+        transform: scale(1.4);
 
         opacity: 0;
+
       }
 
     }
 
-    @keyframes overloadBody {
+
+    @keyframes moveApart {
 
       0%,
       100% {
-        transform:
-          translateX(-50%)
-          rotate(0);
-      }
 
-      35% {
-        transform:
-          translateX(-50%)
-          rotate(-2deg);
-      }
+        transform: translateX(0);
 
-      68% {
-        transform:
-          translateX(-50%)
-          rotate(2deg);
-      }
-
-    }
-
-    @keyframes safetyStepLeft {
-
-      0%,
-      100% {
-        transform:
-          translateX(0);
       }
 
       50% {
-        transform:
-          translateX(-5px);
+
+        transform: translateX(-5px);
+
       }
 
     }
+
 
     @keyframes distancePulse {
 
       0%,
       100% {
+
         width: 18px;
-        opacity: .55;
+
+        opacity: .5;
+
       }
 
       50% {
-        width: 26px;
+
+        width: 25px;
+
         opacity: 1;
+
       }
 
     }
+
 
 
     /* =====================================================
        DESKTOP
        ===================================================== */
 
-    @media (min-width: 720px) {
+    @media
+    (min-width: 720px) {
+
 
       .scenario-list {
+
         grid-template-columns:
           1fr 1fr;
+
       }
+
 
       .scenario-card.red {
+
         grid-column:
           1 / -1;
-      }
 
-      .modal-scroll {
-        padding-top: 32px;
       }
 
     }
+
 
 
     /* =====================================================
-       SMALL PHONE
+       PHONE
        ===================================================== */
 
-    @media (max-width: 420px) {
+    @media
+    (max-width: 520px) {
+
 
       .page-shell {
+
         width:
           calc(100% - 26px);
+
       }
 
-      .scenario-card {
-        grid-template-columns:
-          64px 1fr 18px;
 
-        min-height: 102px;
+      .detail-actions {
 
-        padding:
-          10px 12px;
-
-        border-radius: 20px;
-      }
-
-      .scenario-visual {
-        width: 64px;
-        height: 64px;
-
-        border-radius: 17px;
-      }
-
-      .scenario-copy h3 {
-        font-size: 16px;
-      }
-
-      .scenario-copy p {
-        font-size: 12px;
-      }
-
-      .modal-scroll {
-        padding:
-          16px 15px
-          calc(
-            25px +
-            env(safe-area-inset-bottom)
-          );
-      }
-
-      .modal-title {
-        font-size: 30px;
-      }
-
-      .modal-actions {
         grid-template-columns:
           1fr;
+
       }
 
-      .modal-box {
-        padding: 13px 14px;
+
+      .detail-hero {
+
+        padding:
+          20px 18px 21px;
+
+        border-radius: 25px;
+
+      }
+
+
+      .detail-box {
+
+        padding:
+          14px 15px;
+
       }
 
     }
+
 
 
     /* =====================================================
@@ -1270,31 +1465,34 @@
     @media
     (prefers-reduced-motion: reduce) {
 
+
       .jump-person,
       .jump-shadow,
       .walk-person,
       .quiet-person,
       .pause-ring,
-      .overload-person,
       .sensory-wave,
-      .safety-person-left,
-      .safety-distance {
+      .safety-person.left,
+      .distance-line {
 
         animation: none !important;
 
       }
 
-      .scenario-modal {
 
-        transition: none;
+      .behavior-view.active {
+
+        animation: none;
 
       }
 
     }
 
+
   </style>
 
 </head>
+
 
 
 <body>
@@ -1303,1149 +1501,1534 @@
   <div class="page-shell">
 
 
-    <!-- TOP BAR -->
+    <!-- =================================================
+         MAIN SCENARIO MENU
+         ================================================= -->
 
-    <header class="topbar">
-
-      <a
-        href="index.html"
-        class="back-link"
-      >
-        ← Home
-      </a>
-
-      <div class="top-label">
-        Real Situations
-      </div>
-
-    </header>
+    <div
+      class="behavior-view active"
+      id="view-home"
+    >
 
 
+      <header class="topbar">
 
-    <!-- INTRO -->
 
-    <section class="behavior-intro reveal">
+        <a
+          href="index.html"
+          class="back-link"
+        >
 
-      <div class="eyebrow">
-        Quick help in the moment
-      </div>
+          ← Home
 
-      <h1 class="page-title">
-        Real situations.<br>
-        Quick responses.
-      </h1>
+        </a>
 
-      <p class="lead">
-        Pick what looks closest to what's happening.
-        We'll keep the answer short.
-      </p>
 
-    </section>
+        <div class="top-label">
+
+          Real Situations
+
+        </div>
+
+
+      </header>
 
 
 
-    <!-- START NOTE -->
-
-    <section class="start-note reveal">
-
-      <div class="start-mark">
-        ?
-      </div>
-
-      <div>
-
-        <strong>
-          First question: what just happened?
-        </strong>
-
-        <span>
-          Context usually tells you more than the behavior by itself.
-        </span>
-
-      </div>
-
-    </section>
+      <section class="behavior-intro">
 
 
+        <div class="eyebrow">
 
-    <!-- SCENARIO LIST -->
+          Quick help in the moment
 
-    <section class="reveal">
+        </div>
 
-      <div class="scenario-title">
 
-        <h2>
-          What are you seeing?
-        </h2>
+        <h1 class="page-title">
 
-        <p>
-          Tap one.
+          Real situations.<br>
+          Quick responses.
+
+        </h1>
+
+
+        <p class="lead">
+
+          Pick what looks closest
+          to what's happening.
+          We'll keep the answer short.
+
         </p>
 
+
+      </section>
+
+
+
+      <section class="start-note">
+
+
+        <div class="start-mark">
+
+          ?
+
+        </div>
+
+
+        <div>
+
+
+          <strong>
+
+            First question:
+            what just happened?
+
+          </strong>
+
+
+          <span>
+
+            Context usually tells you
+            more than the behavior itself.
+
+          </span>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <section>
+
+
+        <div class="scenario-title">
+
+
+          <h2>
+
+            What are you seeing?
+
+          </h2>
+
+
+          <p>
+
+            Tap one.
+
+          </p>
+
+
+        </div>
+
+
+
+        <div class="scenario-list">
+
+
+          <!-- JUMPING -->
+
+          <button
+            class="scenario-card green"
+            data-view="jumping"
+          >
+
+
+            <div class="scenario-visual">
+
+
+              <div class="jump-shadow"></div>
+
+
+              <div
+                class="mini-human jump-person"
+              >
+
+
+                <div class="mini-hair"></div>
+
+                <div class="mini-head"></div>
+
+                <div class="mini-body"></div>
+
+                <div class="mini-leg left"></div>
+
+                <div class="mini-leg right"></div>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="scenario-copy">
+
+
+              <div class="scenario-label">
+
+                Common
+
+              </div>
+
+
+              <h3>
+
+                Jumping in place + yelling
+
+              </h3>
+
+
+              <p>
+
+                Excited, waiting,
+                regulating, or overwhelmed.
+
+              </p>
+
+
+            </div>
+
+
+            <div class="chevron">
+
+              ›
+
+            </div>
+
+
+          </button>
+
+
+
+          <!-- WALKING -->
+
+          <button
+            class="scenario-card amber"
+            data-view="walking"
+          >
+
+
+            <div class="scenario-visual">
+
+
+              <div class="walk-path"></div>
+
+
+              <div
+                class="mini-human walk-person"
+              >
+
+
+                <div class="mini-hair"></div>
+
+                <div class="mini-head"></div>
+
+                <div class="mini-body"></div>
+
+                <div class="mini-leg left"></div>
+
+                <div class="mini-leg right"></div>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="scenario-copy">
+
+
+              <div class="scenario-label">
+
+                Common
+
+              </div>
+
+
+              <h3>
+
+                Walking away
+
+              </h3>
+
+
+              <p>
+
+                They may need space,
+                a break, or a clearer next step.
+
+              </p>
+
+
+            </div>
+
+
+            <div class="chevron">
+
+              ›
+
+            </div>
+
+
+          </button>
+
+
+
+          <!-- QUIET -->
+
+          <button
+            class="scenario-card blue"
+            data-view="quiet"
+          >
+
+
+            <div class="scenario-visual">
+
+
+              <div class="pause-ring"></div>
+
+              <div class="pause-ring second"></div>
+
+
+              <div
+                class="mini-human quiet-person"
+              >
+
+
+                <div class="mini-hair"></div>
+
+                <div class="mini-head"></div>
+
+                <div class="mini-body"></div>
+
+                <div class="mini-leg left"></div>
+
+                <div class="mini-leg right"></div>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="scenario-copy">
+
+
+              <div class="scenario-label">
+
+                Give it a beat
+
+              </div>
+
+
+              <h3>
+
+                Quiet + not responding
+
+              </h3>
+
+
+              <p>
+
+                They may be processing
+                or getting ready to respond.
+
+              </p>
+
+
+            </div>
+
+
+            <div class="chevron">
+
+              ›
+
+            </div>
+
+
+          </button>
+
+
+
+          <!-- OVERWHELMED -->
+
+          <button
+            class="scenario-card purple"
+            data-view="overwhelmed"
+          >
+
+
+            <div class="scenario-visual">
+
+
+              <div class="sensory-wave one"></div>
+
+              <div class="sensory-wave two"></div>
+
+
+              <div
+                class="mini-human overload-person"
+              >
+
+
+                <div class="mini-hair"></div>
+
+                <div class="mini-head"></div>
+
+                <div class="mini-body"></div>
+
+                <div class="mini-leg left"></div>
+
+                <div class="mini-leg right"></div>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="scenario-copy">
+
+
+              <div class="scenario-label">
+
+                Watch for this
+
+              </div>
+
+
+              <h3>
+
+                Seems overwhelmed
+
+              </h3>
+
+
+              <p>
+
+                Noise, crowds, talking,
+                or change may be piling up.
+
+              </p>
+
+
+            </div>
+
+
+            <div class="chevron">
+
+              ›
+
+            </div>
+
+
+          </button>
+
+
+
+          <!-- SAFETY -->
+
+          <button
+            class="scenario-card red"
+            data-view="safety"
+          >
+
+
+            <div class="scenario-visual">
+
+
+              <div class="safety-person left">
+
+                <div class="safety-head"></div>
+
+                <div class="safety-body"></div>
+
+              </div>
+
+
+              <div class="distance-line"></div>
+
+
+              <div class="safety-person right">
+
+                <div class="safety-head"></div>
+
+                <div class="safety-body"></div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="scenario-copy">
+
+
+              <div class="scenario-label">
+
+                Safety first
+
+              </div>
+
+
+              <h3>
+
+                Tries to hit, push, or grab
+
+              </h3>
+
+
+              <p>
+
+                Create space and
+                bring in coach or staff.
+
+              </p>
+
+
+            </div>
+
+
+            <div class="chevron">
+
+              ›
+
+            </div>
+
+
+          </button>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <section class="quick-reminder">
+
+
+        <strong>
+
+          Every athlete is different.
+
+        </strong>
+
+
+        If you already know what works,
+        use it. If you're unsure,
+        ask the athlete, coach, or caregiver.
+
+
+      </section>
+
+
+      <footer class="site-footer">
+
+        Notice first. Respond second.
+
+      </footer>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         JUMPING PAGE
+         ================================================= -->
+
+    <div
+      class="behavior-view detail-page"
+      id="view-jumping"
+    >
+
+
+      <div class="detail-top">
+
+
+        <button class="detail-back">
+
+          ← Back to situations
+
+        </button>
+
+
       </div>
 
 
-      <div class="scenario-list">
 
+      <section class="detail-hero green">
 
-        <!-- JUMPING -->
 
-        <button
-          class="scenario-card green"
-          data-modal="jumping"
-        >
+        <div class="detail-tag">
 
-          <div class="scenario-visual">
+          Jumping + yelling
 
-            <div class="jump-shadow"></div>
+        </div>
 
-            <div class="jump-line one"></div>
-            <div class="jump-line two"></div>
 
-            <div class="mini-human jump-person">
+        <h1>
 
-              <div class="mini-hair"></div>
-              <div class="mini-head"></div>
-              <div class="mini-body"></div>
+          Start with the context.
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+        </h1>
 
-            </div>
 
-          </div>
+        <p>
 
+          Could be excitement,
+          waiting energy,
+          self-regulation,
+          or things starting
+          to feel like too much.
 
-          <div class="scenario-copy">
+        </p>
 
-            <div class="scenario-label">
-              Common
-            </div>
 
-            <h3>
-              Jumping in place + yelling
-            </h3>
+      </section>
 
-            <p>
-              Excited, waiting, regulating, or overwhelmed.
-            </p>
 
-          </div>
 
+      <div class="detail-actions">
 
-          <div class="chevron">
-            ›
-          </div>
 
-        </button>
+        <section class="detail-box do">
 
 
+          <h2>
 
-        <!-- WALKING -->
+            Do now
 
-        <button
-          class="scenario-card amber"
-          data-modal="walking"
-        >
+          </h2>
 
-          <div class="scenario-visual">
 
-            <div class="walk-path"></div>
+          <ul>
 
-            <div class="mini-human walk-person">
+            <li>Stay relaxed.</li>
 
-              <div class="mini-hair"></div>
-              <div class="mini-head"></div>
-              <div class="mini-body"></div>
+            <li>Give them some room.</li>
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+            <li>Say what's coming next.</li>
 
-            </div>
+            <li>Keep your words short.</li>
 
-          </div>
+          </ul>
 
 
-          <div class="scenario-copy">
+        </section>
 
-            <div class="scenario-label">
-              Common
-            </div>
 
-            <h3>
-              Walking away
-            </h3>
 
-            <p>
-              They may need space, a break, or a clearer next step.
-            </p>
+        <section class="detail-box avoid">
 
-          </div>
 
+          <h2>
 
-          <div class="chevron">
-            ›
-          </div>
+            Avoid
 
-        </button>
+          </h2>
 
 
+          <ul>
 
-        <!-- QUIET -->
+            <li>Shouting “stop.”</li>
 
-        <button
-          class="scenario-card blue"
-          data-modal="quiet"
-        >
+            <li>Crowding them.</li>
 
-          <div class="scenario-visual">
+            <li>
+              Assuming they're
+              misbehaving.
+            </li>
 
-            <div class="pause-ring"></div>
+          </ul>
 
-            <div class="pause-ring second"></div>
 
-            <div class="mini-human quiet-person">
+        </section>
 
-              <div class="mini-hair"></div>
-              <div class="mini-head"></div>
-              <div class="mini-body"></div>
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
+      </div>
 
-            </div>
 
-          </div>
 
+      <div class="try-saying">
 
-          <div class="scenario-copy">
 
-            <div class="scenario-label">
-              Give it a beat
-            </div>
+        <span>
 
-            <h3>
-              Quiet + not responding
-            </h3>
+          Try saying
 
-            <p>
-              They may be processing or getting ready to respond.
-            </p>
+        </span>
 
-          </div>
 
+        <strong>
 
-          <div class="chevron">
-            ›
-          </div>
+          “You're good —
+          your turn is coming.”
 
-        </button>
+        </strong>
 
 
+      </div>
 
-        <!-- OVERWHELMED -->
 
-        <button
-          class="scenario-card purple"
-          data-modal="overwhelmed"
-        >
+    </div>
 
-          <div class="scenario-visual">
 
-            <div class="sensory-wave one"></div>
-            <div class="sensory-wave two"></div>
 
-            <div class="mini-human overload-person">
+    <!-- =================================================
+         WALKING PAGE
+         ================================================= -->
 
-              <div class="mini-hair"></div>
-              <div class="mini-head"></div>
-              <div class="mini-body"></div>
+    <div
+      class="behavior-view detail-page"
+      id="view-walking"
+    >
 
-              <div class="mini-leg left"></div>
-              <div class="mini-leg right"></div>
 
-            </div>
+      <div class="detail-top">
 
-          </div>
 
+        <button class="detail-back">
 
-          <div class="scenario-copy">
-
-            <div class="scenario-label">
-              Watch for this
-            </div>
-
-            <h3>
-              Seems overwhelmed
-            </h3>
-
-            <p>
-              Noise, crowds, talking, or change may be piling up.
-            </p>
-
-          </div>
-
-
-          <div class="chevron">
-            ›
-          </div>
-
-        </button>
-
-
-
-        <!-- SAFETY -->
-
-        <button
-          class="scenario-card red"
-          data-modal="safety"
-        >
-
-          <div class="scenario-visual">
-
-            <div class="safety-person-left">
-
-              <div class="small-head"></div>
-              <div class="small-body"></div>
-
-            </div>
-
-            <div class="safety-distance"></div>
-
-            <div class="safety-person-right">
-
-              <div class="small-head"></div>
-              <div class="small-body"></div>
-
-            </div>
-
-          </div>
-
-
-          <div class="scenario-copy">
-
-            <div class="scenario-label">
-              Safety first
-            </div>
-
-            <h3>
-              Tries to hit, push, or grab
-            </h3>
-
-            <p>
-              Create space and bring in the coach or staff.
-            </p>
-
-          </div>
-
-
-          <div class="chevron">
-            ›
-          </div>
+          ← Back to situations
 
         </button>
 
 
       </div>
 
-    </section>
+
+
+      <section class="detail-hero amber">
+
+
+        <div class="detail-tag">
+
+          Walking away
+
+        </div>
+
+
+        <h1>
+
+          Don't make it a standoff.
+
+        </h1>
+
+
+        <p>
+
+          They may need a break,
+          feel confused,
+          want some space,
+          or just be done for a bit.
+
+        </p>
+
+
+      </section>
 
 
 
-    <!-- REMINDER -->
-
-    <section class="quick-reminder reveal">
-
-      <strong>
-        Every athlete is different.
-      </strong>
-
-      If you already know what works for them, use it.
-      If you're unsure, ask the athlete, coach, or caregiver.
-
-    </section>
+      <div class="detail-actions">
 
 
-    <footer class="site-footer">
+        <section class="detail-box do">
 
-      Notice first. Respond second.
 
-    </footer>
+          <h2>
+
+            Do now
+
+          </h2>
+
+
+          <ul>
+
+            <li>
+              Stay nearby if it's safe.
+            </li>
+
+            <li>
+              Keep your tone easy.
+            </li>
+
+            <li>
+              Offer one simple choice.
+            </li>
+
+            <li>
+              Reconnect with what's next.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+
+        <section class="detail-box avoid">
+
+
+          <h2>
+
+            Avoid
+
+          </h2>
+
+
+          <ul>
+
+            <li>
+              Repeating “come back.”
+            </li>
+
+            <li>
+              Following too close.
+            </li>
+
+            <li>
+              Grabbing unless
+              safety requires it.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+      </div>
+
+
+
+      <div class="try-saying">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “Want a break,
+          or want to come see basketball?”
+
+        </strong>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         QUIET PAGE
+         ================================================= -->
+
+    <div
+      class="behavior-view detail-page"
+      id="view-quiet"
+    >
+
+
+      <div class="detail-top">
+
+
+        <button class="detail-back">
+
+          ← Back to situations
+
+        </button>
+
+
+      </div>
+
+
+
+      <section class="detail-hero blue">
+
+
+        <div class="detail-tag">
+
+          Not responding
+
+        </div>
+
+
+        <h1>
+
+          More time.
+          Fewer words.
+
+        </h1>
+
+
+        <p>
+
+          They may be processing,
+          unsure, overwhelmed,
+          or getting ready
+          to respond another way.
+
+        </p>
+
+
+      </section>
+
+
+
+      <div class="detail-actions">
+
+
+        <section class="detail-box do">
+
+
+          <h2>
+
+            Do now
+
+          </h2>
+
+
+          <ul>
+
+            <li>
+              Say their name once.
+            </li>
+
+            <li>
+              Give one clear cue.
+            </li>
+
+            <li>
+              Point or show.
+            </li>
+
+            <li>
+              Wait.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+
+        <section class="detail-box avoid">
+
+
+          <h2>
+
+            Avoid
+
+          </h2>
+
+
+          <ul>
+
+            <li>
+              Rapid-fire directions.
+            </li>
+
+            <li>
+              Getting louder.
+            </li>
+
+            <li>
+              Answering for them too fast.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+      </div>
+
+
+
+      <div class="try-saying">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “Alex, stand here.
+          Take your time.”
+
+        </strong>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         OVERWHELMED PAGE
+         ================================================= -->
+
+    <div
+      class="behavior-view detail-page"
+      id="view-overwhelmed"
+    >
+
+
+      <div class="detail-top">
+
+
+        <button class="detail-back">
+
+          ← Back to situations
+
+        </button>
+
+
+      </div>
+
+
+
+      <section class="detail-hero purple">
+
+
+        <div class="detail-tag">
+
+          Overwhelmed
+
+        </div>
+
+
+        <h1>
+
+          Make the moment smaller.
+
+        </h1>
+
+
+        <p>
+
+          Too much noise,
+          too much talking,
+          too many people,
+          or too much change
+          may be piling up.
+
+        </p>
+
+
+      </section>
+
+
+
+      <div class="detail-actions">
+
+
+        <section class="detail-box do">
+
+
+          <h2>
+
+            Do now
+
+          </h2>
+
+
+          <ul>
+
+            <li>Say less.</li>
+
+            <li>Give them space.</li>
+
+            <li>
+              Keep your voice calm.
+            </li>
+
+            <li>
+              Offer water,
+              a break, or quiet.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+
+        <section class="detail-box avoid">
+
+
+          <h2>
+
+            Avoid
+
+          </h2>
+
+
+          <ul>
+
+            <li>
+              Touching without warning.
+            </li>
+
+            <li>
+              Forcing eye contact.
+            </li>
+
+            <li>
+              Several people
+              talking at once.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+      </div>
+
+
+
+      <div class="try-saying">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “Want a break?”
+
+          or
+
+          “Water or quiet spot?”
+
+        </strong>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         SAFETY PAGE
+         ================================================= -->
+
+    <div
+      class="behavior-view detail-page"
+      id="view-safety"
+    >
+
+
+      <div class="detail-top">
+
+
+        <button class="detail-back">
+
+          ← Back to situations
+
+        </button>
+
+
+      </div>
+
+
+
+      <section class="detail-hero red">
+
+
+        <div class="detail-tag">
+
+          Safety first
+
+        </div>
+
+
+        <h1>
+
+          Create space.
+
+        </h1>
+
+
+        <p>
+
+          This may come from distress,
+          overload, fear,
+          frustration,
+          or a strong “no.”
+
+        </p>
+
+
+      </section>
+
+
+
+      <div class="detail-actions">
+
+
+        <section class="detail-box do">
+
+
+          <h2>
+
+            Do now
+
+          </h2>
+
+
+          <ul>
+
+            <li>Step back.</li>
+
+            <li>
+              Keep your voice calm.
+            </li>
+
+            <li>
+              Move other athletes back.
+            </li>
+
+            <li>
+              Get coach or staff help.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+
+        <section class="detail-box avoid">
+
+
+          <h2>
+
+            Avoid
+
+          </h2>
+
+
+          <ul>
+
+            <li>Grabbing back.</li>
+
+            <li>Arguing.</li>
+
+            <li>Cornering them.</li>
+
+            <li>
+              Handling a risky
+              situation alone.
+            </li>
+
+          </ul>
+
+
+        </section>
+
+
+      </div>
+
+
+
+      <div class="try-saying">
+
+
+        <span>
+
+          Try saying
+
+        </span>
+
+
+        <strong>
+
+          “I'm giving you space.
+          Coach is coming.”
+
+        </strong>
+
+
+      </div>
+
+
+
+      <div class="safety-alert">
+
+
+        <strong>
+
+          Immediate danger?
+
+        </strong>
+
+
+        Follow the coach or event
+        staff's safety procedures
+        and get help right away.
+
+
+      </div>
+
+
+    </div>
 
 
   </div>
 
 
 
-  <!-- ===================================================
-       MODAL 1 — JUMPING
-       =================================================== -->
-
-  <section
-    class="scenario-modal"
-    id="modal-jumping"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-  >
-
-    <div class="modal-header">
-
-      <div class="modal-topline">
-
-        <div class="modal-tag green">
-          Jumping + yelling
-        </div>
-
-        <button
-          class="modal-close"
-          aria-label="Close"
-        >
-          ×
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-scroll">
-
-      <div class="modal-content">
-
-        <h2 class="modal-title">
-          Start with the context.
-        </h2>
-
-
-        <div class="meaning-line">
-
-          <strong>
-            Could be:
-          </strong>
-
-          excitement, waiting energy, self-regulation,
-          or things starting to feel like too much.
-
-        </div>
-
-
-        <div class="modal-actions">
-
-          <div class="modal-box do">
-
-            <h3>
-              Do now
-            </h3>
-
-            <ul>
-              <li>Stay relaxed.</li>
-              <li>Give them some room.</li>
-              <li>Say what's coming next.</li>
-              <li>Keep it short.</li>
-            </ul>
-
-          </div>
-
-
-          <div class="modal-box avoid">
-
-            <h3>
-              Avoid
-            </h3>
-
-            <ul>
-              <li>Shouting “stop.”</li>
-              <li>Crowding them.</li>
-              <li>Assuming they're misbehaving.</li>
-            </ul>
-
-          </div>
-
-        </div>
-
-
-        <div class="say-box">
-
-          <span>
-            Try saying
-          </span>
-
-          <strong>
-            “You're good — your turn is coming.”
-          </strong>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ===================================================
-       MODAL 2 — WALKING
-       =================================================== -->
-
-  <section
-    class="scenario-modal"
-    id="modal-walking"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-  >
-
-    <div class="modal-header">
-
-      <div class="modal-topline">
-
-        <div class="modal-tag amber">
-          Walking away
-        </div>
-
-        <button
-          class="modal-close"
-          aria-label="Close"
-        >
-          ×
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-scroll">
-
-      <div class="modal-content">
-
-        <h2 class="modal-title">
-          Don't make it a standoff.
-        </h2>
-
-
-        <div class="meaning-line">
-
-          <strong>
-            Could be:
-          </strong>
-
-          needing a break, being confused,
-          wanting space, or being done for a bit.
-
-        </div>
-
-
-        <div class="modal-actions">
-
-          <div class="modal-box do">
-
-            <h3>
-              Do now
-            </h3>
-
-            <ul>
-              <li>Stay nearby if it's safe.</li>
-              <li>Keep your tone easy.</li>
-              <li>Offer one choice.</li>
-              <li>Reconnect with what's next.</li>
-            </ul>
-
-          </div>
-
-
-          <div class="modal-box avoid">
-
-            <h3>
-              Avoid
-            </h3>
-
-            <ul>
-              <li>Repeating “come back.”</li>
-              <li>Following too close.</li>
-              <li>Grabbing unless safety requires it.</li>
-            </ul>
-
-          </div>
-
-        </div>
-
-
-        <div class="say-box">
-
-          <span>
-            Try saying
-          </span>
-
-          <strong>
-            “Want a break, or want to come see basketball?”
-          </strong>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ===================================================
-       MODAL 3 — QUIET
-       =================================================== -->
-
-  <section
-    class="scenario-modal"
-    id="modal-quiet"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-  >
-
-    <div class="modal-header">
-
-      <div class="modal-topline">
-
-        <div class="modal-tag blue">
-          Not responding
-        </div>
-
-        <button
-          class="modal-close"
-          aria-label="Close"
-        >
-          ×
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-scroll">
-
-      <div class="modal-content">
-
-        <h2 class="modal-title">
-          More time. Fewer words.
-        </h2>
-
-
-        <div class="meaning-line">
-
-          <strong>
-            Could be:
-          </strong>
-
-          processing, confusion, overload,
-          or getting ready to respond another way.
-
-        </div>
-
-
-        <div class="modal-actions">
-
-          <div class="modal-box do">
-
-            <h3>
-              Do now
-            </h3>
-
-            <ul>
-              <li>Say their name once.</li>
-              <li>Give one clear cue.</li>
-              <li>Point or show.</li>
-              <li>Wait.</li>
-            </ul>
-
-          </div>
-
-
-          <div class="modal-box avoid">
-
-            <h3>
-              Avoid
-            </h3>
-
-            <ul>
-              <li>Rapid-fire directions.</li>
-              <li>Getting louder.</li>
-              <li>Answering for them too fast.</li>
-            </ul>
-
-          </div>
-
-        </div>
-
-
-        <div class="say-box">
-
-          <span>
-            Try saying
-          </span>
-
-          <strong>
-            “Alex, stand here. Take your time.”
-          </strong>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ===================================================
-       MODAL 4 — OVERWHELMED
-       =================================================== -->
-
-  <section
-    class="scenario-modal"
-    id="modal-overwhelmed"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-  >
-
-    <div class="modal-header">
-
-      <div class="modal-topline">
-
-        <div class="modal-tag purple">
-          Overwhelmed
-        </div>
-
-        <button
-          class="modal-close"
-          aria-label="Close"
-        >
-          ×
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-scroll">
-
-      <div class="modal-content">
-
-        <h2 class="modal-title">
-          Make the moment smaller.
-        </h2>
-
-
-        <div class="meaning-line">
-
-          <strong>
-            Could be:
-          </strong>
-
-          too much noise, talking, crowding,
-          or too much change at once.
-
-        </div>
-
-
-        <div class="modal-actions">
-
-          <div class="modal-box do">
-
-            <h3>
-              Do now
-            </h3>
-
-            <ul>
-              <li>Say less.</li>
-              <li>Give space.</li>
-              <li>Keep your voice calm.</li>
-              <li>Offer water, a break, or quiet.</li>
-            </ul>
-
-          </div>
-
-
-          <div class="modal-box avoid">
-
-            <h3>
-              Avoid
-            </h3>
-
-            <ul>
-              <li>Touching without warning.</li>
-              <li>Forcing eye contact.</li>
-              <li>Several people talking at once.</li>
-            </ul>
-
-          </div>
-
-        </div>
-
-
-        <div class="say-box">
-
-          <span>
-            Try saying
-          </span>
-
-          <strong>
-            “Want a break?” or “Water or quiet spot?”
-          </strong>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ===================================================
-       MODAL 5 — SAFETY
-       =================================================== -->
-
-  <section
-    class="scenario-modal"
-    id="modal-safety"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-  >
-
-    <div class="modal-header">
-
-      <div class="modal-topline">
-
-        <div class="modal-tag red">
-          Safety first
-        </div>
-
-        <button
-          class="modal-close"
-          aria-label="Close"
-        >
-          ×
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-scroll">
-
-      <div class="modal-content">
-
-        <h2 class="modal-title">
-          Create space.
-        </h2>
-
-
-        <div class="meaning-line">
-
-          <strong>
-            Could be:
-          </strong>
-
-          distress, overload, fear,
-          frustration, or a strong “no.”
-
-        </div>
-
-
-        <div class="modal-actions">
-
-          <div class="modal-box do">
-
-            <h3>
-              Do now
-            </h3>
-
-            <ul>
-              <li>Step back.</li>
-              <li>Keep your voice calm.</li>
-              <li>Move others back.</li>
-              <li>Get coach or staff help.</li>
-            </ul>
-
-          </div>
-
-
-          <div class="modal-box avoid">
-
-            <h3>
-              Avoid
-            </h3>
-
-            <ul>
-              <li>Grabbing back.</li>
-              <li>Arguing.</li>
-              <li>Cornering them.</li>
-              <li>Handling risk alone.</li>
-            </ul>
-
-          </div>
-
-        </div>
-
-
-        <div class="say-box">
-
-          <span>
-            Try saying
-          </span>
-
-          <strong>
-            “I'm giving you space. Coach is coming.”
-          </strong>
-
-        </div>
-
-
-        <div class="safety-alert">
-
-          <strong>
-            Immediate danger?
-          </strong>
-
-          Follow the coach or event staff's safety procedures
-          and get help right away.
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- SHARED SITE SCRIPT -->
-
-  <script src="script.js"></script>
-
-
-  <!-- MODAL SCRIPT -->
-
   <script>
 
-    const scenarioCards =
+
+    /* =====================================================
+       TRUE PAGE SWITCHING
+       ===================================================== */
+
+
+    const views =
       document.querySelectorAll(
-        "[data-modal]"
+        ".behavior-view"
       );
 
-    const scenarioModals =
+
+    const scenarioButtons =
       document.querySelectorAll(
-        ".scenario-modal"
+        "[data-view]"
       );
 
-    const modalCloseButtons =
+
+    const backButtons =
       document.querySelectorAll(
-        ".modal-close"
+        ".detail-back"
       );
 
 
-    let savedScrollY = 0;
-    let activeModal = null;
+    let homeScrollPosition = 0;
 
 
 
-    function lockPage() {
-
-      savedScrollY =
-        window.scrollY ||
-        document.documentElement.scrollTop;
-
-      document.body.style.position =
-        "fixed";
-
-      document.body.style.top =
-        `-${savedScrollY}px`;
-
-      document.body.style.left =
-        "0";
-
-      document.body.style.right =
-        "0";
-
-      document.body.style.width =
-        "100%";
-
-    }
+    function showView(viewName) {
 
 
+      views.forEach(
+        view => {
 
-    function unlockPage() {
+          view.classList.remove(
+            "active"
+          );
 
-      document.body.style.position =
-        "";
-
-      document.body.style.top =
-        "";
-
-      document.body.style.left =
-        "";
-
-      document.body.style.right =
-        "";
-
-      document.body.style.width =
-        "";
-
-
-      window.scrollTo(
-        0,
-        savedScrollY
+        }
       );
 
-    }
 
-
-
-    function openModal(id) {
-
-      const modal =
+      const target =
         document.getElementById(
-          "modal-" + id
+          "view-" + viewName
         );
 
 
-      if (!modal) return;
+      if (!target) return;
 
 
-      activeModal = modal;
+      target.classList.add(
+        "active"
+      );
 
 
-      lockPage();
+      /*
+        This is now just normal
+        browser page scrolling.
+      */
 
 
-      const scrollArea =
-        modal.querySelector(
-          ".modal-scroll"
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+
+      history.replaceState(
+        null,
+        "",
+        "#"+viewName
+      );
+
+
+    }
+
+
+
+    function showHome() {
+
+
+      views.forEach(
+        view => {
+
+          view.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+
+      const home =
+        document.getElementById(
+          "view-home"
         );
 
 
-      if (scrollArea) {
-
-        scrollArea.scrollTop = 0;
-
-      }
-
-
-      modal.classList.add(
-        "open"
+      home.classList.add(
+        "active"
       );
 
 
-      modal.setAttribute(
-        "aria-hidden",
-        "false"
+      history.replaceState(
+        null,
+        "",
+        "behavior.html"
       );
 
 
-      setTimeout(
+      /*
+        Return to approximately where
+        the volunteer was before.
+      */
+
+
+      requestAnimationFrame(
         () => {
 
-          const closeButton =
-            modal.querySelector(
-              ".modal-close"
-            );
+          window.scrollTo(
+            0,
+            homeScrollPosition
+          );
 
-          if (closeButton) {
-
-            closeButton.focus();
-
-          }
-
-        },
-        150
+        }
       );
+
 
     }
 
 
 
-    function closeModal() {
-
-      if (!activeModal) return;
-
-
-      activeModal.classList.remove(
-        "open"
-      );
-
-
-      activeModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-
-      activeModal = null;
-
-
-      unlockPage();
-
-    }
-
-
-
-    scenarioCards.forEach(
-      card => {
-
-        card.addEventListener(
-          "click",
-          () => {
-
-            openModal(
-              card.dataset.modal
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-
-    modalCloseButtons.forEach(
+    scenarioButtons.forEach(
       button => {
+
 
         button.addEventListener(
           "click",
-          closeModal
+          () => {
+
+
+            homeScrollPosition =
+              window.scrollY;
+
+
+            showView(
+              button.dataset.view
+            );
+
+
+          }
         );
 
+
+      }
+    );
+
+
+
+    backButtons.forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          showHome
+        );
+
+
       }
     );
 
 
 
-    document.addEventListener(
-      "keydown",
-      event => {
+    /* =====================================================
+       DIRECT LINKS
+       behavior.html#walking
+       etc.
+       ===================================================== */
 
-        if (
-          event.key === "Escape"
-        ) {
 
-          closeModal();
+    const initialHash =
+      window.location.hash
+        .replace("#","");
 
-        }
 
-      }
-    );
+    const validViews = [
+      "jumping",
+      "walking",
+      "quiet",
+      "overwhelmed",
+      "safety"
+    ];
+
+
+    if (
+      validViews.includes(
+        initialHash
+      )
+    ) {
+
+      showView(
+        initialHash
+      );
+
+    }
 
 
   </script>
