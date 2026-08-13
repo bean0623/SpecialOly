@@ -7,29 +7,23 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
   <title>
     Real Situations | Volunteer Communication Guide
   </title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+  <link rel="stylesheet" href="style.css">
 
   <style>
 
     /* =====================================================
-       BEHAVIOR PAGE — V5
-       Compact mobile scenario tool
+       BEHAVIOR PAGE — V6
+       Full-screen mobile modal system
        ===================================================== */
 
-
     :root {
-
       --green-bg: #e4f8ee;
       --green-accent: #2fa36c;
 
@@ -45,76 +39,49 @@
       --red-bg: #ffe5e2;
       --red-accent: #d65347;
 
+      --modal-dark: #20232c;
     }
-
-
-    body.sheet-open {
-      overflow: hidden;
-    }
-
 
 
     /* =====================================================
-       INTRO
+       PAGE INTRO
        ===================================================== */
 
-
     .behavior-intro {
-
-      padding:
-        42px 0 22px;
-
+      padding: 42px 0 22px;
     }
-
 
     .behavior-intro .eyebrow {
-
       margin-bottom: 9px;
-
     }
-
 
     .behavior-intro h1 {
-
-      font-size:
-        clamp(37px, 9vw, 58px);
-
+      font-size: clamp(37px, 9vw, 58px);
       line-height: .98;
-
     }
 
-
     .behavior-intro .lead {
-
       max-width: 620px;
 
-      margin:
-        14px 0 0;
+      margin: 14px 0 0;
 
       font-size: 16px;
       line-height: 1.48;
-
     }
-
 
 
     /* =====================================================
        START NOTE
        ===================================================== */
 
-
     .start-note {
-
       display: flex;
-
       align-items: center;
-
       gap: 13px;
 
       margin-bottom: 24px;
 
-      padding:
-        15px 17px;
+      padding: 15px 17px;
 
       border-radius: 20px;
 
@@ -129,18 +96,14 @@
 
       box-shadow:
         0 13px 32px
-        rgba(18, 20, 29, .10);
-
+        rgba(18,20,29,.10);
     }
 
-
     .start-mark {
-
       width: 36px;
       height: 36px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -153,272 +116,167 @@
 
       font-size: 18px;
       font-weight: 700;
-
     }
 
-
     .start-note strong {
-
       display: block;
 
       margin-bottom: 2px;
 
       font-size: 14px;
-
     }
 
-
     .start-note span {
-
       color: #d0d3dc;
 
       font-size: 13px;
       line-height: 1.35;
-
     }
-
 
 
     /* =====================================================
-       SCENARIO SECTION
+       SCENARIOS
        ===================================================== */
 
-
     .scenario-title {
-
       margin-bottom: 12px;
-
     }
 
-
     .scenario-title h2 {
-
       margin: 0;
 
       font-size: 24px;
-
       letter-spacing: -.035em;
-
     }
 
-
     .scenario-title p {
-
-      margin:
-        4px 0 0;
+      margin: 4px 0 0;
 
       color: var(--muted);
 
       font-size: 14px;
-
     }
-
 
     .scenario-list {
-
       display: grid;
-
       gap: 10px;
-
     }
-
 
 
     /* =====================================================
-       SCENARIO CARDS
+       CARDS
        ===================================================== */
 
-
     .scenario-card {
-
       width: 100%;
 
       display: grid;
 
       grid-template-columns:
-        72px 1fr 22px;
+        72px 1fr 20px;
 
       align-items: center;
 
       gap: 13px;
 
-      min-height: 110px;
+      min-height: 108px;
 
-      padding:
-        13px 14px;
+      padding: 12px 14px;
 
       border:
         1px solid
-        rgba(29,29,31,.055);
+        rgba(29,29,31,.05);
 
       border-radius: 23px;
 
       text-align: left;
-
       cursor: pointer;
 
       transition:
-
         transform .2s var(--ease),
         box-shadow .2s var(--ease);
-
     }
 
-
     .scenario-card:hover {
-
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
 
       box-shadow:
         0 13px 30px
         rgba(30,33,44,.08);
-
     }
-
 
     .scenario-card:active {
-
-      transform:
-        scale(.985);
-
+      transform: scale(.985);
     }
-
 
     .scenario-card.green {
-
-      background:
-        var(--green-bg);
-
+      background: var(--green-bg);
     }
-
 
     .scenario-card.amber {
-
-      background:
-        var(--amber-bg);
-
+      background: var(--amber-bg);
     }
-
 
     .scenario-card.blue {
-
-      background:
-        var(--blue-bg);
-
+      background: var(--blue-bg);
     }
-
 
     .scenario-card.purple {
-
-      background:
-        var(--purple-bg);
-
+      background: var(--purple-bg);
     }
-
 
     .scenario-card.red {
-
-      background:
-        var(--red-bg);
-
+      background: var(--red-bg);
     }
-
 
 
     /* ---------- card text ---------- */
 
-
     .scenario-copy {
-
       min-width: 0;
-
     }
 
-
     .scenario-label {
-
       margin-bottom: 4px;
 
-      color:
-        rgba(35,38,45,.57);
+      color: rgba(35,38,45,.57);
 
       font-size: 10px;
-
       font-weight: 800;
 
       letter-spacing: .055em;
-
       text-transform: uppercase;
-
     }
 
-
     .scenario-copy h3 {
-
       margin: 0;
 
       font-size: 17px;
-
       line-height: 1.12;
-
       letter-spacing: -.025em;
-
     }
 
-
     .scenario-copy p {
-
-      display: -webkit-box;
-
-      overflow: hidden;
-
-      margin:
-        5px 0 0;
+      margin: 5px 0 0;
 
       color: #5d626d;
 
       font-size: 12.5px;
-
       line-height: 1.35;
-
-      -webkit-box-orient: vertical;
-
-      -webkit-line-clamp: 2;
-
     }
 
-
     .chevron {
-
-      color:
-        rgba(29,29,31,.46);
+      color: rgba(29,29,31,.46);
 
       font-size: 23px;
-
-      transition:
-        transform .2s var(--ease);
-
     }
-
-
-    .scenario-card:hover
-    .chevron {
-
-      transform:
-        translateX(3px);
-
-    }
-
 
 
     /* =====================================================
-       VISUAL BOX
+       MINI VISUALS
        ===================================================== */
 
-
     .scenario-visual {
-
       position: relative;
 
       width: 72px;
@@ -434,18 +292,12 @@
       box-shadow:
         inset 0 1px 0
         rgba(255,255,255,.72);
-
     }
 
 
-
-    /* =====================================================
-       MINI HUMAN
-       ===================================================== */
-
+    /* ---------- human ---------- */
 
     .mini-human {
-
       position: absolute;
 
       width: 38px;
@@ -459,12 +311,9 @@
 
       transform-origin:
         center bottom;
-
     }
 
-
     .mini-head {
-
       position: absolute;
 
       width: 24px;
@@ -481,12 +330,9 @@
           #edbf9c,
           #ce906a
         );
-
     }
 
-
     .mini-hair {
-
       position: absolute;
 
       width: 26px;
@@ -501,12 +347,9 @@
       background: #34323a;
 
       z-index: 2;
-
     }
 
-
     .mini-body {
-
       position: absolute;
 
       width: 32px;
@@ -520,12 +363,9 @@
 
       background:
         var(--shirt, #6078da);
-
     }
 
-
     .mini-leg {
-
       position: absolute;
 
       width: 7px;
@@ -536,45 +376,30 @@
       border-radius: 6px;
 
       background: #30394e;
-
     }
-
 
     .mini-leg.left {
-
       left: 10px;
-
     }
-
 
     .mini-leg.right {
-
       right: 10px;
-
     }
-
 
 
     /* =====================================================
-       1 — JUMPING
+       CARD 1 — JUMPING
        ===================================================== */
 
-
     .jump-person {
-
       --shirt: #38a970;
 
       animation:
-        jumpHuman
-        1.5s
-        ease-in-out
-        infinite;
-
+        jumpHuman 1.5s
+        ease-in-out infinite;
     }
 
-
     .jump-shadow {
-
       position: absolute;
 
       width: 34px;
@@ -592,16 +417,11 @@
         rgba(31,88,61,.13);
 
       animation:
-        jumpShadow
-        1.5s
-        ease-in-out
-        infinite;
-
+        jumpShadow 1.5s
+        ease-in-out infinite;
     }
 
-
     .jump-line {
-
       position: absolute;
 
       width: 3px;
@@ -613,53 +433,38 @@
         var(--green-accent);
 
       opacity: .45;
-
     }
 
-
     .jump-line.one {
-
       left: 12px;
       top: 24px;
 
       transform:
         rotate(-22deg);
-
     }
 
-
     .jump-line.two {
-
       right: 12px;
       top: 19px;
 
       transform:
         rotate(23deg);
-
     }
-
 
 
     /* =====================================================
-       2 — WALKING
+       CARD 2 — WALKING
        ===================================================== */
 
-
     .walk-person {
-
       --shirt: #df993c;
 
       animation:
-        walkHuman
-        2.8s
-        ease-in-out
-        infinite;
-
+        walkHuman 2.8s
+        ease-in-out infinite;
     }
 
-
     .walk-path {
-
       position: absolute;
 
       left: 10px;
@@ -676,31 +481,22 @@
           rgba(219,146,55,.08),
           rgba(219,146,55,.58)
         );
-
     }
-
 
 
     /* =====================================================
-       3 — QUIET / PROCESSING
+       CARD 3 — WAIT
        ===================================================== */
 
-
     .quiet-person {
-
       --shirt: #6078dc;
 
       animation:
-        slowBreathe
-        3.6s
-        ease-in-out
-        infinite;
-
+        slowBreathe 3.6s
+        ease-in-out infinite;
     }
 
-
     .pause-ring {
-
       position: absolute;
 
       width: 42px;
@@ -719,42 +515,28 @@
       border-radius: 50%;
 
       animation:
-        pauseRing
-        2.7s
-        ease-out
-        infinite;
-
+        pauseRing 2.7s
+        ease-out infinite;
     }
-
 
     .pause-ring.second {
-
       animation-delay: .8s;
-
     }
-
 
 
     /* =====================================================
-       4 — OVERWHELMED
+       CARD 4 — OVERLOAD
        ===================================================== */
 
-
     .overload-person {
-
       --shirt: #8868d9;
 
       animation:
-        overloadBody
-        2.5s
-        ease-in-out
-        infinite;
-
+        overloadBody 2.5s
+        ease-in-out infinite;
     }
 
-
     .sensory-wave {
-
       position: absolute;
 
       border:
@@ -764,27 +546,19 @@
       border-radius: 50%;
 
       animation:
-        sensoryWave
-        2.4s
-        ease-out
-        infinite;
-
+        sensoryWave 2.4s
+        ease-out infinite;
     }
 
-
     .sensory-wave.one {
-
       width: 38px;
       height: 38px;
 
       left: 17px;
       top: 10px;
-
     }
 
-
     .sensory-wave.two {
-
       width: 58px;
       height: 58px;
 
@@ -792,53 +566,38 @@
       top: 0;
 
       animation-delay: .65s;
-
     }
 
 
-
     /* =====================================================
-       5 — SAFETY
+       CARD 5 — SAFETY
        ===================================================== */
-
 
     .safety-person-left,
     .safety-person-right {
-
       position: absolute;
 
       width: 29px;
       height: 52px;
 
       bottom: 6px;
-
     }
 
-
     .safety-person-left {
-
       left: 8px;
 
       animation:
-        safetyStepLeft
-        2.6s
-        ease-in-out
-        infinite;
-
+        safetyStepLeft 2.6s
+        ease-in-out infinite;
     }
 
-
     .safety-person-right {
-
       right: 8px;
 
       --small-shirt: #66728d;
-
     }
 
-
     .small-head {
-
       position: absolute;
 
       width: 19px;
@@ -849,12 +608,9 @@
       border-radius: 50%;
 
       background: #d69a76;
-
     }
 
-
     .small-body {
-
       position: absolute;
 
       width: 26px;
@@ -866,16 +622,10 @@
       border-radius: 10px;
 
       background:
-        var(
-          --small-shirt,
-          #d85143
-        );
-
+        var(--small-shirt, #d85143);
     }
 
-
     .safety-distance {
-
       position: absolute;
 
       left: 50%;
@@ -893,363 +643,143 @@
         var(--red-accent);
 
       animation:
-        distancePulse
-        2.2s
-        ease-in-out
-        infinite;
-
+        distancePulse 2.2s
+        ease-in-out infinite;
     }
-
-
-    .safety-distance::before,
-    .safety-distance::after {
-
-      content: "";
-
-      position: absolute;
-
-      width: 5px;
-      height: 5px;
-
-      top: -1px;
-
-      border-top:
-        2px solid
-        var(--red-accent);
-
-      border-right:
-        2px solid
-        var(--red-accent);
-
-    }
-
-
-    .safety-distance::before {
-
-      left: -1px;
-
-      transform:
-        rotate(-135deg);
-
-    }
-
-
-    .safety-distance::after {
-
-      right: -1px;
-
-      transform:
-        rotate(45deg);
-
-    }
-
 
 
     /* =====================================================
-       BACKDROP
+       FULL-SCREEN MODAL
        ===================================================== */
 
-
-    .sheet-backdrop {
-
+    .scenario-modal {
       position: fixed;
 
       inset: 0;
 
-      z-index: 998;
+      z-index: 1000;
 
-      background:
-        rgba(15,17,24,.37);
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+
+      display: flex;
+      flex-direction: column;
+
+      background: #fff;
 
       opacity: 0;
 
+      visibility: hidden;
       pointer-events: none;
 
-      backdrop-filter: blur(4px);
-
-      -webkit-backdrop-filter:
-        blur(4px);
+      transform:
+        translateY(12px);
 
       transition:
-        opacity .28s ease;
-
+        opacity .24s ease,
+        transform .28s cubic-bezier(.22,.8,.22,1),
+        visibility .24s;
     }
 
-
-    .sheet-backdrop.open {
-
+    .scenario-modal.open {
       opacity: 1;
 
+      visibility: visible;
       pointer-events: auto;
 
+      transform:
+        translateY(0);
     }
 
 
-
     /* =====================================================
-       BOTTOM SHEET
-       IMPORTANT: iPHONE SCROLL FIX
+       MODAL HEADER
+       NEVER SCROLLS
        ===================================================== */
 
+    .modal-header {
+      position: relative;
+      z-index: 10;
 
-    .scenario-sheet {
-
-      position: fixed;
-
-      left: 50%;
-      bottom: 0;
-
-      z-index: 999;
-
-      width:
-        min(720px, 100%);
-
-
-      /*
-        Fallback first.
-        Dynamic viewport height second.
-      */
-
-      height:
-        calc(100vh - 16px);
-
-      height:
-        calc(100dvh - 16px);
-
-      max-height: 820px;
-
-
-      overflow-y: auto;
-
-      overflow-x: hidden;
-
-
-      /*
-        Critical for iPhone Safari
-      */
-
-      -webkit-overflow-scrolling:
-        touch;
-
-      touch-action: pan-y;
-
-      overscroll-behavior-y:
-        contain;
-
+      flex:
+        0 0 auto;
 
       padding:
-
-        0 18px
         calc(
-          25px +
-          env(safe-area-inset-bottom)
-        );
-
-
-      border-radius:
-        30px 30px 0 0;
-
+          14px +
+          env(safe-area-inset-top)
+        )
+        18px
+        13px;
 
       background:
-        #ffffff;
+        rgba(255,255,255,.96);
 
-
-      box-shadow:
-
-        0 -18px 60px
-        rgba(14,17,25,.20);
-
-
-      transform:
-
-        translate(
-          -50%,
-          105%
-        );
-
-
-      transition:
-
-        transform .36s
-        cubic-bezier(
-          .22,
-          .8,
-          .22,
-          1
-        );
-
-    }
-
-
-    .scenario-sheet.open {
-
-      transform:
-        translate(
-          -50%,
-          0
-        );
-
-    }
-
-
-
-    /* =====================================================
-       STICKY SHEET HEADER
-       ===================================================== */
-
-
-    .sheet-sticky {
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 20;
-
-      margin:
-        0 -2px;
-
-      padding:
-        9px 2px 12px;
-
-
-      background:
-
-        rgba(
-          255,
-          255,
-          255,
-          .94
-        );
-
+      border-bottom:
+        1px solid
+        rgba(29,29,31,.07);
 
       backdrop-filter:
-        blur(16px);
+        blur(18px);
 
       -webkit-backdrop-filter:
-        blur(16px);
-
+        blur(18px);
     }
 
-
-    .sheet-handle {
-
-      width: 40px;
-      height: 5px;
-
-      margin:
-        0 auto 13px;
-
-      border-radius: 999px;
-
-      background:
-        #d9dade;
-
-    }
-
-
-    .sheet-top {
-
+    .modal-topline {
       display: flex;
 
-      justify-content:
-        space-between;
-
-      align-items:
-        flex-start;
+      align-items: center;
+      justify-content: space-between;
 
       gap: 14px;
-
     }
 
-
-    .sheet-tag {
-
+    .modal-tag {
       display: inline-flex;
 
-      margin-bottom: 7px;
-
-      padding:
-        7px 10px;
+      padding: 7px 10px;
 
       border-radius: 999px;
 
       font-size: 10px;
-
       font-weight: 800;
 
       letter-spacing: .055em;
-
       text-transform: uppercase;
-
     }
 
-
-    .sheet-tag.green {
-
+    .modal-tag.green {
       background:
         var(--green-bg);
-
     }
 
-
-    .sheet-tag.amber {
-
+    .modal-tag.amber {
       background:
         var(--amber-bg);
-
     }
 
-
-    .sheet-tag.blue {
-
+    .modal-tag.blue {
       background:
         var(--blue-bg);
-
     }
 
-
-    .sheet-tag.purple {
-
+    .modal-tag.purple {
       background:
         var(--purple-bg);
-
     }
 
-
-    .sheet-tag.red {
-
+    .modal-tag.red {
       background:
         var(--red-bg);
-
     }
 
-
-    .sheet-title {
-
-      margin: 0;
-
-      font-size:
-        clamp(
-          27px,
-          7vw,
-          37px
-        );
-
-      line-height: 1.03;
-
-      letter-spacing: -.04em;
-
-    }
-
-
-    .sheet-close {
-
+    .modal-close {
       width: 38px;
       height: 38px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -1259,112 +789,121 @@
 
       border-radius: 50%;
 
-      background:
-        #efefec;
+      background: #efefec;
+
+      color: #303238;
 
       cursor: pointer;
 
-      font-size: 20px;
-
+      font-size: 21px;
+      line-height: 1;
     }
-
 
 
     /* =====================================================
-       SHEET CONTENT
+       THIS IS THE ONLY PART THAT SCROLLS
        ===================================================== */
 
+    .modal-scroll {
+      flex: 1 1 auto;
 
-    .sheet-content {
+      min-height: 0;
 
-      padding-top: 4px;
+      overflow-y: auto;
+      overflow-x: hidden;
 
-    }
+      -webkit-overflow-scrolling:
+        touch;
 
+      overscroll-behavior-y:
+        contain;
 
-    .meaning-line {
-
-      margin:
-        13px 0 14px;
+      touch-action:
+        pan-y;
 
       padding:
-        13px 15px;
+        20px 18px
+        calc(
+          30px +
+          env(safe-area-inset-bottom)
+        );
+    }
 
-      border-radius: 16px;
+    .modal-content {
+      width: min(680px, 100%);
 
-      background:
-        #f3f4f6;
+      margin: 0 auto;
+    }
 
-      color:
-        #575d68;
+
+    /* =====================================================
+       MODAL TITLE
+       ===================================================== */
+
+    .modal-title {
+      margin: 0 0 14px;
+
+      font-size:
+        clamp(31px, 8vw, 43px);
+
+      line-height: 1.02;
+      letter-spacing: -.045em;
+    }
+
+    .meaning-line {
+      margin-bottom: 12px;
+
+      padding: 13px 15px;
+
+      border-radius: 17px;
+
+      background: #f2f3f5;
+
+      color: #5c626d;
 
       font-size: 14px;
-
-      line-height: 1.42;
-
+      line-height: 1.43;
     }
-
 
     .meaning-line strong {
-
       color: #24272e;
-
     }
 
 
+    /* =====================================================
+       DO / AVOID
+       ===================================================== */
 
-    /* ---------- do / avoid ---------- */
-
-
-    .sheet-actions {
-
+    .modal-actions {
       display: grid;
 
       grid-template-columns:
         1fr 1fr;
 
       gap: 10px;
-
     }
 
-
-    .sheet-box {
-
+    .modal-box {
       padding: 15px;
 
-      border-radius: 18px;
-
+      border-radius: 19px;
     }
 
-
-    .sheet-box.do {
-
-      background:
-        #eaf7f0;
-
+    .modal-box.do {
+      background: #eaf7f0;
     }
 
-
-    .sheet-box.avoid {
-
-      background:
-        #fff0ee;
-
+    .modal-box.avoid {
+      background: #fff0ee;
     }
 
-
-    .sheet-box h3 {
-
-      margin:
-        0 0 8px;
+    .modal-box h3 {
+      margin: 0 0 8px;
 
       font-size: 15px;
-
     }
 
-
-    .sheet-box ul {
-
+    .modal-box ul {
       margin: 0;
 
       padding-left: 17px;
@@ -1372,85 +911,65 @@
       color: #505660;
 
       font-size: 13.5px;
-
       line-height: 1.48;
-
     }
 
-
-    .sheet-box li {
-
+    .modal-box li {
       margin-bottom: 5px;
-
     }
 
 
-
-    /* ---------- phrase ---------- */
-
+    /* =====================================================
+       TRY SAYING
+       ===================================================== */
 
     .say-box {
-
       margin-top: 10px;
 
-      padding:
-        14px 16px;
+      padding: 14px 16px;
 
-      border-radius: 18px;
+      border-radius: 19px;
 
       background:
-
         linear-gradient(
           135deg,
-          #1e202a,
-          #292c37
+          #20232c,
+          #2c303b
         );
 
       color: white;
-
     }
 
-
     .say-box span {
-
       display: block;
 
-      margin-bottom: 4px;
+      margin-bottom: 5px;
 
-      color: #aeb3c0;
+      color: #adb3c0;
 
       font-size: 10px;
-
       font-weight: 800;
 
       letter-spacing: .06em;
-
       text-transform: uppercase;
-
     }
-
 
     .say-box strong {
-
       font-size: 16px;
-
       line-height: 1.4;
-
     }
 
 
-
-    /* ---------- safety ---------- */
-
+    /* =====================================================
+       SAFETY
+       ===================================================== */
 
     .safety-alert {
-
       margin-top: 10px;
 
-      padding:
-        13px 15px;
+      padding: 13px 15px;
 
-      border-radius: 17px;
+      border-radius: 18px;
 
       background:
         var(--red-bg);
@@ -1458,31 +977,26 @@
       color: #74423b;
 
       font-size: 13px;
-
       line-height: 1.45;
-
     }
-
 
     .safety-alert strong {
+      display: block;
+
+      margin-bottom: 3px;
 
       color: #b83d30;
-
     }
-
 
 
     /* =====================================================
        REMINDER
        ===================================================== */
 
-
     .quick-reminder {
-
       margin-top: 20px;
 
-      padding:
-        15px 17px;
+      padding: 15px 17px;
 
       border-radius: 20px;
 
@@ -1491,394 +1005,292 @@
       color: #656b76;
 
       font-size: 13px;
-
       line-height: 1.45;
-
     }
 
-
     .quick-reminder strong {
-
       display: block;
 
       margin-bottom: 2px;
 
       color: #242830;
-
     }
-
 
 
     /* =====================================================
        ANIMATIONS
        ===================================================== */
 
-
     @keyframes jumpHuman {
 
       0%,
       100% {
-
         transform:
           translateX(-50%)
           translateY(0);
-
       }
 
-
       47% {
-
         transform:
           translateX(-50%)
           translateY(-10px);
-
       }
 
     }
-
 
     @keyframes jumpShadow {
 
       0%,
       100% {
-
         width: 34px;
-
         opacity: .14;
-
       }
 
-
       47% {
-
         width: 22px;
-
         opacity: .05;
-
       }
 
     }
-
 
     @keyframes walkHuman {
 
       0%,
       100% {
-
         transform:
           translateX(-75%);
-
       }
 
-
       50% {
-
         transform:
           translateX(-20%);
-
       }
 
     }
-
 
     @keyframes slowBreathe {
 
       0%,
       100% {
-
         transform:
           translateX(-50%)
           scale(.97);
-
       }
 
-
       50% {
-
         transform:
           translateX(-50%)
           scale(1.02);
-
       }
 
     }
 
-
     @keyframes pauseRing {
 
       0% {
-
         transform:
           translate(-50%,-50%)
           scale(.6);
 
         opacity: .55;
-
       }
 
-
       100% {
-
         transform:
           translate(-50%,-50%)
           scale(1.5);
 
         opacity: 0;
-
       }
 
     }
-
 
     @keyframes sensoryWave {
 
       0% {
-
         transform:
           scale(.72);
 
         opacity: .55;
-
       }
 
-
       100% {
-
         transform:
           scale(1.4);
 
         opacity: 0;
-
       }
 
     }
-
 
     @keyframes overloadBody {
 
       0%,
       100% {
-
         transform:
           translateX(-50%)
           rotate(0);
-
       }
 
-
       35% {
-
         transform:
           translateX(-50%)
           rotate(-2deg);
-
       }
 
-
       68% {
-
         transform:
           translateX(-50%)
           rotate(2deg);
-
       }
 
     }
-
 
     @keyframes safetyStepLeft {
 
       0%,
       100% {
-
         transform:
           translateX(0);
-
       }
 
-
       50% {
-
         transform:
           translateX(-5px);
-
       }
 
     }
-
 
     @keyframes distancePulse {
 
       0%,
       100% {
-
         width: 18px;
-
         opacity: .55;
-
       }
 
-
       50% {
-
-        width: 25px;
-
+        width: 26px;
         opacity: 1;
-
       }
 
     }
-
 
 
     /* =====================================================
        DESKTOP
        ===================================================== */
 
-
-    @media
-    (min-width: 720px) {
-
+    @media (min-width: 720px) {
 
       .scenario-list {
-
         grid-template-columns:
           1fr 1fr;
-
       }
-
-
-      .scenario-card {
-
-        min-height: 120px;
-
-      }
-
 
       .scenario-card.red {
-
         grid-column:
           1 / -1;
+      }
 
+      .modal-scroll {
+        padding-top: 32px;
       }
 
     }
-
-
-
-    /* =====================================================
-       PHONE
-       ===================================================== */
-
-
-    @media
-    (max-width: 600px) {
-
-
-      .scenario-sheet {
-
-        width:
-          calc(100% - 10px);
-
-        bottom: 5px;
-
-
-        height:
-          calc(100vh - 15px);
-
-        height:
-          calc(100dvh - 15px);
-
-
-        border-radius:
-          27px;
-
-      }
-
-
-      .sheet-sticky {
-
-        border-radius:
-          27px 27px 0 0;
-
-      }
-
-    }
-
 
 
     /* =====================================================
        SMALL PHONE
        ===================================================== */
 
-
-    @media
-    (max-width: 420px) {
-
+    @media (max-width: 420px) {
 
       .page-shell {
-
         width:
           calc(100% - 26px);
-
       }
 
-
       .scenario-card {
-
-        min-height: 104px;
-
         grid-template-columns:
           64px 1fr 18px;
 
+        min-height: 102px;
+
         padding:
-          11px 12px;
+          10px 12px;
 
         border-radius: 20px;
-
       }
 
-
       .scenario-visual {
-
         width: 64px;
         height: 64px;
 
         border-radius: 17px;
-
       }
-
 
       .scenario-copy h3 {
-
         font-size: 16px;
-
       }
-
 
       .scenario-copy p {
-
         font-size: 12px;
-
       }
 
+      .modal-scroll {
+        padding:
+          16px 15px
+          calc(
+            25px +
+            env(safe-area-inset-bottom)
+          );
+      }
 
-      .sheet-actions {
+      .modal-title {
+        font-size: 30px;
+      }
 
+      .modal-actions {
         grid-template-columns:
           1fr;
-
       }
 
-
-      .sheet-title {
-
-        font-size: 27px;
-
+      .modal-box {
+        padding: 13px 14px;
       }
 
     }
 
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+      .jump-person,
+      .jump-shadow,
+      .walk-person,
+      .quiet-person,
+      .pause-ring,
+      .overload-person,
+      .sensory-wave,
+      .safety-person-left,
+      .safety-distance {
+
+        animation: none !important;
+
+      }
+
+      .scenario-modal {
+
+        transition: none;
+
+      }
+
+    }
 
   </style>
 
@@ -1893,62 +1305,40 @@
 
     <!-- TOP BAR -->
 
-
     <header class="topbar">
-
 
       <a
         href="index.html"
         class="back-link"
       >
-
         ← Home
-
       </a>
 
-
       <div class="top-label">
-
         Real Situations
-
       </div>
-
 
     </header>
 
 
 
-    <!-- HERO -->
+    <!-- INTRO -->
 
-
-    <section
-      class="behavior-intro reveal"
-    >
-
+    <section class="behavior-intro reveal">
 
       <div class="eyebrow">
-
         Quick help in the moment
-
       </div>
 
-
       <h1 class="page-title">
-
         Real situations.<br>
         Quick responses.
-
       </h1>
 
-
       <p class="lead">
-
-        Pick what looks closest
-        to what's happening.
+        Pick what looks closest to what's happening.
         We'll keep the answer short.
-
       </p>
-
 
     </section>
 
@@ -1956,509 +1346,307 @@
 
     <!-- START NOTE -->
 
-
-    <section
-      class="start-note reveal"
-    >
-
+    <section class="start-note reveal">
 
       <div class="start-mark">
-
         ?
-
       </div>
-
 
       <div>
 
-
         <strong>
-
-          First question:
-          what just happened?
-
+          First question: what just happened?
         </strong>
 
-
         <span>
-
-          Context usually tells you
-          more than the behavior
-          by itself.
-
+          Context usually tells you more than the behavior by itself.
         </span>
 
-
       </div>
-
 
     </section>
 
 
 
-    <!-- SCENARIOS -->
-
+    <!-- SCENARIO LIST -->
 
     <section class="reveal">
 
-
       <div class="scenario-title">
 
-
         <h2>
-
           What are you seeing?
-
         </h2>
 
-
         <p>
-
           Tap one.
-
         </p>
 
-
       </div>
-
 
 
       <div class="scenario-list">
 
 
-
-        <!-- 1 JUMPING -->
-
+        <!-- JUMPING -->
 
         <button
           class="scenario-card green"
-          data-sheet="jumping"
+          data-modal="jumping"
         >
 
-
           <div class="scenario-visual">
-
 
             <div class="jump-shadow"></div>
 
-
             <div class="jump-line one"></div>
-
             <div class="jump-line two"></div>
 
-
-            <div
-              class="mini-human jump-person"
-            >
-
+            <div class="mini-human jump-person">
 
               <div class="mini-hair"></div>
-
               <div class="mini-head"></div>
-
               <div class="mini-body"></div>
 
-
-              <div
-                class="mini-leg left"
-              ></div>
-
-
-              <div
-                class="mini-leg right"
-              ></div>
-
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
 
             </div>
-
 
           </div>
 
 
-
           <div class="scenario-copy">
 
-
             <div class="scenario-label">
-
               Common
-
             </div>
 
-
             <h3>
-
               Jumping in place + yelling
-
             </h3>
 
-
             <p>
-
-              Excited, waiting,
-              regulating, or overwhelmed.
-
+              Excited, waiting, regulating, or overwhelmed.
             </p>
-
 
           </div>
 
 
           <div class="chevron">
-
             ›
-
           </div>
-
 
         </button>
 
 
 
-        <!-- 2 WALKING -->
-
+        <!-- WALKING -->
 
         <button
           class="scenario-card amber"
-          data-sheet="walking"
+          data-modal="walking"
         >
 
-
           <div class="scenario-visual">
-
 
             <div class="walk-path"></div>
 
-
-            <div
-              class="mini-human walk-person"
-            >
-
+            <div class="mini-human walk-person">
 
               <div class="mini-hair"></div>
-
               <div class="mini-head"></div>
-
               <div class="mini-body"></div>
 
-
-              <div
-                class="mini-leg left"
-              ></div>
-
-
-              <div
-                class="mini-leg right"
-              ></div>
-
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
 
             </div>
-
 
           </div>
 
 
-
           <div class="scenario-copy">
 
-
             <div class="scenario-label">
-
               Common
-
             </div>
 
-
             <h3>
-
               Walking away
-
             </h3>
 
-
             <p>
-
-              They may need space,
-              a break, or a clearer
-              next step.
-
+              They may need space, a break, or a clearer next step.
             </p>
-
 
           </div>
 
 
           <div class="chevron">
-
             ›
-
           </div>
-
 
         </button>
 
 
 
-        <!-- 3 QUIET -->
-
+        <!-- QUIET -->
 
         <button
           class="scenario-card blue"
-          data-sheet="quiet"
+          data-modal="quiet"
         >
 
-
           <div class="scenario-visual">
-
 
             <div class="pause-ring"></div>
 
-            <div
-              class="pause-ring second"
-            ></div>
+            <div class="pause-ring second"></div>
 
-
-            <div
-              class="mini-human quiet-person"
-            >
-
+            <div class="mini-human quiet-person">
 
               <div class="mini-hair"></div>
-
               <div class="mini-head"></div>
-
               <div class="mini-body"></div>
 
-
-              <div
-                class="mini-leg left"
-              ></div>
-
-
-              <div
-                class="mini-leg right"
-              ></div>
-
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
 
             </div>
-
 
           </div>
 
 
-
           <div class="scenario-copy">
 
-
             <div class="scenario-label">
-
               Give it a beat
-
             </div>
 
-
             <h3>
-
               Quiet + not responding
-
             </h3>
 
-
             <p>
-
-              They may be processing
-              or getting ready
-              to respond.
-
+              They may be processing or getting ready to respond.
             </p>
-
 
           </div>
 
 
           <div class="chevron">
-
             ›
-
           </div>
-
 
         </button>
 
 
 
-        <!-- 4 OVERWHELMED -->
-
+        <!-- OVERWHELMED -->
 
         <button
           class="scenario-card purple"
-          data-sheet="overwhelmed"
+          data-modal="overwhelmed"
         >
-
 
           <div class="scenario-visual">
 
+            <div class="sensory-wave one"></div>
+            <div class="sensory-wave two"></div>
 
-            <div
-              class="sensory-wave one"
-            ></div>
-
-
-            <div
-              class="sensory-wave two"
-            ></div>
-
-
-            <div
-              class="mini-human overload-person"
-            >
-
+            <div class="mini-human overload-person">
 
               <div class="mini-hair"></div>
-
               <div class="mini-head"></div>
-
               <div class="mini-body"></div>
 
-
-              <div
-                class="mini-leg left"
-              ></div>
-
-
-              <div
-                class="mini-leg right"
-              ></div>
-
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
 
             </div>
-
 
           </div>
 
 
-
           <div class="scenario-copy">
 
-
             <div class="scenario-label">
-
               Watch for this
-
             </div>
 
-
             <h3>
-
               Seems overwhelmed
-
             </h3>
 
-
             <p>
-
-              Noise, crowds, talking,
-              or change may be piling up.
-
+              Noise, crowds, talking, or change may be piling up.
             </p>
-
 
           </div>
 
 
           <div class="chevron">
-
             ›
-
           </div>
-
 
         </button>
 
 
 
-        <!-- 5 SAFETY -->
-
+        <!-- SAFETY -->
 
         <button
           class="scenario-card red"
-          data-sheet="safety"
+          data-modal="safety"
         >
-
 
           <div class="scenario-visual">
 
-
             <div class="safety-person-left">
 
-
               <div class="small-head"></div>
-
               <div class="small-body"></div>
 
-
             </div>
-
 
             <div class="safety-distance"></div>
 
-
             <div class="safety-person-right">
 
-
               <div class="small-head"></div>
-
               <div class="small-body"></div>
 
-
             </div>
-
 
           </div>
 
 
-
           <div class="scenario-copy">
 
-
             <div class="scenario-label">
-
               Safety first
-
             </div>
 
-
             <h3>
-
-              Tries to hit,
-              push, or grab
-
+              Tries to hit, push, or grab
             </h3>
 
-
             <p>
-
-              Create space and bring
-              in the coach or staff.
-
+              Create space and bring in the coach or staff.
             </p>
-
 
           </div>
 
 
           <div class="chevron">
-
             ›
-
           </div>
-
 
         </button>
 
 
       </div>
-
 
     </section>
 
@@ -2466,35 +1654,21 @@
 
     <!-- REMINDER -->
 
-
-    <section
-      class="quick-reminder reveal"
-    >
-
+    <section class="quick-reminder reveal">
 
       <strong>
-
         Every athlete is different.
-
       </strong>
 
-
-      If you already know what works
-      for them, use it.
-
-      If you're unsure,
-      ask the athlete,
-      coach, or caregiver.
-
+      If you already know what works for them, use it.
+      If you're unsure, ask the athlete, coach, or caregiver.
 
     </section>
 
 
-
     <footer class="site-footer">
 
-      Notice first.
-      Respond second.
+      Notice first. Respond second.
 
     </footer>
 
@@ -2504,1101 +1678,688 @@
 
 
   <!-- ===================================================
-       BACKDROP
+       MODAL 1 — JUMPING
        =================================================== -->
-
-
-  <div
-    class="sheet-backdrop"
-    id="sheetBackdrop"
-  ></div>
-
-
-
-  <!-- ===================================================
-       SHEET 1 — JUMPING
-       =================================================== -->
-
 
   <section
-    class="scenario-sheet"
-    id="sheet-jumping"
+    class="scenario-modal"
+    id="modal-jumping"
     role="dialog"
     aria-modal="true"
     aria-hidden="true"
   >
 
+    <div class="modal-header">
 
-    <div class="sheet-sticky">
+      <div class="modal-topline">
+
+        <div class="modal-tag green">
+          Jumping + yelling
+        </div>
+
+        <button
+          class="modal-close"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
 
 
-      <div class="sheet-handle"></div>
+    <div class="modal-scroll">
+
+      <div class="modal-content">
+
+        <h2 class="modal-title">
+          Start with the context.
+        </h2>
 
 
-      <div class="sheet-top">
+        <div class="meaning-line">
+
+          <strong>
+            Could be:
+          </strong>
+
+          excitement, waiting energy, self-regulation,
+          or things starting to feel like too much.
+
+        </div>
 
 
-        <div>
+        <div class="modal-actions">
 
+          <div class="modal-box do">
 
-          <div class="sheet-tag green">
+            <h3>
+              Do now
+            </h3>
 
-            Jumping + yelling
+            <ul>
+              <li>Stay relaxed.</li>
+              <li>Give them some room.</li>
+              <li>Say what's coming next.</li>
+              <li>Keep it short.</li>
+            </ul>
 
           </div>
 
 
-          <h2 class="sheet-title">
+          <div class="modal-box avoid">
 
-            Start with the context.
+            <h3>
+              Avoid
+            </h3>
 
-          </h2>
+            <ul>
+              <li>Shouting “stop.”</li>
+              <li>Crowding them.</li>
+              <li>Assuming they're misbehaving.</li>
+            </ul>
 
+          </div>
 
         </div>
 
 
-        <button
-          class="sheet-close"
-          aria-label="Close"
-        >
+        <div class="say-box">
 
-          ×
+          <span>
+            Try saying
+          </span>
 
-        </button>
+          <strong>
+            “You're good — your turn is coming.”
+          </strong>
 
+        </div>
 
       </div>
-
 
     </div>
-
-
-
-    <div class="sheet-content">
-
-
-      <div class="meaning-line">
-
-
-        <strong>
-          Could be:
-        </strong>
-
-        excitement,
-        waiting energy,
-        self-regulation,
-        or things starting
-        to feel like too much.
-
-
-      </div>
-
-
-
-      <div class="sheet-actions">
-
-
-        <div class="sheet-box do">
-
-
-          <h3>
-
-            Do now
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Stay relaxed.
-            </li>
-
-            <li>
-              Give them some room.
-            </li>
-
-            <li>
-              Say what's coming next.
-            </li>
-
-            <li>
-              Keep your words short.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-
-        <div class="sheet-box avoid">
-
-
-          <h3>
-
-            Avoid
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Shouting “stop.”
-            </li>
-
-            <li>
-              Crowding them.
-            </li>
-
-            <li>
-              Assuming they're
-              misbehaving.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="say-box">
-
-
-        <span>
-
-          Try saying
-
-        </span>
-
-
-        <strong>
-
-          “You're good —
-          your turn is coming.”
-
-        </strong>
-
-
-      </div>
-
-
-    </div>
-
 
   </section>
 
 
 
   <!-- ===================================================
-       SHEET 2 — WALKING
+       MODAL 2 — WALKING
        =================================================== -->
 
-
   <section
-    class="scenario-sheet"
-    id="sheet-walking"
+    class="scenario-modal"
+    id="modal-walking"
     role="dialog"
     aria-modal="true"
     aria-hidden="true"
   >
 
+    <div class="modal-header">
 
-    <div class="sheet-sticky">
+      <div class="modal-topline">
+
+        <div class="modal-tag amber">
+          Walking away
+        </div>
+
+        <button
+          class="modal-close"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
 
 
-      <div class="sheet-handle"></div>
+    <div class="modal-scroll">
+
+      <div class="modal-content">
+
+        <h2 class="modal-title">
+          Don't make it a standoff.
+        </h2>
 
 
-      <div class="sheet-top">
+        <div class="meaning-line">
+
+          <strong>
+            Could be:
+          </strong>
+
+          needing a break, being confused,
+          wanting space, or being done for a bit.
+
+        </div>
 
 
-        <div>
+        <div class="modal-actions">
 
+          <div class="modal-box do">
 
-          <div class="sheet-tag amber">
+            <h3>
+              Do now
+            </h3>
 
-            Walking away
+            <ul>
+              <li>Stay nearby if it's safe.</li>
+              <li>Keep your tone easy.</li>
+              <li>Offer one choice.</li>
+              <li>Reconnect with what's next.</li>
+            </ul>
 
           </div>
 
 
-          <h2 class="sheet-title">
+          <div class="modal-box avoid">
 
-            Don't make it a standoff.
+            <h3>
+              Avoid
+            </h3>
 
-          </h2>
+            <ul>
+              <li>Repeating “come back.”</li>
+              <li>Following too close.</li>
+              <li>Grabbing unless safety requires it.</li>
+            </ul>
 
+          </div>
 
         </div>
 
 
-        <button
-          class="sheet-close"
-          aria-label="Close"
-        >
+        <div class="say-box">
 
-          ×
+          <span>
+            Try saying
+          </span>
 
-        </button>
+          <strong>
+            “Want a break, or want to come see basketball?”
+          </strong>
 
+        </div>
 
       </div>
-
 
     </div>
-
-
-
-    <div class="sheet-content">
-
-
-      <div class="meaning-line">
-
-
-        <strong>
-          Could be:
-        </strong>
-
-        needing a break,
-        being confused,
-        wanting space,
-        or being done for a bit.
-
-
-      </div>
-
-
-
-      <div class="sheet-actions">
-
-
-        <div class="sheet-box do">
-
-
-          <h3>
-
-            Do now
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Stay nearby
-              if it's safe.
-            </li>
-
-            <li>
-              Keep your tone easy.
-            </li>
-
-            <li>
-              Offer one simple choice.
-            </li>
-
-            <li>
-              Reconnect with
-              what's next.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-
-        <div class="sheet-box avoid">
-
-
-          <h3>
-
-            Avoid
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Repeating “come back.”
-            </li>
-
-            <li>
-              Following too close.
-            </li>
-
-            <li>
-              Grabbing unless
-              safety requires it.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="say-box">
-
-
-        <span>
-
-          Try saying
-
-        </span>
-
-
-        <strong>
-
-          “Want a break,
-          or want to come
-          see basketball?”
-
-        </strong>
-
-
-      </div>
-
-
-    </div>
-
 
   </section>
 
 
 
   <!-- ===================================================
-       SHEET 3 — QUIET
+       MODAL 3 — QUIET
        =================================================== -->
 
-
   <section
-    class="scenario-sheet"
-    id="sheet-quiet"
+    class="scenario-modal"
+    id="modal-quiet"
     role="dialog"
     aria-modal="true"
     aria-hidden="true"
   >
 
+    <div class="modal-header">
 
-    <div class="sheet-sticky">
+      <div class="modal-topline">
+
+        <div class="modal-tag blue">
+          Not responding
+        </div>
+
+        <button
+          class="modal-close"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
 
 
-      <div class="sheet-handle"></div>
+    <div class="modal-scroll">
+
+      <div class="modal-content">
+
+        <h2 class="modal-title">
+          More time. Fewer words.
+        </h2>
 
 
-      <div class="sheet-top">
+        <div class="meaning-line">
+
+          <strong>
+            Could be:
+          </strong>
+
+          processing, confusion, overload,
+          or getting ready to respond another way.
+
+        </div>
 
 
-        <div>
+        <div class="modal-actions">
 
+          <div class="modal-box do">
 
-          <div class="sheet-tag blue">
+            <h3>
+              Do now
+            </h3>
 
-            Not responding
+            <ul>
+              <li>Say their name once.</li>
+              <li>Give one clear cue.</li>
+              <li>Point or show.</li>
+              <li>Wait.</li>
+            </ul>
 
           </div>
 
 
-          <h2 class="sheet-title">
+          <div class="modal-box avoid">
 
-            More time.
-            Fewer words.
+            <h3>
+              Avoid
+            </h3>
 
-          </h2>
+            <ul>
+              <li>Rapid-fire directions.</li>
+              <li>Getting louder.</li>
+              <li>Answering for them too fast.</li>
+            </ul>
 
+          </div>
 
         </div>
 
 
-        <button
-          class="sheet-close"
-          aria-label="Close"
-        >
+        <div class="say-box">
 
-          ×
+          <span>
+            Try saying
+          </span>
 
-        </button>
+          <strong>
+            “Alex, stand here. Take your time.”
+          </strong>
 
+        </div>
 
       </div>
-
 
     </div>
-
-
-
-    <div class="sheet-content">
-
-
-      <div class="meaning-line">
-
-
-        <strong>
-          Could be:
-        </strong>
-
-        processing,
-        confusion,
-        overload,
-        or getting ready
-        to respond another way.
-
-
-      </div>
-
-
-
-      <div class="sheet-actions">
-
-
-        <div class="sheet-box do">
-
-
-          <h3>
-
-            Do now
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Say their name once.
-            </li>
-
-            <li>
-              Give one clear cue.
-            </li>
-
-            <li>
-              Point or show.
-            </li>
-
-            <li>
-              Wait.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-
-        <div class="sheet-box avoid">
-
-
-          <h3>
-
-            Avoid
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Rapid-fire directions.
-            </li>
-
-            <li>
-              Getting louder.
-            </li>
-
-            <li>
-              Answering for them
-              too fast.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="say-box">
-
-
-        <span>
-
-          Try saying
-
-        </span>
-
-
-        <strong>
-
-          “Alex, stand here.
-          Take your time.”
-
-        </strong>
-
-
-      </div>
-
-
-    </div>
-
 
   </section>
 
 
 
   <!-- ===================================================
-       SHEET 4 — OVERWHELMED
+       MODAL 4 — OVERWHELMED
        =================================================== -->
 
-
   <section
-    class="scenario-sheet"
-    id="sheet-overwhelmed"
+    class="scenario-modal"
+    id="modal-overwhelmed"
     role="dialog"
     aria-modal="true"
     aria-hidden="true"
   >
 
+    <div class="modal-header">
 
-    <div class="sheet-sticky">
+      <div class="modal-topline">
+
+        <div class="modal-tag purple">
+          Overwhelmed
+        </div>
+
+        <button
+          class="modal-close"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
 
 
-      <div class="sheet-handle"></div>
+    <div class="modal-scroll">
+
+      <div class="modal-content">
+
+        <h2 class="modal-title">
+          Make the moment smaller.
+        </h2>
 
 
-      <div class="sheet-top">
+        <div class="meaning-line">
+
+          <strong>
+            Could be:
+          </strong>
+
+          too much noise, talking, crowding,
+          or too much change at once.
+
+        </div>
 
 
-        <div>
+        <div class="modal-actions">
 
+          <div class="modal-box do">
 
-          <div class="sheet-tag purple">
+            <h3>
+              Do now
+            </h3>
 
-            Overwhelmed
+            <ul>
+              <li>Say less.</li>
+              <li>Give space.</li>
+              <li>Keep your voice calm.</li>
+              <li>Offer water, a break, or quiet.</li>
+            </ul>
 
           </div>
 
 
-          <h2 class="sheet-title">
+          <div class="modal-box avoid">
 
-            Make the moment smaller.
+            <h3>
+              Avoid
+            </h3>
 
-          </h2>
+            <ul>
+              <li>Touching without warning.</li>
+              <li>Forcing eye contact.</li>
+              <li>Several people talking at once.</li>
+            </ul>
 
+          </div>
 
         </div>
 
 
-        <button
-          class="sheet-close"
-          aria-label="Close"
-        >
+        <div class="say-box">
 
-          ×
+          <span>
+            Try saying
+          </span>
 
-        </button>
+          <strong>
+            “Want a break?” or “Water or quiet spot?”
+          </strong>
 
+        </div>
 
       </div>
-
 
     </div>
-
-
-
-    <div class="sheet-content">
-
-
-      <div class="meaning-line">
-
-
-        <strong>
-          Could be:
-        </strong>
-
-        too much noise,
-        too much talking,
-        too many people,
-        or too much change.
-
-
-      </div>
-
-
-
-      <div class="sheet-actions">
-
-
-        <div class="sheet-box do">
-
-
-          <h3>
-
-            Do now
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Say less.
-            </li>
-
-            <li>
-              Give space.
-            </li>
-
-            <li>
-              Keep your voice calm.
-            </li>
-
-            <li>
-              Offer water,
-              a break, or quiet.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-
-        <div class="sheet-box avoid">
-
-
-          <h3>
-
-            Avoid
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Touching without warning.
-            </li>
-
-            <li>
-              Forcing eye contact.
-            </li>
-
-            <li>
-              Several people
-              talking at once.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="say-box">
-
-
-        <span>
-
-          Try saying
-
-        </span>
-
-
-        <strong>
-
-          “Want a break?”
-
-          or
-
-          “Water or quiet spot?”
-
-        </strong>
-
-
-      </div>
-
-
-    </div>
-
 
   </section>
 
 
 
   <!-- ===================================================
-       SHEET 5 — SAFETY
+       MODAL 5 — SAFETY
        =================================================== -->
 
-
   <section
-    class="scenario-sheet"
-    id="sheet-safety"
+    class="scenario-modal"
+    id="modal-safety"
     role="dialog"
     aria-modal="true"
     aria-hidden="true"
   >
 
+    <div class="modal-header">
 
-    <div class="sheet-sticky">
+      <div class="modal-topline">
+
+        <div class="modal-tag red">
+          Safety first
+        </div>
+
+        <button
+          class="modal-close"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
 
 
-      <div class="sheet-handle"></div>
+    <div class="modal-scroll">
+
+      <div class="modal-content">
+
+        <h2 class="modal-title">
+          Create space.
+        </h2>
 
 
-      <div class="sheet-top">
+        <div class="meaning-line">
+
+          <strong>
+            Could be:
+          </strong>
+
+          distress, overload, fear,
+          frustration, or a strong “no.”
+
+        </div>
 
 
-        <div>
+        <div class="modal-actions">
 
+          <div class="modal-box do">
 
-          <div class="sheet-tag red">
+            <h3>
+              Do now
+            </h3>
 
-            Safety first
+            <ul>
+              <li>Step back.</li>
+              <li>Keep your voice calm.</li>
+              <li>Move others back.</li>
+              <li>Get coach or staff help.</li>
+            </ul>
 
           </div>
 
 
-          <h2 class="sheet-title">
+          <div class="modal-box avoid">
 
-            Create space.
+            <h3>
+              Avoid
+            </h3>
 
-          </h2>
+            <ul>
+              <li>Grabbing back.</li>
+              <li>Arguing.</li>
+              <li>Cornering them.</li>
+              <li>Handling risk alone.</li>
+            </ul>
 
+          </div>
 
         </div>
 
 
-        <button
-          class="sheet-close"
-          aria-label="Close"
-        >
+        <div class="say-box">
 
-          ×
+          <span>
+            Try saying
+          </span>
 
-        </button>
+          <strong>
+            “I'm giving you space. Coach is coming.”
+          </strong>
 
+        </div>
+
+
+        <div class="safety-alert">
+
+          <strong>
+            Immediate danger?
+          </strong>
+
+          Follow the coach or event staff's safety procedures
+          and get help right away.
+
+        </div>
 
       </div>
-
 
     </div>
-
-
-
-    <div class="sheet-content">
-
-
-      <div class="meaning-line">
-
-
-        <strong>
-          Could be:
-        </strong>
-
-        distress,
-        overload,
-        fear,
-        frustration,
-        or a strong “no.”
-
-
-      </div>
-
-
-
-      <div class="sheet-actions">
-
-
-        <div class="sheet-box do">
-
-
-          <h3>
-
-            Do now
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Step back.
-            </li>
-
-            <li>
-              Keep your voice calm.
-            </li>
-
-            <li>
-              Move other athletes back.
-            </li>
-
-            <li>
-              Get the coach
-              or staff immediately.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-
-        <div class="sheet-box avoid">
-
-
-          <h3>
-
-            Avoid
-
-          </h3>
-
-
-          <ul>
-
-            <li>
-              Grabbing back.
-            </li>
-
-            <li>
-              Arguing.
-            </li>
-
-            <li>
-              Cornering them.
-            </li>
-
-            <li>
-              Trying to handle
-              a risky situation alone.
-            </li>
-
-          </ul>
-
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="say-box">
-
-
-        <span>
-
-          Try saying
-
-        </span>
-
-
-        <strong>
-
-          “I'm giving you space.
-          Coach is coming.”
-
-        </strong>
-
-
-      </div>
-
-
-
-      <div class="safety-alert">
-
-
-        <strong>
-
-          If there's an
-          immediate risk of injury:
-
-        </strong>
-
-
-        Follow the coach
-        or event staff's
-        safety procedures
-        and get help right away.
-
-
-      </div>
-
-
-    </div>
-
 
   </section>
 
 
 
-  <!-- SHARED SCRIPT -->
-
+  <!-- SHARED SITE SCRIPT -->
 
   <script src="script.js"></script>
 
 
-
-  <!-- BEHAVIOR PAGE SCRIPT -->
-
+  <!-- MODAL SCRIPT -->
 
   <script>
 
-
     const scenarioCards =
       document.querySelectorAll(
-        "[data-sheet]"
+        "[data-modal]"
       );
 
-
-    const scenarioSheets =
+    const scenarioModals =
       document.querySelectorAll(
-        ".scenario-sheet"
+        ".scenario-modal"
       );
 
-
-    const backdrop =
-      document.getElementById(
-        "sheetBackdrop"
-      );
-
-
-    const closeButtons =
+    const modalCloseButtons =
       document.querySelectorAll(
-        ".sheet-close"
+        ".modal-close"
       );
 
 
-    let currentSheet = null;
+    let savedScrollY = 0;
+    let activeModal = null;
 
 
 
-    function closeSheets() {
+    function lockPage() {
 
+      savedScrollY =
+        window.scrollY ||
+        document.documentElement.scrollTop;
 
-      scenarioSheets.forEach(
-        sheet => {
+      document.body.style.position =
+        "fixed";
 
+      document.body.style.top =
+        `-${savedScrollY}px`;
 
-          sheet.classList.remove(
-            "open"
-          );
+      document.body.style.left =
+        "0";
 
+      document.body.style.right =
+        "0";
 
-          sheet.setAttribute(
-            "aria-hidden",
-            "true"
-          );
-
-
-        }
-      );
-
-
-      backdrop.classList.remove(
-        "open"
-      );
-
-
-      document.body.classList.remove(
-        "sheet-open"
-      );
-
-
-      currentSheet = null;
-
+      document.body.style.width =
+        "100%";
 
     }
 
 
 
-    function openSheet(id) {
+    function unlockPage() {
+
+      document.body.style.position =
+        "";
+
+      document.body.style.top =
+        "";
+
+      document.body.style.left =
+        "";
+
+      document.body.style.right =
+        "";
+
+      document.body.style.width =
+        "";
 
 
-      closeSheets();
+      window.scrollTo(
+        0,
+        savedScrollY
+      );
+
+    }
 
 
-      const sheet =
+
+    function openModal(id) {
+
+      const modal =
         document.getElementById(
-          "sheet-" + id
+          "modal-" + id
         );
 
 
-      if (!sheet) return;
+      if (!modal) return;
 
 
-      currentSheet = sheet;
+      activeModal = modal;
 
 
-      backdrop.classList.add(
+      lockPage();
+
+
+      const scrollArea =
+        modal.querySelector(
+          ".modal-scroll"
+        );
+
+
+      if (scrollArea) {
+
+        scrollArea.scrollTop = 0;
+
+      }
+
+
+      modal.classList.add(
         "open"
       );
 
 
-      sheet.classList.add(
-        "open"
-      );
-
-
-      sheet.setAttribute(
+      modal.setAttribute(
         "aria-hidden",
         "false"
       );
-
-
-      document.body.classList.add(
-        "sheet-open"
-      );
-
-
-      /*
-        Always begin at top of sheet,
-        regardless of page scroll position.
-      */
-
-
-      sheet.scrollTop = 0;
-
-
-      /*
-        Focus close button
-        after animation begins.
-      */
 
 
       setTimeout(
         () => {
 
           const closeButton =
-            sheet.querySelector(
-              ".sheet-close"
+            modal.querySelector(
+              ".modal-close"
             );
-
 
           if (closeButton) {
 
@@ -3607,9 +2368,33 @@
           }
 
         },
-        220
+        150
       );
 
+    }
+
+
+
+    function closeModal() {
+
+      if (!activeModal) return;
+
+
+      activeModal.classList.remove(
+        "open"
+      );
+
+
+      activeModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      activeModal = null;
+
+
+      unlockPage();
 
     }
 
@@ -3618,44 +2403,31 @@
     scenarioCards.forEach(
       card => {
 
-
         card.addEventListener(
           "click",
           () => {
 
-
-            openSheet(
-              card.dataset.sheet
+            openModal(
+              card.dataset.modal
             );
-
 
           }
         );
 
-
       }
     );
 
 
 
-    closeButtons.forEach(
+    modalCloseButtons.forEach(
       button => {
-
 
         button.addEventListener(
           "click",
-          closeSheets
+          closeModal
         );
 
-
       }
-    );
-
-
-
-    backdrop.addEventListener(
-      "click",
-      closeSheets
     );
 
 
@@ -3664,15 +2436,13 @@
       "keydown",
       event => {
 
-
         if (
           event.key === "Escape"
         ) {
 
-          closeSheets();
+          closeModal();
 
         }
-
 
       }
     );
