@@ -15,374 +15,950 @@
   <style>
 
     /* =====================================================
-       BEHAVIOR PAGE — V3
-       Simpler, more vivid, more scenario-based
+       BEHAVIOR PAGE — V4
+       Compact mobile-first scenario tool
        ===================================================== */
 
     :root {
-      --tone-green: linear-gradient(135deg, #dff8ea 0%, #edfdf4 100%);
-      --tone-amber: linear-gradient(135deg, #ffeccf 0%, #fff7e7 100%);
-      --tone-blue: linear-gradient(135deg, #dfe8ff 0%, #eef3ff 100%);
-      --tone-purple: linear-gradient(135deg, #ebe4ff 0%, #f5f1ff 100%);
-      --tone-red: linear-gradient(135deg, #ffe0dd 0%, #fff1f0 100%);
-      --tone-dark: linear-gradient(135deg, #181922 0%, #222430 100%);
+      --green-bg: #e6f8ef;
+      --green-accent: #33a56f;
+
+      --amber-bg: #fff1d9;
+      --amber-accent: #db9237;
+
+      --blue-bg: #e7efff;
+      --blue-accent: #5578da;
+
+      --purple-bg: #efe8ff;
+      --purple-accent: #8765d8;
+
+      --red-bg: #ffe7e4;
+      --red-accent: #d85143;
     }
 
+    body.sheet-open {
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
     .behavior-intro {
-      padding: 64px 0 30px;
+      padding: 42px 0 22px;
+    }
+
+    .behavior-intro .eyebrow {
+      margin-bottom: 9px;
+    }
+
+    .behavior-intro h1 {
+      font-size: clamp(37px, 9vw, 58px);
+      line-height: .98;
     }
 
     .behavior-intro .lead {
-      margin-top: 18px;
-      max-width: 700px;
+      max-width: 620px;
+      margin: 14px 0 0;
+
+      font-size: 16px;
+      line-height: 1.48;
     }
 
-    .quick-start {
-      margin: 8px 0 34px;
-      padding: 24px 26px;
 
-      border-radius: 28px;
+    /* =====================================================
+       SMALL START-HERE NOTE
+       ===================================================== */
 
-      background: var(--tone-dark);
+    .start-note {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+
+      margin-bottom: 24px;
+      padding: 15px 17px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1e202a 0%,
+          #2a2d39 100%
+        );
+
       color: white;
 
-      box-shadow: 0 20px 50px rgba(16, 18, 28, 0.12);
+      box-shadow:
+        0 12px 32px rgba(20, 22, 31, .10);
     }
 
-    .quick-start .eyebrow {
-      color: #a9acb7;
-      margin-bottom: 10px;
+    .start-mark {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.12);
+
+      font-size: 18px;
     }
 
-    .quick-start h2 {
-      margin: 0 0 8px;
+    .start-note strong {
+      display: block;
 
-      font-size: clamp(26px, 4vw, 34px);
-      letter-spacing: -0.03em;
+      margin-bottom: 2px;
+
+      font-size: 14px;
     }
 
-    .quick-start p {
+    .start-note span {
+      color: #cfd2db;
+
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+
+    /* =====================================================
+       SCENARIO INTRO
+       ===================================================== */
+
+    .scenario-title {
+      margin-bottom: 12px;
+    }
+
+    .scenario-title h2 {
       margin: 0;
-      max-width: 760px;
 
-      color: #d4d7df;
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 24px;
+      letter-spacing: -.035em;
     }
 
-    .scenario-header {
-      margin: 0 0 16px;
-    }
+    .scenario-title p {
+      margin: 4px 0 0;
 
-    .scenario-header h2 {
-      margin: 0 0 6px;
-
-      font-size: clamp(28px, 4vw, 38px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-    .scenario-header p {
-      margin: 0;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.5;
+
+      font-size: 14px;
     }
 
-    .scenario-grid {
+
+    /* =====================================================
+       COMPACT CARDS
+       ===================================================== */
+
+    .scenario-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 10px;
     }
 
     .scenario-card {
-      position: relative;
-
-      min-height: 200px;
       width: 100%;
 
-      padding: 22px;
+      display: grid;
+      grid-template-columns: 72px 1fr 22px;
+      align-items: center;
+
+      gap: 13px;
+
+      min-height: 112px;
+
+      padding: 13px 14px;
+
+      border: 1px solid rgba(29,29,31,.055);
+      border-radius: 23px;
 
       text-align: left;
-      overflow: hidden;
       cursor: pointer;
 
-      border: 1px solid rgba(29,29,31,.06);
-      border-radius: 28px;
-
       transition:
-        transform .24s var(--ease),
-        box-shadow .24s var(--ease),
-        border-color .24s ease;
+        transform .2s var(--ease),
+        box-shadow .2s var(--ease);
     }
 
     .scenario-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(25, 29, 43, 0.10);
-      border-color: rgba(29,29,31,.12);
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 13px 30px rgba(30, 33, 44, .08);
     }
 
     .scenario-card:active {
       transform: scale(.985);
     }
 
-    .scenario-card.green { background: var(--tone-green); }
-    .scenario-card.amber { background: var(--tone-amber); }
-    .scenario-card.blue { background: var(--tone-blue); }
-    .scenario-card.purple { background: var(--tone-purple); }
-    .scenario-card.red { background: var(--tone-red); }
+    .scenario-card.green {
+      background: var(--green-bg);
+    }
 
-    .scenario-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .scenario-card.amber {
+      background: var(--amber-bg);
+    }
 
-      margin-bottom: 18px;
-      padding: 8px 12px;
+    .scenario-card.blue {
+      background: var(--blue-bg);
+    }
+
+    .scenario-card.purple {
+      background: var(--purple-bg);
+    }
+
+    .scenario-card.red {
+      background: var(--red-bg);
+    }
+
+
+    /* ---------- text ---------- */
+
+    .scenario-copy {
+      min-width: 0;
+    }
+
+    .scenario-label {
+      margin-bottom: 4px;
+
+      color: rgba(35,38,45,.56);
+
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .055em;
+
+      text-transform: uppercase;
+    }
+
+    .scenario-copy h3 {
+      margin: 0;
+
+      font-size: 17px;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    .scenario-copy p {
+      display: -webkit-box;
+      overflow: hidden;
+
+      margin: 5px 0 0;
+
+      color: #5d626d;
+
+      font-size: 12.5px;
+      line-height: 1.35;
+
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .chevron {
+      color: rgba(29,29,31,.48);
+
+      font-size: 22px;
+      font-weight: 400;
+
+      transition: transform .2s var(--ease);
+    }
+
+    .scenario-card:hover .chevron {
+      transform: translateX(3px);
+    }
+
+
+    /* =====================================================
+       VISUAL BOX
+       ===================================================== */
+
+    .scenario-visual {
+      position: relative;
+
+      width: 72px;
+      height: 72px;
+
+      overflow: hidden;
+
+      border-radius: 19px;
+
+      background: rgba(255,255,255,.64);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.7);
+    }
+
+
+    /* =====================================================
+       MINI HUMAN
+       ===================================================== */
+
+    .mini-human {
+      position: absolute;
+
+      width: 38px;
+      height: 61px;
+
+      left: 50%;
+      bottom: 3px;
+
+      transform:
+        translateX(-50%);
+
+      transform-origin:
+        center bottom;
+    }
+
+    .mini-head {
+      position: absolute;
+
+      width: 24px;
+      height: 24px;
+
+      left: 7px;
+      top: 0;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          180deg,
+          #e9bb99,
+          #ce906a
+        );
+    }
+
+    .mini-hair {
+      position: absolute;
+
+      width: 26px;
+      height: 12px;
+
+      left: 6px;
+      top: -1px;
+
+      border-radius:
+        15px 15px 7px 7px;
+
+      background: #34323a;
+
+      z-index: 2;
+    }
+
+    .mini-body {
+      position: absolute;
+
+      width: 32px;
+      height: 31px;
+
+      left: 3px;
+      top: 23px;
+
+      border-radius:
+        12px 12px 9px 9px;
+
+      background: var(--shirt, #6078da);
+    }
+
+    .mini-leg {
+      position: absolute;
+
+      width: 7px;
+      height: 18px;
+
+      top: 50px;
+
+      border-radius: 6px;
+
+      background: #30394e;
+    }
+
+    .mini-leg.left {
+      left: 10px;
+    }
+
+    .mini-leg.right {
+      right: 10px;
+    }
+
+
+    /* =====================================================
+       SCENARIO 1 — JUMPING
+       ===================================================== */
+
+    .jump-person {
+      --shirt: #38a970;
+
+      animation:
+        jumpHuman 1.5s ease-in-out infinite;
+    }
+
+    .jump-shadow {
+      position: absolute;
+
+      width: 34px;
+      height: 6px;
+
+      left: 50%;
+      bottom: 4px;
+
+      transform: translateX(-50%);
+
+      border-radius: 50%;
+
+      background: rgba(31,88,61,.13);
+
+      animation:
+        jumpShadow 1.5s ease-in-out infinite;
+    }
+
+    .jump-line {
+      position: absolute;
+
+      width: 3px;
+      height: 12px;
 
       border-radius: 999px;
 
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.65);
+      background: var(--green-accent);
 
-      color: #23252c;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      opacity: .45;
     }
 
-    .scenario-icon {
-      position: absolute;
-      right: 18px;
-      top: 18px;
+    .jump-line.one {
+      left: 12px;
+      top: 24px;
 
-      width: 66px;
-      height: 66px;
+      transform: rotate(-22deg);
+    }
+
+    .jump-line.two {
+      right: 12px;
+      top: 19px;
+
+      transform: rotate(23deg);
+    }
+
+
+    /* =====================================================
+       SCENARIO 2 — WALKING
+       ===================================================== */
+
+    .walk-person {
+      --shirt: #df993c;
+
+      animation:
+        walkHuman 2.8s ease-in-out infinite;
+    }
+
+    .walk-path {
+      position: absolute;
+
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+
+      height: 2px;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(219,146,55,.08),
+          rgba(219,146,55,.58)
+        );
+    }
+
+
+    /* =====================================================
+       SCENARIO 3 — QUIET / PROCESSING
+       ===================================================== */
+
+    .quiet-person {
+      --shirt: #6078dc;
+
+      animation:
+        slowBreathe 3.6s ease-in-out infinite;
+    }
+
+    .pause-ring {
+      position: absolute;
+
+      width: 42px;
+      height: 42px;
+
+      left: 50%;
+      top: 45%;
+
+      transform: translate(-50%,-50%);
+
+      border:
+        2px solid
+        rgba(85,120,218,.22);
+
+      border-radius: 50%;
+
+      animation:
+        pauseRing 2.7s ease-out infinite;
+    }
+
+    .pause-ring.second {
+      animation-delay: .8s;
+    }
+
+
+    /* =====================================================
+       SCENARIO 4 — OVERLOAD
+       ===================================================== */
+
+    .overload-person {
+      --shirt: #8868d9;
+
+      animation:
+        overloadBody 2.5s ease-in-out infinite;
+    }
+
+    .sensory-wave {
+      position: absolute;
+
+      border:
+        2px solid
+        rgba(135,101,216,.42);
+
+      border-radius: 50%;
+
+      animation:
+        sensoryWave 2.4s ease-out infinite;
+    }
+
+    .sensory-wave.one {
+      width: 38px;
+      height: 38px;
+
+      left: 17px;
+      top: 10px;
+    }
+
+    .sensory-wave.two {
+      width: 58px;
+      height: 58px;
+
+      left: 7px;
+      top: 0;
+
+      animation-delay: .65s;
+    }
+
+
+    /* =====================================================
+       SCENARIO 5 — SAFETY
+       ===================================================== */
+
+    .safety-person-left,
+    .safety-person-right {
+      position: absolute;
+
+      width: 29px;
+      height: 52px;
+
+      bottom: 6px;
+    }
+
+    .safety-person-left {
+      left: 8px;
+
+      animation:
+        safetyStepLeft 2.6s ease-in-out infinite;
+    }
+
+    .safety-person-right {
+      right: 8px;
+    }
+
+    .small-head {
+      position: absolute;
+
+      width: 19px;
+      height: 19px;
+
+      left: 5px;
+
+      border-radius: 50%;
+
+      background: #d69a76;
+    }
+
+    .small-body {
+      position: absolute;
+
+      width: 26px;
+      height: 28px;
+
+      left: 1px;
+      top: 19px;
+
+      border-radius: 10px;
+
+      background: var(--small-shirt, #d85143);
+    }
+
+    .safety-person-right {
+      --small-shirt: #66728d;
+    }
+
+    .safety-distance {
+      position: absolute;
+
+      left: 50%;
+      top: 33px;
+
+      width: 18px;
+      height: 3px;
+
+      transform: translateX(-50%);
+
+      border-radius: 999px;
+
+      background: var(--red-accent);
+
+      animation:
+        distancePulse 2.2s ease-in-out infinite;
+    }
+
+    .safety-distance::before,
+    .safety-distance::after {
+      content: "";
+
+      position: absolute;
+
+      width: 5px;
+      height: 5px;
+
+      top: -1px;
+
+      border-top: 2px solid var(--red-accent);
+      border-right: 2px solid var(--red-accent);
+    }
+
+    .safety-distance::before {
+      left: -1px;
+      transform: rotate(-135deg);
+    }
+
+    .safety-distance::after {
+      right: -1px;
+      transform: rotate(45deg);
+    }
+
+
+    /* =====================================================
+       BOTTOM SHEET
+       ===================================================== */
+
+    .sheet-backdrop {
+      position: fixed;
+
+      inset: 0;
+      z-index: 998;
+
+      background:
+        rgba(15,17,24,.36);
+
+      opacity: 0;
+      pointer-events: none;
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      transition:
+        opacity .28s ease;
+    }
+
+    .sheet-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scenario-sheet {
+      position: fixed;
+
+      left: 50%;
+      bottom: 0;
+      z-index: 999;
+
+      width:
+        min(720px, 100%);
+
+      max-height: 84vh;
+
+      overflow-y: auto;
+
+      padding:
+        10px 18px
+        calc(24px + env(safe-area-inset-bottom));
+
+      border-radius:
+        30px 30px 0 0;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 -18px 60px
+        rgba(14,17,25,.20);
+
+      transform:
+        translate(-50%, 105%);
+
+      transition:
+        transform .36s
+        cubic-bezier(.22,.8,.22,1);
+
+      overscroll-behavior:
+        contain;
+    }
+
+    .scenario-sheet.open {
+      transform:
+        translate(-50%, 0);
+    }
+
+    .sheet-handle {
+      width: 40px;
+      height: 5px;
+
+      margin: 0 auto 14px;
+
+      border-radius: 999px;
+
+      background: #d9dade;
+    }
+
+    .sheet-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      gap: 14px;
+    }
+
+    .sheet-tag {
+      display: inline-flex;
+
+      margin-bottom: 7px;
+      padding: 7px 10px;
+
+      border-radius: 999px;
+
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .055em;
+
+      text-transform: uppercase;
+    }
+
+    .sheet-tag.green {
+      background: var(--green-bg);
+    }
+
+    .sheet-tag.amber {
+      background: var(--amber-bg);
+    }
+
+    .sheet-tag.blue {
+      background: var(--blue-bg);
+    }
+
+    .sheet-tag.purple {
+      background: var(--purple-bg);
+    }
+
+    .sheet-tag.red {
+      background: var(--red-bg);
+    }
+
+    .sheet-title {
+      margin: 0;
+
+      font-size:
+        clamp(27px, 7vw, 37px);
+
+      line-height: 1.03;
+      letter-spacing: -.04em;
+    }
+
+    .sheet-close {
+      width: 38px;
+      height: 38px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      border-radius: 20px;
+      flex: 0 0 auto;
 
-      background: rgba(255,255,255,.55);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+      border: 0;
+      border-radius: 50%;
 
-      font-size: 30px;
+      background: #efefec;
+
+      cursor: pointer;
+
+      font-size: 20px;
     }
 
-    .scenario-card h3 {
-      margin: 12px 84px 8px 0;
 
-      font-size: 25px;
-      line-height: 1.08;
-      letter-spacing: -0.035em;
+    /* ---------- quick meaning ---------- */
+
+    .meaning-line {
+      margin: 15px 0 16px;
+      padding: 13px 15px;
+
+      border-radius: 16px;
+
+      background: #f3f4f6;
+
+      color: #575d68;
+
+      font-size: 14px;
+      line-height: 1.42;
     }
 
-    .scenario-card p {
-      margin: 0;
+    .meaning-line strong {
+      color: #24272e;
+    }
 
-      max-width: 420px;
 
-      color: #555b66;
+    /* ---------- do / avoid ---------- */
+
+    .sheet-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
+    }
+
+    .sheet-box {
+      padding: 15px;
+
+      border-radius: 18px;
+    }
+
+    .sheet-box.do {
+      background: #eaf7f0;
+    }
+
+    .sheet-box.avoid {
+      background: #fff0ee;
+    }
+
+    .sheet-box h3 {
+      margin: 0 0 8px;
+
       font-size: 15px;
+    }
+
+    .sheet-box ul {
+      margin: 0;
+      padding-left: 17px;
+
+      color: #505660;
+
+      font-size: 13.5px;
       line-height: 1.48;
     }
 
-    .scenario-card .tap-hint {
-      position: absolute;
-      left: 22px;
-      bottom: 18px;
+    .sheet-box li {
+      margin-bottom: 5px;
+    }
 
-      color: #303544;
-      opacity: .72;
+
+    /* ---------- phrase ---------- */
+
+    .say-box {
+      margin-top: 10px;
+      padding: 14px 16px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1e202a,
+          #292c37
+        );
+
+      color: white;
+    }
+
+    .say-box span {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color: #aeb3c0;
+
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+
+      text-transform: uppercase;
+    }
+
+    .say-box strong {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+
+    /* ---------- safety ---------- */
+
+    .safety-alert {
+      margin-top: 10px;
+      padding: 13px 15px;
+
+      border-radius: 17px;
+
+      background: var(--red-bg);
+
+      color: #74423b;
+
       font-size: 13px;
-      font-weight: 600;
+      line-height: 1.45;
     }
 
-    .scenario-card.green .scenario-icon {
-      animation: hop 1.7s ease-in-out infinite;
-    }
-
-    .scenario-card.amber .scenario-icon {
-      animation: drift 2.6s ease-in-out infinite;
-    }
-
-    .scenario-card.blue .scenario-icon {
-      animation: pulseSoft 2s ease-in-out infinite;
-    }
-
-    .scenario-card.purple .scenario-icon {
-      animation: wobbleSoft 2.7s ease-in-out infinite;
-    }
-
-    .scenario-card.red .scenario-icon {
-      animation: alertShake 1.9s ease-in-out infinite;
+    .safety-alert strong {
+      color: #b83d30;
     }
 
 
     /* =====================================================
-       PANELS
+       BOTTOM NOTE
        ===================================================== */
 
-    .panel {
-      margin-top: 22px;
-    }
+    .quick-reminder {
+      margin-top: 20px;
+      padding: 15px 17px;
 
-    .panel-label-strong {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      border-radius: 20px;
 
-      margin-bottom: 12px;
-      padding: 8px 12px;
-
-      border-radius: 999px;
-
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-
-      color: #2b2f38;
-      background: #eef0f4;
-    }
-
-    .panel-label-strong.green { background: #dff8ea; }
-    .panel-label-strong.amber { background: #ffeccf; }
-    .panel-label-strong.blue { background: #dfe8ff; }
-    .panel-label-strong.purple { background: #ebe4ff; }
-    .panel-label-strong.red { background: #ffe0dd; }
-
-    .panel .section-title {
-      margin-bottom: 10px;
-    }
-
-    .panel .body-copy {
-      max-width: 720px;
-      margin-bottom: 22px;
-    }
-
-    .mini-columns {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-
-      margin-top: 18px;
-    }
-
-    .mini-box {
-      padding: 18px 18px 16px;
-      border-radius: 24px;
-      background: #f3f4f6;
-    }
-
-    .mini-box h3 {
-      margin: 0 0 9px;
-
-      font-size: 18px;
-      letter-spacing: -0.02em;
-    }
-
-    .mini-box p {
-      margin: 0 0 8px;
-
-      color: var(--text-soft);
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .mini-box ul {
-      margin: 0;
-      padding-left: 18px;
-
-      color: var(--text-soft);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    .mini-box li {
-      margin-bottom: 6px;
-    }
-
-    .mini-box.do { background: #eaf7f0; }
-    .mini-box.meaning { background: #f2f3f7; }
-    .mini-box.avoid { background: #fff2f1; }
-
-    .say-line {
-      margin-top: 18px;
-      padding: 18px 20px;
-
-      border-radius: 22px;
-
-      background: var(--tone-dark);
-      color: white;
-    }
-
-    .say-line strong {
-      display: block;
-      margin-bottom: 6px;
-
-      color: #aeb4c0;
-      font-size: 12px;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .say-line p {
-      margin: 0;
-
-      color: #f2f4f8;
-      font-size: 17px;
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-    }
-
-    .safety-banner {
-      margin-top: 18px;
-      padding: 18px 20px;
-
-      border-radius: 22px;
-
-      background: #fff1f0;
-      border: 1px solid #ffd2cd;
-    }
-
-    .safety-banner strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #b42c1b;
-      font-size: 15px;
-    }
-
-    .safety-banner p {
-      margin: 0;
-      color: #6d3b34;
-      line-height: 1.5;
-    }
-
-    .coach-note {
-      margin-top: 36px;
-      padding: 22px 24px;
-
-      border-radius: 28px;
       background: #eef2f8;
+
+      color: #656b76;
+
+      font-size: 13px;
+      line-height: 1.45;
     }
 
-    .coach-note strong {
+    .quick-reminder strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 18px;
-    }
 
-    .coach-note p {
-      margin: 0;
-      color: var(--text-soft);
-      line-height: 1.55;
+      margin-bottom: 2px;
+
+      color: #242830;
     }
 
 
@@ -390,62 +966,195 @@
        ANIMATIONS
        ===================================================== */
 
-    @keyframes hop {
-      0%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-8px); }
-      60% { transform: translateY(-3px); }
+    @keyframes jumpHuman {
+      0%,100% {
+        transform:
+          translateX(-50%)
+          translateY(0);
+      }
+
+      47% {
+        transform:
+          translateX(-50%)
+          translateY(-10px);
+      }
     }
 
-    @keyframes drift {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(7px); }
+    @keyframes jumpShadow {
+      0%,100% {
+        width: 34px;
+        opacity: .14;
+      }
+
+      47% {
+        width: 22px;
+        opacity: .05;
+      }
     }
 
-    @keyframes pulseSoft {
-      0%, 100% { transform: scale(1); opacity: .92; }
-      50% { transform: scale(1.06); opacity: 1; }
+    @keyframes walkHuman {
+      0%,100% {
+        transform:
+          translateX(-75%);
+      }
+
+      50% {
+        transform:
+          translateX(-20%);
+      }
     }
 
-    @keyframes wobbleSoft {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-4deg); }
-      75% { transform: rotate(4deg); }
+    @keyframes slowBreathe {
+      0%,100% {
+        transform:
+          translateX(-50%)
+          scale(.97);
+      }
+
+      50% {
+        transform:
+          translateX(-50%)
+          scale(1.02);
+      }
     }
 
-    @keyframes alertShake {
-      0%, 100% { transform: translateX(0); }
-      15% { transform: translateX(-2px); }
-      30% { transform: translateX(2px); }
-      45% { transform: translateX(-2px); }
-      60% { transform: translateX(2px); }
+    @keyframes pauseRing {
+      0% {
+        transform:
+          translate(-50%,-50%)
+          scale(.6);
+
+        opacity: .55;
+      }
+
+      100% {
+        transform:
+          translate(-50%,-50%)
+          scale(1.5);
+
+        opacity: 0;
+      }
+    }
+
+    @keyframes sensoryWave {
+      0% {
+        transform: scale(.72);
+        opacity: .55;
+      }
+
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    @keyframes overloadBody {
+      0%,100% {
+        transform:
+          translateX(-50%)
+          rotate(0);
+      }
+
+      35% {
+        transform:
+          translateX(-50%)
+          rotate(-2deg);
+      }
+
+      68% {
+        transform:
+          translateX(-50%)
+          rotate(2deg);
+      }
+    }
+
+    @keyframes safetyStepLeft {
+      0%,100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(-5px);
+      }
+    }
+
+    @keyframes distancePulse {
+      0%,100% {
+        width: 18px;
+        opacity: .55;
+      }
+
+      50% {
+        width: 25px;
+        opacity: 1;
+      }
     }
 
 
     /* =====================================================
-       MOBILE
+       DESKTOP
        ===================================================== */
 
-    @media (max-width: 760px) {
+    @media (min-width: 720px) {
 
-      .behavior-intro {
-        padding: 52px 0 26px;
-      }
-
-      .scenario-grid {
-        grid-template-columns: 1fr;
+      .scenario-list {
+        grid-template-columns:
+          1fr 1fr;
       }
 
       .scenario-card {
-        min-height: 186px;
+        min-height: 120px;
       }
 
-      .scenario-card h3 {
-        margin-right: 82px;
-        font-size: 22px;
+      .scenario-card.red {
+        grid-column: 1 / -1;
       }
 
-      .mini-columns {
+    }
+
+
+    /* =====================================================
+       SMALL PHONE
+       ===================================================== */
+
+    @media (max-width: 420px) {
+
+      .page-shell {
+        width: calc(100% - 26px);
+      }
+
+      .scenario-card {
+        min-height: 105px;
+
+        grid-template-columns:
+          64px 1fr 18px;
+
+        padding: 11px 12px;
+
+        border-radius: 20px;
+      }
+
+      .scenario-visual {
+        width: 64px;
+        height: 64px;
+
+        border-radius: 17px;
+      }
+
+      .scenario-copy h3 {
+        font-size: 16px;
+      }
+
+      .scenario-copy p {
+        font-size: 12px;
+      }
+
+      .sheet-actions {
         grid-template-columns: 1fr;
+      }
+
+      .scenario-sheet {
+        max-height: 87vh;
       }
 
     }
@@ -453,9 +1162,13 @@
   </style>
 </head>
 
+
 <body>
 
   <div class="page-shell">
+
+
+    <!-- TOP BAR -->
 
     <header class="topbar">
 
@@ -473,7 +1186,7 @@
     </header>
 
 
-    <!-- INTRO -->
+    <!-- HERO -->
 
     <section class="behavior-intro reveal">
 
@@ -487,468 +1200,911 @@
       </h1>
 
       <p class="lead">
-        Tap a situation to see what it might mean, what to do right away,
-        and what not to do.
+        Pick what looks closest to what's happening.
+        We'll keep the answer short.
       </p>
 
     </section>
 
 
-    <!-- QUICK START -->
+    <!-- START NOTE -->
 
-    <section class="quick-start reveal">
+    <section class="start-note reveal">
 
-      <div class="eyebrow">
-        First thought
+      <div class="start-mark">
+        ?
       </div>
 
-      <h2>
-        Don’t jump straight to “How do I stop this?”
-      </h2>
+      <div>
 
-      <p>
-        Start with: “What just happened?” The same behavior can mean excitement,
-        stress, confusion, overload, or a need for space.
-      </p>
+        <strong>
+          First question: what just happened?
+        </strong>
+
+        <span>
+          Context usually tells you more than the behavior by itself.
+        </span>
+
+      </div>
 
     </section>
 
 
-    <!-- SCENARIO GRID -->
+    <!-- SCENARIOS -->
 
     <section class="reveal">
 
-      <div class="scenario-header">
-        <h2>Scenario cards</h2>
-        <p>Pick the one that feels closest to what you’re seeing.</p>
-      </div>
+      <div class="scenario-title">
 
-      <div
-        class="scenario-grid"
-        data-stagger
-      >
+        <h2>
+          What are you seeing?
+        </h2>
 
-        <!-- 1 -->
-        <button
-          class="scenario-card green action-card"
-          data-panel-target="scenario-jumping"
-        >
-          <div class="scenario-pill">Common</div>
-          <div class="scenario-icon">↕</div>
-          <h3>Jumping in place + yelling a bit</h3>
-          <p>
-            Could be excitement, waiting energy, or things starting to feel like too much.
-          </p>
-          <div class="tap-hint">Tap for what to do →</div>
-        </button>
-
-        <!-- 2 -->
-        <button
-          class="scenario-card amber action-card"
-          data-panel-target="scenario-walking"
-        >
-          <div class="scenario-pill">Common</div>
-          <div class="scenario-icon">👣</div>
-          <h3>Walking away from the group</h3>
-          <p>
-            They may want a break, feel confused, or just be done for the moment.
-          </p>
-          <div class="tap-hint">Tap for what to do →</div>
-        </button>
-
-        <!-- 3 -->
-        <button
-          class="scenario-card blue action-card"
-          data-panel-target="scenario-quiet"
-        >
-          <div class="scenario-pill">Common</div>
-          <div class="scenario-icon">⏳</div>
-          <h3>Gets quiet and doesn’t respond</h3>
-          <p>
-            They may be processing, unsure, or getting ready to answer in another way.
-          </p>
-          <div class="tap-hint">Tap for what to do →</div>
-        </button>
-
-        <!-- 4 -->
-        <button
-          class="scenario-card purple action-card"
-          data-panel-target="scenario-overwhelmed"
-        >
-          <div class="scenario-pill">Watch for this</div>
-          <div class="scenario-icon">🌊</div>
-          <h3>Seems overwhelmed</h3>
-          <p>
-            Maybe the gym is loud, there’s too much talking, or too much is happening at once.
-          </p>
-          <div class="tap-hint">Tap for what to do →</div>
-        </button>
-
-        <!-- 5 -->
-        <button
-          class="scenario-card red action-card"
-          data-panel-target="scenario-safety"
-        >
-          <div class="scenario-pill">Safety first</div>
-          <div class="scenario-icon">🛑</div>
-          <h3>Comes at you to hit, push, or grab</h3>
-          <p>
-            Usually a sign of distress, frustration, overload, or a strong “no.”
-          </p>
-          <div class="tap-hint">Tap for what to do →</div>
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         SCENARIO 1
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="scenario-jumping"
-    >
-
-      <div class="panel-header">
-        <div class="panel-label">Scenario 1</div>
-        <button class="close-button">×</button>
-      </div>
-
-      <div class="panel-label-strong green">
-        Jumping in place + yelling a bit
-      </div>
-
-      <h2 class="section-title">
-        Don’t assume it’s just “bad behavior.”
-      </h2>
-
-      <p class="body-copy">
-        This could be excitement, waiting energy, or overload. Look at what happened right before it.
-      </p>
-
-      <div class="mini-columns">
-
-        <div class="mini-box meaning">
-          <h3>What it might mean</h3>
-          <p>Excited, waiting, regulating, or starting to feel overwhelmed.</p>
-        </div>
-
-        <div class="mini-box do">
-          <h3>Do now</h3>
-          <ul>
-            <li>Stay calm.</li>
-            <li>Give them a little room.</li>
-            <li>Say what’s happening next.</li>
-            <li>Keep your words short.</li>
-          </ul>
-        </div>
-
-        <div class="mini-box avoid">
-          <h3>Avoid</h3>
-          <ul>
-            <li>Yelling “Stop!”</li>
-            <li>Crowding them.</li>
-            <li>Assuming it’s automatically a problem.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="say-line">
-        <strong>Try saying</strong>
-        <p>“You’re good. We’re almost up.”</p>
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         SCENARIO 2
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="scenario-walking"
-    >
-
-      <div class="panel-header">
-        <div class="panel-label">Scenario 2</div>
-        <button class="close-button">×</button>
-      </div>
-
-      <div class="panel-label-strong amber">
-        Walking away from the group
-      </div>
-
-      <h2 class="section-title">
-        Don’t turn it into a power struggle.
-      </h2>
-
-      <p class="body-copy">
-        They may need a break, feel unsure, or just not want the activity right then.
-      </p>
-
-      <div class="mini-columns">
-
-        <div class="mini-box meaning">
-          <h3>What it might mean</h3>
-          <p>Break needed, confused, not ready, or needing space.</p>
-        </div>
-
-        <div class="mini-box do">
-          <h3>Do now</h3>
-          <ul>
-            <li>Follow at a calm distance if it’s safe.</li>
-            <li>Keep your tone easy.</li>
-            <li>Offer one simple choice.</li>
-            <li>Reconnect them to the next activity.</li>
-          </ul>
-        </div>
-
-        <div class="mini-box avoid">
-          <h3>Avoid</h3>
-          <ul>
-            <li>Repeating “come back” over and over.</li>
-            <li>Grabbing them unless safety requires it.</li>
-            <li>Sounding frustrated.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="say-line">
-        <strong>Try saying</strong>
-        <p>“Want a break, or want to come see basketball?”</p>
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         SCENARIO 3
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="scenario-quiet"
-    >
-
-      <div class="panel-header">
-        <div class="panel-label">Scenario 3</div>
-        <button class="close-button">×</button>
-      </div>
-
-      <div class="panel-label-strong blue">
-        Gets quiet and doesn’t respond
-      </div>
-
-      <h2 class="section-title">
-        More time — not more words.
-      </h2>
-
-      <p class="body-copy">
-        They may be processing, unsure, overwhelmed, or getting ready to answer in another way.
-      </p>
-
-      <div class="mini-columns">
-
-        <div class="mini-box meaning">
-          <h3>What it might mean</h3>
-          <p>Processing time, confusion, overload, or a different communication style.</p>
-        </div>
-
-        <div class="mini-box do">
-          <h3>Do now</h3>
-          <ul>
-            <li>Say their name once.</li>
-            <li>Give one short instruction.</li>
-            <li>Point or show what you mean.</li>
-            <li>Wait a few seconds.</li>
-          </ul>
-        </div>
-
-        <div class="mini-box avoid">
-          <h3>Avoid</h3>
-          <ul>
-            <li>Rapid-fire directions.</li>
-            <li>Talking louder and louder.</li>
-            <li>Answering for them too fast.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="say-line">
-        <strong>Try saying</strong>
-        <p>“Alex, stand here. Take your time.”</p>
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         SCENARIO 4
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="scenario-overwhelmed"
-    >
-
-      <div class="panel-header">
-        <div class="panel-label">Scenario 4</div>
-        <button class="close-button">×</button>
-      </div>
-
-      <div class="panel-label-strong purple">
-        Seems overwhelmed
-      </div>
-
-      <h2 class="section-title">
-        Make the moment smaller.
-      </h2>
-
-      <p class="body-copy">
-        Look for clues like covering ears, pacing, tighter repeated movement, frowning, or looking upset.
-      </p>
-
-      <div class="mini-columns">
-
-        <div class="mini-box meaning">
-          <h3>What it might mean</h3>
-          <p>Too much noise, too much talking, too many people, or too much change at once.</p>
-        </div>
-
-        <div class="mini-box do">
-          <h3>Do now</h3>
-          <ul>
-            <li>Reduce the talking.</li>
-            <li>Use a calm voice.</li>
-            <li>Give space.</li>
-            <li>Offer a break, water, or a quieter spot.</li>
-          </ul>
-        </div>
-
-        <div class="mini-box avoid">
-          <h3>Avoid</h3>
-          <ul>
-            <li>Touching without warning.</li>
-            <li>Forcing eye contact.</li>
-            <li>Giving too many directions.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="say-line">
-        <strong>Try saying</strong>
-        <p>“Want a break?” or “Water or quiet spot?”</p>
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         SCENARIO 5
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="scenario-safety"
-    >
-
-      <div class="panel-header">
-        <div class="panel-label">Scenario 5</div>
-        <button class="close-button">×</button>
-      </div>
-
-      <div class="panel-label-strong red">
-        Comes at you to hit, push, or grab
-      </div>
-
-      <h2 class="section-title">
-        Safety first.
-      </h2>
-
-      <p class="body-copy">
-        This is usually a sign of distress, frustration, overload, or a strong “no.” Don’t take it personally.
-      </p>
-
-      <div class="mini-columns">
-
-        <div class="mini-box meaning">
-          <h3>What it might mean</h3>
-          <p>Distress, overload, frustration, fear, or a clear attempt to say “stop.”</p>
-        </div>
-
-        <div class="mini-box do">
-          <h3>Do now</h3>
-          <ul>
-            <li>Step back and give space.</li>
-            <li>Keep your voice calm.</li>
-            <li>Move others back if needed.</li>
-            <li>Get the coach or staff right away.</li>
-          </ul>
-        </div>
-
-        <div class="mini-box avoid">
-          <h3>Avoid</h3>
-          <ul>
-            <li>Grabbing back.</li>
-            <li>Arguing.</li>
-            <li>Cornering them.</li>
-            <li>Trying to handle a risky situation alone.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="say-line">
-        <strong>Try saying</strong>
-        <p>“I’m giving you space. Coach is coming.”</p>
-      </div>
-
-      <div class="safety-banner">
-        <strong>Important</strong>
         <p>
-          If there’s any risk of injury, get a coach or staff member immediately.
-          Safety comes first.
+          Tap one.
         </p>
+
+      </div>
+
+
+      <div class="scenario-list">
+
+
+        <!-- 1 JUMPING -->
+
+        <button
+          class="scenario-card green"
+          data-sheet="jumping"
+        >
+
+          <div class="scenario-visual">
+
+            <div class="jump-shadow"></div>
+
+            <div class="jump-line one"></div>
+            <div class="jump-line two"></div>
+
+            <div class="mini-human jump-person">
+
+              <div class="mini-hair"></div>
+              <div class="mini-head"></div>
+              <div class="mini-body"></div>
+
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="scenario-copy">
+
+            <div class="scenario-label">
+              Common
+            </div>
+
+            <h3>
+              Jumping in place + yelling
+            </h3>
+
+            <p>
+              Excited, waiting, regulating, or overwhelmed.
+            </p>
+
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
+
+        </button>
+
+
+        <!-- 2 WALKING -->
+
+        <button
+          class="scenario-card amber"
+          data-sheet="walking"
+        >
+
+          <div class="scenario-visual">
+
+            <div class="walk-path"></div>
+
+            <div class="mini-human walk-person">
+
+              <div class="mini-hair"></div>
+              <div class="mini-head"></div>
+              <div class="mini-body"></div>
+
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="scenario-copy">
+
+            <div class="scenario-label">
+              Common
+            </div>
+
+            <h3>
+              Walking away
+            </h3>
+
+            <p>
+              They may need space, a break, or a clearer next step.
+            </p>
+
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
+
+        </button>
+
+
+        <!-- 3 QUIET -->
+
+        <button
+          class="scenario-card blue"
+          data-sheet="quiet"
+        >
+
+          <div class="scenario-visual">
+
+            <div class="pause-ring"></div>
+            <div class="pause-ring second"></div>
+
+            <div class="mini-human quiet-person">
+
+              <div class="mini-hair"></div>
+              <div class="mini-head"></div>
+              <div class="mini-body"></div>
+
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="scenario-copy">
+
+            <div class="scenario-label">
+              Give it a beat
+            </div>
+
+            <h3>
+              Quiet + not responding
+            </h3>
+
+            <p>
+              They may be processing or getting ready to respond.
+            </p>
+
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
+
+        </button>
+
+
+        <!-- 4 OVERWHELMED -->
+
+        <button
+          class="scenario-card purple"
+          data-sheet="overwhelmed"
+        >
+
+          <div class="scenario-visual">
+
+            <div class="sensory-wave one"></div>
+            <div class="sensory-wave two"></div>
+
+            <div class="mini-human overload-person">
+
+              <div class="mini-hair"></div>
+              <div class="mini-head"></div>
+              <div class="mini-body"></div>
+
+              <div class="mini-leg left"></div>
+              <div class="mini-leg right"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="scenario-copy">
+
+            <div class="scenario-label">
+              Watch for this
+            </div>
+
+            <h3>
+              Seems overwhelmed
+            </h3>
+
+            <p>
+              Noise, crowds, talking, or change may be piling up.
+            </p>
+
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
+
+        </button>
+
+
+        <!-- 5 SAFETY -->
+
+        <button
+          class="scenario-card red"
+          data-sheet="safety"
+        >
+
+          <div class="scenario-visual">
+
+            <div class="safety-person-left">
+
+              <div class="small-head"></div>
+              <div class="small-body"></div>
+
+            </div>
+
+            <div class="safety-distance"></div>
+
+            <div class="safety-person-right">
+
+              <div class="small-head"></div>
+              <div class="small-body"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="scenario-copy">
+
+            <div class="scenario-label">
+              Safety first
+            </div>
+
+            <h3>
+              Tries to hit, push, or grab
+            </h3>
+
+            <p>
+              Create space and bring in the coach or staff right away.
+            </p>
+
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
+
+        </button>
+
       </div>
 
     </section>
 
 
-    <!-- FOOTNOTE -->
+    <!-- QUICK REMINDER -->
 
-    <section class="coach-note reveal">
+    <section class="quick-reminder reveal">
 
       <strong>
-        Quick reminder
+        Every athlete is different.
       </strong>
 
-      <p>
-        These are starting points, not exact formulas. If you know the athlete, use what already works for them.
-        If you’re unsure, ask the coach, parent, or the athlete themselves.
-      </p>
+      If you already know what works for them, use it.
+      If you're unsure, ask the coach, caregiver, or the athlete.
 
     </section>
 
 
     <footer class="site-footer">
 
-      Pay attention first. Then respond.
-      Small changes in tone, space, and wording can make a big difference.
+      Notice first. Respond second.
 
     </footer>
 
   </div>
 
 
+  <!-- ===================================================
+       BACKDROP
+       =================================================== -->
+
+  <div
+    class="sheet-backdrop"
+    id="sheetBackdrop"
+  ></div>
+
+
+  <!-- ===================================================
+       SHEET 1 — JUMPING
+       =================================================== -->
+
+  <section
+    class="scenario-sheet"
+    id="sheet-jumping"
+  >
+
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-top">
+
+      <div>
+
+        <div class="sheet-tag green">
+          Jumping + yelling
+        </div>
+
+        <h2 class="sheet-title">
+          Start with the context.
+        </h2>
+
+      </div>
+
+      <button class="sheet-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="meaning-line">
+
+      <strong>Could be:</strong>
+      excitement, waiting energy, self-regulation,
+      or things starting to feel like too much.
+
+    </div>
+
+
+    <div class="sheet-actions">
+
+      <div class="sheet-box do">
+
+        <h3>
+          Do now
+        </h3>
+
+        <ul>
+          <li>Stay relaxed.</li>
+          <li>Give them some room.</li>
+          <li>Say what's coming next.</li>
+          <li>Keep your words short.</li>
+        </ul>
+
+      </div>
+
+
+      <div class="sheet-box avoid">
+
+        <h3>
+          Avoid
+        </h3>
+
+        <ul>
+          <li>Shouting “stop.”</li>
+          <li>Crowding them.</li>
+          <li>Assuming they're misbehaving.</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="say-box">
+
+      <span>Try saying</span>
+
+      <strong>
+        “You're good — your turn is coming.”
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       SHEET 2 — WALKING
+       =================================================== -->
+
+  <section
+    class="scenario-sheet"
+    id="sheet-walking"
+  >
+
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-top">
+
+      <div>
+
+        <div class="sheet-tag amber">
+          Walking away
+        </div>
+
+        <h2 class="sheet-title">
+          Don't make it a standoff.
+        </h2>
+
+      </div>
+
+      <button class="sheet-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="meaning-line">
+
+      <strong>Could be:</strong>
+      needing a break, being confused,
+      wanting space, or being done for a bit.
+
+    </div>
+
+
+    <div class="sheet-actions">
+
+      <div class="sheet-box do">
+
+        <h3>
+          Do now
+        </h3>
+
+        <ul>
+          <li>Stay nearby if it's safe.</li>
+          <li>Keep your tone easy.</li>
+          <li>Offer one simple choice.</li>
+          <li>Reconnect with what's next.</li>
+        </ul>
+
+      </div>
+
+
+      <div class="sheet-box avoid">
+
+        <h3>
+          Avoid
+        </h3>
+
+        <ul>
+          <li>Repeating “come back.”</li>
+          <li>Following too close.</li>
+          <li>Grabbing unless safety requires it.</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="say-box">
+
+      <span>Try saying</span>
+
+      <strong>
+        “Want a break, or want to come see basketball?”
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       SHEET 3 — QUIET
+       =================================================== -->
+
+  <section
+    class="scenario-sheet"
+    id="sheet-quiet"
+  >
+
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-top">
+
+      <div>
+
+        <div class="sheet-tag blue">
+          Not responding
+        </div>
+
+        <h2 class="sheet-title">
+          More time. Fewer words.
+        </h2>
+
+      </div>
+
+      <button class="sheet-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="meaning-line">
+
+      <strong>Could be:</strong>
+      processing, confusion, overload,
+      or getting ready to respond another way.
+
+    </div>
+
+
+    <div class="sheet-actions">
+
+      <div class="sheet-box do">
+
+        <h3>
+          Do now
+        </h3>
+
+        <ul>
+          <li>Say their name once.</li>
+          <li>Give one clear cue.</li>
+          <li>Point or show.</li>
+          <li>Wait.</li>
+        </ul>
+
+      </div>
+
+
+      <div class="sheet-box avoid">
+
+        <h3>
+          Avoid
+        </h3>
+
+        <ul>
+          <li>Rapid-fire directions.</li>
+          <li>Getting louder.</li>
+          <li>Answering for them too fast.</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="say-box">
+
+      <span>Try saying</span>
+
+      <strong>
+        “Alex, stand here. Take your time.”
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       SHEET 4 — OVERWHELMED
+       =================================================== -->
+
+  <section
+    class="scenario-sheet"
+    id="sheet-overwhelmed"
+  >
+
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-top">
+
+      <div>
+
+        <div class="sheet-tag purple">
+          Overwhelmed
+        </div>
+
+        <h2 class="sheet-title">
+          Make the moment smaller.
+        </h2>
+
+      </div>
+
+      <button class="sheet-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="meaning-line">
+
+      <strong>Could be:</strong>
+      too much noise, too much talking,
+      too many people, or too much change.
+
+    </div>
+
+
+    <div class="sheet-actions">
+
+      <div class="sheet-box do">
+
+        <h3>
+          Do now
+        </h3>
+
+        <ul>
+          <li>Say less.</li>
+          <li>Give space.</li>
+          <li>Keep your voice calm.</li>
+          <li>Offer water, a break, or quiet.</li>
+        </ul>
+
+      </div>
+
+
+      <div class="sheet-box avoid">
+
+        <h3>
+          Avoid
+        </h3>
+
+        <ul>
+          <li>Touching without warning.</li>
+          <li>Forcing eye contact.</li>
+          <li>Several people talking at once.</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="say-box">
+
+      <span>Try saying</span>
+
+      <strong>
+        “Want a break?” or “Water or quiet spot?”
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       SHEET 5 — SAFETY
+       =================================================== -->
+
+  <section
+    class="scenario-sheet"
+    id="sheet-safety"
+  >
+
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-top">
+
+      <div>
+
+        <div class="sheet-tag red">
+          Safety first
+        </div>
+
+        <h2 class="sheet-title">
+          Create space.
+        </h2>
+
+      </div>
+
+      <button class="sheet-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="meaning-line">
+
+      <strong>Could be:</strong>
+      distress, overload, fear,
+      frustration, or a strong “no.”
+
+    </div>
+
+
+    <div class="sheet-actions">
+
+      <div class="sheet-box do">
+
+        <h3>
+          Do now
+        </h3>
+
+        <ul>
+          <li>Step back.</li>
+          <li>Keep your voice calm.</li>
+          <li>Move other athletes back.</li>
+          <li>Get the coach or staff immediately.</li>
+        </ul>
+
+      </div>
+
+
+      <div class="sheet-box avoid">
+
+        <h3>
+          Avoid
+        </h3>
+
+        <ul>
+          <li>Grabbing back.</li>
+          <li>Arguing.</li>
+          <li>Cornering them.</li>
+          <li>Handling a risky situation alone.</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="say-box">
+
+      <span>Try saying</span>
+
+      <strong>
+        “I'm giving you space. Coach is coming.”
+      </strong>
+
+    </div>
+
+
+    <div class="safety-alert">
+
+      <strong>
+        If there's an immediate risk of injury:
+      </strong>
+
+      follow the coach/event staff's safety procedures
+      and get help right away.
+
+    </div>
+
+  </section>
+
+
   <script src="script.js"></script>
+
+  <script>
+
+    /* =====================================================
+       BOTTOM SHEET INTERACTION
+       ===================================================== */
+
+    const scenarioCards =
+      document.querySelectorAll(
+        "[data-sheet]"
+      );
+
+    const scenarioSheets =
+      document.querySelectorAll(
+        ".scenario-sheet"
+      );
+
+    const backdrop =
+      document.getElementById(
+        "sheetBackdrop"
+      );
+
+    const closeButtons =
+      document.querySelectorAll(
+        ".sheet-close"
+      );
+
+
+    function closeSheets() {
+
+      scenarioSheets.forEach(
+        sheet => {
+          sheet.classList.remove("open");
+        }
+      );
+
+      backdrop.classList.remove("open");
+
+      document.body.classList.remove(
+        "sheet-open"
+      );
+
+    }
+
+
+    function openSheet(id) {
+
+      closeSheets();
+
+      const sheet =
+        document.getElementById(
+          "sheet-" + id
+        );
+
+      if (!sheet) return;
+
+      backdrop.classList.add("open");
+
+      sheet.classList.add("open");
+
+      document.body.classList.add(
+        "sheet-open"
+      );
+
+    }
+
+
+    scenarioCards.forEach(card => {
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          openSheet(
+            card.dataset.sheet
+          );
+
+        }
+      );
+
+    });
+
+
+    closeButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        closeSheets
+      );
+
+    });
+
+
+    backdrop.addEventListener(
+      "click",
+      closeSheets
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Escape") {
+          closeSheets();
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
