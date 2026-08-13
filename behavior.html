@@ -8,138 +8,107 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Understanding Athlete Behavior | Volunteer Communication Guide</title>
+  <title>Real Situations | Volunteer Communication Guide</title>
 
   <link rel="stylesheet" href="style.css">
 
   <style>
 
     /* =====================================================
-       BEHAVIOR PAGE — V2
+       BEHAVIOR PAGE — V3
+       Simpler, more vivid, more scenario-based
        ===================================================== */
 
+    :root {
+      --tone-green: linear-gradient(135deg, #dff8ea 0%, #edfdf4 100%);
+      --tone-amber: linear-gradient(135deg, #ffeccf 0%, #fff7e7 100%);
+      --tone-blue: linear-gradient(135deg, #dfe8ff 0%, #eef3ff 100%);
+      --tone-purple: linear-gradient(135deg, #ebe4ff 0%, #f5f1ff 100%);
+      --tone-red: linear-gradient(135deg, #ffe0dd 0%, #fff1f0 100%);
+      --tone-dark: linear-gradient(135deg, #181922 0%, #222430 100%);
+    }
+
     .behavior-intro {
-      padding: 66px 0 35px;
+      padding: 64px 0 30px;
     }
 
     .behavior-intro .lead {
-      margin-top: 21px;
+      margin-top: 18px;
+      max-width: 700px;
     }
 
+    .quick-start {
+      margin: 8px 0 34px;
+      padding: 24px 26px;
 
-    /* ---------- HERO VISUAL ---------- */
+      border-radius: 28px;
 
-    .behavior-hero {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 38px;
-      align-items: center;
-    }
-
-    .behavior-stage {
-      min-height: 270px;
-    }
-
-    .behavior-stage .athlete {
-      left: 50%;
-      bottom: 47px;
-      transform: translateX(-50%);
-    }
-
-    .behavior-stage .motion-mark {
-      position: absolute;
-
-      left: 50%;
-      top: 42px;
-
-      transform: translateX(-50%);
-
-      font-size: 23px;
-
-      animation: gentleBounce 1.9s var(--ease) infinite;
-    }
-
-    .question-bubble {
-      position: absolute;
-
-      right: 17%;
-      top: 34px;
-
-      padding: 9px 13px;
-
-      border-radius: 999px;
-      border: 1px solid var(--line);
-
-      background: rgba(255,255,255,.86);
-
-      font-size: 13px;
-      font-weight: 600;
-
-      animation: floatQuestion 3.5s ease-in-out infinite;
-    }
-
-
-    /* ---------- START HERE ---------- */
-
-    .start-card {
-      margin: 12px 0 38px;
-      padding: 26px;
-
-      border-radius: var(--radius-lg);
-
-      background: var(--dark);
+      background: var(--tone-dark);
       color: white;
+
+      box-shadow: 0 20px 50px rgba(16, 18, 28, 0.12);
     }
 
-    .start-card .eyebrow {
-      color: #9d9da3;
+    .quick-start .eyebrow {
+      color: #a9acb7;
       margin-bottom: 10px;
     }
 
-    .start-card h2 {
-      margin: 0 0 9px;
+    .quick-start h2 {
+      margin: 0 0 8px;
 
-      font-size: clamp(25px, 4vw, 34px);
-      letter-spacing: -.035em;
+      font-size: clamp(26px, 4vw, 34px);
+      letter-spacing: -0.03em;
     }
 
-    .start-card p {
+    .quick-start p {
       margin: 0;
+      max-width: 760px;
 
-      max-width: 680px;
-
-      color: #c7c7cb;
-
+      color: #d4d7df;
       font-size: 16px;
       line-height: 1.55;
     }
 
+    .scenario-header {
+      margin: 0 0 16px;
+    }
 
-    /* ---------- BEHAVIOR GRID ---------- */
+    .scenario-header h2 {
+      margin: 0 0 6px;
 
-    .behavior-grid {
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .scenario-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .scenario-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
     }
 
-    .behavior-card {
+    .scenario-card {
       position: relative;
 
+      min-height: 200px;
       width: 100%;
-      min-height: 230px;
 
       padding: 22px;
 
-      overflow: hidden;
-
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-
-      background: white;
-
       text-align: left;
+      overflow: hidden;
       cursor: pointer;
+
+      border: 1px solid rgba(29,29,31,.06);
+      border-radius: 28px;
 
       transition:
         transform .24s var(--ease),
@@ -147,352 +116,52 @@
         border-color .24s ease;
     }
 
-    .behavior-card:hover {
+    .scenario-card:hover {
       transform: translateY(-4px);
-
-      border-color: rgba(29,29,31,.17);
-      box-shadow: var(--shadow-hover);
+      box-shadow: 0 18px 40px rgba(25, 29, 43, 0.10);
+      border-color: rgba(29,29,31,.12);
     }
 
-    .behavior-card:active {
+    .scenario-card:active {
       transform: scale(.985);
     }
 
-    .card-scene {
-      position: relative;
+    .scenario-card.green { background: var(--tone-green); }
+    .scenario-card.amber { background: var(--tone-amber); }
+    .scenario-card.blue { background: var(--tone-blue); }
+    .scenario-card.purple { background: var(--tone-purple); }
+    .scenario-card.red { background: var(--tone-red); }
 
-      height: 105px;
+    .scenario-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
 
-      margin: -5px 0 19px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
 
-      overflow: hidden;
+      border-radius: 999px;
 
-      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.65);
 
-      background: #f3f3f0;
+      color: #23252c;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    .behavior-card h2 {
-      margin: 0;
-
-      font-size: 20px;
-      line-height: 1.2;
-      letter-spacing: -.025em;
-    }
-
-    .behavior-card p {
-      margin: 6px 0 0;
-
-      color: var(--muted);
-
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-
-    /* =====================================================
-       MINI FIGURES
-       ===================================================== */
-
-    .tiny-person {
+    .scenario-icon {
       position: absolute;
-
-      width: 48px;
-      height: 91px;
-
-      left: 50%;
-      bottom: 4px;
-
-      transform: translateX(-50%);
-      transform-origin: center bottom;
-    }
-
-    .tiny-head {
-      position: absolute;
-
-      width: 31px;
-      height: 31px;
-
-      left: 8px;
-      top: 0;
-
-      border: 1.6px solid var(--text);
-      border-radius: 50%;
-
-      background: white;
-    }
-
-    .tiny-eye {
-      position: absolute;
-
-      width: 3px;
-      height: 3px;
-
-      top: 12px;
-
-      border-radius: 50%;
-
-      background: var(--text);
-    }
-
-    .tiny-eye.left {
-      left: 8px;
-    }
-
-    .tiny-eye.right {
-      right: 8px;
-    }
-
-    .tiny-mouth {
-      position: absolute;
-
-      width: 11px;
-      height: 5px;
-
-      left: 9px;
-      top: 18px;
-
-      border-bottom: 1.5px solid var(--text);
-      border-radius: 0 0 10px 10px;
-    }
-
-    .tiny-body {
-      position: absolute;
-
-      width: 40px;
-      height: 44px;
-
-      left: 4px;
-      top: 35px;
-
-      border: 1.6px solid var(--text);
-      border-radius: 16px 16px 12px 12px;
-
-      background: white;
-    }
-
-    .tiny-leg {
-      position: absolute;
-
-      width: 1.6px;
-      height: 20px;
-
-      top: 74px;
-
-      background: var(--text);
-      transform-origin: top;
-    }
-
-    .tiny-leg.left {
-      left: 18px;
-      transform: rotate(6deg);
-    }
-
-    .tiny-leg.right {
       right: 18px;
-      transform: rotate(-6deg);
-    }
-
-
-    /* ---------- JUMP ---------- */
-
-    .jump-figure {
-      animation: athleteJump 1.65s var(--ease) infinite;
-    }
-
-    .jump-shadow {
-      position: absolute;
-
-      width: 45px;
-      height: 7px;
-
-      left: 50%;
-      bottom: 5px;
-
-      transform: translateX(-50%);
-
-      border-radius: 50%;
-
-      background: rgba(29,29,31,.09);
-
-      animation: shadowPulse 1.65s var(--ease) infinite;
-    }
-
-
-    /* ---------- OVERLOAD ---------- */
-
-    .noise-mark {
-      position: absolute;
-
-      font-size: 17px;
-
-      opacity: .5;
-
-      animation: noiseFloat 2.2s ease-in-out infinite;
-    }
-
-    .noise-one {
-      left: 14%;
-      top: 25px;
-    }
-
-    .noise-two {
-      right: 15%;
       top: 18px;
-      animation-delay: .45s;
-    }
 
-    .noise-three {
-      right: 22%;
-      bottom: 20px;
-      animation-delay: .8s;
-    }
-
-    .overload-ring {
-      position: absolute;
-
-      width: 55px;
-      height: 55px;
-
-      left: 50%;
-      top: 42%;
-
-      transform: translate(-50%, -50%);
-
-      border: 1px solid rgba(29,29,31,.22);
-      border-radius: 50%;
-
-      animation: overloadPulse 2.4s ease-out infinite;
-    }
-
-    .overload-ring.two {
-      animation-delay: .8s;
-    }
-
-
-    /* ---------- WALKING ---------- */
-
-    .walk-person {
-      animation: walkAcross 4s var(--ease) infinite;
-    }
-
-    .walk-arrow {
-      position: absolute;
-
-      right: 16px;
-      top: 40px;
-
-      font-size: 22px;
-
-      animation: pointMove 2s var(--ease) infinite;
-    }
-
-
-    /* ---------- NOT RESPONDING ---------- */
-
-    .pause-dots {
-      position: absolute;
-
-      right: 18%;
-      top: 26px;
-
-      display: flex;
-      gap: 5px;
-    }
-
-    .pause-dot {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-      background: var(--text);
-
-      opacity: .18;
-
-      animation: waitingDot 1.45s ease-in-out infinite;
-    }
-
-    .pause-dot:nth-child(2) {
-      animation-delay: .16s;
-    }
-
-    .pause-dot:nth-child(3) {
-      animation-delay: .32s;
-    }
-
-
-    /* ---------- FRUSTRATED ---------- */
-
-    .frustrated-head .tiny-mouth {
-      top: 22px;
-
-      border-bottom: 0;
-      border-top: 1.5px solid var(--text);
-
-      border-radius: 10px 10px 0 0;
-    }
-
-    .frustrated-brow {
-      position: absolute;
-
-      top: 8px;
-
-      width: 8px;
-      height: 1.5px;
-
-      background: var(--text);
-
-      animation: browTension 3.4s ease-in-out infinite;
-    }
-
-    .frustrated-brow.left {
-      left: 6px;
-      transform: rotate(18deg);
-    }
-
-    .frustrated-brow.right {
-      right: 6px;
-      transform: rotate(-18deg);
-    }
-
-    .frustration-line {
-      position: absolute;
-
-      width: 20px;
-      height: 2px;
-
-      background: var(--text);
-
-      opacity: .25;
-
-      animation: frustrationLine 2.2s ease-in-out infinite;
-    }
-
-    .frustration-line.one {
-      top: 28px;
-      left: 18%;
-    }
-
-    .frustration-line.two {
-      top: 20px;
-      right: 18%;
-
-      animation-delay: .4s;
-    }
-
-
-    /* ---------- NO ---------- */
-
-    .no-hand {
-      position: absolute;
-
-      left: 50%;
-      top: 46%;
-
-      transform: translate(-50%, -50%);
-
-      width: 62px;
-      height: 62px;
+      width: 66px;
+      height: 66px;
 
       display: flex;
       align-items: center;
@@ -500,133 +169,219 @@
 
       border-radius: 20px;
 
-      background: white;
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
 
-      font-size: 31px;
+      font-size: 30px;
+    }
 
-      animation: handNo 2.6s var(--ease) infinite;
+    .scenario-card h3 {
+      margin: 12px 84px 8px 0;
+
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .scenario-card p {
+      margin: 0;
+
+      max-width: 420px;
+
+      color: #555b66;
+      font-size: 15px;
+      line-height: 1.48;
+    }
+
+    .scenario-card .tap-hint {
+      position: absolute;
+      left: 22px;
+      bottom: 18px;
+
+      color: #303544;
+      opacity: .72;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .scenario-card.green .scenario-icon {
+      animation: hop 1.7s ease-in-out infinite;
+    }
+
+    .scenario-card.amber .scenario-icon {
+      animation: drift 2.6s ease-in-out infinite;
+    }
+
+    .scenario-card.blue .scenario-icon {
+      animation: pulseSoft 2s ease-in-out infinite;
+    }
+
+    .scenario-card.purple .scenario-icon {
+      animation: wobbleSoft 2.7s ease-in-out infinite;
+    }
+
+    .scenario-card.red .scenario-icon {
+      animation: alertShake 1.9s ease-in-out infinite;
     }
 
 
     /* =====================================================
-       DETAIL PANEL VISUALS
+       PANELS
        ===================================================== */
 
-    .detail-layout {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 28px;
-      align-items: start;
+    .panel {
+      margin-top: 22px;
     }
 
-    .detail-visual {
-      position: relative;
+    .panel-label-strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
 
-      height: 220px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
 
-      overflow: hidden;
+      border-radius: 999px;
 
-      border-radius: var(--radius-md);
-
-      background: #f2f2ef;
-    }
-
-    .detail-visual .tiny-person {
-      transform:
-        translateX(-50%)
-        scale(1.45);
-
-      bottom: 26px;
-    }
-
-    .detail-visual .jump-figure {
-      animation: athleteJumpLarge 1.7s var(--ease) infinite;
-    }
-
-
-    /* ---------- CONTEXT QUESTION ---------- */
-
-    .context-question {
-      margin: 22px 0;
-
-      padding: 20px;
-
-      border-radius: var(--radius-md);
-
-      background: var(--dark);
-
-      color: white;
-    }
-
-    .context-question small {
-      display: block;
-
-      margin-bottom: 6px;
-
-      color: #9d9da3;
-
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: .06em;
+      letter-spacing: .04em;
       text-transform: uppercase;
+
+      color: #2b2f38;
+      background: #eef0f4;
     }
 
-    .context-question strong {
-      font-size: 19px;
-      letter-spacing: -.02em;
+    .panel-label-strong.green { background: #dff8ea; }
+    .panel-label-strong.amber { background: #ffeccf; }
+    .panel-label-strong.blue { background: #dfe8ff; }
+    .panel-label-strong.purple { background: #ebe4ff; }
+    .panel-label-strong.red { background: #ffe0dd; }
+
+    .panel .section-title {
+      margin-bottom: 10px;
     }
 
+    .panel .body-copy {
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
 
-    /* ---------- NATURAL LANGUAGE EXAMPLES ---------- */
+    .mini-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
 
-    .say-this {
       margin-top: 18px;
+    }
 
-      padding: 17px 18px;
+    .mini-box {
+      padding: 18px 18px 16px;
+      border-radius: 24px;
+      background: #f3f4f6;
+    }
 
-      border-radius: var(--radius-md);
+    .mini-box h3 {
+      margin: 0 0 9px;
 
-      background: var(--good-soft);
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .mini-box p {
+      margin: 0 0 8px;
 
       color: var(--text-soft);
-
+      font-size: 15px;
       line-height: 1.5;
     }
 
-    .say-this strong {
-      display: block;
+    .mini-box ul {
+      margin: 0;
+      padding-left: 18px;
 
-      margin-bottom: 5px;
-
-      color: var(--text);
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.55;
     }
 
-
-    /* ---------- SAFETY ---------- */
-
-    .safety-note {
-      margin-top: 35px;
-
-      padding: 23px;
-
-      border-radius: var(--radius-lg);
-
-      background: #ecece8;
+    .mini-box li {
+      margin-bottom: 6px;
     }
 
-    .safety-note strong {
+    .mini-box.do { background: #eaf7f0; }
+    .mini-box.meaning { background: #f2f3f7; }
+    .mini-box.avoid { background: #fff2f1; }
+
+    .say-line {
+      margin-top: 18px;
+      padding: 18px 20px;
+
+      border-radius: 22px;
+
+      background: var(--tone-dark);
+      color: white;
+    }
+
+    .say-line strong {
       display: block;
+      margin-bottom: 6px;
 
-      margin-bottom: 5px;
+      color: #aeb4c0;
+      font-size: 12px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
 
+    .say-line p {
+      margin: 0;
+
+      color: #f2f4f8;
+      font-size: 17px;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    .safety-banner {
+      margin-top: 18px;
+      padding: 18px 20px;
+
+      border-radius: 22px;
+
+      background: #fff1f0;
+      border: 1px solid #ffd2cd;
+    }
+
+    .safety-banner strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #b42c1b;
+      font-size: 15px;
+    }
+
+    .safety-banner p {
+      margin: 0;
+      color: #6d3b34;
+      line-height: 1.5;
+    }
+
+    .coach-note {
+      margin-top: 36px;
+      padding: 22px 24px;
+
+      border-radius: 28px;
+      background: #eef2f8;
+    }
+
+    .coach-note strong {
+      display: block;
+      margin-bottom: 6px;
       font-size: 18px;
     }
 
-    .safety-note p {
+    .coach-note p {
       margin: 0;
-
       color: var(--text-soft);
-
       line-height: 1.55;
     }
 
@@ -635,187 +390,62 @@
        ANIMATIONS
        ===================================================== */
 
-    @keyframes floatQuestion {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
+    @keyframes hop {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-3px); }
     }
 
-    @keyframes athleteJump {
-      0%,
-      100% {
-        transform:
-          translateX(-50%)
-          translateY(0);
-      }
-
-      47% {
-        transform:
-          translateX(-50%)
-          translateY(-13px);
-      }
+    @keyframes drift {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(7px); }
     }
 
-    @keyframes athleteJumpLarge {
-      0%,
-      100% {
-        transform:
-          translateX(-50%)
-          scale(1.45)
-          translateY(0);
-      }
-
-      48% {
-        transform:
-          translateX(-50%)
-          scale(1.45)
-          translateY(-10px);
-      }
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); opacity: .92; }
+      50% { transform: scale(1.06); opacity: 1; }
     }
 
-    @keyframes shadowPulse {
-      0%,
-      100% {
-        width: 45px;
-        opacity: .1;
-      }
-
-      47% {
-        width: 27px;
-        opacity: .04;
-      }
+    @keyframes wobbleSoft {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-4deg); }
+      75% { transform: rotate(4deg); }
     }
 
-    @keyframes noiseFloat {
-      0%,
-      100% {
-        transform: translateY(0) rotate(-3deg);
-        opacity: .22;
-      }
-
-      50% {
-        transform: translateY(-6px) rotate(4deg);
-        opacity: .65;
-      }
-    }
-
-    @keyframes overloadPulse {
-      from {
-        transform:
-          translate(-50%, -50%)
-          scale(.7);
-
-        opacity: .5;
-      }
-
-      to {
-        transform:
-          translate(-50%, -50%)
-          scale(1.65);
-
-        opacity: 0;
-      }
-    }
-
-    @keyframes walkAcross {
-      0%,
-      15% {
-        transform:
-          translateX(-70%)
-          rotate(0);
-      }
-
-      50% {
-        transform:
-          translateX(-20%)
-          rotate(2deg);
-      }
-
-      85%,
-      100% {
-        transform:
-          translateX(18%)
-          rotate(0);
-      }
-    }
-
-    @keyframes browTension {
-      0%,
-      55%,
-      100% {
-        opacity: .3;
-      }
-
-      70%,
-      85% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes frustrationLine {
-      0%,
-      100% {
-        transform: translateX(0);
-        opacity: .15;
-      }
-
-      50% {
-        transform: translateX(5px);
-        opacity: .5;
-      }
-    }
-
-    @keyframes handNo {
-      0%,
-      100% {
-        transform:
-          translate(-50%, -50%)
-          rotate(-4deg);
-      }
-
-      50% {
-        transform:
-          translate(-50%, -50%)
-          rotate(5deg);
-      }
+    @keyframes alertShake {
+      0%, 100% { transform: translateX(0); }
+      15% { transform: translateX(-2px); }
+      30% { transform: translateX(2px); }
+      45% { transform: translateX(-2px); }
+      60% { transform: translateX(2px); }
     }
 
 
-    /* ---------- MOBILE ---------- */
+    /* =====================================================
+       MOBILE
+       ===================================================== */
 
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
 
       .behavior-intro {
-        padding: 52px 0 30px;
+        padding: 52px 0 26px;
       }
 
-      .behavior-hero {
+      .scenario-grid {
         grid-template-columns: 1fr;
       }
 
-      .behavior-stage {
-        min-height: 210px;
+      .scenario-card {
+        min-height: 186px;
       }
 
-      .behavior-grid {
+      .scenario-card h3 {
+        margin-right: 82px;
+        font-size: 22px;
+      }
+
+      .mini-columns {
         grid-template-columns: 1fr;
-      }
-
-      .behavior-card {
-        min-height: 215px;
-      }
-
-      .detail-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .detail-visual {
-        height: 180px;
       }
 
     }
@@ -823,13 +453,9 @@
   </style>
 </head>
 
-
 <body>
 
   <div class="page-shell">
-
-
-    <!-- TOP BAR -->
 
     <header class="topbar">
 
@@ -841,346 +467,135 @@
       </a>
 
       <div class="top-label">
-        Understanding Behavior
+        Real Situations
       </div>
 
     </header>
 
 
-    <!-- HERO -->
+    <!-- INTRO -->
 
     <section class="behavior-intro reveal">
 
-      <div class="behavior-hero">
-
-        <div>
-
-          <div class="eyebrow">
-            In the moment
-          </div>
-
-          <h1 class="page-title">
-            Start with what you see.
-          </h1>
-
-          <p class="lead">
-            Something feels off? Don't rush to label it.
-            Take a look at what's happening, give the athlete a beat,
-            and figure out what might help.
-          </p>
-
-        </div>
-
-
-        <div
-          class="visual-stage behavior-stage"
-          aria-label="An athlete moving while a volunteer pauses to observe"
-        >
-
-          <div class="motion-mark">
-            ↕
-          </div>
-
-          <div class="question-bubble">
-            What's going on?
-          </div>
-
-          <div class="person athlete motion-bounce">
-
-            <div class="person-head">
-              <div class="eye left"></div>
-              <div class="eye right"></div>
-              <div class="mouth"></div>
-            </div>
-
-            <div class="person-body"></div>
-
-            <div class="person-leg-left"></div>
-            <div class="person-leg-right"></div>
-
-          </div>
-
-          <div class="visual-caption">
-            Notice first. Then respond.
-          </div>
-
-        </div>
-
+      <div class="eyebrow">
+        Quick help in the moment
       </div>
+
+      <h1 class="page-title">
+        Real situations.<br>
+        Quick responses.
+      </h1>
+
+      <p class="lead">
+        Tap a situation to see what it might mean, what to do right away,
+        and what not to do.
+      </p>
 
     </section>
 
 
-    <!-- START HERE -->
+    <!-- QUICK START -->
 
-    <section class="start-card reveal">
+    <section class="quick-start reveal">
 
       <div class="eyebrow">
-        Start here
+        First thought
       </div>
 
       <h2>
-        What happened right before this?
+        Don’t jump straight to “How do I stop this?”
       </h2>
 
       <p>
-        That's usually a better first question than “How do I make this stop?”
-        The same behavior can mean excitement, stress, waiting, confusion,
-        sensory regulation — or something completely different.
+        Start with: “What just happened?” The same behavior can mean excitement,
+        stress, confusion, overload, or a need for space.
       </p>
 
     </section>
 
 
-    <!-- SITUATIONS -->
+    <!-- SCENARIO GRID -->
 
     <section class="reveal">
 
-      <div class="eyebrow">
-        What are you seeing?
+      <div class="scenario-header">
+        <h2>Scenario cards</h2>
+        <p>Pick the one that feels closest to what you’re seeing.</p>
       </div>
 
       <div
-        class="behavior-grid"
+        class="scenario-grid"
         data-stagger
       >
 
-
-        <!-- JUMPING -->
-
+        <!-- 1 -->
         <button
-          class="behavior-card action-card"
-          data-panel-target="jumping"
+          class="scenario-card green action-card"
+          data-panel-target="scenario-jumping"
         >
-
-          <div class="card-scene">
-
-            <div class="jump-shadow"></div>
-
-            <div class="tiny-person jump-figure">
-
-              <div class="tiny-head">
-                <div class="tiny-eye left"></div>
-                <div class="tiny-eye right"></div>
-                <div class="tiny-mouth"></div>
-              </div>
-
-              <div class="tiny-body"></div>
-
-              <div class="tiny-leg left"></div>
-              <div class="tiny-leg right"></div>
-
-            </div>
-
-          </div>
-
-          <h2>
-            Jumping or repeated movement
-          </h2>
-
+          <div class="scenario-pill">Common</div>
+          <div class="scenario-icon">↕</div>
+          <h3>Jumping in place + yelling a bit</h3>
           <p>
-            Excited? Waiting? Regulating? Overwhelmed?
+            Could be excitement, waiting energy, or things starting to feel like too much.
           </p>
-
+          <div class="tap-hint">Tap for what to do →</div>
         </button>
 
-
-        <!-- OVERWHELMED -->
-
+        <!-- 2 -->
         <button
-          class="behavior-card action-card"
-          data-panel-target="overwhelmed"
+          class="scenario-card amber action-card"
+          data-panel-target="scenario-walking"
         >
-
-          <div class="card-scene">
-
-            <span class="noise-mark noise-one">♪</span>
-            <span class="noise-mark noise-two">!</span>
-            <span class="noise-mark noise-three">•••</span>
-
-            <div class="overload-ring"></div>
-            <div class="overload-ring two"></div>
-
-            <div class="tiny-person">
-
-              <div class="tiny-head">
-                <div class="tiny-eye left"></div>
-                <div class="tiny-eye right"></div>
-                <div class="tiny-mouth"></div>
-              </div>
-
-              <div class="tiny-body"></div>
-
-              <div class="tiny-leg left"></div>
-              <div class="tiny-leg right"></div>
-
-            </div>
-
-          </div>
-
-          <h2>
-            Seems overwhelmed
-          </h2>
-
+          <div class="scenario-pill">Common</div>
+          <div class="scenario-icon">👣</div>
+          <h3>Walking away from the group</h3>
           <p>
-            Too much noise, movement, talking, or change at once.
+            They may want a break, feel confused, or just be done for the moment.
           </p>
-
+          <div class="tap-hint">Tap for what to do →</div>
         </button>
 
-
-        <!-- WALKING -->
-
+        <!-- 3 -->
         <button
-          class="behavior-card action-card"
-          data-panel-target="walking"
+          class="scenario-card blue action-card"
+          data-panel-target="scenario-quiet"
         >
-
-          <div class="card-scene">
-
-            <div class="tiny-person walk-person">
-
-              <div class="tiny-head">
-                <div class="tiny-eye left"></div>
-                <div class="tiny-eye right"></div>
-                <div class="tiny-mouth"></div>
-              </div>
-
-              <div class="tiny-body"></div>
-
-              <div class="tiny-leg left"></div>
-              <div class="tiny-leg right"></div>
-
-            </div>
-
-            <div class="walk-arrow">
-              →
-            </div>
-
-          </div>
-
-          <h2>
-            Walking away
-          </h2>
-
+          <div class="scenario-pill">Common</div>
+          <div class="scenario-icon">⏳</div>
+          <h3>Gets quiet and doesn’t respond</h3>
           <p>
-            Don't turn it into a power struggle right away.
+            They may be processing, unsure, or getting ready to answer in another way.
           </p>
-
+          <div class="tap-hint">Tap for what to do →</div>
         </button>
 
-
-        <!-- NOT RESPONDING -->
-
+        <!-- 4 -->
         <button
-          class="behavior-card action-card"
-          data-panel-target="notresponding"
+          class="scenario-card purple action-card"
+          data-panel-target="scenario-overwhelmed"
         >
-
-          <div class="card-scene">
-
-            <div class="tiny-person">
-
-              <div class="tiny-head">
-                <div class="tiny-eye left"></div>
-                <div class="tiny-eye right"></div>
-                <div class="tiny-mouth"></div>
-              </div>
-
-              <div class="tiny-body"></div>
-
-              <div class="tiny-leg left"></div>
-              <div class="tiny-leg right"></div>
-
-            </div>
-
-            <div class="pause-dots">
-              <span class="pause-dot"></span>
-              <span class="pause-dot"></span>
-              <span class="pause-dot"></span>
-            </div>
-
-          </div>
-
-          <h2>
-            Not responding
-          </h2>
-
+          <div class="scenario-pill">Watch for this</div>
+          <div class="scenario-icon">🌊</div>
+          <h3>Seems overwhelmed</h3>
           <p>
-            Maybe they need more time — not more words.
+            Maybe the gym is loud, there’s too much talking, or too much is happening at once.
           </p>
-
+          <div class="tap-hint">Tap for what to do →</div>
         </button>
 
-
-        <!-- FRUSTRATED -->
-
+        <!-- 5 -->
         <button
-          class="behavior-card action-card"
-          data-panel-target="frustrated"
+          class="scenario-card red action-card"
+          data-panel-target="scenario-safety"
         >
-
-          <div class="card-scene">
-
-            <div class="frustration-line one"></div>
-            <div class="frustration-line two"></div>
-
-            <div class="tiny-person">
-
-              <div class="tiny-head frustrated-head">
-
-                <div class="frustrated-brow left"></div>
-                <div class="frustrated-brow right"></div>
-
-                <div class="tiny-eye left"></div>
-                <div class="tiny-eye right"></div>
-                <div class="tiny-mouth"></div>
-
-              </div>
-
-              <div class="tiny-body"></div>
-
-              <div class="tiny-leg left"></div>
-              <div class="tiny-leg right"></div>
-
-            </div>
-
-          </div>
-
-          <h2>
-            Seems frustrated
-          </h2>
-
+          <div class="scenario-pill">Safety first</div>
+          <div class="scenario-icon">🛑</div>
+          <h3>Comes at you to hit, push, or grab</h3>
           <p>
-            Something may be harder than it needs to be.
+            Usually a sign of distress, frustration, overload, or a strong “no.”
           </p>
-
-        </button>
-
-
-        <!-- NO -->
-
-        <button
-          class="behavior-card action-card"
-          data-panel-target="no"
-        >
-
-          <div class="card-scene">
-
-            <div class="no-hand">
-              ✋
-            </div>
-
-          </div>
-
-          <h2>
-            Saying “no”
-          </h2>
-
-          <p>
-            The message might not come through speech.
-          </p>
-
+          <div class="tap-hint">Tap for what to do →</div>
         </button>
 
       </div>
@@ -1189,706 +604,335 @@
 
 
     <!-- =================================================
-         JUMPING PANEL
+         SCENARIO 1
          ================================================= -->
 
     <section
       class="panel"
-      id="jumping"
+      id="scenario-jumping"
     >
 
       <div class="panel-header">
-
-        <div class="panel-label">
-          Jumping / repeated movement
-        </div>
-
-        <button class="close-button">
-          ×
-        </button>
-
+        <div class="panel-label">Scenario 1</div>
+        <button class="close-button">×</button>
       </div>
 
-
-      <div class="detail-layout">
-
-        <div>
-
-          <h2 class="section-title">
-            Don't assume it means one thing.
-          </h2>
-
-          <p class="body-copy">
-            Jumping, rocking, pacing, or repeating the same movement
-            can happen for a bunch of reasons.
-            The context matters way more than the movement by itself.
-          </p>
-
-        </div>
-
-
-        <div class="detail-visual">
-
-          <div class="jump-shadow"></div>
-
-          <div class="tiny-person jump-figure">
-
-            <div class="tiny-head">
-              <div class="tiny-eye left"></div>
-              <div class="tiny-eye right"></div>
-              <div class="tiny-mouth"></div>
-            </div>
-
-            <div class="tiny-body"></div>
-
-            <div class="tiny-leg left"></div>
-            <div class="tiny-leg right"></div>
-
-          </div>
-
-        </div>
-
+      <div class="panel-label-strong green">
+        Jumping in place + yelling a bit
       </div>
 
-
-      <div class="context-question">
-
-        <small>Ask yourself</small>
-
-        <strong>
-          What's happening around them right now?
-        </strong>
-
-      </div>
-
-
-      <div class="possibility-stack">
-
-        <div class="possibility">
-          <strong>They might just be excited.</strong>
-
-          <p>
-            Their turn is coming, they made a basket,
-            they saw someone they like, or they're doing their favorite activity.
-            If they're happy and safe, you may not need to stop it at all.
-          </p>
-        </div>
-
-
-        <div class="possibility">
-          <strong>The movement might be helping them regulate.</strong>
-
-          <p>
-            Moving can sometimes help with waiting, energy,
-            sensory input, or just getting settled.
-          </p>
-        </div>
-
-
-        <div class="possibility">
-          <strong>Or things might be getting to be too much.</strong>
-
-          <p>
-            Check for other clues: covering their ears,
-            trying to leave, looking tense,
-            or suddenly having a hard time responding.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="response-grid">
-
-        <div class="response-box">
-
-          <h3>Try</h3>
-
-          <ul>
-            <li>Stay relaxed.</li>
-            <li>Give them some room.</li>
-            <li>Tell them what's coming next.</li>
-            <li>Say less if they seem overloaded.</li>
-            <li>Let safe movement happen when it doesn't need fixing.</li>
-          </ul>
-
-        </div>
-
-
-        <div class="response-box">
-
-          <h3>Skip</h3>
-
-          <ul>
-            <li>“Stop that!” right away.</li>
-            <li>Assuming they're ignoring you.</li>
-            <li>Piling on directions.</li>
-            <li>Treating every repeated movement as a problem.</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         OVERWHELMED PANEL
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="overwhelmed"
-    >
-
-      <div class="panel-header">
-
-        <div class="panel-label">
-          Overwhelmed
-        </div>
-
-        <button class="close-button">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="detail-layout">
-
-        <div>
-
-          <h2 class="section-title">
-            Make the moment smaller.
-          </h2>
-
-          <p class="body-copy">
-            A loud gym, whistles, people moving everywhere,
-            a sudden schedule change, or too many instructions at once
-            can turn a normal session into a lot to handle.
-          </p>
-
-        </div>
-
-
-        <div class="detail-visual">
-
-          <span class="noise-mark noise-one">♪</span>
-          <span class="noise-mark noise-two">!</span>
-          <span class="noise-mark noise-three">•••</span>
-
-          <div class="overload-ring"></div>
-          <div class="overload-ring two"></div>
-
-          <div class="tiny-person">
-
-            <div class="tiny-head">
-              <div class="tiny-eye left"></div>
-              <div class="tiny-eye right"></div>
-              <div class="tiny-mouth"></div>
-            </div>
-
-            <div class="tiny-body"></div>
-
-            <div class="tiny-leg left"></div>
-            <div class="tiny-leg right"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <h3>
-        You might notice:
-      </h3>
-
-      <div class="possibility-stack">
-
-        <div class="possibility">
-          Covering ears or moving away from noise
-        </div>
-
-        <div class="possibility">
-          Looking tense, upset, or suddenly very quiet
-        </div>
-
-        <div class="possibility">
-          Repeated movement getting more intense
-        </div>
-
-        <div class="possibility">
-          Having a much harder time responding
-        </div>
-
-      </div>
-
-
-      <div class="response-grid">
-
-        <div class="response-box">
-
-          <h3>Try</h3>
-
-          <ul>
-            <li>Say less for a minute.</li>
-            <li>Keep your voice calm.</li>
-            <li>Give them some space.</li>
-            <li>Move somewhere quieter if that makes sense.</li>
-            <li>Offer one simple choice.</li>
-            <li>Give the athlete time to settle.</li>
-          </ul>
-
-        </div>
-
-
-        <div class="response-box">
-
-          <h3>Skip</h3>
-
-          <ul>
-            <li>Getting louder.</li>
-            <li>Crowding around them.</li>
-            <li>Rapid-fire questions.</li>
-            <li>Forcing eye contact.</li>
-            <li>Unexpected grabbing or touching.</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <div class="say-this">
-
-        <strong>Something simple works.</strong>
-
-        “Want a break?”<br>
-        “Stay here or somewhere quieter?”
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         WALKING AWAY PANEL
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="walking"
-    >
-
-      <div class="panel-header">
-
-        <div class="panel-label">
-          Walking away
-        </div>
-
-        <button class="close-button">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="detail-layout">
-
-        <div>
-
-          <h2 class="section-title">
-            Don't make it a power struggle right away.
-          </h2>
-
-          <p class="body-copy">
-            Maybe they need a break.
-            Maybe the activity doesn't make sense yet.
-            Maybe they just want a little space.
-            You don't have to solve that in the first two seconds.
-          </p>
-
-        </div>
-
-
-        <div class="detail-visual">
-
-          <div class="tiny-person walk-person">
-
-            <div class="tiny-head">
-              <div class="tiny-eye left"></div>
-              <div class="tiny-eye right"></div>
-              <div class="tiny-mouth"></div>
-            </div>
-
-            <div class="tiny-body"></div>
-
-            <div class="tiny-leg left"></div>
-            <div class="tiny-leg right"></div>
-
-          </div>
-
-          <div class="walk-arrow">
-            →
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="response-grid">
-
-        <div class="response-box">
-
-          <h3>Try</h3>
-
-          <ul>
-            <li>Stay nearby if it's safe.</li>
-            <li>Keep your tone easy.</li>
-            <li>Give them a moment.</li>
-            <li>Reconnect with something concrete.</li>
-          </ul>
-
-        </div>
-
-
-        <div class="response-box">
-
-          <h3>Skip</h3>
-
-          <ul>
-            <li>Repeating “come back” ten times.</li>
-            <li>Blocking them in unless safety requires it.</li>
-            <li>Turning the moment into a standoff.</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <div class="say-this">
-
-        <strong>Try reconnecting, not commanding.</strong>
-
-        “Basketball's next. Want to come see?”
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         NOT RESPONDING PANEL
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="notresponding"
-    >
-
-      <div class="panel-header">
-
-        <div class="panel-label">
-          Not responding
-        </div>
-
-        <button class="close-button">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="detail-layout">
-
-        <div>
-
-          <h2 class="section-title">
-            Give them a beat.
-          </h2>
-
-          <p class="body-copy">
-            No immediate answer doesn't automatically mean
-            “they aren't listening.”
-            They might be processing, figuring out what you mean,
-            getting ready to move, or communicating in another way.
-          </p>
-
-        </div>
-
-
-        <div class="detail-visual">
-
-          <div class="tiny-person">
-
-            <div class="tiny-head">
-              <div class="tiny-eye left"></div>
-              <div class="tiny-eye right"></div>
-              <div class="tiny-mouth"></div>
-            </div>
-
-            <div class="tiny-body"></div>
-
-            <div class="tiny-leg left"></div>
-            <div class="tiny-leg right"></div>
-
-          </div>
-
-          <div class="pause-dots">
-            <span class="pause-dot"></span>
-            <span class="pause-dot"></span>
-            <span class="pause-dot"></span>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="possibility-stack">
-
-        <div class="possibility">
-          <strong>1. Get their attention.</strong>
-          <p>Say their name naturally.</p>
-        </div>
-
-        <div class="possibility">
-          <strong>2. Keep the cue short.</strong>
-          <p>One idea at a time.</p>
-        </div>
-
-        <div class="possibility">
-          <strong>3. Wait.</strong>
-          <p>Give them a real chance to respond.</p>
-        </div>
-
-        <div class="possibility">
-          <strong>4. Show it.</strong>
-          <p>Point, gesture, or demonstrate if the words aren't landing.</p>
-        </div>
-
-      </div>
-
-
-      <div class="say-this">
-
-        <strong>Instead of adding more words:</strong>
-
-        Point to the spot and say,
-        “Stand here.”
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         FRUSTRATED PANEL
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="frustrated"
-    >
-
-      <div class="panel-header">
-
-        <div class="panel-label">
-          Frustrated
-        </div>
-
-        <button class="close-button">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="detail-layout">
-
-        <div>
-
-          <h2 class="section-title">
-            Something may be harder than it needs to be.
-          </h2>
-
-          <p class="body-copy">
-            The drill might be confusing.
-            They might be tired.
-            The room might be loud.
-            Or maybe they just don't want to do this exact thing right now.
-          </p>
-
-        </div>
-
-
-        <div class="detail-visual">
-
-          <div class="frustration-line one"></div>
-          <div class="frustration-line two"></div>
-
-          <div class="tiny-person">
-
-            <div class="tiny-head frustrated-head">
-
-              <div class="frustrated-brow left"></div>
-              <div class="frustrated-brow right"></div>
-
-              <div class="tiny-eye left"></div>
-              <div class="tiny-eye right"></div>
-              <div class="tiny-mouth"></div>
-
-            </div>
-
-            <div class="tiny-body"></div>
-
-            <div class="tiny-leg left"></div>
-            <div class="tiny-leg right"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="response-grid">
-
-        <div class="response-box">
-
-          <h3>Try</h3>
-
-          <ul>
-            <li>Use fewer words.</li>
-            <li>Show the drill.</li>
-            <li>Offer help.</li>
-            <li>Give a short break.</li>
-            <li>Offer two simple options.</li>
-          </ul>
-
-        </div>
-
-
-        <div class="response-box">
-
-          <h3>Watch for</h3>
-
-          <ul>
-            <li>Tight eyebrows.</li>
-            <li>Pulling away.</li>
-            <li>A sudden expression change.</li>
-            <li>More intense movement.</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <div class="say-this">
-
-        <strong>Keep it easy.</strong>
-
-        “Want help?”<br>
-        “Break or one more?”
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         NO PANEL
-         ================================================= -->
-
-    <section
-      class="panel"
-      id="no"
-    >
-
-      <div class="panel-header">
-
-        <div class="panel-label">
-          Saying no
-        </div>
-
-        <button class="close-button">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="detail-layout">
-
-        <div>
-
-          <h2 class="section-title">
-            Notice the message first.
-          </h2>
-
-          <p class="body-copy">
-            “No” might be a word.
-            It might also be a head shake, a hand pushing something away,
-            turning their body, a gesture, or a choice on AAC.
-          </p>
-
-        </div>
-
-
-        <div class="detail-visual">
-
-          <div class="no-hand">
-            ✋
-          </div>
-
-        </div>
-
-      </div>
-
+      <h2 class="section-title">
+        Don’t assume it’s just “bad behavior.”
+      </h2>
 
       <p class="body-copy">
-        You can still encourage the athlete later.
-        But start by showing them that their communication actually means something.
+        This could be excitement, waiting energy, or overload. Look at what happened right before it.
       </p>
 
+      <div class="mini-columns">
 
-      <div class="say-this">
+        <div class="mini-box meaning">
+          <h3>What it might mean</h3>
+          <p>Excited, waiting, regulating, or starting to feel overwhelmed.</p>
+        </div>
 
-        <strong>Acknowledge it.</strong>
+        <div class="mini-box do">
+          <h3>Do now</h3>
+          <ul>
+            <li>Stay calm.</li>
+            <li>Give them a little room.</li>
+            <li>Say what’s happening next.</li>
+            <li>Keep your words short.</li>
+          </ul>
+        </div>
 
-        “Okay. We can give it a minute.”
+        <div class="mini-box avoid">
+          <h3>Avoid</h3>
+          <ul>
+            <li>Yelling “Stop!”</li>
+            <li>Crowding them.</li>
+            <li>Assuming it’s automatically a problem.</li>
+          </ul>
+        </div>
 
       </div>
 
-
-      <div class="callout warm">
-
-        Not sure whether a gesture means “no” for that athlete?
-        Ask someone who knows them:
-        <strong>“Is that how they usually tell us no?”</strong>
-
+      <div class="say-line">
+        <strong>Try saying</strong>
+        <p>“You’re good. We’re almost up.”</p>
       </div>
 
     </section>
 
 
-    <!-- SAFETY -->
+    <!-- =================================================
+         SCENARIO 2
+         ================================================= -->
 
-    <section class="safety-note reveal">
+    <section
+      class="panel"
+      id="scenario-walking"
+    >
+
+      <div class="panel-header">
+        <div class="panel-label">Scenario 2</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <div class="panel-label-strong amber">
+        Walking away from the group
+      </div>
+
+      <h2 class="section-title">
+        Don’t turn it into a power struggle.
+      </h2>
+
+      <p class="body-copy">
+        They may need a break, feel unsure, or just not want the activity right then.
+      </p>
+
+      <div class="mini-columns">
+
+        <div class="mini-box meaning">
+          <h3>What it might mean</h3>
+          <p>Break needed, confused, not ready, or needing space.</p>
+        </div>
+
+        <div class="mini-box do">
+          <h3>Do now</h3>
+          <ul>
+            <li>Follow at a calm distance if it’s safe.</li>
+            <li>Keep your tone easy.</li>
+            <li>Offer one simple choice.</li>
+            <li>Reconnect them to the next activity.</li>
+          </ul>
+        </div>
+
+        <div class="mini-box avoid">
+          <h3>Avoid</h3>
+          <ul>
+            <li>Repeating “come back” over and over.</li>
+            <li>Grabbing them unless safety requires it.</li>
+            <li>Sounding frustrated.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="say-line">
+        <strong>Try saying</strong>
+        <p>“Want a break, or want to come see basketball?”</p>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENARIO 3
+         ================================================= -->
+
+    <section
+      class="panel"
+      id="scenario-quiet"
+    >
+
+      <div class="panel-header">
+        <div class="panel-label">Scenario 3</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <div class="panel-label-strong blue">
+        Gets quiet and doesn’t respond
+      </div>
+
+      <h2 class="section-title">
+        More time — not more words.
+      </h2>
+
+      <p class="body-copy">
+        They may be processing, unsure, overwhelmed, or getting ready to answer in another way.
+      </p>
+
+      <div class="mini-columns">
+
+        <div class="mini-box meaning">
+          <h3>What it might mean</h3>
+          <p>Processing time, confusion, overload, or a different communication style.</p>
+        </div>
+
+        <div class="mini-box do">
+          <h3>Do now</h3>
+          <ul>
+            <li>Say their name once.</li>
+            <li>Give one short instruction.</li>
+            <li>Point or show what you mean.</li>
+            <li>Wait a few seconds.</li>
+          </ul>
+        </div>
+
+        <div class="mini-box avoid">
+          <h3>Avoid</h3>
+          <ul>
+            <li>Rapid-fire directions.</li>
+            <li>Talking louder and louder.</li>
+            <li>Answering for them too fast.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="say-line">
+        <strong>Try saying</strong>
+        <p>“Alex, stand here. Take your time.”</p>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENARIO 4
+         ================================================= -->
+
+    <section
+      class="panel"
+      id="scenario-overwhelmed"
+    >
+
+      <div class="panel-header">
+        <div class="panel-label">Scenario 4</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <div class="panel-label-strong purple">
+        Seems overwhelmed
+      </div>
+
+      <h2 class="section-title">
+        Make the moment smaller.
+      </h2>
+
+      <p class="body-copy">
+        Look for clues like covering ears, pacing, tighter repeated movement, frowning, or looking upset.
+      </p>
+
+      <div class="mini-columns">
+
+        <div class="mini-box meaning">
+          <h3>What it might mean</h3>
+          <p>Too much noise, too much talking, too many people, or too much change at once.</p>
+        </div>
+
+        <div class="mini-box do">
+          <h3>Do now</h3>
+          <ul>
+            <li>Reduce the talking.</li>
+            <li>Use a calm voice.</li>
+            <li>Give space.</li>
+            <li>Offer a break, water, or a quieter spot.</li>
+          </ul>
+        </div>
+
+        <div class="mini-box avoid">
+          <h3>Avoid</h3>
+          <ul>
+            <li>Touching without warning.</li>
+            <li>Forcing eye contact.</li>
+            <li>Giving too many directions.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="say-line">
+        <strong>Try saying</strong>
+        <p>“Want a break?” or “Water or quiet spot?”</p>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENARIO 5
+         ================================================= -->
+
+    <section
+      class="panel"
+      id="scenario-safety"
+    >
+
+      <div class="panel-header">
+        <div class="panel-label">Scenario 5</div>
+        <button class="close-button">×</button>
+      </div>
+
+      <div class="panel-label-strong red">
+        Comes at you to hit, push, or grab
+      </div>
+
+      <h2 class="section-title">
+        Safety first.
+      </h2>
+
+      <p class="body-copy">
+        This is usually a sign of distress, frustration, overload, or a strong “no.” Don’t take it personally.
+      </p>
+
+      <div class="mini-columns">
+
+        <div class="mini-box meaning">
+          <h3>What it might mean</h3>
+          <p>Distress, overload, frustration, fear, or a clear attempt to say “stop.”</p>
+        </div>
+
+        <div class="mini-box do">
+          <h3>Do now</h3>
+          <ul>
+            <li>Step back and give space.</li>
+            <li>Keep your voice calm.</li>
+            <li>Move others back if needed.</li>
+            <li>Get the coach or staff right away.</li>
+          </ul>
+        </div>
+
+        <div class="mini-box avoid">
+          <h3>Avoid</h3>
+          <ul>
+            <li>Grabbing back.</li>
+            <li>Arguing.</li>
+            <li>Cornering them.</li>
+            <li>Trying to handle a risky situation alone.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="say-line">
+        <strong>Try saying</strong>
+        <p>“I’m giving you space. Coach is coming.”</p>
+      </div>
+
+      <div class="safety-banner">
+        <strong>Important</strong>
+        <p>
+          If there’s any risk of injury, get a coach or staff member immediately.
+          Safety comes first.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- FOOTNOTE -->
+
+    <section class="coach-note reveal">
 
       <strong>
-        One exception: safety.
+        Quick reminder
       </strong>
 
       <p>
-        If an athlete is about to get hurt, leave a safe area,
-        or someone else is in immediate danger, get the coach or event staff involved.
-        Safety comes before figuring out the perfect communication strategy.
+        These are starting points, not exact formulas. If you know the athlete, use what already works for them.
+        If you’re unsure, ask the coach, parent, or the athlete themselves.
       </p>
 
     </section>
@@ -1896,8 +940,8 @@
 
     <footer class="site-footer">
 
-      These are starting points, not a dictionary for what every behavior means.
-      The athlete in front of you is always the best source of information.
+      Pay attention first. Then respond.
+      Small changes in tone, space, and wording can make a big difference.
 
     </footer>
 
