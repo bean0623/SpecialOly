@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
   <title>60-Second Essentials | Volunteer Communication Guide</title>
@@ -15,983 +16,926 @@
   <style>
 
     /* =====================================================
-       ESSENTIALS PAGE — V3
-       Humanized visual redesign
+       60-SECOND ESSENTIALS — V5
+       One-screen mobile walkthrough
        ===================================================== */
 
-    .essentials-intro {
-      padding: 66px 0 40px;
+    :root {
+      --e-bg: #f6f6f4;
+      --e-card: #ffffff;
+      --e-text: #1d1d1f;
+      --e-muted: #6f7179;
+      --e-soft: #92939a;
+      --e-line: rgba(29,29,31,.08);
+      --e-accent: #5d6dff;
+
+      --blue-soft: #eef1ff;
+      --warm-soft: #fff0e7;
+      --green-soft: #eaf8f1;
+      --gold-soft: #fff4dc;
+      --violet-soft: #f1eeff;
+      --track-soft: #eaf5fb;
     }
 
-    .essentials-intro .lead {
-      margin-top: 21px;
-      max-width: 690px;
+    * {
+      box-sizing: border-box;
     }
 
-    .step-shell {
-      margin-top: 6px;
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
     }
 
-    .step {
-      min-height: 560px;
-    }
+    body {
+      background: var(--e-bg);
+      color: var(--e-text);
 
-    .step-layout {
-      align-items: center;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
     }
 
 
     /* =====================================================
-       SCENE CARDS
+       WHOLE EXPERIENCE
        ===================================================== */
 
-    .scene-card {
-      position: relative;
+    .essentials-app {
+      width: min(760px, 100%);
 
-      min-height: 290px;
+      margin: 0 auto;
+
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      display: flex;
+      flex-direction: column;
+
+      padding:
+        env(safe-area-inset-top)
+        15px
+        calc(10px + env(safe-area-inset-bottom));
+    }
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .essential-topbar {
+      flex: 0 0 auto;
+
+      height: 48px;
+
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+
+      gap: 8px;
+    }
+
+    .home-link {
+      justify-self: start;
+
+      color: var(--e-text);
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .top-title {
+      color: var(--e-soft);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+    .step-count {
+      justify-self: end;
+
+      color: var(--e-soft);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       PROGRESS
+       ===================================================== */
+
+    .progress-row {
+      flex: 0 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+
+      gap: 5px;
+
+      margin: 3px 2px 10px;
+    }
+
+    .progress-piece {
+      height: 3px;
+
+      border-radius: 999px;
+
+      background: #dedfe3;
+
+      transition:
+        background .25s ease,
+        transform .25s ease;
+    }
+
+    .progress-piece.done,
+    .progress-piece.active {
+      background: var(--e-accent);
+    }
+
+    .progress-piece.active {
+      transform: scaleY(1.35);
+    }
+
+
+    /* =====================================================
+       SLIDE AREA
+       ===================================================== */
+
+    .slide-stage {
+      flex: 1 1 auto;
+      min-height: 0;
+
+      position: relative;
+    }
+
+    .essential-slide {
+      display: none;
+
+      height: 100%;
+      min-height: 0;
+    }
+
+    .essential-slide.active {
+      display: flex;
+      flex-direction: column;
+
+      animation:
+        slideIn .3s
+        cubic-bezier(.22,.8,.22,1)
+        both;
+    }
+
+
+    /* =====================================================
+       MAIN CARD
+       ===================================================== */
+
+    .essential-card {
+      flex: 1 1 auto;
+      min-height: 0;
+
+      display: flex;
+      flex-direction: column;
 
       overflow: hidden;
 
-      border-radius: 30px;
+      padding: 19px;
+
+      border: 1px solid var(--e-line);
+      border-radius: 28px;
+
+      background: var(--e-card);
 
       box-shadow:
-        0 16px 45px rgba(17, 24, 39, 0.08),
-        inset 0 1px 0 rgba(255,255,255,0.4);
+        0 15px 45px rgba(23,26,38,.06);
     }
 
-    .scene-card::after {
-      content: "";
+    .slide-label {
+      margin-bottom: 6px;
 
+      color: var(--e-accent);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .essential-card h1 {
+      margin: 0;
+
+      font-size:
+        clamp(29px, 7.5vw, 42px);
+
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    .essential-copy {
+      margin: 10px 0 0;
+
+      color: var(--e-muted);
+
+      font-size:
+        clamp(14px, 3.6vw, 17px);
+
+      line-height: 1.4;
+
+      letter-spacing: -.01em;
+    }
+
+    .essential-copy strong {
+      color: var(--e-text);
+    }
+
+
+    /* =====================================================
+       KEY LINE
+       ===================================================== */
+
+    .key-line {
+      margin-top: 10px;
+
+      padding: 10px 12px;
+
+      border-radius: 15px;
+
+      background: #f2f2f0;
+
+      color: #474a52;
+
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .key-line strong {
+      color: var(--e-text);
+    }
+
+
+    /* =====================================================
+       VISUAL
+       ===================================================== */
+
+    .essential-visual {
+      position: relative;
+
+      flex: 1 1 auto;
+
+      min-height: 120px;
+
+      margin-top: 12px;
+
+      overflow: hidden;
+
+      border-radius: 21px;
+    }
+
+    .visual-blue {
+      background: var(--blue-soft);
+    }
+
+    .visual-warm {
+      background: var(--warm-soft);
+    }
+
+    .visual-green {
+      background: var(--green-soft);
+    }
+
+    .visual-gold {
+      background: var(--gold-soft);
+    }
+
+    .visual-violet {
+      background: var(--violet-soft);
+    }
+
+    .visual-track {
+      background: var(--track-soft);
+    }
+
+
+    /* =====================================================
+       SIMPLE HUMAN
+       ===================================================== */
+
+    .person {
       position: absolute;
-      inset: 0;
+
+      width: 74px;
+      height: 126px;
+
+      bottom: 8px;
+
+      transform-origin: center bottom;
+    }
+
+    .person.left {
+      left: 16%;
+    }
+
+    .person.right {
+      right: 16%;
+    }
+
+    .person-head {
+      position: absolute;
+
+      width: 39px;
+      height: 42px;
+
+      left: 17px;
+      top: 0;
+
+      border-radius: 48%;
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,0.10),
-          rgba(255,255,255,0)
+          #efc09c,
+          #d99c75
         );
 
-      pointer-events: none;
-    }
-
-    .scene-blue {
-      background:
-        radial-gradient(circle at 22% 18%, rgba(255,255,255,0.48), transparent 28%),
-        linear-gradient(135deg, #dfe8ff 0%, #eef3ff 48%, #dde5ff 100%);
-    }
-
-    .scene-peach {
-      background:
-        radial-gradient(circle at 78% 14%, rgba(255,255,255,0.55), transparent 28%),
-        linear-gradient(135deg, #ffe4d7 0%, #fff2eb 52%, #ffe7d8 100%);
-    }
-
-    .scene-mint {
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.45), transparent 28%),
-        linear-gradient(135deg, #dbf7ec 0%, #eefcf6 54%, #d8f2e8 100%);
-    }
-
-    .scene-gold {
-      background:
-        radial-gradient(circle at 76% 18%, rgba(255,255,255,0.45), transparent 28%),
-        linear-gradient(135deg, #ffe8b8 0%, #fff3d9 50%, #ffe7b0 100%);
-    }
-
-    .scene-violet {
-      background:
-        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.45), transparent 28%),
-        linear-gradient(135deg, #e6e3ff 0%, #f3f2ff 52%, #e2e1ff 100%);
-    }
-
-    .scene-track {
-      background:
-        radial-gradient(circle at 18% 16%, rgba(255,255,255,0.42), transparent 28%),
-        linear-gradient(135deg, #dff3ff 0%, #eef9ff 52%, #d6edff 100%);
-    }
-
-    .scene-chip {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      z-index: 15;
-
-      padding: 12px 16px;
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,0.86);
-
-      border: 1px solid rgba(255,255,255,0.65);
-
-      box-shadow:
-        0 10px 28px rgba(27, 38, 59, 0.08);
-
-      color: #22242a;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-
-    /* =====================================================
-       HUMAN FIGURE SYSTEM
-       ===================================================== */
-
-    .human {
-      position: absolute;
-      width: 118px;
-      height: 220px;
-      bottom: 22px;
-      z-index: 4;
-
-      transform-origin: center bottom;
-      animation: figureBob 4.2s ease-in-out infinite;
-    }
-
-    .human.left {
-      left: 44px;
-    }
-
-    .human.right {
-      right: 44px;
-    }
-
-    .human .head {
-      position: absolute;
-      top: 0;
-      left: 28px;
-
-      width: 62px;
-      height: 62px;
-
-      border-radius: 50%;
-
-      background:
-        linear-gradient(180deg, #f6cdaa 0%, #e7b38d 100%);
-
-      box-shadow:
-        inset 0 -3px 0 rgba(0,0,0,0.05);
-      z-index: 4;
-    }
-
-    .human.skin-deep .head {
-      background:
-        linear-gradient(180deg, #9a6544 0%, #7d5034 100%);
-    }
-
-    .human .hair {
-      position: absolute;
-      top: -2px;
-      left: 24px;
-
-      width: 70px;
-      height: 34px;
-
-      border-radius: 42px 42px 22px 22px;
-
-      background: #2f2d35;
-      z-index: 5;
-    }
-
-    .human.soft-hair .hair {
-      background: #5a4432;
-    }
-
-    .human .eye {
-      position: absolute;
-      top: 25px;
-
-      width: 5px;
-      height: 5px;
-
-      border-radius: 50%;
-      background: #26262b;
-      z-index: 6;
-    }
-
-    .human .eye.left {
-      left: 19px;
-    }
-
-    .human .eye.right {
-      right: 19px;
-    }
-
-    .human .smile {
-      position: absolute;
-      left: 21px;
-      top: 35px;
-
-      width: 18px;
-      height: 8px;
-
-      border-bottom: 2px solid #26262b;
-      border-radius: 0 0 14px 14px;
-      z-index: 6;
-    }
-
-    .human .brow {
-      position: absolute;
-      top: 16px;
-
-      width: 12px;
-      height: 2px;
-
-      background: #2a2b31;
-      z-index: 6;
-    }
-
-    .human .brow.left {
-      left: 14px;
-    }
-
-    .human .brow.right {
-      right: 14px;
-    }
-
-    .human.concerned .brow.left {
-      transform: rotate(18deg);
-    }
-
-    .human.concerned .brow.right {
-      transform: rotate(-18deg);
-    }
-
-    .human .torso {
-      position: absolute;
-      left: 16px;
-      top: 56px;
-
-      width: 86px;
-      height: 98px;
-
-      border-radius: 28px 28px 24px 24px;
-
-      background: var(--shirt, #5a70ff);
-
-      box-shadow:
-        inset 0 -4px 0 rgba(0,0,0,0.08);
       z-index: 3;
     }
 
-    .human .arm {
+    .person.deep .person-head {
+      background:
+        linear-gradient(
+          180deg,
+          #9e6847,
+          #825236
+        );
+    }
+
+    .person-hair {
       position: absolute;
-      top: 78px;
 
-      width: 18px;
-      height: 78px;
+      width: 44px;
+      height: 21px;
 
-      border-radius: 20px;
+      left: 15px;
+      top: -2px;
+
+      border-radius:
+        25px 25px 9px 9px;
+
+      background: #302e34;
+
+      z-index: 4;
+    }
+
+    .person-body {
+      position: absolute;
+
+      width: 58px;
+      height: 58px;
+
+      left: 8px;
+      top: 38px;
+
+      border-radius:
+        20px 20px 15px 15px;
 
       background:
-        linear-gradient(180deg, #f1c39c 0%, #e2ab80 100%);
-      z-index: 2;
+        var(--shirt, #6172ff);
+    }
+
+    .person.orange {
+      --shirt: #ef8c54;
+    }
+
+    .person.green {
+      --shirt: #41aa7b;
+    }
+
+    .person.gold {
+      --shirt: #e5a43d;
+    }
+
+    .person-arm {
+      position: absolute;
+
+      width: 11px;
+      height: 47px;
+
+      top: 49px;
+
+      border-radius: 10px;
+
+      background: #dea47d;
+
       transform-origin: top center;
     }
 
-    .human.skin-deep .arm {
-      background:
-        linear-gradient(180deg, #996447 0%, #7d5034 100%);
+    .person.deep .person-arm {
+      background: #8e5a3d;
     }
 
-    .human .arm.left {
-      left: 8px;
-      transform: rotate(12deg);
+    .person-arm.left {
+      left: 4px;
+
+      transform: rotate(8deg);
     }
 
-    .human .arm.right {
-      right: 8px;
-      transform: rotate(-12deg);
+    .person-arm.right {
+      right: 4px;
+
+      transform: rotate(-8deg);
     }
 
-    .human .leg {
+    .person-leg {
       position: absolute;
-      top: 145px;
 
-      width: 20px;
-      height: 76px;
+      width: 13px;
+      height: 43px;
 
-      border-radius: 18px;
+      top: 90px;
 
-      background:
-        linear-gradient(180deg, #2d3344 0%, #1e2432 100%);
-      z-index: 1;
+      border-radius: 12px;
+
+      background: #30384d;
     }
 
-    .human .leg.left {
-      left: 34px;
-      transform: rotate(5deg);
+    .person-leg.left {
+      left: 20px;
     }
 
-    .human .leg.right {
-      right: 34px;
-      transform: rotate(-5deg);
-    }
-
-    .human.orange {
-      --shirt: #ff7a59;
-    }
-
-    .human.blue {
-      --shirt: #5b6dff;
-    }
-
-    .human.green {
-      --shirt: #2cb67d;
-    }
-
-    .human.gold {
-      --shirt: #f5a524;
+    .person-leg.right {
+      right: 20px;
     }
 
 
     /* =====================================================
-       STEP 1
+       SLIDE 1 — CONNECT
        ===================================================== */
 
-    .hello-bubble {
-      position: absolute;
-      left: 34px;
-      top: 28px;
-      z-index: 14;
+    .wave {
+      animation:
+        waveArm 2.5s
+        ease-in-out infinite;
+    }
 
-      padding: 11px 16px;
+    .visual-chip {
+      position: absolute;
+
+      z-index: 10;
+
+      padding: 8px 11px;
 
       border-radius: 999px;
 
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(255,255,255,0.72);
+      background: rgba(255,255,255,.88);
 
-      font-size: 14px;
-      font-weight: 700;
+      box-shadow:
+        0 6px 20px rgba(30,33,45,.06);
 
-      box-shadow: 0 12px 30px rgba(43, 62, 103, 0.09);
-
-      animation: bubbleFloat 3.8s ease-in-out infinite;
+      font-size: 11px;
+      font-weight: 750;
     }
 
-    .response-pill {
-      position: absolute;
-      right: 42px;
-      top: 54px;
-      z-index: 14;
+    .chip-left {
+      left: 12px;
+      top: 12px;
+    }
 
-      padding: 10px 14px;
+    .chip-right {
+      right: 12px;
+      top: 29px;
+    }
+
+
+    /* =====================================================
+       SLIDE 2 — FACE
+       ===================================================== */
+
+    .face-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .smile-photo {
+      width: 118px;
+      height: 118px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 12px 32px rgba(58,44,34,.12);
+    }
+
+    .photo-fallback {
+      width: 118px;
+      height: 118px;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          180deg,
+          #efbf9d,
+          #d89b73
+        );
+
+      color: white;
+
+      font-size: 44px;
+    }
+
+
+    /* =====================================================
+       SLIDE 3 — SPACE
+       ===================================================== */
+
+    .space-left {
+      animation:
+        spaceLeft 4s
+        ease-in-out infinite;
+    }
+
+    .space-right {
+      animation:
+        spaceRight 4s
+        ease-in-out infinite;
+    }
+
+    .space-guide {
+      position: absolute;
+
+      width: 82px;
+      height: 2px;
+
+      left: 50%;
+      top: 54%;
+
+      transform: translateX(-50%);
+
+      border-radius: 99px;
+
+      background:
+        rgba(47,163,108,.36);
+    }
+
+    .brow-mark {
+      position: absolute;
+
+      right: 16%;
+
+      top: 16px;
+
+      padding: 7px 9px;
 
       border-radius: 999px;
 
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(255,255,255,0.72);
+      background:
+        rgba(255,255,255,.88);
 
-      font-size: 14px;
-      font-weight: 700;
-
-      box-shadow: 0 12px 30px rgba(43, 62, 103, 0.09);
-
-      animation: bubbleFloat 3.8s .6s ease-in-out infinite;
+      font-size: 10px;
+      font-weight: 750;
     }
 
-    .wave-arm {
-      animation: waveArm 2.9s ease-in-out infinite;
-    }
 
-    .hello-link {
+    /* =====================================================
+       SLIDE 4 — SHOW
+       ===================================================== */
+
+    .basketball {
       position: absolute;
+
+      width: 67px;
+      height: 67px;
+
+      right: 16%;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 30% 28%,
+          rgba(255,255,255,.26),
+          transparent 20%
+        ),
+        #ed861e;
+
+      box-shadow:
+        inset -8px -8px 12px rgba(0,0,0,.10),
+        0 10px 22px rgba(187,93,14,.15);
+
+      animation:
+        ballMove 3s
+        ease-in-out infinite;
+    }
+
+    .basketball::before,
+    .basketball::after {
+      content: "";
+
+      position: absolute;
+
+      background: #5f351a;
+
+      border-radius: 99px;
+    }
+
+    .basketball::before {
+      width: 3px;
+      height: 61px;
+
+      left: 32px;
+      top: 3px;
+    }
+
+    .basketball::after {
+      width: 61px;
+      height: 3px;
+
+      top: 32px;
+      left: 3px;
+    }
+
+    .show-arrow {
+      position: absolute;
+
       left: 50%;
       top: 48%;
-      transform: translateX(-50%);
-      z-index: 2;
 
-      width: 120px;
-      height: 3px;
-      border-radius: 999px;
+      font-size: 27px;
 
-      background:
-        linear-gradient(90deg, transparent, rgba(78,103,255,0.55), transparent);
-
-      animation: pulseLine 3s ease-in-out infinite;
+      animation:
+        arrowMove 2s
+        ease-in-out infinite;
     }
 
 
     /* =====================================================
-       STEP 2 - PHOTO
+       SLIDE 5 — WAIT
        ===================================================== */
 
-    .photo-stage {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .portrait-frame {
-      position: relative;
-      width: 220px;
-      height: 220px;
-      overflow: hidden;
-
-      border-radius: 28px;
-
-      background: #ffffff;
-
-      box-shadow:
-        0 18px 50px rgba(47, 40, 34, 0.12);
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .portrait-fallback {
-      display: none;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        linear-gradient(180deg, #fff6f0 0%, #ffe7d8 100%);
-    }
-
-    .portrait-fallback .face-wrap {
-      position: relative;
-      width: 150px;
-      height: 170px;
-    }
-
-    .portrait-fallback .fallback-head {
-      position: absolute;
-      left: 22px;
-      top: 12px;
-
-      width: 108px;
-      height: 132px;
-
-      border-radius: 54px 54px 48px 48px;
-
-      background:
-        linear-gradient(180deg, #f6ccb0 0%, #e7b28c 100%);
-    }
-
-    .portrait-fallback .fallback-hair {
-      position: absolute;
-      left: 8px;
-      top: 0;
-
-      width: 136px;
-      height: 64px;
-
-      border-radius: 64px 64px 28px 28px;
-
-      background: #47352d;
-    }
-
-    .portrait-fallback .fallback-eye {
-      position: absolute;
-      top: 58px;
-
-      width: 8px;
-      height: 8px;
-
-      border-radius: 50%;
-      background: #26262b;
-    }
-
-    .portrait-fallback .fallback-eye.left {
-      left: 48px;
-    }
-
-    .portrait-fallback .fallback-eye.right {
-      right: 48px;
-    }
-
-    .portrait-fallback .fallback-smile {
-      position: absolute;
-      left: 49px;
-      top: 83px;
-
-      width: 42px;
-      height: 18px;
-
-      border-bottom: 4px solid #26262b;
-      border-radius: 0 0 26px 26px;
-    }
-
-    .portrait-glow {
-      position: absolute;
-      inset: auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 34px;
-      background: rgba(255,255,255,0.45);
-      filter: blur(20px);
-      z-index: 1;
-    }
-
-
-    /* =====================================================
-       STEP 3
-       ===================================================== */
-
-    .space-line {
-      position: absolute;
-      left: 50%;
-      bottom: 104px;
-      transform: translateX(-50%);
-      z-index: 2;
-
-      width: 130px;
-      height: 4px;
-      border-radius: 999px;
-
-      background:
-        linear-gradient(90deg, transparent, rgba(44,182,125,0.55), transparent);
-
-      animation: pulseLine 3.5s ease-in-out infinite;
-    }
-
-    .watch-pill {
-      position: absolute;
-      right: 24px;
-      top: 26px;
-      z-index: 14;
-
-      padding: 10px 14px;
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(255,255,255,0.72);
-
-      font-size: 14px;
-      font-weight: 700;
-
-      box-shadow: 0 12px 30px rgba(43, 62, 103, 0.09);
-
-      animation: bubbleFloat 4s .3s ease-in-out infinite;
-    }
-
-
-    /* =====================================================
-       STEP 4 - BASKETBALL
-       ===================================================== */
-
-    .demo-arrow {
-      position: absolute;
-      left: 50%;
-      top: 46%;
-      transform: translateX(-50%);
-      z-index: 8;
-
-      font-size: 34px;
-      font-weight: 800;
-      color: #2a3456;
-
-      animation: arrowNudge 2.2s ease-in-out infinite;
-    }
-
-    .real-basketball {
-      position: absolute;
-      right: 38px;
-      bottom: 52px;
-      z-index: 8;
-
-      width: 96px;
-      height: 96px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,0.28), transparent 20%),
-        linear-gradient(180deg, #ff9a1f 0%, #d96b12 100%);
-
-      box-shadow:
-        inset -10px -10px 18px rgba(0,0,0,0.10),
-        0 18px 32px rgba(216, 107, 18, 0.25);
-
-      animation: ballRoll 3.2s ease-in-out infinite;
-    }
-
-    .real-basketball .line {
-      position: absolute;
-      background: rgba(71, 34, 14, 0.88);
-      border-radius: 999px;
-    }
-
-    .real-basketball .line.vertical {
-      left: 46px;
-      top: 4px;
-      width: 4px;
-      height: 88px;
-    }
-
-    .real-basketball .line.horizontal {
-      left: 6px;
-      top: 46px;
-      width: 84px;
-      height: 4px;
-    }
-
-    .real-basketball .line.arc-left,
-    .real-basketball .line.arc-right {
-      top: 4px;
-      width: 44px;
-      height: 88px;
-
-      border: 4px solid rgba(71, 34, 14, 0.88);
-      background: transparent;
-      border-top-color: transparent;
-      border-bottom-color: transparent;
-    }
-
-    .real-basketball .line.arc-left {
-      left: -2px;
-      border-right-color: transparent;
-      border-radius: 44px 0 0 44px;
-    }
-
-    .real-basketball .line.arc-right {
-      right: -2px;
-      border-left-color: transparent;
-      border-radius: 0 44px 44px 0;
-    }
-
-
-    /* =====================================================
-       STEP 5 - WAITING
-       ===================================================== */
-
-    .wait-stage {
+    .wait-visual {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .timer-shell {
+    .wait-ring {
       position: relative;
-      width: 180px;
-      height: 180px;
-      z-index: 5;
-    }
 
-    .timer-ring {
-      position: absolute;
-      inset: 0;
+      width: 112px;
+      height: 112px;
+
       border-radius: 50%;
 
       background:
         conic-gradient(
-          #6a72ff 0deg,
-          #7ecbff 120deg,
-          #a995ff 220deg,
-          #e6e8ff 280deg,
-          #6a72ff 360deg
+          #6372ff 0deg,
+          #9a9fff 110deg,
+          #d8d9ff 250deg,
+          #6372ff 360deg
         );
 
-      animation: rotateRing 4s linear infinite;
-      box-shadow: 0 22px 40px rgba(106, 114, 255, 0.18);
+      animation:
+        ringTurn 5s linear infinite;
     }
 
-    .timer-center {
+    .wait-center {
       position: absolute;
-      inset: 18px;
+
+      inset: 11px;
 
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
 
       border-radius: 50%;
-      background: rgba(255,255,255,0.94);
 
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-    }
+      background: #fff;
 
-    .timer-hand {
-      position: absolute;
-      width: 4px;
-      height: 42px;
-      top: 28px;
-      left: 50%;
-      margin-left: -2px;
+      color: #4d5260;
 
-      border-radius: 999px;
-      background: #5b6dff;
-      transform-origin: bottom center;
-      animation: sweepHand 4s ease-in-out infinite;
-    }
-
-    .timer-dot {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      left: 50%;
-      top: 50%;
-      margin-left: -6px;
-      margin-top: -6px;
-      border-radius: 50%;
-      background: #28314b;
-    }
-
-    .timer-text {
-      margin-top: 58px;
-      color: #38405f;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .wait-glow {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: rgba(126, 160, 255, 0.18);
-      filter: blur(14px);
-      animation: breatheGlow 4s ease-in-out infinite;
+      font-size: 12px;
+      font-weight: 750;
     }
 
 
     /* =====================================================
-       STEP 6 - TRACK WIN
+       SLIDE 6 — ENCOURAGE / PREPARE
        ===================================================== */
 
-    .track-lane {
+    .track-line {
       position: absolute;
-      left: 24px;
-      right: 24px;
-      height: 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.42);
-      z-index: 1;
+
+      left: 10px;
+      right: 10px;
+
+      height: 2px;
+
+      background:
+        rgba(62,105,139,.18);
     }
 
-    .track-lane.l1 { bottom: 96px; }
-    .track-lane.l2 { bottom: 72px; }
-    .track-lane.l3 { bottom: 48px; }
-
-    .finish-post {
-      position: absolute;
-      right: 44px;
+    .track-line.one {
       bottom: 38px;
-      width: 8px;
-      height: 154px;
-      border-radius: 999px;
-      background: #1e3259;
-      z-index: 4;
     }
 
-    .finish-ribbon {
+    .track-line.two {
+      bottom: 60px;
+    }
+
+    .finish-line {
       position: absolute;
-      right: 48px;
-      bottom: 110px;
-      width: 58px;
-      height: 12px;
 
-      border-radius: 999px;
-      background: #ff7a59;
-      z-index: 5;
+      right: 20%;
+      bottom: 17px;
 
-      transform-origin: right center;
-      animation: ribbonBreak 3.8s ease-in-out infinite;
+      width: 4px;
+      height: 105px;
+
+      background: #2d4059;
     }
 
     .runner {
       position: absolute;
-      left: 22px;
-      bottom: 34px;
-      width: 132px;
-      height: 168px;
-      z-index: 6;
 
-      animation: sprint 3.8s ease-in-out infinite;
+      width: 54px;
+      height: 93px;
+
+      left: 17%;
+      bottom: 20px;
+
+      animation:
+        runnerMove 3.8s
+        ease-in-out infinite;
     }
 
-    .runner .r-head {
+    .runner-head {
       position: absolute;
-      left: 48px;
-      top: 0;
-      width: 44px;
-      height: 44px;
+
+      width: 27px;
+      height: 27px;
+
+      left: 14px;
+
       border-radius: 50%;
-      background:
-        linear-gradient(180deg, #e4af87 0%, #cb8f68 100%);
+
+      background: #d79970;
     }
 
-    .runner .r-hair {
+    .runner-body {
       position: absolute;
-      left: 42px;
-      top: -2px;
-      width: 54px;
-      height: 22px;
-      border-radius: 28px 28px 12px 12px;
-      background: #2d2d31;
+
+      width: 38px;
+      height: 39px;
+
+      left: 8px;
+      top: 25px;
+
+      border-radius: 13px;
+
+      background: #3fa977;
     }
 
-    .runner .r-torso {
+    .runner-leg {
       position: absolute;
-      left: 38px;
-      top: 36px;
-      width: 54px;
-      height: 62px;
-      border-radius: 20px;
-      background: #2cb67d;
+
+      width: 8px;
+      height: 34px;
+
+      top: 59px;
+
+      border-radius: 10px;
+
+      background: #29384e;
     }
 
-    .runner .r-arm,
-    .runner .r-leg {
+    .runner-leg.left {
+      left: 15px;
+      transform: rotate(17deg);
+    }
+
+    .runner-leg.right {
+      right: 15px;
+      transform: rotate(-21deg);
+    }
+
+    .finish-tag {
       position: absolute;
-      border-radius: 999px;
-    }
 
-    .runner .r-arm {
-      width: 16px;
-      height: 60px;
-      background:
-        linear-gradient(180deg, #e4af87 0%, #cb8f68 100%);
-      top: 46px;
-    }
+      left: 12px;
+      top: 12px;
 
-    .runner .r-arm.left {
-      left: 26px;
-      transform: rotate(42deg);
-      transform-origin: top center;
-      animation: runArmLeft 0.9s ease-in-out infinite;
-    }
+      padding: 7px 10px;
 
-    .runner .r-arm.right {
-      right: 24px;
-      transform: rotate(-36deg);
-      transform-origin: top center;
-      animation: runArmRight 0.9s ease-in-out infinite;
-    }
-
-    .runner .r-leg {
-      width: 18px;
-      height: 76px;
-      background: #243150;
-      top: 90px;
-    }
-
-    .runner .r-leg.left {
-      left: 46px;
-      transform: rotate(24deg);
-      transform-origin: top center;
-      animation: runLegLeft 0.9s ease-in-out infinite;
-    }
-
-    .runner .r-leg.right {
-      right: 42px;
-      transform: rotate(-28deg);
-      transform-origin: top center;
-      animation: runLegRight 0.9s ease-in-out infinite;
-    }
-
-    .win-tag {
-      position: absolute;
-      left: 24px;
-      top: 26px;
-      z-index: 14;
-
-      padding: 10px 14px;
       border-radius: 999px;
 
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(255,255,255,0.75);
+      background: rgba(255,255,255,.88);
 
-      font-size: 14px;
-      font-weight: 800;
-
-      box-shadow: 0 12px 30px rgba(43, 62, 103, 0.09);
-
-      animation: bubbleFloat 3.8s ease-in-out infinite;
+      font-size: 10px;
+      font-weight: 750;
     }
 
 
     /* =====================================================
-       FINAL SCREEN
+       BOTTOM CONTROLS
        ===================================================== */
 
-    .ready-visual {
-      display: flex;
-      min-height: 230px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ready-ring {
-      width: 126px;
-      height: 126px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background:
-        linear-gradient(135deg, #2cb67d 0%, #5ad5a0 100%);
-      color: white;
-
-      font-size: 42px;
-      box-shadow: 0 18px 40px rgba(44, 182, 125, 0.22);
-
-      animation: readyPop .55s var(--ease) both;
-    }
-
-    .finish-link {
-      display: inline-flex;
-      margin-top: 24px;
-      padding: 13px 19px;
-
-      border-radius: 999px;
-      text-decoration: none;
-
-      background: var(--dark);
-      color: white;
-      font-weight: 600;
-
-      transition: transform .18s var(--ease);
-    }
-
-    .finish-link:active {
-      transform: scale(.95);
-    }
-
-
-    /* ---------- QUICK RECAP ---------- */
-
-    .recap {
-      margin-top: 30px;
-      padding: 22px 0;
+    .essential-controls {
+      flex: 0 0 auto;
 
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr auto;
+
+      align-items: center;
+
       gap: 10px;
+
+      padding-top: 10px;
     }
 
-    .recap-item {
-      padding: 14px;
-      border-radius: var(--radius-sm);
+    .back-button,
+    .next-button {
+      min-height: 43px;
 
-      background: #ededeb;
+      border: 0;
+      border-radius: 999px;
 
-      color: var(--text-soft);
-      font-size: 14px;
-      line-height: 1.4;
+      font: inherit;
+
+      font-size: 13px;
+      font-weight: 750;
+
+      cursor: pointer;
     }
 
-    .recap-item strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 3px;
+    .back-button {
+      justify-self: start;
+
+      padding: 0 13px;
+
+      background: transparent;
+
+      color: #73767f;
+    }
+
+    .back-button.hidden {
+      visibility: hidden;
+    }
+
+    .next-button {
+      min-width: 86px;
+
+      padding: 0 18px;
+
+      background: #1e1f23;
+
+      color: white;
+
+      transition:
+        transform .16s ease;
+    }
+
+    .next-button:active {
+      transform: scale(.96);
+    }
+
+
+    /* =====================================================
+       SMALL ALWAYS-VISIBLE REMINDER
+       ===================================================== */
+
+    .micro-reminder {
+      flex: 0 0 auto;
+
+      margin-top: 7px;
+
+      text-align: center;
+
+      color: #96989e;
+
+      font-size: 9.5px;
+      line-height: 1.3;
     }
 
 
@@ -999,773 +943,957 @@
        ANIMATIONS
        ===================================================== */
 
-    @keyframes figureBob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
+    @keyframes slideIn {
+
+      from {
+        opacity: 0;
+        transform: translateX(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
     }
 
     @keyframes waveArm {
-      0%,100% { transform: rotate(-12deg); }
-      35% { transform: rotate(-42deg); }
-      60% { transform: rotate(-22deg); }
+
+      0%,
+      100% {
+        transform: rotate(-8deg);
+      }
+
+      45% {
+        transform: rotate(-42deg);
+      }
+
+      65% {
+        transform: rotate(-25deg);
+      }
+
     }
 
-    @keyframes bubbleFloat {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
+    @keyframes spaceLeft {
 
-    @keyframes pulseLine {
-      0%,100% {
-        opacity: .35;
-        transform: translateX(-50%) scaleX(.82);
+      0%,
+      100% {
+        transform: translateX(0);
       }
 
       50% {
-        opacity: .78;
-        transform: translateX(-50%) scaleX(1);
-      }
-    }
-
-    @keyframes arrowNudge {
-      0%,100% { transform: translateX(-50%) translateX(0); }
-      50% { transform: translateX(-50%) translateX(7px); }
-    }
-
-    @keyframes ballRoll {
-      0%,100% { transform: translateX(0) rotate(0deg); }
-      50% { transform: translateX(-14px) rotate(-18deg); }
-    }
-
-    @keyframes rotateRing {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes sweepHand {
-      0%   { transform: rotate(-50deg); }
-      50%  { transform: rotate(120deg); }
-      100% { transform: rotate(310deg); }
-    }
-
-    @keyframes breatheGlow {
-      0%,100% { transform: scale(.92); opacity: .45; }
-      50% { transform: scale(1.05); opacity: .85; }
-    }
-
-    @keyframes sprint {
-      0%,12% { transform: translateX(0); }
-      62% { transform: translateX(210px); }
-      100% { transform: translateX(210px); }
-    }
-
-    @keyframes ribbonBreak {
-      0%,52% {
-        transform: rotate(0deg) scaleX(1);
-        opacity: 1;
+        transform: translateX(-7px);
       }
 
-      68% {
-        transform: rotate(-18deg) scaleX(.72);
-        opacity: 1;
-      }
+    }
 
+    @keyframes spaceRight {
+
+      0%,
       100% {
-        transform: rotate(-26deg) scaleX(.35);
-        opacity: .25;
+        transform: translateX(0);
       }
-    }
 
-    @keyframes runArmLeft {
-      0%,100% { transform: rotate(42deg); }
-      50% { transform: rotate(-12deg); }
-    }
-
-    @keyframes runArmRight {
-      0%,100% { transform: rotate(-36deg); }
-      50% { transform: rotate(14deg); }
-    }
-
-    @keyframes runLegLeft {
-      0%,100% { transform: rotate(28deg); }
-      50% { transform: rotate(-10deg); }
-    }
-
-    @keyframes runLegRight {
-      0%,100% { transform: rotate(-24deg); }
-      50% { transform: rotate(18deg); }
-    }
-
-    @keyframes readyPop {
-      from {
-        opacity: 0;
-        transform: scale(.75);
+      50% {
+        transform: translateX(7px);
       }
+
+    }
+
+    @keyframes ballMove {
+
+      0%,
+      100% {
+        transform:
+          translateY(-50%)
+          translateX(0)
+          rotate(0);
+      }
+
+      50% {
+        transform:
+          translateY(-50%)
+          translateX(-8px)
+          rotate(-15deg);
+      }
+
+    }
+
+    @keyframes arrowMove {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(6px);
+      }
+
+    }
+
+    @keyframes ringTurn {
+
       to {
-        opacity: 1;
-        transform: scale(1);
+        transform: rotate(360deg);
       }
+
+    }
+
+    @keyframes runnerMove {
+
+      0%,
+      15% {
+        transform: translateX(0);
+      }
+
+      70%,
+      100% {
+        transform: translateX(150px);
+      }
+
     }
 
 
     /* =====================================================
-       MOBILE
+       PHONE
        ===================================================== */
 
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
 
-      .essentials-intro {
-        padding: 52px 0 32px;
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
       }
 
-      .step {
-        min-height: auto;
+      .essentials-app {
+        height: 100vh;
+        height: 100dvh;
+
+        min-height: 0;
       }
 
-      .scene-card {
-        min-height: 300px;
+      .essential-card {
+        padding: 16px;
+
+        border-radius: 24px;
       }
 
-      .human {
-        transform: scale(.88);
-        transform-origin: center bottom;
+      .essential-card h1 {
+        font-size:
+          clamp(28px, 8vw, 35px);
       }
 
-      .human.left {
-        left: 8px;
+      .essential-copy {
+        font-size: 14px;
       }
 
-      .human.right {
-        right: 8px;
+      .essential-visual {
+        margin-top: 10px;
+
+        min-height: 118px;
       }
 
-      .portrait-frame {
-        width: 190px;
-        height: 190px;
+      .person {
+        transform: scale(.9);
+
+        transform-origin:
+          center bottom;
       }
 
+      .person.left {
+        left: 12%;
+      }
+
+      .person.right {
+        right: 12%;
+      }
+
+    }
+
+
+    /* =====================================================
+       SHORTER PHONES
+       ===================================================== */
+
+    @media
+    (max-height: 700px)
+    and
+    (max-width: 600px) {
+
+      .essential-topbar {
+        height: 42px;
+      }
+
+      .progress-row {
+        margin-bottom: 7px;
+      }
+
+      .essential-card {
+        padding: 13px;
+      }
+
+      .essential-card h1 {
+        font-size: 27px;
+      }
+
+      .essential-copy {
+        margin-top: 7px;
+
+        font-size: 12.8px;
+        line-height: 1.33;
+      }
+
+      .key-line {
+        margin-top: 7px;
+
+        padding: 8px 10px;
+
+        font-size: 11.5px;
+      }
+
+      .essential-visual {
+        min-height: 95px;
+
+        margin-top: 7px;
+      }
+
+      .person {
+        transform: scale(.74);
+
+        bottom: -3px;
+      }
+
+      .essential-controls {
+        padding-top: 7px;
+      }
+
+      .back-button,
+      .next-button {
+        min-height: 38px;
+      }
+
+    }
+
+
+    /* =====================================================
+       DESKTOP
+       ===================================================== */
+
+    @media (min-width: 601px) {
+
+      .essentials-app {
+        min-height: 760px;
+
+        padding-top: 15px;
+      }
+
+      .essential-card {
+        max-height: 610px;
+      }
+
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+      .essential-slide.active,
+      .wave,
+      .space-left,
+      .space-right,
+      .basketball,
+      .show-arrow,
+      .wait-ring,
       .runner {
-        transform: scale(.92);
-        transform-origin: left bottom;
-      }
 
-      .recap {
-        grid-template-columns: 1fr;
+        animation: none !important;
+
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
 
-  <div class="page-shell">
+  <div class="essentials-app">
 
-    <header class="topbar">
 
-      <a href="index.html" class="back-link">
+    <!-- =================================================
+         TOP
+         ================================================= -->
+
+    <header class="essential-topbar">
+
+      <a
+        href="index.html"
+        class="home-link"
+      >
         ← Home
       </a>
 
-      <div class="top-label">
+      <div class="top-title">
         60-Second Essentials
+      </div>
+
+      <div
+        class="step-count"
+        id="stepCount"
+      >
+        1 / 6
       </div>
 
     </header>
 
 
-    <section class="essentials-intro reveal">
-
-      <div class="eyebrow">
-        Must read · before every session
-      </div>
-
-      <h1 class="page-title">
-        Six things to keep in your back pocket.
-      </h1>
-
-      <p class="lead">
-        No need to memorize a handbook.
-        Take a minute, run through these, and you're good to go.
-      </p>
-
-    </section>
-
-
-    <main
-      class="step-shell reveal"
-      data-stepper
+    <div
+      class="progress-row"
+      id="progressRow"
+      aria-hidden="true"
     >
 
-      <div class="progress-track">
-        <div class="progress-bar"></div>
-      </div>
+      <div class="progress-piece active"></div>
+      <div class="progress-piece"></div>
+      <div class="progress-piece"></div>
+      <div class="progress-piece"></div>
+      <div class="progress-piece"></div>
+      <div class="progress-piece"></div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         SLIDES
+         ================================================= -->
+
+    <main class="slide-stage">
 
 
       <!-- =================================================
-           STEP 1
+           1 — CONNECT
            ================================================= -->
 
-      <section class="step active">
+      <section class="essential-slide active">
 
-        <div class="step-number">
-          1 of 6 · Connect
-        </div>
+        <article class="essential-card">
 
-        <div class="step-layout">
+          <div class="slide-label">
+            01 · Connect
+          </div>
 
-          <div>
+          <h1>
+            Talk to the athlete first.
+          </h1>
 
-            <h2 class="section-title">
-              Talk to the athlete.
-            </h2>
+          <p class="essential-copy">
+            Use their name. Speak <strong>to them</strong>,
+            not around them or only to the person beside them.
+          </p>
 
-            <p class="step-message">
-              Start with them — not the parent, coach, or person standing next to them.
-              Say their name, say hi, and bring them into the conversation from the start.
-            </p>
-
-            <div class="step-tip">
-              <strong>Keep it simple:</strong><br>
-              “Hey Alex. Ready for basketball?”
-            </div>
-
+          <div class="key-line">
+            <strong>Remember:</strong>
+            not speaking doesn't tell you how much someone understands.
           </div>
 
 
-          <div class="scene-card scene-blue" aria-label="Volunteer greeting an athlete directly">
+          <div class="essential-visual visual-blue">
 
-            <div class="hello-bubble">
+            <div class="visual-chip chip-left">
               Hey Alex!
             </div>
 
-            <div class="response-pill">
+            <div class="visual-chip chip-right">
               Ready?
             </div>
 
-            <div class="hello-link"></div>
 
-            <div class="human left blue">
+            <div class="person left">
 
-              <div class="hair"></div>
+              <div class="person-hair"></div>
+              <div class="person-head"></div>
+              <div class="person-body"></div>
 
-              <div class="head">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                <div class="smile"></div>
-              </div>
+              <div class="person-arm left"></div>
+              <div class="person-arm right wave"></div>
 
-              <div class="torso"></div>
-
-              <div class="arm left"></div>
-              <div class="arm right wave-arm"></div>
-
-              <div class="leg left"></div>
-              <div class="leg right"></div>
+              <div class="person-leg left"></div>
+              <div class="person-leg right"></div>
 
             </div>
 
-            <div class="human right orange skin-deep soft-hair">
 
-              <div class="hair"></div>
+            <div class="person right deep orange">
 
-              <div class="head">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                <div class="smile"></div>
-              </div>
+              <div class="person-hair"></div>
+              <div class="person-head"></div>
+              <div class="person-body"></div>
 
-              <div class="torso"></div>
+              <div class="person-arm left"></div>
+              <div class="person-arm right"></div>
 
-              <div class="arm left"></div>
-              <div class="arm right"></div>
+              <div class="person-leg left"></div>
+              <div class="person-leg right"></div>
 
-              <div class="leg left"></div>
-              <div class="leg right"></div>
-
-            </div>
-
-            <div class="scene-chip">
-              Start with them.
             </div>
 
           </div>
 
-        </div>
+        </article>
 
       </section>
 
 
+
       <!-- =================================================
-           STEP 2
+           2 — FACE
            ================================================= -->
 
-      <section class="step">
+      <section class="essential-slide">
 
-        <div class="step-number">
-          2 of 6 · Expression
-        </div>
+        <article class="essential-card">
 
-        <div class="step-layout">
+          <div class="slide-label">
+            02 · Your expression
+          </div>
 
-          <div>
+          <h1>
+            Your face matters.
+          </h1>
 
-            <h2 class="section-title">
-              Your face matters.
-            </h2>
+          <p class="essential-copy">
+            Some athletes watch facial expression and body language
+            very closely. A tense face may feel like you're upset with them.
+          </p>
 
-            <p class="step-message">
-              Some athletes pay really close attention to your face and body language.
-              If you look tense, annoyed, or upset, they may think it's about them —
-              even when it isn't.
-            </p>
+          <div class="key-line">
+            <strong>Do:</strong>
+            smile warmly and make encouragement easy to see.
+          </div>
 
-            <div class="step-tip">
-              A warm smile and clear encouragement can change the whole feel of the moment.
-              And honestly, it's okay to make the positive stuff a little obvious.
+
+          <div class="essential-visual visual-warm face-visual">
+
+            <img
+              src="smile-photo.jpg"
+              class="smile-photo"
+              alt="A person smiling warmly"
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
+            >
+
+            <div class="photo-fallback">
+              ☺
             </div>
 
           </div>
 
-
-          <div class="scene-card scene-peach photo-stage" aria-label="Warm smiling face">
-
-            <div class="portrait-glow"></div>
-
-            <div class="portrait-frame">
-              <img
-                src="smile-photo.jpg"
-                alt="Smiling person"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              >
-
-              <div class="portrait-fallback">
-                <div class="face-wrap">
-                  <div class="fallback-hair"></div>
-                  <div class="fallback-head"></div>
-                  <div class="fallback-eye left"></div>
-                  <div class="fallback-eye right"></div>
-                  <div class="fallback-smile"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="scene-chip">
-              Let the warmth show.
-            </div>
-
-          </div>
-
-        </div>
+        </article>
 
       </section>
 
 
+
       <!-- =================================================
-           STEP 3
+           3 — SPACE
            ================================================= -->
 
-      <section class="step">
+      <section class="essential-slide">
 
-        <div class="step-number">
-          3 of 6 · Space
-        </div>
+        <article class="essential-card">
 
-        <div class="step-layout">
+          <div class="slide-label">
+            03 · Space
+          </div>
 
-          <div>
+          <h1>
+            Give room. Watch the signals.
+          </h1>
 
-            <h2 class="section-title">
-              Give a little space. Watch their face.
-            </h2>
+          <p class="essential-copy">
+            Stay close enough to help without crowding.
+            Watch their face and body for changes.
+          </p>
 
-            <p class="step-message">
-              Be close enough to help, but not so close that it feels crowded.
-              Then watch what the athlete is giving you back.
-            </p>
+          <div class="key-line">
+            Tight eyebrows, pulling away, or sudden tension =
+            <strong>slow down and check in.</strong>
+            Don't assume one signal always means one thing.
+          </div>
 
-            <div class="step-tip">
-              Tight eyebrows, pulling away, looking tense, or a sudden change in expression
-              can be your cue to slow things down and check in.
-              It doesn't always mean the same thing — just notice it.
+
+          <div class="essential-visual visual-green">
+
+            <div class="space-guide"></div>
+
+            <div class="brow-mark">
+              Notice changes
+            </div>
+
+
+            <div class="person left space-left">
+
+              <div class="person-hair"></div>
+              <div class="person-head"></div>
+              <div class="person-body"></div>
+
+              <div class="person-arm left"></div>
+              <div class="person-arm right"></div>
+
+              <div class="person-leg left"></div>
+              <div class="person-leg right"></div>
+
+            </div>
+
+
+            <div class="person right green deep space-right">
+
+              <div class="person-hair"></div>
+              <div class="person-head"></div>
+              <div class="person-body"></div>
+
+              <div class="person-arm left"></div>
+              <div class="person-arm right"></div>
+
+              <div class="person-leg left"></div>
+              <div class="person-leg right"></div>
+
             </div>
 
           </div>
 
-
-          <div class="scene-card scene-mint" aria-label="Giving space and reading facial cues">
-
-            <div class="watch-pill">
-              Watch the signals
-            </div>
-
-            <div class="space-line"></div>
-
-            <div class="human left blue">
-
-              <div class="hair"></div>
-
-              <div class="head">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                <div class="smile"></div>
-              </div>
-
-              <div class="torso"></div>
-
-              <div class="arm left"></div>
-              <div class="arm right"></div>
-
-              <div class="leg left"></div>
-              <div class="leg right"></div>
-
-            </div>
-
-            <div class="human right green concerned soft-hair">
-
-              <div class="hair"></div>
-
-              <div class="head">
-                <div class="brow left"></div>
-                <div class="brow right"></div>
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                <div class="smile"></div>
-              </div>
-
-              <div class="torso"></div>
-
-              <div class="arm left"></div>
-              <div class="arm right"></div>
-
-              <div class="leg left"></div>
-              <div class="leg right"></div>
-
-            </div>
-
-            <div class="scene-chip">
-              A little room helps.
-            </div>
-
-          </div>
-
-        </div>
+        </article>
 
       </section>
 
 
+
       <!-- =================================================
-           STEP 4
+           4 — SHOW
            ================================================= -->
 
-      <section class="step">
+      <section class="essential-slide">
 
-        <div class="step-number">
-          4 of 6 · Show
-        </div>
+        <article class="essential-card">
 
-        <div class="step-layout">
+          <div class="slide-label">
+            04 · Show
+          </div>
 
-          <div>
+          <h1>
+            Show it. Don't pile on words.
+          </h1>
 
-            <h2 class="section-title">
-              If the words aren't landing, show it.
-            </h2>
+          <p class="essential-copy">
+            Point to the spot, pick up the ball, or demonstrate once.
+            One clear cue is usually better than a long explanation.
+          </p>
 
-            <p class="step-message">
-              Point to the spot. Pick up the ball. Do the drill once.
-              Sometimes seeing what you mean is way easier than listening to another explanation.
-            </p>
-
-            <div class="step-tip">
-              Instead of repeating:
-              <strong>“Go over there and pass the ball.”</strong>
-              <br><br>
-              Point → “Stand here.” → show one pass.
-            </div>
-
+          <div class="key-line">
+            <strong>Example:</strong>
+            point → “Stand here.” → show one pass.
+            Ask before physically guiding or touching.
           </div>
 
 
-          <div class="scene-card scene-gold" aria-label="Demonstrating with a basketball">
+          <div class="essential-visual visual-gold">
 
-            <div class="human left gold">
+            <div class="person left gold">
 
-              <div class="hair"></div>
+              <div class="person-hair"></div>
+              <div class="person-head"></div>
+              <div class="person-body"></div>
 
-              <div class="head">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                <div class="smile"></div>
-              </div>
+              <div class="person-arm left"></div>
+              <div class="person-arm right wave"></div>
 
-              <div class="torso"></div>
-
-              <div class="arm left"></div>
-              <div class="arm right wave-arm"></div>
-
-              <div class="leg left"></div>
-              <div class="leg right"></div>
+              <div class="person-leg left"></div>
+              <div class="person-leg right"></div>
 
             </div>
 
-            <div class="demo-arrow">
+
+            <div class="show-arrow">
               →
             </div>
 
-            <div class="real-basketball">
-              <div class="line vertical"></div>
-              <div class="line horizontal"></div>
-              <div class="line arc-left"></div>
-              <div class="line arc-right"></div>
-            </div>
 
-            <div class="scene-chip">
-              Show first. Then try.
-            </div>
+            <div class="basketball"></div>
 
           </div>
 
-        </div>
+        </article>
 
       </section>
 
 
+
       <!-- =================================================
-           STEP 5
+           5 — WAIT
            ================================================= -->
 
-      <section class="step">
+      <section class="essential-slide">
 
-        <div class="step-number">
-          5 of 6 · Wait
-        </div>
+        <article class="essential-card">
 
-        <div class="step-layout">
+          <div class="slide-label">
+            05 · Wait
+          </div>
 
-          <div>
+          <h1>
+            Give them a beat.
+          </h1>
 
-            <h2 class="section-title">
-              If they need a second, give them a second.
-            </h2>
+          <p class="essential-copy">
+            Ask once, then wait.
+            They may be processing, pointing, moving,
+            speaking, or preparing AAC.
+          </p>
 
-            <p class="step-message">
-              Ask your question, then hang back for a moment.
-              They might be thinking, pointing, finding the words, moving,
-              or getting their AAC ready.
-            </p>
-
-            <div class="step-tip">
-              <strong>Think:</strong><br>
-              Ask → wait → watch → respond.
-              <br><br>
-              You don't need to rush in and fill every quiet second.
-            </div>
-
+          <div class="key-line">
+            <strong>Ask → wait → watch → respond.</strong>
+            Don't rush to repeat yourself or answer for them.
           </div>
 
 
-          <div class="scene-card scene-violet wait-stage" aria-label="A more polished waiting animation">
+          <div class="essential-visual visual-violet wait-visual">
 
-            <div class="wait-glow"></div>
+            <div class="wait-ring">
 
-            <div class="timer-shell">
-              <div class="timer-ring"></div>
-
-              <div class="timer-center">
-                <div class="timer-hand"></div>
-                <div class="timer-dot"></div>
-                <div class="timer-text">Pause a beat</div>
+              <div class="wait-center">
+                Give it time
               </div>
-            </div>
 
-            <div class="scene-chip">
-              Give it a beat.
             </div>
 
           </div>
 
-        </div>
+        </article>
 
       </section>
 
 
+
       <!-- =================================================
-           STEP 6
+           6 — ENCOURAGE + PREPARE
            ================================================= -->
 
-      <section class="step">
+      <section class="essential-slide">
 
-        <div class="step-number">
-          6 of 6 · Encourage
-        </div>
+        <article class="essential-card">
 
-        <div class="step-layout">
+          <div class="slide-label">
+            06 · Encourage
+          </div>
 
-          <div>
+          <h1>
+            Notice the wins.
+          </h1>
 
-            <h2 class="section-title">
-              Bring the good energy.
-            </h2>
+          <p class="essential-copy">
+            Encourage effort and communication, not just perfect results.
+            Let them know before you switch activities.
+          </p>
 
-            <p class="step-message">
-              A little encouragement goes a long way.
-              Notice the effort, the communication, the small wins —
-              not just whether the drill came out perfectly.
-            </p>
-
-            <div class="step-tip">
-              Celebrate the moment.
-              A real “nice one,” a smile, or sharing in the win can matter more
-              than over-the-top praise.
-            </div>
-
+          <div class="key-line">
+            <strong>“Nice one.”</strong>
+            &nbsp;·&nbsp;
+            <strong>“One more, then basketball.”</strong>
+            <br>
+            Keep it genuine. Every athlete is different.
           </div>
 
 
-          <div class="scene-card scene-track" aria-label="Runner crossing a finish line">
+          <div class="essential-visual visual-track">
 
-            <div class="win-tag">
+            <div class="finish-tag">
               Nice one!
             </div>
 
-            <div class="track-lane l1"></div>
-            <div class="track-lane l2"></div>
-            <div class="track-lane l3"></div>
+            <div class="track-line one"></div>
+            <div class="track-line two"></div>
 
-            <div class="finish-post"></div>
-            <div class="finish-ribbon"></div>
+            <div class="finish-line"></div>
+
 
             <div class="runner">
-              <div class="r-hair"></div>
-              <div class="r-head"></div>
-              <div class="r-torso"></div>
-              <div class="r-arm left"></div>
-              <div class="r-arm right"></div>
-              <div class="r-leg left"></div>
-              <div class="r-leg right"></div>
-            </div>
 
-            <div class="scene-chip">
-              Celebrate the wins.
+              <div class="runner-head"></div>
+              <div class="runner-body"></div>
+
+              <div class="runner-leg left"></div>
+              <div class="runner-leg right"></div>
+
             </div>
 
           </div>
 
-        </div>
+        </article>
 
       </section>
 
-
-      <!-- =================================================
-           FINAL
-           ================================================= -->
-
-      <section class="step">
-
-        <div class="step-number">
-          You're set.
-        </div>
-
-        <div class="step-layout">
-
-          <div>
-
-            <h2 class="section-title">
-              Ready for the session.
-            </h2>
-
-            <p class="step-message">
-              You won't always know exactly what an athlete is thinking —
-              and you don't need to.
-            </p>
-
-            <p class="step-message">
-              Slow down. Pay attention. Stay warm.
-              Work with the person in front of you.
-            </p>
-
-            <a href="index.html" class="finish-link">
-              Back to the guide →
-            </a>
-
-          </div>
-
-
-          <div class="ready-visual">
-            <div class="ready-ring">
-              ✓
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <div class="step-controls">
-
-        <button class="pill-button" data-step-back>
-          Back
-        </button>
-
-        <button class="pill-button primary" data-step-next>
-          Next
-        </button>
-
-      </div>
 
     </main>
 
 
-    <section class="recap reveal">
 
-      <div class="recap-item">
-        <strong>Connect</strong>
-        Talk to the athlete first.
-      </div>
+    <!-- =================================================
+         CONTROLS
+         ================================================= -->
 
-      <div class="recap-item">
-        <strong>Watch</strong>
-        Face, body language, space.
-      </div>
+    <div class="essential-controls">
 
-      <div class="recap-item">
-        <strong>Show</strong>
-        Don't pile on more words.
-      </div>
+      <button
+        class="back-button hidden"
+        id="backButton"
+      >
+        ← Back
+      </button>
 
-      <div class="recap-item">
-        <strong>Wait</strong>
-        Give them a beat.
-      </div>
+      <button
+        class="next-button"
+        id="nextButton"
+      >
+        Next
+      </button>
 
-      <div class="recap-item">
-        <strong>Encourage</strong>
-        Notice the small wins.
-      </div>
-
-      <div class="recap-item">
-        <strong>Adapt</strong>
-        Every athlete is different.
-      </div>
-
-    </section>
+    </div>
 
 
-    <footer class="site-footer">
+    <div class="micro-reminder">
+      Starting points, not rules — pay attention to the athlete in front of you.
+    </div>
 
-      Think of these as good starting points, not rules for reading every athlete.
-      When you're unsure, ask the athlete or someone who knows them well.
-
-    </footer>
 
   </div>
 
 
-  <script src="script.js"></script>
+
+  <script>
+
+    /* =====================================================
+       SIMPLE ONE-SCREEN STEPPER
+       ===================================================== */
+
+    const slides =
+      Array.from(
+        document.querySelectorAll(
+          ".essential-slide"
+        )
+      );
+
+    const progressPieces =
+      Array.from(
+        document.querySelectorAll(
+          ".progress-piece"
+        )
+      );
+
+    const backButton =
+      document.getElementById(
+        "backButton"
+      );
+
+    const nextButton =
+      document.getElementById(
+        "nextButton"
+      );
+
+    const stepCount =
+      document.getElementById(
+        "stepCount"
+      );
+
+
+    let currentStep = 0;
+
+
+
+    function updateStep() {
+
+      slides.forEach(
+        (slide, index) => {
+
+          slide.classList.toggle(
+            "active",
+            index === currentStep
+          );
+
+        }
+      );
+
+
+      progressPieces.forEach(
+        (piece, index) => {
+
+          piece.classList.toggle(
+            "done",
+            index < currentStep
+          );
+
+          piece.classList.toggle(
+            "active",
+            index === currentStep
+          );
+
+        }
+      );
+
+
+      stepCount.textContent =
+        `${currentStep + 1} / ${slides.length}`;
+
+
+      backButton.classList.toggle(
+        "hidden",
+        currentStep === 0
+      );
+
+
+      nextButton.textContent =
+        currentStep ===
+        slides.length - 1
+          ? "Done"
+          : "Next";
+
+    }
+
+
+
+    nextButton.addEventListener(
+      "click",
+      () => {
+
+        if (
+          currentStep <
+          slides.length - 1
+        ) {
+
+          currentStep++;
+
+          updateStep();
+
+        }
+
+        else {
+
+          window.location.href =
+            "index.html";
+
+        }
+
+      }
+    );
+
+
+
+    backButton.addEventListener(
+      "click",
+      () => {
+
+        if (
+          currentStep > 0
+        ) {
+
+          currentStep--;
+
+          updateStep();
+
+        }
+
+      }
+    );
+
+
+
+    /* optional swipe left / right */
+
+    let startX = null;
+
+
+    document.addEventListener(
+      "touchstart",
+      event => {
+
+        startX =
+          event.changedTouches[0]
+            .clientX;
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    document.addEventListener(
+      "touchend",
+      event => {
+
+        if (
+          startX === null
+        ) return;
+
+
+        const endX =
+          event.changedTouches[0]
+            .clientX;
+
+
+        const difference =
+          endX - startX;
+
+
+        if (
+          difference < -60 &&
+          currentStep <
+          slides.length - 1
+        ) {
+
+          currentStep++;
+
+          updateStep();
+
+        }
+
+
+        if (
+          difference > 60 &&
+          currentStep > 0
+        ) {
+
+          currentStep--;
+
+          updateStep();
+
+        }
+
+
+        startX = null;
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    updateStep();
+
+  </script>
+
 
 </body>
+
 </html>
