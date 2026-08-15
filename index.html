@@ -1,496 +1,1314 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
   <title>Volunteer Communication Guide</title>
+
   <link rel="stylesheet" href="style.css">
 
   <style>
-    :root{
-      --bg:#f6f6f4;
-      --card:#ffffff;
-      --text:#1f2229;
-      --muted:#6f7480;
-      --line:rgba(31,34,41,.08);
-      --accent:#5e72ff;
-      --shadow:0 14px 40px rgba(20,24,38,.08);
-      --radius:24px;
+
+    /* =====================================================
+       HOME PAGE — V4
+       Minimal / premium / mobile-first
+       ===================================================== */
+
+    :root {
+      --home-bg: #f5f5f3;
+      --home-card: rgba(255,255,255,.82);
+
+      --home-text: #1d1d1f;
+      --home-muted: #707078;
+      --home-soft: #909097;
+
+      --home-blue: #596cff;
+
+      --home-line: rgba(29,29,31,.075);
+
+      --home-shadow:
+        0 18px 55px rgba(20,23,33,.08);
     }
 
-    *{
-      box-sizing:border-box;
+
+    * {
+      box-sizing: border-box;
     }
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+
+    body {
+      margin: 0;
+
+      background: var(--home-bg);
+      color: var(--home-text);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+
+      overflow-x: hidden;
     }
 
-    .page-shell{
-      width:min(960px, calc(100% - 28px));
-      margin:0 auto;
-      padding-bottom:28px;
+
+    .home-shell {
+      width: min(960px, calc(100% - 28px));
+
+      margin: 0 auto;
+
+      padding-bottom:
+        calc(18px + env(safe-area-inset-bottom));
     }
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 0 10px;
-      gap:14px;
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .home-topbar {
+      height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 16px;
     }
 
-    .brand{
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:-.01em;
+
+    .home-brand {
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: -.015em;
     }
 
-    .org{
-      font-size:13px;
-      color:#8a8f99;
-      font-weight:600;
-      text-align:right;
+
+    .home-org {
+      color: #919196;
+
+      font-size: 12px;
+      font-weight: 600;
     }
 
-    .hero{
-      position:relative;
-      overflow:hidden;
-      border-radius:32px;
-      min-height:340px;
-      padding:28px 24px 24px;
-      margin-top:10px;
-      box-shadow:var(--shadow);
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .home-hero {
+      position: relative;
+
+      min-height: 286px;
+
+      overflow: hidden;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 27px 24px;
+
+      border-radius: 30px;
+
+      background: #e9e9e6;
+
+      box-shadow: var(--home-shadow);
+
+      isolation: isolate;
+    }
+
+
+    /*
+      Actual photograph.
+      Lower opacity + reduced saturation keeps it sophisticated.
+    */
+
+    .home-hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      z-index: -3;
+
       background:
-        linear-gradient(rgba(255,255,255,.78), rgba(255,255,255,.84)),
-        url('hero-bg.jpg') center center / cover no-repeat;
+        url("hero-bg.jpg")
+        center 42% / cover
+        no-repeat;
+
+      opacity: .34;
+
+      filter:
+        saturate(.72)
+        contrast(.92);
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
+
+    /*
+      White fade makes text readable without hiding the photograph.
+    */
+
+    .home-hero::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      z-index: -2;
+
       background:
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.22));
-      pointer-events:none;
+        linear-gradient(
+          180deg,
+          rgba(248,248,246,.22) 0%,
+          rgba(248,248,246,.48) 42%,
+          rgba(248,248,246,.94) 100%
+        );
     }
 
-    .hero-content{
-      position:relative;
-      z-index:2;
-      max-width:640px;
+
+    .hero-glow {
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      right: -95px;
+      top: -125px;
+
+      z-index: -1;
+
+      border-radius: 50%;
+
+      background:
+        rgba(89,108,255,.13);
+
+      filter: blur(25px);
+
+      animation:
+        glowBreathe
+        5s ease-in-out
+        infinite;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(31,34,41,.06);
-      color:#56606f;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      margin-bottom:18px;
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
+
+    .hero-content {
+      position: relative;
+
+      max-width: 660px;
+
+      animation:
+        heroEnter
+        .65s cubic-bezier(.22,.8,.22,1)
+        both;
     }
 
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--accent);
-      animation:pulse 2.2s ease-in-out infinite;
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 11px;
+
+      color: #555a65;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .075em;
+      text-transform: uppercase;
     }
 
-    .hero h1{
-      margin:0;
-      font-size:clamp(42px, 8vw, 74px);
-      line-height:.94;
-      letter-spacing:-.06em;
+
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--home-blue);
+
+      box-shadow:
+        0 0 0 5px
+        rgba(89,108,255,.10);
+
+      animation:
+        dotBreathe
+        2.5s ease-in-out
+        infinite;
     }
 
-    .hero h1 .accent{
-      color:var(--accent);
+
+    .home-hero h1 {
+      margin: 0;
+
+      max-width: 550px;
+
+      font-size:
+        clamp(46px, 8vw, 73px);
+
+      line-height: .93;
+
+      letter-spacing: -.06em;
     }
 
-    .hero p{
-      margin:18px 0 0;
-      max-width:560px;
-      font-size:clamp(17px, 2.7vw, 21px);
-      line-height:1.5;
-      color:#515662;
-      letter-spacing:-.015em;
+
+    .home-hero h1 span {
+      color: var(--home-blue);
     }
 
-    .bridge{
-      margin:18px 0 18px;
-      padding:0 4px;
-      text-align:center;
+
+    .hero-copy {
+      max-width: 555px;
+
+      margin: 15px 0 0;
+
+      color: #51545c;
+
+      font-size:
+        clamp(16px, 2.3vw, 19px);
+
+      line-height: 1.46;
+
+      letter-spacing: -.018em;
     }
 
-    .bridge p{
-      margin:0 auto;
-      max-width:690px;
-      font-size:clamp(18px, 3vw, 24px);
-      line-height:1.42;
-      font-weight:650;
-      letter-spacing:-.025em;
-      color:#2b2f37;
+
+
+    /* =====================================================
+       CENTRAL QUESTION
+       ===================================================== */
+
+    .home-question {
+      margin: 19px auto 16px;
+
+      max-width: 660px;
+
+      padding: 0 8px;
+
+      text-align: center;
     }
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:12px;
-      margin-top:8px;
+
+    .home-question p {
+      margin: 0;
+
+      font-size:
+        clamp(17px, 3vw, 21px);
+
+      line-height: 1.38;
+
+      font-weight: 650;
+
+      letter-spacing: -.025em;
     }
 
-    .card{
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:170px;
-      padding:18px;
-      border-radius:24px;
-      background:rgba(255,255,255,.86);
-      border:1px solid var(--line);
-      text-decoration:none;
-      color:inherit;
-      box-shadow:0 8px 24px rgba(25,30,45,.04);
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
-      transition:transform .18s ease, box-shadow .18s ease;
+
+    .home-question span {
+      color: var(--home-muted);
+      font-weight: 500;
     }
 
-    .card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 28px rgba(25,30,45,.08);
+
+
+    /* =====================================================
+       ACTIONS
+       ===================================================== */
+
+    .home-actions {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 10px;
     }
 
-    .card-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
+
+    .home-action {
+      position: relative;
+
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      min-height: 154px;
+
+      padding: 17px;
+
+      border:
+        1px solid
+        var(--home-line);
+
+      border-radius: 22px;
+
+      background:
+        var(--home-card);
+
+      color: inherit;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 7px 24px
+        rgba(25,28,40,.035);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      transition:
+        transform .22s cubic-bezier(.22,.8,.22,1),
+        box-shadow .22s ease,
+        background .22s ease;
     }
 
-    .icon{
-      width:46px;
-      height:46px;
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#f3f4f7;
-      color:var(--accent);
-      flex:0 0 auto;
+
+    .home-action:hover {
+      transform: translateY(-3px);
+
+      background:
+        rgba(255,255,255,.94);
+
+      box-shadow:
+        0 15px 34px
+        rgba(25,28,40,.075);
     }
 
-    .mini-clock{
-      width:24px;
-      height:24px;
-      border:2px solid currentColor;
-      border-radius:50%;
-      position:relative;
+
+    .home-action:active {
+      transform: scale(.985);
     }
 
-    .mini-clock::before{
-      content:"";
-      position:absolute;
-      width:2px;
-      height:7px;
-      background:currentColor;
-      left:50%;
-      top:5px;
-      margin-left:-1px;
-      border-radius:99px;
-      transform-origin:center 7px;
-      animation:spin 3s linear infinite;
+
+    /* tiny blue line = only accent on cards */
+
+    .home-action::before {
+      content: "";
+
+      position: absolute;
+
+      left: 17px;
+      top: 0;
+
+      width: 26px;
+      height: 3px;
+
+      border-radius:
+        0 0 999px 999px;
+
+      background:
+        var(--home-blue);
+
+      opacity: .72;
     }
 
-    .mini-person{
-      position:relative;
-      width:18px;
-      height:24px;
-      animation:bob 1.7s ease-in-out infinite;
+
+
+    /* =====================================================
+       ACTION TOP
+       ===================================================== */
+
+    .action-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 19px;
     }
 
-    .mini-person::before{
-      content:"";
-      position:absolute;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:currentColor;
-      left:4px;
-      top:0;
+
+    .action-icon {
+      position: relative;
+
+      width: 39px;
+      height: 39px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background: #f1f2f5;
+
+      color: var(--home-blue);
     }
 
-    .mini-person::after{
-      content:"";
-      position:absolute;
-      width:16px;
-      height:12px;
-      border-radius:7px;
-      background:currentColor;
-      left:1px;
-      top:11px;
+
+    .action-arrow {
+      color: #9a9da4;
+
+      font-size: 22px;
+
+      transition:
+        transform .2s ease;
     }
 
-    .mini-bars{
-      display:flex;
-      align-items:flex-end;
-      gap:3px;
-      height:22px;
+
+    .home-action:hover
+    .action-arrow {
+      transform:
+        translateX(3px);
     }
 
-    .mini-bars span{
-      width:5px;
-      border-radius:999px;
-      background:currentColor;
-      animation:bars 1.5s ease-in-out infinite;
+
+
+    /* =====================================================
+       ICON 1 — 60 SECOND CLOCK
+       ===================================================== */
+
+    .clock-icon {
+      position: relative;
+
+      width: 22px;
+      height: 22px;
+
+      border:
+        2px solid
+        currentColor;
+
+      border-radius: 50%;
     }
 
-    .mini-bars span:nth-child(1){height:10px;}
-    .mini-bars span:nth-child(2){height:18px; animation-delay:.15s;}
-    .mini-bars span:nth-child(3){height:13px; animation-delay:.3s;}
 
-    .arrow{
-      font-size:24px;
-      color:#9aa0aa;
-      line-height:1;
+    .clock-icon::before {
+      content: "";
+
+      position: absolute;
+
+      width: 2px;
+      height: 6px;
+
+      left: 50%;
+      top: 4px;
+
+      margin-left: -1px;
+
+      border-radius: 99px;
+
+      background:
+        currentColor;
+
+      transform-origin:
+        center 7px;
+
+      animation:
+        clockTick
+        4s linear
+        infinite;
     }
 
-    .label{
-      margin:14px 0 4px;
-      color:#8a9099;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:.06em;
-      text-transform:uppercase;
+
+    .clock-icon::after {
+      content: "";
+
+      position: absolute;
+
+      width: 3px;
+      height: 3px;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      border-radius: 50%;
+
+      background:
+        currentColor;
     }
 
-    .card h2{
-      margin:0;
-      font-size:22px;
-      line-height:1.08;
-      letter-spacing:-.03em;
+
+
+    /* =====================================================
+       ICON 2 — HUMAN MOVEMENT
+       ===================================================== */
+
+    .move-icon {
+      position: relative;
+
+      width: 17px;
+      height: 26px;
+
+      animation:
+        personBounce
+        1.8s ease-in-out
+        infinite;
     }
 
-    .card p{
-      margin:8px 0 0;
-      color:#646a75;
-      font-size:14px;
-      line-height:1.45;
+
+    .move-icon::before {
+      content: "";
+
+      position: absolute;
+
+      width: 10px;
+      height: 10px;
+
+      left: 3.5px;
+      top: 0;
+
+      border-radius: 50%;
+
+      background:
+        currentColor;
     }
 
-    .footer-note{
-      margin:18px auto 0;
-      max-width:720px;
-      text-align:center;
-      color:#818792;
-      font-size:13.5px;
-      line-height:1.5;
-      padding:0 10px;
+
+    .move-icon::after {
+      content: "";
+
+      position: absolute;
+
+      width: 16px;
+      height: 13px;
+
+      left: .5px;
+      top: 11px;
+
+      border-radius:
+        7px 7px 5px 5px;
+
+      background:
+        currentColor;
     }
 
-    .site-footer{
-      margin-top:24px;
-      padding-top:18px;
-      border-top:1px solid rgba(31,34,41,.08);
-      color:#8a8f99;
-      font-size:13px;
-      text-align:center;
+
+
+    /* =====================================================
+       ICON 3 — COMMUNICATION
+       ===================================================== */
+
+    .signal-icon {
+      display: flex;
+      align-items: flex-end;
+
+      gap: 3px;
+
+      height: 21px;
     }
 
-    @keyframes pulse{
-      0%,100%{opacity:.45; transform:scale(.82);}
-      50%{opacity:1; transform:scale(1);}
+
+    .signal-icon span {
+      width: 4px;
+
+      border-radius: 99px;
+
+      background:
+        currentColor;
+
+      animation:
+        signalPulse
+        1.6s ease-in-out
+        infinite;
     }
 
-    @keyframes spin{
-      to{transform:rotate(360deg);}
+
+    .signal-icon span:nth-child(1) {
+      height: 9px;
     }
 
-    @keyframes bob{
-      0%,100%{transform:translateY(1px);}
-      50%{transform:translateY(-4px);}
+
+    .signal-icon span:nth-child(2) {
+      height: 18px;
+
+      animation-delay: .14s;
     }
 
-    @keyframes bars{
-      0%,100%{transform:scaleY(.7); opacity:.55;}
-      50%{transform:scaleY(1); opacity:1;}
+
+    .signal-icon span:nth-child(3) {
+      height: 13px;
+
+      animation-delay: .28s;
     }
 
-    @media (max-width: 780px){
-      .cards{
-        grid-template-columns:1fr;
+
+
+    /* =====================================================
+       ACTION COPY
+       ===================================================== */
+
+    .action-meta {
+      margin-bottom: 3px;
+
+      color: var(--home-soft);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+
+    .home-action h2 {
+      margin: 0;
+
+      font-size: 19px;
+
+      line-height: 1.08;
+
+      letter-spacing: -.03em;
+    }
+
+
+    .home-action p {
+      margin: 6px 0 0;
+
+      color: var(--home-muted);
+
+      font-size: 12.5px;
+
+      line-height: 1.38;
+    }
+
+
+
+    /* =====================================================
+       BOTTOM LINE
+       ===================================================== */
+
+    .home-footer {
+      margin-top: 15px;
+
+      text-align: center;
+
+      color: #8a8d94;
+
+      font-size: 11.5px;
+
+      line-height: 1.45;
+    }
+
+
+
+    /* =====================================================
+       ANIMATIONS
+       ===================================================== */
+
+    @keyframes heroEnter {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(10px);
       }
 
-      .card{
-        min-height:auto;
-        padding:16px;
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
       }
 
-      .hero{
-        min-height:300px;
-        padding:22px 18px 20px;
-        border-radius:28px;
-      }
-
-      .bridge{
-        margin:16px 0;
-      }
-
-      .bridge p{
-        font-size:19px;
-      }
     }
 
-    @media (max-width: 520px){
-      .page-shell{
-        width:calc(100% - 24px);
+
+    @keyframes glowBreathe {
+
+      0%,
+      100% {
+        transform:
+          scale(.93);
+
+        opacity: .55;
       }
 
-      .topbar{
-        padding-top:16px;
+      50% {
+        transform:
+          scale(1.06);
+
+        opacity: .9;
       }
 
-      .brand,.org{
-        font-size:12px;
-      }
-
-      .hero{
-        min-height:280px;
-      }
-
-      .hero p{
-        font-size:16px;
-      }
-
-      .bridge p{
-        font-size:18px;
-      }
-
-      .card h2{
-        font-size:20px;
-      }
-
-      .card p{
-        font-size:13.5px;
-      }
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .dot,
-      .mini-clock::before,
-      .mini-person,
-      .mini-bars span{
-        animation:none !important;
+
+    @keyframes dotBreathe {
+
+      0%,
+      100% {
+        transform:
+          scale(.82);
+
+        opacity: .55;
       }
+
+      50% {
+        transform:
+          scale(1);
+
+        opacity: 1;
+      }
+
     }
+
+
+    @keyframes clockTick {
+
+      to {
+        transform:
+          rotate(360deg);
+      }
+
+    }
+
+
+    @keyframes personBounce {
+
+      0%,
+      100% {
+        transform:
+          translateY(1px);
+      }
+
+      50% {
+        transform:
+          translateY(-4px);
+      }
+
+    }
+
+
+    @keyframes signalPulse {
+
+      0%,
+      100% {
+        transform:
+          scaleY(.65);
+
+        opacity: .5;
+      }
+
+      50% {
+        transform:
+          scaleY(1);
+
+        opacity: 1;
+      }
+
+    }
+
+
+
+    /* =====================================================
+       PHONE — IMPORTANT
+       ===================================================== */
+
+    @media
+    (max-width: 680px) {
+
+
+      .home-shell {
+        width:
+          calc(100% - 22px);
+      }
+
+
+      .home-topbar {
+        height: 48px;
+      }
+
+
+      .home-brand {
+        font-size: 11.5px;
+      }
+
+
+      .home-org {
+        font-size: 11px;
+      }
+
+
+      /*
+        Smaller hero so we don't burn
+        half the screen before navigation.
+      */
+
+      .home-hero {
+        min-height: 254px;
+
+        padding:
+          21px 18px;
+
+        border-radius: 26px;
+
+        background-color: #ededeb;
+      }
+
+
+      .home-hero::before {
+        background-position:
+          center 40%;
+
+        opacity: .36;
+      }
+
+
+      .hero-label {
+        margin-bottom: 8px;
+
+        font-size: 9px;
+      }
+
+
+      .home-hero h1 {
+        max-width: 390px;
+
+        font-size:
+          clamp(
+            43px,
+            12vw,
+            58px
+          );
+      }
+
+
+      .hero-copy {
+        max-width: 390px;
+
+        margin-top: 11px;
+
+        font-size: 14.5px;
+
+        line-height: 1.42;
+      }
+
+
+      .home-question {
+        margin:
+          13px auto;
+      }
+
+
+      .home-question p {
+        max-width: 360px;
+
+        margin: 0 auto;
+
+        font-size: 15px;
+
+        line-height: 1.36;
+      }
+
+
+      /*
+        Compact one-line-ish mobile cards.
+        This is what makes the page much shorter.
+      */
+
+      .home-actions {
+        grid-template-columns: 1fr;
+
+        gap: 7px;
+      }
+
+
+      .home-action {
+        display: grid;
+
+        grid-template-columns:
+          39px 1fr 20px;
+
+        align-items: center;
+
+        column-gap: 12px;
+
+        min-height: 74px;
+
+        padding:
+          10px 12px;
+
+        border-radius: 19px;
+      }
+
+
+      .home-action::before {
+        display: none;
+      }
+
+
+      .action-top {
+        display: contents;
+      }
+
+
+      .action-icon {
+        width: 39px;
+        height: 39px;
+
+        grid-column: 1;
+        grid-row: 1 / span 3;
+      }
+
+
+      .action-arrow {
+        grid-column: 3;
+        grid-row: 1 / span 3;
+
+        align-self: center;
+      }
+
+
+      .action-meta {
+        grid-column: 2;
+
+        margin:
+          0 0 1px;
+
+        align-self: end;
+
+        font-size: 8.5px;
+      }
+
+
+      .home-action h2 {
+        grid-column: 2;
+
+        margin: 0;
+
+        font-size: 16px;
+
+        align-self: center;
+      }
+
+
+      .home-action p {
+        grid-column: 2;
+
+        margin:
+          2px 0 0;
+
+        font-size: 11.5px;
+
+        line-height: 1.28;
+
+        align-self: start;
+      }
+
+
+      .home-footer {
+        margin-top: 10px;
+
+        font-size: 10.5px;
+      }
+
+    }
+
+
+
+    /* =====================================================
+       VERY SMALL PHONES
+       ===================================================== */
+
+    @media
+    (max-width: 380px) {
+
+
+      .home-hero {
+        min-height: 238px;
+      }
+
+
+      .home-hero h1 {
+        font-size: 41px;
+      }
+
+
+      .hero-copy {
+        font-size: 13.5px;
+      }
+
+
+      .home-question p {
+        font-size: 14px;
+      }
+
+
+      .home-action {
+        min-height: 70px;
+      }
+
+    }
+
+
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+      .hero-content,
+      .hero-glow,
+      .hero-dot,
+      .clock-icon::before,
+      .move-icon,
+      .signal-icon span {
+        animation: none !important;
+      }
+
+    }
+
   </style>
+
 </head>
 
-<body>
-  <div class="page-shell">
 
-    <header class="topbar">
-      <div class="brand">Volunteer Communication Guide</div>
-      <div class="org">Special Olympics</div>
+<body>
+
+  <div class="home-shell">
+
+
+    <!-- =================================================
+         TOP
+         ================================================= -->
+
+    <header class="home-topbar">
+
+      <div class="home-brand">
+        Volunteer Communication Guide
+      </div>
+
+      <div class="home-org">
+        Special Olympics
+      </div>
+
     </header>
 
+
+
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
     <main>
-      <section class="hero">
+
+      <section class="home-hero">
+
+        <div class="hero-glow"></div>
+
         <div class="hero-content">
-          <div class="eyebrow">
-            <span class="dot"></span>
+
+          <div class="hero-label">
+
+            <span class="hero-dot"></span>
+
             Before you coach
+
           </div>
+
 
           <h1>
-            Connect <span class="accent">first.</span>
+
+            Connect
+            <span>first.</span>
+
           </h1>
 
-          <p>
-            Not speaking doesn’t mean not understanding.
+
+          <p class="hero-copy">
+
+            Not speaking doesn't mean not understanding.
             Some athletes understand more than they can easily express.
+
           </p>
+
         </div>
+
       </section>
 
-      <section class="bridge">
+
+
+      <!-- =================================================
+           QUESTION
+           ================================================= -->
+
+      <section class="home-question">
+
         <p>
-          So what should you do when an athlete can’t easily tell you what they’re thinking?
+
+          So how do you connect when
+          <span>words aren't enough?</span>
+
         </p>
+
       </section>
 
-      <section class="cards">
 
-        <a href="essentials.html" class="card">
-          <div class="card-top">
-            <div class="icon">
-              <div class="mini-clock"></div>
+
+      <!-- =================================================
+           THREE ACTIONS
+           ================================================= -->
+
+      <nav class="home-actions">
+
+
+        <!-- 01 -->
+
+        <a
+          href="essentials.html"
+          class="home-action"
+        >
+
+          <div class="action-top">
+
+            <div class="action-icon">
+
+              <div class="clock-icon"></div>
+
             </div>
-            <div class="arrow">›</div>
+
+
+            <div class="action-arrow">
+              ›
+            </div>
+
           </div>
 
-          <div class="label">01 · Before the session</div>
-          <h2>60-Second Essentials</h2>
-          <p>Six quick things worth knowing before you begin.</p>
-        </a>
 
-        <a href="behavior.html" class="card">
-          <div class="card-top">
-            <div class="icon">
-              <div class="mini-person"></div>
-            </div>
-            <div class="arrow">›</div>
+          <div class="action-meta">
+            01 · Before the session
           </div>
 
-          <div class="label">02 · In the moment</div>
-          <h2>What do I do?</h2>
-          <p>Real situations and short guidance for how to respond.</p>
+
+          <h2>
+            60-Second Essentials
+          </h2>
+
+
+          <p>
+            The six things worth knowing first.
+          </p>
+
         </a>
 
-        <a href="communication.html" class="card">
-          <div class="card-top">
-            <div class="icon">
-              <div class="mini-bars">
-                <span></span><span></span><span></span>
+
+
+        <!-- 02 -->
+
+        <a
+          href="behavior.html"
+          class="home-action"
+        >
+
+          <div class="action-top">
+
+            <div class="action-icon">
+
+              <div class="move-icon"></div>
+
+            </div>
+
+
+            <div class="action-arrow">
+              ›
+            </div>
+
+          </div>
+
+
+          <div class="action-meta">
+            02 · In the moment
+          </div>
+
+
+          <h2>
+            What do I do?
+          </h2>
+
+
+          <p>
+            Real situations. Quick responses.
+          </p>
+
+        </a>
+
+
+
+        <!-- 03 -->
+
+        <a
+          href="communication.html"
+          class="home-action"
+        >
+
+          <div class="action-top">
+
+            <div class="action-icon">
+
+              <div class="signal-icon">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
+
             </div>
-            <div class="arrow">›</div>
+
+
+            <div class="action-arrow">
+              ›
+            </div>
+
           </div>
 
-          <div class="label">03 · Connect</div>
-          <h2>How can we communicate?</h2>
-          <p>Simple ways to connect using words, gestures, choices, and AAC.</p>
+
+          <div class="action-meta">
+            03 · Communication
+          </div>
+
+
+          <h2>
+            How can we connect?
+          </h2>
+
+
+          <p>
+            Words, gestures, choices, AAC, and more.
+          </p>
+
         </a>
 
-      </section>
+      </nav>
 
-      <p class="footer-note">
-        Every athlete communicates differently. Notice first, give them time, and work with what they give you.
-      </p>
+
+
+      <!-- =================================================
+           SMALL END NOTE
+           ================================================= -->
+
+      <div class="home-footer">
+
+        Every athlete communicates differently.
+        These are starting points — not a script.
+
+      </div>
+
     </main>
-
-    <footer class="site-footer">
-      Built for quick use before and during a session.
-    </footer>
 
   </div>
 
+
   <script src="script.js"></script>
+
 </body>
+
 </html>
