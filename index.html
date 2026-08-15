@@ -1,531 +1,1892 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
-  <title>Special Olympics Volunteer Guide</title>
+  <title>
+    Volunteer Communication Guide
+  </title>
 
   <link rel="stylesheet" href="style.css">
 
+
   <style>
 
-    /* Homepage-specific layout */
+    /* =====================================================
+       HOME PAGE — V3
+       Simpler, warmer, more human
+       ===================================================== */
 
-    .home-hero {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
+
+    :root {
+
+      --home-blue: #6679ff;
+      --home-blue-soft: #e8edff;
+
+      --home-green: #39aa78;
+      --home-green-soft: #e5f8ef;
+
+      --home-orange: #e99a43;
+      --home-orange-soft: #fff0da;
+
+      --home-purple: #8266dc;
+      --home-purple-soft: #efe9ff;
+
+      --home-pink-soft: #ffe8ed;
+
+      --home-dark: #1f222b;
+
+    }
+
+
+    body {
+
+      overflow-x: hidden;
+
+    }
+
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+
+    .home-topbar {
+
+      display: flex;
+
       align-items: center;
-      gap: 45px;
+      justify-content: space-between;
 
-      padding: 78px 0 55px;
+      padding:
+        20px 0 10px;
+
     }
 
-    .home-visual {
-      min-height: 330px;
-    }
 
-    .home-visual .volunteer {
-      left: 24%;
-      bottom: 58px;
-    }
+    .home-brand {
 
-    .home-visual .athlete {
-      right: 24%;
-      bottom: 58px;
-    }
-
-    .connection-line {
-      position: absolute;
-
-      width: 90px;
-      height: 1px;
-
-      left: 50%;
-      top: 47%;
-
-      transform: translateX(-50%);
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(29,29,31,.3),
-          transparent
-        );
-
-      animation: connectionPulse 3.2s ease-in-out infinite;
-    }
-
-    .hello-bubble {
-      position: absolute;
-
-      left: 20%;
-      top: 28px;
-
-      padding: 9px 13px;
-
-      border: 1px solid rgba(29,29,31,.09);
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.86);
-
-      font-size: 13px;
-      font-weight: 600;
-
-      animation: bubbleFloat 3.8s ease-in-out infinite;
-    }
-
-    .response-bubble {
-      position: absolute;
-
-      right: 19%;
-      top: 73px;
-
-      padding: 9px 13px;
-
-      border: 1px solid rgba(29,29,31,.09);
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.86);
-
-      font-size: 13px;
-      font-weight: 600;
-
-      animation: bubbleFloat 3.8s .6s ease-in-out infinite;
-    }
-
-    .home-intro {
-      margin-top: 4px;
-    }
-
-    .home-question {
-      margin: 34px 0 15px;
-
-      color: var(--muted);
+      color: #272930;
 
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: .07em;
 
-      text-transform: uppercase;
+      letter-spacing: -.01em;
+
     }
 
-    .home-card-number {
-      margin-bottom: 30px;
+
+    .home-org {
 
       color: var(--muted);
 
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .07em;
+      font-weight: 600;
+
     }
 
-    .dark .home-card-number {
-      color: #9d9da2;
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+
+    .home-hero {
+
+      padding:
+        56px 0 34px;
+
+      text-align: center;
+
     }
 
-    .home-card-icon {
+
+    .home-eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 18px;
+
+      padding:
+        8px 12px;
+
+      border-radius: 999px;
+
+      background:
+        var(--home-blue-soft);
+
+      color: #5165db;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .055em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .eyebrow-pulse {
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--home-blue);
+
+      animation:
+        eyebrowPulse
+        2.4s
+        ease-in-out
+        infinite;
+
+    }
+
+
+    .home-title {
+
+      max-width: 760px;
+
+      margin:
+        0 auto;
+
+      font-size:
+        clamp(
+          48px,
+          10vw,
+          82px
+        );
+
+      line-height: .94;
+
+      letter-spacing: -.058em;
+
+      color: #1d1e24;
+
+    }
+
+
+    .home-title .soft {
+
+      color:
+        var(--home-blue);
+
+    }
+
+
+    .home-lead {
+
+      max-width: 610px;
+
+      margin:
+        24px auto 0;
+
+      color: #646872;
+
+      font-size:
+        clamp(
+          17px,
+          3vw,
+          20px
+        );
+
+      line-height: 1.52;
+
+      letter-spacing: -.015em;
+
+    }
+
+
+
+    /* =====================================================
+       MAIN IDEA
+       ===================================================== */
+
+
+    .connection-card {
+
+      position: relative;
+
+      min-height: 260px;
+
+      margin:
+        20px 0 42px;
+
+      overflow: hidden;
+
+      border-radius: 32px;
+
+      background:
+
+        radial-gradient(
+          circle at 12% 10%,
+          rgba(255,255,255,.8),
+          transparent 30%
+        ),
+
+        linear-gradient(
+          135deg,
+          #e8edff 0%,
+          #f1efff 48%,
+          #ffe9e3 100%
+        );
+
+      box-shadow:
+        0 20px 60px
+        rgba(40,48,82,.08);
+
+    }
+
+
+
+    /* ---------- visual ---------- */
+
+
+    .connection-visual {
+
       position: absolute;
 
-      right: 25px;
-      top: 24px;
+      inset: 0;
+
+      pointer-events: none;
+
+    }
+
+
+    .person-card {
+
+      position: absolute;
+
+      width: 105px;
+      height: 178px;
+
+      bottom: 30px;
+
+      transform-origin:
+        center bottom;
+
+    }
+
+
+    .person-card.left {
+
+      left: 16%;
+
+      animation:
+        humanFloat
+        4s ease-in-out
+        infinite;
+
+    }
+
+
+    .person-card.right {
+
+      right: 16%;
+
+      animation:
+        humanFloat
+        4s .45s
+        ease-in-out
+        infinite;
+
+    }
+
+
+    .person-face {
+
+      position: absolute;
+
+      width: 54px;
+      height: 57px;
+
+      left: 25px;
+      top: 0;
+
+      border-radius:
+        48% 48% 45% 45%;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #efc19e,
+          #d89d77
+        );
+
+      z-index: 3;
+
+    }
+
+
+    .person-card.deep
+    .person-face {
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #a7714e,
+          #845639
+        );
+
+    }
+
+
+    .person-hair {
+
+      position: absolute;
+
+      width: 61px;
+      height: 28px;
+
+      left: 22px;
+      top: -3px;
+
+      border-radius:
+        32px 32px 13px 13px;
+
+      background:
+        #343039;
+
+      z-index: 4;
+
+    }
+
+
+    .person-card.deep
+    .person-hair {
+
+      background: #211e22;
+
+    }
+
+
+    .person-shirt {
+
+      position: absolute;
+
+      width: 79px;
+      height: 82px;
+
+      left: 13px;
+      top: 51px;
+
+      border-radius:
+        27px 27px 20px 20px;
+
+      background:
+        var(--shirt, var(--home-blue));
+
+      z-index: 2;
+
+    }
+
+
+    .person-card.orange {
+
+      --shirt:
+        var(--home-orange);
+
+    }
+
+
+    .person-arm {
+
+      position: absolute;
+
+      width: 15px;
+      height: 65px;
+
+      top: 66px;
+
+      border-radius: 20px;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #efc19e,
+          #d89d77
+        );
+
+      transform-origin:
+        top center;
+
+      z-index: 1;
+
+    }
+
+
+    .person-card.deep
+    .person-arm {
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #a7714e,
+          #845639
+        );
+
+    }
+
+
+    .person-arm.left {
+
+      left: 9px;
+
+      transform:
+        rotate(9deg);
+
+    }
+
+
+    .person-arm.right {
+
+      right: 9px;
+
+      transform:
+        rotate(-9deg);
+
+    }
+
+
+    .person-card.left
+    .person-arm.right {
+
+      animation:
+        gentleGesture
+        3s ease-in-out
+        infinite;
+
+    }
+
+
+    .person-leg {
+
+      position: absolute;
+
+      width: 18px;
+      height: 59px;
+
+      top: 125px;
+
+      border-radius: 16px;
+
+      background: #31394d;
+
+      z-index: 1;
+
+    }
+
+
+    .person-leg.left {
+
+      left: 29px;
+
+      transform:
+        rotate(4deg);
+
+    }
+
+
+    .person-leg.right {
+
+      right: 29px;
+
+      transform:
+        rotate(-4deg);
+
+    }
+
+
+
+    /* ---------- communication ---------- */
+
+
+    .spoken-message {
+
+      position: absolute;
+
+      left: 23%;
+      top: 23px;
+
+      z-index: 8;
+
+      padding:
+        10px 14px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.88);
+
+      color: #30333c;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      box-shadow:
+        0 10px 30px
+        rgba(40,45,64,.08);
+
+      animation:
+        messageFloat
+        3.6s
+        ease-in-out
+        infinite;
+
+    }
+
+
+    .response-symbol {
+
+      position: absolute;
+
+      right: 24%;
+      top: 47px;
+
+      z-index: 8;
 
       width: 42px;
       height: 42px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      border-radius: 15px;
+      border-radius: 14px;
 
-      background: #f1f1ee;
+      background:
+        rgba(255,255,255,.88);
 
-      font-size: 19px;
+      color:
+        var(--home-purple);
+
+      font-size: 22px;
+      font-weight: 800;
+
+      box-shadow:
+        0 10px 30px
+        rgba(40,45,64,.08);
+
+      animation:
+        messageFloat
+        3.6s .6s
+        ease-in-out
+        infinite;
+
     }
 
-    .dark .home-card-icon {
-      background: rgba(255,255,255,.10);
+
+    .connection-line {
+
+      position: absolute;
+
+      width: 130px;
+      height: 3px;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      border-radius: 999px;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(102,121,255,.65),
+          transparent
+        );
+
+      animation:
+        connectionPulse
+        2.8s
+        ease-in-out
+        infinite;
+
     }
 
-    .must-read-note {
-      margin-top: 15px;
 
-      color: #bdbdc2;
 
-      font-size: 13px;
-      line-height: 1.45;
+    /* ---------- sentence ---------- */
+
+
+    .connection-copy {
+
+      position: relative;
+
+      z-index: 10;
+
+      width:
+        min(580px, calc(100% - 40px));
+
+      margin:
+        0 auto;
+
+      padding-top: 192px;
+
+      text-align: center;
+
     }
 
-    .tiny-principle {
-      margin-top: 45px;
-      padding: 21px 0;
 
-      display: flex;
+    .connection-copy strong {
+
+      display: block;
+
+      color: #2d3038;
+
+      font-size:
+        clamp(
+          18px,
+          4vw,
+          23px
+        );
+
+      line-height: 1.35;
+
+      letter-spacing: -.025em;
+
+    }
+
+
+
+    /* =====================================================
+       ROUTE CARDS
+       ===================================================== */
+
+
+    .choose-label {
+
+      margin-bottom: 13px;
+
+      text-align: center;
+
+      color: #858890;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: .045em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .home-options {
+
+      display: grid;
+
+      gap: 11px;
+
+    }
+
+
+    .home-option {
+
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        51px 1fr 20px;
+
       align-items: center;
+
       gap: 14px;
 
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      min-height: 91px;
 
-      color: var(--text-soft);
+      padding:
+        13px 15px;
 
-      font-size: 15px;
-      line-height: 1.45;
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(29,29,31,.045);
+
+      border-radius: 23px;
+
+      color: #23252c;
+
+      text-decoration: none;
+
+      transition:
+
+        transform .18s ease,
+        box-shadow .18s ease;
+
     }
 
-    .tiny-principle-icon {
-      width: 34px;
-      height: 34px;
+
+    .home-option:active {
+
+      transform:
+        scale(.985);
+
+    }
+
+
+    .home-option.start {
+
+      background:
+        var(--home-blue-soft);
+
+    }
+
+
+    .home-option.behavior {
+
+      background:
+        var(--home-orange-soft);
+
+    }
+
+
+    .home-option.communication {
+
+      background:
+        var(--home-green-soft);
+
+    }
+
+
+
+    /* ---------- animated icon ---------- */
+
+
+    .option-visual {
+
+      position: relative;
+
+      width: 51px;
+      height: 51px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      flex: 0 0 auto;
+      border-radius: 16px;
+
+      background:
+        rgba(255,255,255,.66);
+
+      font-size: 21px;
+
+      overflow: hidden;
+
+    }
+
+
+    .start .option-visual {
+
+      color:
+        var(--home-blue);
+
+    }
+
+
+    .behavior .option-visual {
+
+      color:
+        var(--home-orange);
+
+    }
+
+
+    .communication .option-visual {
+
+      color:
+        var(--home-green);
+
+    }
+
+
+
+    /* clock-ish 60 sec */
+
+    .mini-clock {
+
+      width: 27px;
+      height: 27px;
+
+      position: relative;
+
+      border:
+        2px solid
+        currentColor;
 
       border-radius: 50%;
 
-      background: #ededeb;
-
-      font-size: 15px;
     }
 
-    @keyframes bubbleFloat {
+
+    .mini-clock::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 2px;
+      height: 8px;
+
+      left: 50%;
+      top: 5px;
+
+      margin-left: -1px;
+
+      border-radius: 99px;
+
+      background:
+        currentColor;
+
+      transform-origin:
+        center 8px;
+
+      animation:
+        clockMove
+        3.2s linear
+        infinite;
+
+    }
+
+
+
+    /* behavior movement */
+
+    .behavior-figure {
+
+      position: relative;
+
+      width: 20px;
+      height: 29px;
+
+      animation:
+        smallJump
+        1.6s
+        ease-in-out
+        infinite;
+
+    }
+
+
+    .behavior-figure::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 11px;
+      height: 11px;
+
+      left: 4px;
+
+      border-radius: 50%;
+
+      background:
+        currentColor;
+
+    }
+
+
+    .behavior-figure::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 17px;
+      height: 15px;
+
+      left: 1px;
+      top: 12px;
+
+      border-radius:
+        7px 7px 5px 5px;
+
+      background:
+        currentColor;
+
+    }
+
+
+
+    /* communication */
+
+    .communication-symbol {
+
+      display: flex;
+
+      gap: 3px;
+
+      align-items: end;
+
+    }
+
+
+    .communication-symbol span {
+
+      width: 5px;
+
+      border-radius: 99px;
+
+      background:
+        currentColor;
+
+      animation:
+        signalMove
+        1.5s ease-in-out
+        infinite;
+
+    }
+
+
+    .communication-symbol span:nth-child(1) {
+
+      height: 11px;
+
+    }
+
+
+    .communication-symbol span:nth-child(2) {
+
+      height: 20px;
+
+      animation-delay: .17s;
+
+    }
+
+
+    .communication-symbol span:nth-child(3) {
+
+      height: 15px;
+
+      animation-delay: .34s;
+
+    }
+
+
+
+    /* ---------- text ---------- */
+
+
+    .option-number {
+
+      margin-bottom: 3px;
+
+      color:
+        rgba(35,38,45,.50);
+
+      font-size: 9.5px;
+
+      font-weight: 800;
+
+      letter-spacing: .055em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .option-copy h2 {
+
+      margin: 0;
+
+      font-size: 17px;
+
+      line-height: 1.15;
+
+      letter-spacing: -.025em;
+
+    }
+
+
+    .option-copy p {
+
+      margin:
+        4px 0 0;
+
+      color: #616671;
+
+      font-size: 12.5px;
+
+      line-height: 1.35;
+
+    }
+
+
+    .home-arrow {
+
+      color:
+        rgba(29,29,31,.42);
+
+      font-size: 23px;
+
+      transition:
+        transform .18s ease;
+
+    }
+
+
+    .home-option:hover
+    .home-arrow {
+
+      transform:
+        translateX(3px);
+
+    }
+
+
+
+    /* =====================================================
+       FINAL LINE
+       ===================================================== */
+
+
+    .home-reminder {
+
+      max-width: 560px;
+
+      margin:
+        30px auto 0;
+
+      text-align: center;
+
+      color: #848790;
+
+      font-size: 12.5px;
+
+      line-height: 1.5;
+
+    }
+
+
+
+    /* =====================================================
+       ANIMATIONS
+       ===================================================== */
+
+
+    @keyframes eyebrowPulse {
 
       0%,
       100% {
-        transform: translateY(0);
+
+        opacity: .45;
+        transform: scale(.8);
+
       }
 
       50% {
-        transform: translateY(-5px);
+
+        opacity: 1;
+        transform: scale(1);
+
       }
 
     }
+
+
+    @keyframes humanFloat {
+
+      0%,
+      100% {
+
+        transform:
+          translateY(0);
+
+      }
+
+      50% {
+
+        transform:
+          translateY(-4px);
+
+      }
+
+    }
+
+
+    @keyframes gentleGesture {
+
+      0%,
+      100% {
+
+        transform:
+          rotate(-8deg);
+
+      }
+
+      40% {
+
+        transform:
+          rotate(-40deg);
+
+      }
+
+      65% {
+
+        transform:
+          rotate(-22deg);
+
+      }
+
+    }
+
+
+    @keyframes messageFloat {
+
+      0%,
+      100% {
+
+        transform:
+          translateY(0);
+
+      }
+
+      50% {
+
+        transform:
+          translateY(-5px);
+
+      }
+
+    }
+
 
     @keyframes connectionPulse {
 
       0%,
       100% {
+
         opacity: .25;
-        transform: translateX(-50%) scaleX(.75);
+
+        transform:
+          translate(-50%,-50%)
+          scaleX(.72);
+
       }
 
       50% {
+
         opacity: .8;
-        transform: translateX(-50%) scaleX(1);
+
+        transform:
+          translate(-50%,-50%)
+          scaleX(1);
+
       }
 
     }
 
-    @media (max-width: 760px) {
+
+    @keyframes clockMove {
+
+      to {
+
+        transform:
+          rotate(360deg);
+
+      }
+
+    }
+
+
+    @keyframes smallJump {
+
+      0%,
+      100% {
+
+        transform:
+          translateY(2px);
+
+      }
+
+      50% {
+
+        transform:
+          translateY(-5px);
+
+      }
+
+    }
+
+
+    @keyframes signalMove {
+
+      0%,
+      100% {
+
+        transform:
+          scaleY(.65);
+
+        opacity: .55;
+
+      }
+
+      50% {
+
+        transform:
+          scaleY(1);
+
+        opacity: 1;
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       DESKTOP
+       ===================================================== */
+
+
+    @media
+    (min-width: 760px) {
+
+
+      .home-options {
+
+        grid-template-columns:
+          repeat(3, 1fr);
+
+      }
+
+
+      .home-option {
+
+        display: block;
+
+        min-height: 205px;
+
+        padding: 20px;
+
+      }
+
+
+      .option-visual {
+
+        width: 58px;
+        height: 58px;
+
+        margin-bottom: 28px;
+
+      }
+
+
+      .home-arrow {
+
+        position: absolute;
+
+        right: 20px;
+        bottom: 17px;
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       PHONE
+       ===================================================== */
+
+
+    @media
+    (max-width: 600px) {
+
+
+      .page-shell {
+
+        width:
+          calc(100% - 28px);
+
+      }
+
 
       .home-hero {
-        grid-template-columns: 1fr;
-        gap: 30px;
 
-        padding: 58px 0 42px;
+        padding:
+          42px 0 27px;
+
       }
 
-      .home-visual {
-        min-height: 260px;
+
+      .home-title {
+
+        font-size:
+          clamp(
+            45px,
+            13vw,
+            64px
+          );
+
       }
 
-      .home-visual .volunteer {
-        left: 20%;
-        bottom: 48px;
+
+      .home-lead {
+
+        font-size: 16px;
+
       }
 
-      .home-visual .athlete {
-        right: 20%;
-        bottom: 48px;
+
+      .connection-card {
+
+        min-height: 245px;
+
+        margin-bottom: 31px;
+
+        border-radius: 27px;
+
       }
 
-      .hello-bubble {
-        left: 14%;
+
+      .person-card {
+
+        transform:
+          scale(.79);
+
+        transform-origin:
+          center bottom;
+
       }
 
-      .response-bubble {
-        right: 13%;
+
+      .person-card.left {
+
+        left: 4%;
+
+      }
+
+
+      .person-card.right {
+
+        right: 4%;
+
+      }
+
+
+      .spoken-message {
+
+        left: 14px;
+        top: 18px;
+
+      }
+
+
+      .response-symbol {
+
+        right: 19px;
+        top: 43px;
+
+      }
+
+
+      .connection-copy {
+
+        padding-top: 182px;
+
+      }
+
+
+      .connection-copy strong {
+
+        font-size: 16px;
+
       }
 
     }
 
+
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+
+      .eyebrow-pulse,
+      .person-card,
+      .person-arm,
+      .spoken-message,
+      .response-symbol,
+      .connection-line,
+      .mini-clock::before,
+      .behavior-figure,
+      .communication-symbol span {
+
+        animation: none !important;
+
+      }
+
+    }
+
+
   </style>
+
 </head>
+
+
 
 <body>
 
+
   <div class="page-shell">
 
-    <!-- TOP BAR -->
 
-    <header class="topbar">
+    <!-- =================================================
+         TOP
+         ================================================= -->
 
-      <div class="top-label">
+
+    <header class="home-topbar">
+
+
+      <div class="home-brand">
+
         Volunteer Communication Guide
+
       </div>
 
-      <div class="top-label">
+
+      <div class="home-org">
+
         Special Olympics
+
       </div>
+
 
     </header>
 
 
-    <!-- HERO -->
+
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
 
     <main>
 
+
       <section class="home-hero">
 
-        <div class="home-intro">
 
-          <div class="eyebrow">
-            Quick guide for volunteers & coaches
-          </div>
+        <div class="home-eyebrow">
 
-          <h1 class="display-title">
-            Connect first.<br>
-            Then coach.
-          </h1>
 
-          <p class="lead hero-copy">
-            A quick, easy guide to help sessions feel smoother,
-            calmer, and more connected — for you and the athlete.
-          </p>
+          <span class="eyebrow-pulse"></span>
+
+
+          Before you coach
+
 
         </div>
 
 
-        <!-- ANIMATED HERO VISUAL -->
+
+        <h1 class="home-title">
+
+
+          Connect
+
+          <span class="soft">
+            first.
+          </span>
+
+
+        </h1>
+
+
+
+        <p class="home-lead">
+
+          Not speaking doesn't mean not listening.
+          An athlete may understand more than they can easily express.
+
+        </p>
+
+
+      </section>
+
+
+
+      <!-- =================================================
+           CORE IDEA
+           ================================================= -->
+
+
+      <section
+        class="connection-card"
+        aria-label="Two people connecting through different forms of communication"
+      >
+
 
         <div
-          class="visual-stage home-visual figure-wave figure-smile"
-          aria-label="A volunteer and athlete communicating face to face"
+          class="connection-visual"
+          aria-hidden="true"
         >
 
-          <div class="hello-bubble">
-            Hey! Ready?
-          </div>
 
-          <div class="response-bubble">
-            👍
-          </div>
+          <div class="spoken-message">
 
-
-          <!-- Volunteer -->
-
-          <div class="person volunteer">
-
-            <div class="person-head">
-
-              <div class="eye left"></div>
-              <div class="eye right"></div>
-              <div class="mouth"></div>
-
-            </div>
-
-            <div class="person-body"></div>
-
-            <div class="arm right"></div>
-
-            <div class="person-leg-left"></div>
-            <div class="person-leg-right"></div>
+            Ready?
 
           </div>
 
 
-          <!-- Athlete -->
+          <div class="response-symbol">
 
-          <div class="person athlete">
-
-            <div class="person-head">
-
-              <div class="eye left"></div>
-              <div class="eye right"></div>
-              <div class="mouth"></div>
-
-            </div>
-
-            <div class="person-body"></div>
-
-            <div
-              class="arm left"
-              style="
-                transform: rotate(25deg);
-                width: 34px;
-              "
-            ></div>
-
-            <div class="person-leg-left"></div>
-            <div class="person-leg-right"></div>
+            ✓
 
           </div>
 
 
           <div class="connection-line"></div>
 
-          <div class="visual-caption">
-            Communication goes both ways.
+
+
+          <!-- volunteer -->
+
+
+          <div class="person-card left">
+
+
+            <div class="person-hair"></div>
+
+            <div class="person-face"></div>
+
+            <div class="person-shirt"></div>
+
+
+            <div class="person-arm left"></div>
+
+            <div class="person-arm right"></div>
+
+
+            <div class="person-leg left"></div>
+
+            <div class="person-leg right"></div>
+
+
           </div>
 
+
+
+          <!-- athlete -->
+
+
+          <div class="person-card right orange deep">
+
+
+            <div class="person-hair"></div>
+
+            <div class="person-face"></div>
+
+            <div class="person-shirt"></div>
+
+
+            <div class="person-arm left"></div>
+
+            <div class="person-arm right"></div>
+
+
+            <div class="person-leg left"></div>
+
+            <div class="person-leg right"></div>
+
+
+          </div>
+
+
         </div>
+
+
+
+        <div class="connection-copy">
+
+
+          <strong>
+
+            So what do you do when an athlete
+            can't easily tell you what they're thinking?
+
+          </strong>
+
+
+        </div>
+
 
       </section>
 
 
-      <!-- THREE MAIN PATHS -->
 
-      <section class="reveal">
+      <!-- =================================================
+           THREE SIMPLE OPTIONS
+           ================================================= -->
 
-        <div class="home-question">
-          What do you need?
+
+      <section>
+
+
+        <div class="choose-label">
+
+          Start wherever you need
+
         </div>
 
 
-        <div
-          class="card-grid"
-          data-stagger
-        >
 
-          <!-- MUST READ -->
+        <div class="home-options">
+
+
+
+          <!-- ESSENTIALS -->
+
 
           <a
             href="essentials.html"
-            class="nav-card dark"
+            class="home-option start"
           >
 
-            <div class="home-card-number">
-              01 · MUST READ
+
+            <div class="option-visual">
+
+
+              <div class="mini-clock"></div>
+
+
             </div>
 
-            <div class="home-card-icon">
-              ★
+
+
+            <div class="option-copy">
+
+
+              <div class="option-number">
+
+                01 · Before the session
+
+              </div>
+
+
+              <h2>
+
+                60-Second Essentials
+
+              </h2>
+
+
+              <p>
+
+                Six things worth knowing before you start.
+
+              </p>
+
+
             </div>
 
-            <h2 class="card-title">
-              60-Second Essentials
-            </h2>
 
-            <p class="nav-card-description">
-              The six things worth remembering before every session.
-              Fast, visual, and actually useful.
-            </p>
+            <div class="home-arrow">
 
-            <p class="must-read-note">
-              Start here if it's your first session —
-              or if you just want a quick reset.
-            </p>
+              ›
 
-            <span class="card-arrow">
-              →
-            </span>
+            </div>
+
 
           </a>
+
 
 
           <!-- BEHAVIOR -->
 
+
           <a
             href="behavior.html"
-            class="nav-card"
+            class="home-option behavior"
           >
 
-            <div class="home-card-number">
-              02 · IN THE MOMENT
+
+            <div class="option-visual">
+
+
+              <div class="behavior-figure"></div>
+
+
             </div>
 
-            <div class="home-card-icon motion-bounce">
-              ↕
+
+
+            <div class="option-copy">
+
+
+              <div class="option-number">
+
+                02 · In the moment
+
+              </div>
+
+
+              <h2>
+
+                What do I do?
+
+              </h2>
+
+
+              <p>
+
+                Real situations and quick ways to respond.
+
+              </p>
+
+
             </div>
 
-            <h2 class="card-title">
-              Understanding Athlete Behavior
-            </h2>
 
-            <p class="nav-card-description">
-              Jumping, walking away, shutting down, getting overwhelmed —
-              what might be going on and what you can try.
-            </p>
+            <div class="home-arrow">
 
-            <span class="card-arrow">
-              →
-            </span>
+              ›
+
+            </div>
+
 
           </a>
+
 
 
           <!-- COMMUNICATION -->
 
+
           <a
             href="communication.html"
-            class="nav-card"
+            class="home-option communication"
           >
 
-            <div class="home-card-number">
-              03 · COMMUNICATION
+
+            <div class="option-visual">
+
+
+              <div class="communication-symbol">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+              </div>
+
+
             </div>
 
-            <div class="home-card-icon">
-              💬
+
+
+            <div class="option-copy">
+
+
+              <div class="option-number">
+
+                03 · Connect
+
+              </div>
+
+
+              <h2>
+
+                How can we communicate?
+
+              </h2>
+
+
+              <p>
+
+                Words, gestures, AAC, choices, and sports cues.
+
+              </p>
+
+
             </div>
 
-            <h2 class="card-title">
-              Communication & Activities
-            </h2>
 
-            <p class="nav-card-description">
-              Non-speaking athletes, AAC, useful phrases,
-              sports cues, and tips from families.
-            </p>
+            <div class="home-arrow">
 
-            <span class="card-arrow">
-              →
-            </span>
+              ›
+
+            </div>
+
 
           </a>
 
+
         </div>
+
 
       </section>
 
 
-      <!-- SMALL PHILOSOPHY NOTE -->
 
-      <section class="tiny-principle reveal">
+      <!-- =================================================
+           END
+           ================================================= -->
 
-        <div class="tiny-principle-icon">
-          ✓
-        </div>
 
-        <div>
-          You don't have to know exactly what every behavior means.
-          Slow down, pay attention, and respond to the athlete in front of you.
-        </div>
+      <p class="home-reminder">
 
-      </section>
+        Every athlete communicates differently.
+        You don't need to read their mind —
+        notice, give them time, and work with what they give you.
+
+      </p>
+
 
     </main>
 
 
+
     <footer class="site-footer">
 
-      Every athlete communicates differently.
-      These are starting points — not a script.
+      Built for quick use before and during a session.
 
     </footer>
+
 
   </div>
 
 
   <script src="script.js"></script>
 
+
 </body>
+
 </html>
