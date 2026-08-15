@@ -1,56 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-
+  <meta charset="UTF-8" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-
+  />
   <title>60-Second Essentials | Volunteer Communication Guide</title>
 
-  <link rel="stylesheet" href="style.css">
-
   <style>
+    :root{
+      --bg:#f6f6f4;
+      --card:#ffffff;
+      --text:#1d1d1f;
+      --muted:#666b75;
+      --soft:#91949c;
+      --line:rgba(29,29,31,.08);
+      --accent:#5d6dff;
+      --accent-soft:#eef1ff;
+      --shadow:0 18px 48px rgba(23,26,38,.06);
 
-    /* =====================================================
-       60-SECOND ESSENTIALS — V5
-       One-screen mobile walkthrough
-       ===================================================== */
-
-    :root {
-      --e-bg: #f6f6f4;
-      --e-card: #ffffff;
-      --e-text: #1d1d1f;
-      --e-muted: #6f7179;
-      --e-soft: #92939a;
-      --e-line: rgba(29,29,31,.08);
-      --e-accent: #5d6dff;
-
-      --blue-soft: #eef1ff;
-      --warm-soft: #fff0e7;
-      --green-soft: #eaf8f1;
-      --gold-soft: #fff4dc;
-      --violet-soft: #f1eeff;
-      --track-soft: #eaf5fb;
+      --blue:#eef2ff;
+      --peach:#fff1e9;
+      --green:#ebf8f1;
+      --gold:#fff4de;
+      --violet:#f2efff;
+      --sky:#ebf6fb;
     }
 
-    * {
-      box-sizing: border-box;
+    *{
+      box-sizing:border-box;
     }
 
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
+    html,body{
+      margin:0;
+      height:100%;
     }
 
-    body {
-      background: var(--e-bg);
-      color: var(--e-text);
-
+    body{
+      background:var(--bg);
+      color:var(--text);
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -59,1841 +48,1086 @@
         "Helvetica Neue",
         Arial,
         sans-serif;
-
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      overflow:hidden;
     }
 
+    .app{
+      width:min(760px,100%);
+      margin:0 auto;
+      height:100dvh;
+      min-height:100dvh;
 
-    /* =====================================================
-       WHOLE EXPERIENCE
-       ===================================================== */
-
-    .essentials-app {
-      width: min(760px, 100%);
-
-      margin: 0 auto;
-
-      min-height: 100vh;
-      min-height: 100dvh;
-
-      display: flex;
-      flex-direction: column;
+      display:flex;
+      flex-direction:column;
 
       padding:
-        env(safe-area-inset-top)
-        15px
+        calc(6px + env(safe-area-inset-top))
+        14px
         calc(10px + env(safe-area-inset-bottom));
     }
 
+    /* =========================
+       Topbar
+       ========================= */
 
-    /* =====================================================
-       TOP BAR
-       ===================================================== */
+    .topbar{
+      flex:0 0 auto;
+      height:46px;
 
-    .essential-topbar {
-      flex: 0 0 auto;
-
-      height: 48px;
-
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-
-      gap: 8px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:8px;
     }
 
-    .home-link {
-      justify-self: start;
-
-      color: var(--e-text);
-      text-decoration: none;
-
-      font-size: 13px;
-      font-weight: 700;
+    .topbar a{
+      justify-self:start;
+      color:var(--text);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:-.01em;
     }
 
-    .top-title {
-      color: var(--e-soft);
-
-      font-size: 12px;
-      font-weight: 700;
-
-      white-space: nowrap;
+    .top-title{
+      color:var(--soft);
+      font-size:12px;
+      font-weight:700;
+      white-space:nowrap;
     }
 
-    .step-count {
-      justify-self: end;
-
-      color: var(--e-soft);
-
-      font-size: 11px;
-      font-weight: 700;
+    .top-step{
+      justify-self:end;
+      color:var(--soft);
+      font-size:11px;
+      font-weight:700;
     }
 
+    /* =========================
+       Progress
+       ========================= */
 
-    /* =====================================================
-       PROGRESS
-       ===================================================== */
-
-    .progress-row {
-      flex: 0 0 auto;
-
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-
-      gap: 5px;
-
-      margin: 3px 2px 10px;
+    .progress{
+      flex:0 0 auto;
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:5px;
+      margin:3px 2px 10px;
     }
 
-    .progress-piece {
-      height: 3px;
-
-      border-radius: 999px;
-
-      background: #dedfe3;
-
-      transition:
-        background .25s ease,
-        transform .25s ease;
+    .bar{
+      height:4px;
+      border-radius:999px;
+      background:#dcdfe6;
+      transform-origin:left center;
+      transition:background .25s ease, transform .25s ease, opacity .25s ease;
     }
 
-    .progress-piece.done,
-    .progress-piece.active {
-      background: var(--e-accent);
+    .bar.done,
+    .bar.active{
+      background:var(--accent);
     }
 
-    .progress-piece.active {
-      transform: scaleY(1.35);
+    .bar.active{
+      transform:scaleY(1.25);
     }
 
+    /* =========================
+       Slides
+       ========================= */
 
-    /* =====================================================
-       SLIDE AREA
-       ===================================================== */
-
-    .slide-stage {
-      flex: 1 1 auto;
-      min-height: 0;
-
-      position: relative;
+    .stage{
+      flex:1 1 auto;
+      min-height:0;
+      position:relative;
     }
 
-    .essential-slide {
-      display: none;
-
-      height: 100%;
-      min-height: 0;
+    .slide{
+      display:none;
+      height:100%;
     }
 
-    .essential-slide.active {
-      display: flex;
-      flex-direction: column;
-
-      animation:
-        slideIn .3s
-        cubic-bezier(.22,.8,.22,1)
-        both;
+    .slide.active{
+      display:flex;
+      flex-direction:column;
+      animation:fadeIn .28s cubic-bezier(.22,.8,.22,1) both;
     }
 
+    .card{
+      flex:1 1 auto;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
 
-    /* =====================================================
-       MAIN CARD
-       ===================================================== */
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
 
-    .essential-card {
-      flex: 1 1 auto;
-      min-height: 0;
+      padding:18px;
+      overflow:hidden;
+    }
 
-      display: flex;
-      flex-direction: column;
+    .label{
+      color:var(--accent);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
 
-      overflow: hidden;
+    h1{
+      margin:0;
+      font-size:clamp(34px, 8.6vw, 44px);
+      line-height:.98;
+      letter-spacing:-.05em;
+    }
 
-      padding: 19px;
+    .copy{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:clamp(17px, 4.2vw, 20px);
+      line-height:1.4;
+      letter-spacing:-.012em;
+    }
 
-      border: 1px solid var(--e-line);
-      border-radius: 28px;
+    .copy strong{
+      color:var(--text);
+    }
 
-      background: var(--e-card);
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:#f2f2f0;
+      color:#474c56;
+      font-size:14.5px;
+      line-height:1.42;
+    }
 
+    .callout strong{
+      color:var(--text);
+    }
+
+    /* =========================
+       Visual area
+       ========================= */
+
+    .visual{
+      position:relative;
+      flex:0 0 136px;
+      height:136px;
+      min-height:136px;
+      margin-top:12px;
+      overflow:hidden;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.45);
+    }
+
+    .v-blue{ background:linear-gradient(180deg,#f3f5ff 0%, #edf1ff 100%); }
+    .v-peach{ background:linear-gradient(180deg,#fff6f0 0%, #fff0e6 100%); }
+    .v-green{ background:linear-gradient(180deg,#f1fbf6 0%, #e8f8ef 100%); }
+    .v-gold{ background:linear-gradient(180deg,#fff8ea 0%, #fff1d9 100%); }
+    .v-violet{ background:linear-gradient(180deg,#f5f3ff 0%, #efecff 100%); }
+    .v-sky{ background:linear-gradient(180deg,#f0f9fd 0%, #e8f5fb 100%); }
+
+    .glass-chip{
+      position:absolute;
+      z-index:5;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.82);
+      box-shadow:0 8px 22px rgba(33,37,52,.07);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      font-size:12px;
+      font-weight:760;
+      color:#252831;
+    }
+
+    /* =========================
+       People — more polished
+       ========================= */
+
+    .person{
+      position:absolute;
+      width:66px;
+      height:115px;
+      bottom:4px;
+      filter:drop-shadow(0 8px 12px rgba(34,38,52,.05));
+    }
+
+    .person.left{ left:13%; }
+    .person.right{ right:13%; }
+
+    .head{
+      position:absolute;
+      width:34px;
+      height:36px;
+      left:16px;
+      top:0;
+      border-radius:48% 48% 46% 46%;
+      background:linear-gradient(180deg,#efc09c,#d69870);
+      z-index:3;
+    }
+
+    .deep .head{
+      background:linear-gradient(180deg,#9f6a47,#7f5137);
+    }
+
+    .hair{
+      position:absolute;
+      width:38px;
+      height:17px;
+      left:14px;
+      top:-1px;
+      border-radius:22px 22px 8px 8px;
+      background:#2f2d34;
+      z-index:4;
+    }
+
+    .body{
+      position:absolute;
+      width:52px;
+      height:54px;
+      left:7px;
+      top:33px;
+      border-radius:18px 18px 14px 14px;
+      background:var(--shirt,#6172ff);
+      z-index:2;
+    }
+
+    .orange{ --shirt:#f07e56; }
+    .green{ --shirt:#41a878; }
+    .gold{ --shirt:#eba13d; }
+    .blue{ --shirt:#6172ff; }
+
+    .arm{
+      position:absolute;
+      width:10px;
+      height:42px;
+      top:44px;
+      border-radius:10px;
+      background:linear-gradient(180deg,#e8b18c,#d99e77);
+      transform-origin:top center;
+    }
+
+    .deep .arm{
+      background:linear-gradient(180deg,#946040,#83553a);
+    }
+
+    .arm.left{
+      left:2px;
+      transform:rotate(8deg);
+    }
+
+    .arm.right{
+      right:2px;
+      transform:rotate(-8deg);
+    }
+
+    .leg{
+      position:absolute;
+      width:12px;
+      height:37px;
+      top:82px;
+      border-radius:12px;
+      background:#29364d;
+    }
+
+    .leg.left{ left:18px; }
+    .leg.right{ right:18px; }
+
+    /* =========================
+       Slide-specific visuals
+       ========================= */
+
+    /* 1 */
+    .hello-left{ left:10px; top:10px; }
+    .hello-right{ right:10px; top:28px; }
+
+    .hello-line{
+      position:absolute;
+      left:50%;
+      top:56%;
+      width:82px;
+      height:3px;
+      transform:translate(-50%,-50%);
+      border-radius:999px;
+      background:linear-gradient(90deg, transparent, rgba(93,109,255,.35), transparent);
+      animation:pulseLine 2.6s ease-in-out infinite;
+    }
+
+    .wave{
+      animation:waveArm 2.5s ease-in-out infinite;
+    }
+
+    /* 2 */
+    .smile-wrap{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .smile-photo{
+      width:94px;
+      height:94px;
+      object-fit:cover;
+      border-radius:50%;
+      box-shadow:0 12px 26px rgba(59,44,31,.12);
+    }
+
+    .smile-fallback{
+      width:94px;
+      height:94px;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:linear-gradient(180deg,#efc09c,#d69870);
+      font-size:38px;
+      color:white;
+      box-shadow:0 12px 26px rgba(59,44,31,.12);
+    }
+
+    .smile-ring{
+      position:absolute;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      border:2px solid rgba(240,126,86,.18);
+      animation:ringSoft 3s ease-in-out infinite;
+    }
+
+    /* 3 */
+    .space-line{
+      position:absolute;
+      left:50%;
+      top:58%;
+      width:72px;
+      height:2px;
+      transform:translateX(-50%);
+      border-radius:999px;
+      background:rgba(65,168,120,.35);
+    }
+
+    .space-left{
+      animation:spaceLeft 3.8s ease-in-out infinite;
+    }
+
+    .space-right{
+      animation:spaceRight 3.8s ease-in-out infinite;
+    }
+
+    .notice-chip{
+      right:12px;
+      top:12px;
+    }
+
+    /* 4 */
+    .show-person{
+      left:12%;
+    }
+
+    .show-arrow{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      font-size:25px;
+      color:#6d5b33;
+      animation:arrowNudge 1.9s ease-in-out infinite;
+    }
+
+    .basketball{
+      position:absolute;
+      width:54px;
+      height:54px;
+      right:14%;
+      top:50%;
+      transform:translateY(-50%);
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255,255,255,.22), transparent 20%),
+        #ee871f;
       box-shadow:
-        0 15px 45px rgba(23,26,38,.06);
-    }
-
-    .slide-label {
-      margin-bottom: 6px;
-
-      color: var(--e-accent);
-
-      font-size: 10px;
-      font-weight: 800;
-
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    .essential-card h1 {
-      margin: 0;
-
-      font-size:
-        clamp(29px, 7.5vw, 42px);
-
-      line-height: .98;
-      letter-spacing: -.045em;
-    }
-
-    .essential-copy {
-      margin: 10px 0 0;
-
-      color: var(--e-muted);
-
-      font-size:
-        clamp(14px, 3.6vw, 17px);
-
-      line-height: 1.4;
-
-      letter-spacing: -.01em;
-    }
-
-    .essential-copy strong {
-      color: var(--e-text);
-    }
-
-
-    /* =====================================================
-       KEY LINE
-       ===================================================== */
-
-    .key-line {
-      margin-top: 10px;
-
-      padding: 10px 12px;
-
-      border-radius: 15px;
-
-      background: #f2f2f0;
-
-      color: #474a52;
-
-      font-size: 13px;
-      line-height: 1.38;
-    }
-
-    .key-line strong {
-      color: var(--e-text);
-    }
-
-
-    /* =====================================================
-       VISUAL
-       ===================================================== */
-
-    .essential-visual {
-      position: relative;
-
-      flex: 1 1 auto;
-
-      min-height: 120px;
-
-      margin-top: 12px;
-
-      overflow: hidden;
-
-      border-radius: 21px;
-    }
-
-    .visual-blue {
-      background: var(--blue-soft);
-    }
-
-    .visual-warm {
-      background: var(--warm-soft);
-    }
-
-    .visual-green {
-      background: var(--green-soft);
-    }
-
-    .visual-gold {
-      background: var(--gold-soft);
-    }
-
-    .visual-violet {
-      background: var(--violet-soft);
-    }
-
-    .visual-track {
-      background: var(--track-soft);
-    }
-
-
-    /* =====================================================
-       SIMPLE HUMAN
-       ===================================================== */
-
-    .person {
-      position: absolute;
-
-      width: 74px;
-      height: 126px;
-
-      bottom: 8px;
-
-      transform-origin: center bottom;
-    }
-
-    .person.left {
-      left: 16%;
-    }
-
-    .person.right {
-      right: 16%;
-    }
-
-    .person-head {
-      position: absolute;
-
-      width: 39px;
-      height: 42px;
-
-      left: 17px;
-      top: 0;
-
-      border-radius: 48%;
-
-      background:
-        linear-gradient(
-          180deg,
-          #efc09c,
-          #d99c75
-        );
-
-      z-index: 3;
-    }
-
-    .person.deep .person-head {
-      background:
-        linear-gradient(
-          180deg,
-          #9e6847,
-          #825236
-        );
-    }
-
-    .person-hair {
-      position: absolute;
-
-      width: 44px;
-      height: 21px;
-
-      left: 15px;
-      top: -2px;
-
-      border-radius:
-        25px 25px 9px 9px;
-
-      background: #302e34;
-
-      z-index: 4;
-    }
-
-    .person-body {
-      position: absolute;
-
-      width: 58px;
-      height: 58px;
-
-      left: 8px;
-      top: 38px;
-
-      border-radius:
-        20px 20px 15px 15px;
-
-      background:
-        var(--shirt, #6172ff);
-    }
-
-    .person.orange {
-      --shirt: #ef8c54;
-    }
-
-    .person.green {
-      --shirt: #41aa7b;
-    }
-
-    .person.gold {
-      --shirt: #e5a43d;
-    }
-
-    .person-arm {
-      position: absolute;
-
-      width: 11px;
-      height: 47px;
-
-      top: 49px;
-
-      border-radius: 10px;
-
-      background: #dea47d;
-
-      transform-origin: top center;
-    }
-
-    .person.deep .person-arm {
-      background: #8e5a3d;
-    }
-
-    .person-arm.left {
-      left: 4px;
-
-      transform: rotate(8deg);
-    }
-
-    .person-arm.right {
-      right: 4px;
-
-      transform: rotate(-8deg);
-    }
-
-    .person-leg {
-      position: absolute;
-
-      width: 13px;
-      height: 43px;
-
-      top: 90px;
-
-      border-radius: 12px;
-
-      background: #30384d;
-    }
-
-    .person-leg.left {
-      left: 20px;
-    }
-
-    .person-leg.right {
-      right: 20px;
-    }
-
-
-    /* =====================================================
-       SLIDE 1 — CONNECT
-       ===================================================== */
-
-    .wave {
-      animation:
-        waveArm 2.5s
-        ease-in-out infinite;
-    }
-
-    .visual-chip {
-      position: absolute;
-
-      z-index: 10;
-
-      padding: 8px 11px;
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.88);
-
-      box-shadow:
-        0 6px 20px rgba(30,33,45,.06);
-
-      font-size: 11px;
-      font-weight: 750;
-    }
-
-    .chip-left {
-      left: 12px;
-      top: 12px;
-    }
-
-    .chip-right {
-      right: 12px;
-      top: 29px;
-    }
-
-
-    /* =====================================================
-       SLIDE 2 — FACE
-       ===================================================== */
-
-    .face-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .smile-photo {
-      width: 118px;
-      height: 118px;
-
-      object-fit: cover;
-
-      border-radius: 50%;
-
-      box-shadow:
-        0 12px 32px rgba(58,44,34,.12);
-    }
-
-    .photo-fallback {
-      width: 118px;
-      height: 118px;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background:
-        linear-gradient(
-          180deg,
-          #efbf9d,
-          #d89b73
-        );
-
-      color: white;
-
-      font-size: 44px;
-    }
-
-
-    /* =====================================================
-       SLIDE 3 — SPACE
-       ===================================================== */
-
-    .space-left {
-      animation:
-        spaceLeft 4s
-        ease-in-out infinite;
-    }
-
-    .space-right {
-      animation:
-        spaceRight 4s
-        ease-in-out infinite;
-    }
-
-    .space-guide {
-      position: absolute;
-
-      width: 82px;
-      height: 2px;
-
-      left: 50%;
-      top: 54%;
-
-      transform: translateX(-50%);
-
-      border-radius: 99px;
-
-      background:
-        rgba(47,163,108,.36);
-    }
-
-    .brow-mark {
-      position: absolute;
-
-      right: 16%;
-
-      top: 16px;
-
-      padding: 7px 9px;
-
-      border-radius: 999px;
-
-      background:
-        rgba(255,255,255,.88);
-
-      font-size: 10px;
-      font-weight: 750;
-    }
-
-
-    /* =====================================================
-       SLIDE 4 — SHOW
-       ===================================================== */
-
-    .basketball {
-      position: absolute;
-
-      width: 67px;
-      height: 67px;
-
-      right: 16%;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at 30% 28%,
-          rgba(255,255,255,.26),
-          transparent 20%
-        ),
-        #ed861e;
-
-      box-shadow:
-        inset -8px -8px 12px rgba(0,0,0,.10),
-        0 10px 22px rgba(187,93,14,.15);
-
-      animation:
-        ballMove 3s
-        ease-in-out infinite;
+        inset -7px -7px 11px rgba(0,0,0,.09),
+        0 9px 18px rgba(190,97,18,.16);
+      animation:ballFloat 2.8s ease-in-out infinite;
     }
 
     .basketball::before,
-    .basketball::after {
-      content: "";
-
-      position: absolute;
-
-      background: #5f351a;
-
-      border-radius: 99px;
+    .basketball::after{
+      content:"";
+      position:absolute;
+      background:#60361b;
+      border-radius:999px;
     }
 
-    .basketball::before {
-      width: 3px;
-      height: 61px;
-
-      left: 32px;
-      top: 3px;
+    .basketball::before{
+      width:3px;
+      height:48px;
+      left:26px;
+      top:3px;
     }
 
-    .basketball::after {
-      width: 61px;
-      height: 3px;
-
-      top: 32px;
-      left: 3px;
+    .basketball::after{
+      width:48px;
+      height:3px;
+      left:3px;
+      top:26px;
     }
 
-    .show-arrow {
-      position: absolute;
-
-      left: 50%;
-      top: 48%;
-
-      font-size: 27px;
-
-      animation:
-        arrowMove 2s
-        ease-in-out infinite;
+    /* 5 */
+    .wait-wrap{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-
-    /* =====================================================
-       SLIDE 5 — WAIT
-       ===================================================== */
-
-    .wait-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .wait-ring {
-      position: relative;
-
-      width: 112px;
-      height: 112px;
-
-      border-radius: 50%;
-
+    .wait-ring{
+      position:relative;
+      width:88px;
+      height:88px;
+      border-radius:50%;
       background:
         conic-gradient(
-          #6372ff 0deg,
-          #9a9fff 110deg,
-          #d8d9ff 250deg,
-          #6372ff 360deg
+          #5d6dff 0deg,
+          #909aff 130deg,
+          #d8dcff 260deg,
+          #5d6dff 360deg
         );
-
-      animation:
-        ringTurn 5s linear infinite;
+      animation:spin 5s linear infinite;
+      box-shadow:0 10px 20px rgba(93,109,255,.10);
     }
 
-    .wait-center {
-      position: absolute;
-
-      inset: 11px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: #fff;
-
-      color: #4d5260;
-
-      font-size: 12px;
-      font-weight: 750;
+    .wait-center{
+      position:absolute;
+      inset:9px;
+      border-radius:50%;
+      background:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:0 8px;
+      color:#4c5260;
+      font-size:11px;
+      font-weight:760;
+      line-height:1.2;
     }
 
-
-    /* =====================================================
-       SLIDE 6 — ENCOURAGE / PREPARE
-       ===================================================== */
-
-    .track-line {
-      position: absolute;
-
-      left: 10px;
-      right: 10px;
-
-      height: 2px;
-
-      background:
-        rgba(62,105,139,.18);
+    /* 6 */
+    .track-line{
+      position:absolute;
+      left:10px;
+      right:10px;
+      height:2px;
+      background:rgba(57,111,149,.16);
     }
 
-    .track-line.one {
-      bottom: 38px;
+    .track-line.one{ bottom:34px; }
+    .track-line.two{ bottom:54px; }
+
+    .finish{
+      position:absolute;
+      right:18%;
+      bottom:10px;
+      width:4px;
+      height:84px;
+      background:#2d4059;
+      border-radius:4px;
     }
 
-    .track-line.two {
-      bottom: 60px;
+    .runner{
+      position:absolute;
+      width:52px;
+      height:88px;
+      left:14%;
+      bottom:6px;
+      transform-origin:center bottom;
+      animation:runnerMove 3.4s ease-in-out infinite;
     }
 
-    .finish-line {
-      position: absolute;
-
-      right: 20%;
-      bottom: 17px;
-
-      width: 4px;
-      height: 105px;
-
-      background: #2d4059;
+    .runner-head{
+      position:absolute;
+      width:26px;
+      height:26px;
+      left:13px;
+      top:0;
+      border-radius:50%;
+      background:#d99870;
     }
 
-    .runner {
-      position: absolute;
-
-      width: 54px;
-      height: 93px;
-
-      left: 17%;
-      bottom: 20px;
-
-      animation:
-        runnerMove 3.8s
-        ease-in-out infinite;
+    .runner-body{
+      position:absolute;
+      width:36px;
+      height:37px;
+      left:8px;
+      top:23px;
+      border-radius:13px;
+      background:#3fa878;
     }
 
-    .runner-head {
-      position: absolute;
-
-      width: 27px;
-      height: 27px;
-
-      left: 14px;
-
-      border-radius: 50%;
-
-      background: #d79970;
+    .runner-leg{
+      position:absolute;
+      width:8px;
+      height:31px;
+      top:57px;
+      border-radius:10px;
+      background:#29364d;
     }
 
-    .runner-body {
-      position: absolute;
-
-      width: 38px;
-      height: 39px;
-
-      left: 8px;
-      top: 25px;
-
-      border-radius: 13px;
-
-      background: #3fa977;
+    .runner-leg.left{
+      left:14px;
+      transform:rotate(18deg);
     }
 
-    .runner-leg {
-      position: absolute;
-
-      width: 8px;
-      height: 34px;
-
-      top: 59px;
-
-      border-radius: 10px;
-
-      background: #29384e;
+    .runner-leg.right{
+      right:14px;
+      transform:rotate(-20deg);
     }
 
-    .runner-leg.left {
-      left: 15px;
-      transform: rotate(17deg);
+    .finish-chip{
+      left:10px;
+      top:10px;
     }
 
-    .runner-leg.right {
-      right: 15px;
-      transform: rotate(-21deg);
+    /* =========================
+       Controls
+       ========================= */
+
+    .controls{
+      flex:0 0 auto;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:10px;
+      padding-top:10px;
     }
 
-    .finish-tag {
-      position: absolute;
-
-      left: 12px;
-      top: 12px;
-
-      padding: 7px 10px;
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.88);
-
-      font-size: 10px;
-      font-weight: 750;
+    .btn-back,
+    .btn-next{
+      min-height:42px;
+      border:0;
+      border-radius:999px;
+      font:inherit;
+      font-size:13px;
+      font-weight:760;
+      cursor:pointer;
     }
 
-
-    /* =====================================================
-       BOTTOM CONTROLS
-       ===================================================== */
-
-    .essential-controls {
-      flex: 0 0 auto;
-
-      display: grid;
-      grid-template-columns: 1fr auto;
-
-      align-items: center;
-
-      gap: 10px;
-
-      padding-top: 10px;
+    .btn-back{
+      justify-self:start;
+      padding:0 13px;
+      background:transparent;
+      color:#737780;
     }
 
-    .back-button,
-    .next-button {
-      min-height: 43px;
-
-      border: 0;
-      border-radius: 999px;
-
-      font: inherit;
-
-      font-size: 13px;
-      font-weight: 750;
-
-      cursor: pointer;
+    .btn-back.hidden{
+      visibility:hidden;
     }
 
-    .back-button {
-      justify-self: start;
-
-      padding: 0 13px;
-
-      background: transparent;
-
-      color: #73767f;
+    .btn-next{
+      min-width:88px;
+      padding:0 18px;
+      background:#1d1e23;
+      color:white;
+      box-shadow:0 8px 18px rgba(29,30,35,.14);
+      transition:transform .16s ease, box-shadow .16s ease;
     }
 
-    .back-button.hidden {
-      visibility: hidden;
+    .btn-next:active{
+      transform:scale(.97);
     }
 
-    .next-button {
-      min-width: 86px;
-
-      padding: 0 18px;
-
-      background: #1e1f23;
-
-      color: white;
-
-      transition:
-        transform .16s ease;
+    .mini-note{
+      flex:0 0 auto;
+      margin-top:6px;
+      text-align:center;
+      color:#979aa1;
+      font-size:10px;
+      line-height:1.3;
     }
 
-    .next-button:active {
-      transform: scale(.96);
+    /* =========================
+       Animations
+       ========================= */
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateX(8px); }
+      to{ opacity:1; transform:translateX(0); }
     }
 
-
-    /* =====================================================
-       SMALL ALWAYS-VISIBLE REMINDER
-       ===================================================== */
-
-    .micro-reminder {
-      flex: 0 0 auto;
-
-      margin-top: 7px;
-
-      text-align: center;
-
-      color: #96989e;
-
-      font-size: 9.5px;
-      line-height: 1.3;
+    @keyframes pulseLine{
+      0%,100%{ opacity:.35; transform:translate(-50%,-50%) scaleX(.86); }
+      50%{ opacity:.8; transform:translate(-50%,-50%) scaleX(1); }
     }
 
-
-    /* =====================================================
-       ANIMATIONS
-       ===================================================== */
-
-    @keyframes slideIn {
-
-      from {
-        opacity: 0;
-        transform: translateX(8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
+    @keyframes waveArm{
+      0%,100%{ transform:rotate(-8deg); }
+      40%{ transform:rotate(-36deg); }
+      65%{ transform:rotate(-22deg); }
     }
 
-    @keyframes waveArm {
-
-      0%,
-      100% {
-        transform: rotate(-8deg);
-      }
-
-      45% {
-        transform: rotate(-42deg);
-      }
-
-      65% {
-        transform: rotate(-25deg);
-      }
-
+    @keyframes ringSoft{
+      0%,100%{ transform:scale(.94); opacity:.5; }
+      50%{ transform:scale(1.02); opacity:1; }
     }
 
-    @keyframes spaceLeft {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(-7px);
-      }
-
+    @keyframes spaceLeft{
+      0%,100%{ transform:translateX(0); }
+      50%{ transform:translateX(-6px); }
     }
 
-    @keyframes spaceRight {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(7px);
-      }
-
+    @keyframes spaceRight{
+      0%,100%{ transform:translateX(0); }
+      50%{ transform:translateX(6px); }
     }
 
-    @keyframes ballMove {
-
-      0%,
-      100% {
-        transform:
-          translateY(-50%)
-          translateX(0)
-          rotate(0);
-      }
-
-      50% {
-        transform:
-          translateY(-50%)
-          translateX(-8px)
-          rotate(-15deg);
-      }
-
+    @keyframes arrowNudge{
+      0%,100%{ transform:translate(-50%,-50%) translateX(0); }
+      50%{ transform:translate(-50%,-50%) translateX(5px); }
     }
 
-    @keyframes arrowMove {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(6px);
-      }
-
+    @keyframes ballFloat{
+      0%,100%{ transform:translateY(-50%) translateX(0) rotate(0deg); }
+      50%{ transform:translateY(-50%) translateX(-6px) rotate(-10deg); }
     }
 
-    @keyframes ringTurn {
-
-      to {
-        transform: rotate(360deg);
-      }
-
+    @keyframes spin{
+      to{ transform:rotate(360deg); }
     }
 
-    @keyframes runnerMove {
-
-      0%,
-      15% {
-        transform: translateX(0);
-      }
-
-      70%,
-      100% {
-        transform: translateX(150px);
-      }
-
+    @keyframes runnerMove{
+      0%,15%{ transform:translateX(0); }
+      70%,100%{ transform:translateX(120px); }
     }
 
+    /* =========================
+       Responsive tuning
+       ========================= */
 
-    /* =====================================================
-       PHONE
-       ===================================================== */
-
-    @media (max-width: 600px) {
-
-      html,
-      body {
-        height: 100%;
-        overflow: hidden;
+    @media (max-width: 600px){
+      .card{
+        padding:16px;
+        border-radius:24px;
       }
 
-      .essentials-app {
-        height: 100vh;
-        height: 100dvh;
-
-        min-height: 0;
+      .visual{
+        flex:0 0 126px;
+        height:126px;
+        min-height:126px;
       }
 
-      .essential-card {
-        padding: 16px;
-
-        border-radius: 24px;
+      .person{
+        transform:scale(.83);
+        transform-origin:center bottom;
+        bottom:-8px;
       }
 
-      .essential-card h1 {
-        font-size:
-          clamp(28px, 8vw, 35px);
-      }
-
-      .essential-copy {
-        font-size: 14px;
-      }
-
-      .essential-visual {
-        margin-top: 10px;
-
-        min-height: 118px;
-      }
-
-      .person {
-        transform: scale(.9);
-
-        transform-origin:
-          center bottom;
-      }
-
-      .person.left {
-        left: 12%;
-      }
-
-      .person.right {
-        right: 12%;
-      }
-
+      .person.left{ left:9%; }
+      .person.right{ right:9%; }
     }
 
-
-    /* =====================================================
-       SHORTER PHONES
-       ===================================================== */
-
-    @media
-    (max-height: 700px)
-    and
-    (max-width: 600px) {
-
-      .essential-topbar {
-        height: 42px;
+    @media (max-height: 710px) and (max-width: 600px){
+      .topbar{
+        height:42px;
       }
 
-      .progress-row {
-        margin-bottom: 7px;
+      .progress{
+        margin-bottom:7px;
       }
 
-      .essential-card {
-        padding: 13px;
+      .card{
+        padding:14px;
       }
 
-      .essential-card h1 {
-        font-size: 27px;
+      .label{
+        font-size:10px;
+        margin-bottom:5px;
       }
 
-      .essential-copy {
-        margin-top: 7px;
-
-        font-size: 12.8px;
-        line-height: 1.33;
+      h1{
+        font-size:clamp(30px, 8vw, 38px);
       }
 
-      .key-line {
-        margin-top: 7px;
-
-        padding: 8px 10px;
-
-        font-size: 11.5px;
+      .copy{
+        margin-top:8px;
+        font-size:15.5px;
+        line-height:1.34;
       }
 
-      .essential-visual {
-        min-height: 95px;
-
-        margin-top: 7px;
+      .callout{
+        margin-top:9px;
+        padding:10px 12px;
+        font-size:13px;
       }
 
-      .person {
-        transform: scale(.74);
-
-        bottom: -3px;
+      .visual{
+        flex:0 0 108px;
+        height:108px;
+        min-height:108px;
+        margin-top:10px;
       }
 
-      .essential-controls {
-        padding-top: 7px;
+      .person{
+        transform:scale(.72);
+        bottom:-16px;
       }
 
-      .back-button,
-      .next-button {
-        min-height: 38px;
+      .smile-photo,
+      .smile-fallback{
+        width:82px;
+        height:82px;
       }
 
+      .wait-ring{
+        width:76px;
+        height:76px;
+      }
+
+      .wait-center{
+        inset:8px;
+        font-size:10px;
+      }
+
+      .controls{
+        padding-top:7px;
+      }
+
+      .btn-back,
+      .btn-next{
+        min-height:38px;
+      }
     }
 
-
-    /* =====================================================
-       DESKTOP
-       ===================================================== */
-
-    @media (min-width: 601px) {
-
-      .essentials-app {
-        min-height: 760px;
-
-        padding-top: 15px;
+    @media (min-width: 601px){
+      .app{
+        padding-top:12px;
       }
 
-      .essential-card {
-        max-height: 610px;
+      .card{
+        max-height:640px;
       }
 
+      .visual{
+        flex:0 0 160px;
+        height:160px;
+        min-height:160px;
+      }
+
+      .person{
+        transform:scale(1.02);
+        transform-origin:center bottom;
+      }
     }
 
-
-    /* =====================================================
-       REDUCED MOTION
-       ===================================================== */
-
-    @media
-    (prefers-reduced-motion: reduce) {
-
-      .essential-slide.active,
+    @media (prefers-reduced-motion: reduce){
+      .slide.active,
       .wave,
+      .hello-line,
+      .smile-ring,
       .space-left,
       .space-right,
-      .basketball,
       .show-arrow,
+      .basketball,
       .wait-ring,
-      .runner {
-
-        animation: none !important;
-
+      .runner{
+        animation:none !important;
       }
-
     }
-
   </style>
-
 </head>
 
-
 <body>
-
-  <div class="essentials-app">
-
-
-    <!-- =================================================
-         TOP
-         ================================================= -->
-
-    <header class="essential-topbar">
-
-      <a
-        href="index.html"
-        class="home-link"
-      >
-        ← Home
-      </a>
-
-      <div class="top-title">
-        60-Second Essentials
-      </div>
-
-      <div
-        class="step-count"
-        id="stepCount"
-      >
-        1 / 6
-      </div>
-
+  <div class="app">
+    <header class="topbar">
+      <a href="index.html">← Home</a>
+      <div class="top-title">60-Second Essentials</div>
+      <div class="top-step" id="stepText">1 / 6</div>
     </header>
 
-
-    <div
-      class="progress-row"
-      id="progressRow"
-      aria-hidden="true"
-    >
-
-      <div class="progress-piece active"></div>
-      <div class="progress-piece"></div>
-      <div class="progress-piece"></div>
-      <div class="progress-piece"></div>
-      <div class="progress-piece"></div>
-      <div class="progress-piece"></div>
-
+    <div class="progress" id="progress">
+      <div class="bar active"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
 
+    <main class="stage">
 
-
-    <!-- =================================================
-         SLIDES
-         ================================================= -->
-
-    <main class="slide-stage">
-
-
-      <!-- =================================================
-           1 — CONNECT
-           ================================================= -->
-
-      <section class="essential-slide active">
-
-        <article class="essential-card">
-
-          <div class="slide-label">
-            01 · Connect
-          </div>
-
-          <h1>
-            Talk to the athlete first.
-          </h1>
-
-          <p class="essential-copy">
-            Use their name. Speak <strong>to them</strong>,
-            not around them or only to the person beside them.
+      <!-- 1 -->
+      <section class="slide active">
+        <article class="card">
+          <div class="label">01 · Connect</div>
+          <h1>Talk to the athlete first.</h1>
+          <p class="copy">
+            Use their name. Speak <strong>to them</strong>, not just to the parent,
+            coach, or person beside them.
           </p>
-
-          <div class="key-line">
-            <strong>Remember:</strong>
-            not speaking doesn't tell you how much someone understands.
+          <div class="callout">
+            <strong>Remember:</strong> not speaking doesn’t tell you how much someone understands.
           </div>
 
+          <div class="visual v-blue">
+            <div class="glass-chip hello-left">Hey Alex!</div>
+            <div class="glass-chip hello-right">Ready?</div>
+            <div class="hello-line"></div>
 
-          <div class="essential-visual visual-blue">
-
-            <div class="visual-chip chip-left">
-              Hey Alex!
+            <div class="person left blue">
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="arm left"></div>
+              <div class="arm right wave"></div>
+              <div class="leg left"></div>
+              <div class="leg right"></div>
             </div>
-
-            <div class="visual-chip chip-right">
-              Ready?
-            </div>
-
-
-            <div class="person left">
-
-              <div class="person-hair"></div>
-              <div class="person-head"></div>
-              <div class="person-body"></div>
-
-              <div class="person-arm left"></div>
-              <div class="person-arm right wave"></div>
-
-              <div class="person-leg left"></div>
-              <div class="person-leg right"></div>
-
-            </div>
-
 
             <div class="person right deep orange">
-
-              <div class="person-hair"></div>
-              <div class="person-head"></div>
-              <div class="person-body"></div>
-
-              <div class="person-arm left"></div>
-              <div class="person-arm right"></div>
-
-              <div class="person-leg left"></div>
-              <div class="person-leg right"></div>
-
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+              <div class="leg left"></div>
+              <div class="leg right"></div>
             </div>
-
           </div>
-
         </article>
-
       </section>
 
-
-
-      <!-- =================================================
-           2 — FACE
-           ================================================= -->
-
-      <section class="essential-slide">
-
-        <article class="essential-card">
-
-          <div class="slide-label">
-            02 · Your expression
-          </div>
-
-          <h1>
-            Your face matters.
-          </h1>
-
-          <p class="essential-copy">
-            Some athletes watch facial expression and body language
-            very closely. A tense face may feel like you're upset with them.
+      <!-- 2 -->
+      <section class="slide">
+        <article class="card">
+          <div class="label">02 · Your expression</div>
+          <h1>Your face matters.</h1>
+          <p class="copy">
+            Some athletes read facial expression and tone very closely.
+            If you look tense, they may think you’re upset with them.
           </p>
-
-          <div class="key-line">
-            <strong>Do:</strong>
-            smile warmly and make encouragement easy to see.
+          <div class="callout">
+            <strong>Do:</strong> smile warmly, keep your tone easy, and make encouragement visible.
           </div>
 
-
-          <div class="essential-visual visual-warm face-visual">
-
+          <div class="visual v-peach smile-wrap">
+            <div class="smile-ring"></div>
             <img
               src="smile-photo.jpg"
               class="smile-photo"
-              alt="A person smiling warmly"
-              onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-              "
-            >
-
-            <div class="photo-fallback">
-              ☺
-            </div>
-
+              alt="Warm smile"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="smile-fallback">☺</div>
           </div>
-
         </article>
-
       </section>
 
-
-
-      <!-- =================================================
-           3 — SPACE
-           ================================================= -->
-
-      <section class="essential-slide">
-
-        <article class="essential-card">
-
-          <div class="slide-label">
-            03 · Space
-          </div>
-
-          <h1>
-            Give room. Watch the signals.
-          </h1>
-
-          <p class="essential-copy">
-            Stay close enough to help without crowding.
-            Watch their face and body for changes.
+      <!-- 3 -->
+      <section class="slide">
+        <article class="card">
+          <div class="label">03 · Space</div>
+          <h1>Give room. Watch the signals.</h1>
+          <p class="copy">
+            Stay close enough to help, but don’t crowd.
+            Watch face, body language, and tension changes.
           </p>
-
-          <div class="key-line">
-            Tight eyebrows, pulling away, or sudden tension =
-            <strong>slow down and check in.</strong>
-            Don't assume one signal always means one thing.
+          <div class="callout">
+            Tight eyebrows, pulling away, or sudden tension? <strong>Slow down and check in.</strong>
           </div>
 
+          <div class="visual v-green">
+            <div class="glass-chip notice-chip">Notice changes</div>
+            <div class="space-line"></div>
 
-          <div class="essential-visual visual-green">
-
-            <div class="space-guide"></div>
-
-            <div class="brow-mark">
-              Notice changes
+            <div class="person left space-left blue">
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+              <div class="leg left"></div>
+              <div class="leg right"></div>
             </div>
 
-
-            <div class="person left space-left">
-
-              <div class="person-hair"></div>
-              <div class="person-head"></div>
-              <div class="person-body"></div>
-
-              <div class="person-arm left"></div>
-              <div class="person-arm right"></div>
-
-              <div class="person-leg left"></div>
-              <div class="person-leg right"></div>
-
+            <div class="person right deep green space-right">
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+              <div class="leg left"></div>
+              <div class="leg right"></div>
             </div>
-
-
-            <div class="person right green deep space-right">
-
-              <div class="person-hair"></div>
-              <div class="person-head"></div>
-              <div class="person-body"></div>
-
-              <div class="person-arm left"></div>
-              <div class="person-arm right"></div>
-
-              <div class="person-leg left"></div>
-              <div class="person-leg right"></div>
-
-            </div>
-
           </div>
-
         </article>
-
       </section>
 
-
-
-      <!-- =================================================
-           4 — SHOW
-           ================================================= -->
-
-      <section class="essential-slide">
-
-        <article class="essential-card">
-
-          <div class="slide-label">
-            04 · Show
-          </div>
-
-          <h1>
-            Show it. Don't pile on words.
-          </h1>
-
-          <p class="essential-copy">
-            Point to the spot, pick up the ball, or demonstrate once.
-            One clear cue is usually better than a long explanation.
+      <!-- 4 -->
+      <section class="slide">
+        <article class="card">
+          <div class="label">04 · Show</div>
+          <h1>Show it. Don’t pile on words.</h1>
+          <p class="copy">
+            Point, model, or demonstrate once.
+            One clear cue usually works better than a long explanation.
           </p>
-
-          <div class="key-line">
-            <strong>Example:</strong>
-            point → “Stand here.” → show one pass.
-            Ask before physically guiding or touching.
+          <div class="callout">
+            <strong>Example:</strong> point → “Stand here.” → show one pass.
+            Ask before physically guiding.
           </div>
 
-
-          <div class="essential-visual visual-gold">
-
-            <div class="person left gold">
-
-              <div class="person-hair"></div>
-              <div class="person-head"></div>
-              <div class="person-body"></div>
-
-              <div class="person-arm left"></div>
-              <div class="person-arm right wave"></div>
-
-              <div class="person-leg left"></div>
-              <div class="person-leg right"></div>
-
+          <div class="visual v-gold">
+            <div class="person show-person gold">
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="arm left"></div>
+              <div class="arm right wave"></div>
+              <div class="leg left"></div>
+              <div class="leg right"></div>
             </div>
 
-
-            <div class="show-arrow">
-              →
-            </div>
-
-
+            <div class="show-arrow">→</div>
             <div class="basketball"></div>
-
           </div>
-
         </article>
-
       </section>
 
-
-
-      <!-- =================================================
-           5 — WAIT
-           ================================================= -->
-
-      <section class="essential-slide">
-
-        <article class="essential-card">
-
-          <div class="slide-label">
-            05 · Wait
-          </div>
-
-          <h1>
-            Give them a beat.
-          </h1>
-
-          <p class="essential-copy">
+      <!-- 5 -->
+      <section class="slide">
+        <article class="card">
+          <div class="label">05 · Wait</div>
+          <h1>Give them a beat.</h1>
+          <p class="copy">
             Ask once, then wait.
-            They may be processing, pointing, moving,
-            speaking, or preparing AAC.
+            They may be processing, pointing, moving, speaking, or using AAC.
           </p>
-
-          <div class="key-line">
-            <strong>Ask → wait → watch → respond.</strong>
-            Don't rush to repeat yourself or answer for them.
+          <div class="callout">
+            <strong>Ask → wait → watch → respond.</strong> Don’t rush to repeat or answer for them.
           </div>
 
-
-          <div class="essential-visual visual-violet wait-visual">
-
+          <div class="visual v-violet wait-wrap">
             <div class="wait-ring">
-
-              <div class="wait-center">
-                Give it time
-              </div>
-
+              <div class="wait-center">Give it time</div>
             </div>
-
           </div>
-
         </article>
-
       </section>
 
-
-
-      <!-- =================================================
-           6 — ENCOURAGE + PREPARE
-           ================================================= -->
-
-      <section class="essential-slide">
-
-        <article class="essential-card">
-
-          <div class="slide-label">
-            06 · Encourage
-          </div>
-
-          <h1>
-            Notice the wins.
-          </h1>
-
-          <p class="essential-copy">
-            Encourage effort and communication, not just perfect results.
-            Let them know before you switch activities.
+      <!-- 6 -->
+      <section class="slide">
+        <article class="card">
+          <div class="label">06 · Encourage</div>
+          <h1>Notice the wins.</h1>
+          <p class="copy">
+            Encourage effort and communication, not just perfect performance.
+            Give a heads-up before transitions.
           </p>
-
-          <div class="key-line">
-            <strong>“Nice one.”</strong>
-            &nbsp;·&nbsp;
-            <strong>“One more, then basketball.”</strong>
-            <br>
+          <div class="callout">
+            <strong>Try:</strong> “Nice one.” · “One more, then basketball.”
             Keep it genuine. Every athlete is different.
           </div>
 
-
-          <div class="essential-visual visual-track">
-
-            <div class="finish-tag">
-              Nice one!
-            </div>
-
+          <div class="visual v-sky">
+            <div class="glass-chip finish-chip">Nice one!</div>
             <div class="track-line one"></div>
             <div class="track-line two"></div>
-
-            <div class="finish-line"></div>
-
+            <div class="finish"></div>
 
             <div class="runner">
-
               <div class="runner-head"></div>
               <div class="runner-body"></div>
-
               <div class="runner-leg left"></div>
               <div class="runner-leg right"></div>
-
             </div>
-
           </div>
-
         </article>
-
       </section>
-
 
     </main>
 
-
-
-    <!-- =================================================
-         CONTROLS
-         ================================================= -->
-
-    <div class="essential-controls">
-
-      <button
-        class="back-button hidden"
-        id="backButton"
-      >
-        ← Back
-      </button>
-
-      <button
-        class="next-button"
-        id="nextButton"
-      >
-        Next
-      </button>
-
+    <div class="controls">
+      <button class="btn-back hidden" id="backBtn">← Back</button>
+      <button class="btn-next" id="nextBtn">Next</button>
     </div>
 
-
-    <div class="micro-reminder">
-      Starting points, not rules — pay attention to the athlete in front of you.
+    <div class="mini-note">
+      Starting points, not a script — pay attention to the athlete in front of you.
     </div>
-
-
   </div>
 
-
-
   <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const bars = Array.from(document.querySelectorAll(".bar"));
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const stepText = document.getElementById("stepText");
 
-    /* =====================================================
-       SIMPLE ONE-SCREEN STEPPER
-       ===================================================== */
+    let current = 0;
 
-    const slides =
-      Array.from(
-        document.querySelectorAll(
-          ".essential-slide"
-        )
-      );
+    function renderStep(){
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === current);
+      });
 
-    const progressPieces =
-      Array.from(
-        document.querySelectorAll(
-          ".progress-piece"
-        )
-      );
+      bars.forEach((bar, i) => {
+        bar.classList.toggle("done", i < current);
+        bar.classList.toggle("active", i === current);
+      });
 
-    const backButton =
-      document.getElementById(
-        "backButton"
-      );
-
-    const nextButton =
-      document.getElementById(
-        "nextButton"
-      );
-
-    const stepCount =
-      document.getElementById(
-        "stepCount"
-      );
-
-
-    let currentStep = 0;
-
-
-
-    function updateStep() {
-
-      slides.forEach(
-        (slide, index) => {
-
-          slide.classList.toggle(
-            "active",
-            index === currentStep
-          );
-
-        }
-      );
-
-
-      progressPieces.forEach(
-        (piece, index) => {
-
-          piece.classList.toggle(
-            "done",
-            index < currentStep
-          );
-
-          piece.classList.toggle(
-            "active",
-            index === currentStep
-          );
-
-        }
-      );
-
-
-      stepCount.textContent =
-        `${currentStep + 1} / ${slides.length}`;
-
-
-      backButton.classList.toggle(
-        "hidden",
-        currentStep === 0
-      );
-
-
-      nextButton.textContent =
-        currentStep ===
-        slides.length - 1
-          ? "Done"
-          : "Next";
-
+      stepText.textContent = `${current + 1} / ${slides.length}`;
+      backBtn.classList.toggle("hidden", current === 0);
+      nextBtn.textContent = current === slides.length - 1 ? "Done" : "Next";
     }
 
-
-
-    nextButton.addEventListener(
-      "click",
-      () => {
-
-        if (
-          currentStep <
-          slides.length - 1
-        ) {
-
-          currentStep++;
-
-          updateStep();
-
-        }
-
-        else {
-
-          window.location.href =
-            "index.html";
-
-        }
-
+    nextBtn.addEventListener("click", () => {
+      if(current < slides.length - 1){
+        current += 1;
+        renderStep();
+      } else {
+        window.location.href = "index.html";
       }
-    );
+    });
 
-
-
-    backButton.addEventListener(
-      "click",
-      () => {
-
-        if (
-          currentStep > 0
-        ) {
-
-          currentStep--;
-
-          updateStep();
-
-        }
-
+    backBtn.addEventListener("click", () => {
+      if(current > 0){
+        current -= 1;
+        renderStep();
       }
-    );
-
-
-
-    /* optional swipe left / right */
+    });
 
     let startX = null;
 
+    document.addEventListener("touchstart", (e) => {
+      startX = e.changedTouches[0].clientX;
+    }, { passive:true });
 
-    document.addEventListener(
-      "touchstart",
-      event => {
+    document.addEventListener("touchend", (e) => {
+      if(startX === null) return;
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
 
-        startX =
-          event.changedTouches[0]
-            .clientX;
-
-      },
-      {
-        passive: true
+      if(dx < -60 && current < slides.length - 1){
+        current += 1;
+        renderStep();
+      } else if(dx > 60 && current > 0){
+        current -= 1;
+        renderStep();
       }
-    );
 
+      startX = null;
+    }, { passive:true });
 
-    document.addEventListener(
-      "touchend",
-      event => {
-
-        if (
-          startX === null
-        ) return;
-
-
-        const endX =
-          event.changedTouches[0]
-            .clientX;
-
-
-        const difference =
-          endX - startX;
-
-
-        if (
-          difference < -60 &&
-          currentStep <
-          slides.length - 1
-        ) {
-
-          currentStep++;
-
-          updateStep();
-
-        }
-
-
-        if (
-          difference > 60 &&
-          currentStep > 0
-        ) {
-
-          currentStep--;
-
-          updateStep();
-
-        }
-
-
-        startX = null;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    updateStep();
-
+    renderStep();
   </script>
-
-
 </body>
-
 </html>
