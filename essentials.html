@@ -480,155 +480,133 @@
        ===================================================== */
 
     .choice-stage {
-      display: flex;
+      position: relative;
 
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      grid-template-columns:
+        repeat(2, 1fr);
 
-      gap: 14px;
+      gap: 8px;
 
       padding:
-        14px;
+        27px 10px 10px;
     }
 
 
-    .choice-card {
-      position: relative;
-
-      width: 116px;
-      height: 92px;
+    .choice-group {
+      min-width: 0;
 
       display: flex;
       flex-direction: column;
 
-      align-items: center;
       justify-content: center;
 
-      gap: 7px;
+      gap: 5px;
 
-      border-radius: 19px;
+      padding:
+        8px 9px;
+
+      border-radius: 15px;
 
       background:
-        rgba(255,255,255,.79);
+        rgba(255,255,255,.78);
 
       border:
         1px solid
-        rgba(50,55,75,.06);
-
-      color: #343943;
+        rgba(50,55,75,.055);
 
       transition:
         transform .3s ease,
         box-shadow .3s ease,
         opacity .3s ease;
-    }
 
-
-    .choice-card span {
-      font-size: 12px;
-      font-weight: 760;
-    }
-
-
-    .choice-ball {
-      position: relative;
-
-      width: 36px;
-      height: 36px;
-
-      border-radius: 50%;
-
-      background: #ed861e;
-
-      box-shadow:
-        inset -5px -5px 8px
-        rgba(0,0,0,.08);
-    }
-
-
-    .choice-ball::before,
-    .choice-ball::after {
-      content: "";
-
-      position: absolute;
-
-      background: #61371d;
-
-      border-radius: 999px;
-    }
-
-
-    .choice-ball::before {
-      width: 2px;
-      height: 32px;
-
-      left: 17px;
-      top: 2px;
-    }
-
-
-    .choice-ball::after {
-      width: 32px;
-      height: 2px;
-
-      left: 2px;
-      top: 17px;
-    }
-
-
-    .choice-bottle {
-      position: relative;
-
-      width: 21px;
-      height: 39px;
-
-      border-radius:
-        5px 5px 8px 8px;
-
-      border:
-        2px solid
-        #5f79a8;
-
-      background:
-        rgba(104,169,219,.17);
-    }
-
-
-    .choice-bottle::before {
-      content: "";
-
-      position: absolute;
-
-      width: 10px;
-      height: 6px;
-
-      left: 3px;
-      top: -8px;
-
-      border:
-        2px solid
-        #5f79a8;
-
-      border-bottom: 0;
-
-      border-radius:
-        3px 3px 0 0;
-    }
-
-
-    .choice-card.ball-choice {
       animation:
-        chooseBall
-        4.2s
+        choiceGroupFocus
+        6.4s
         ease-in-out
         infinite;
     }
 
 
-    .choice-card.water-choice {
+    .choice-group.soccer-choice {
+      animation-delay: 0s;
+    }
+
+
+    .choice-group.basketball-choice {
+      animation-delay: 1.6s;
+    }
+
+
+    .choice-group.track-choice {
+      animation-delay: 3.2s;
+    }
+
+
+    .choice-group.break-choice {
+      animation-delay: 4.8s;
+    }
+
+
+    .choice-category {
+      color: #777c87;
+
+      font-size: 8.5px;
+      font-weight: 800;
+
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+
+    .choice-options {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 5px;
+    }
+
+
+    .choice-option {
+      min-width: 0;
+
+      padding:
+        5px 4px;
+
+      border-radius: 8px;
+
+      background:
+        #f2f3f7;
+
+      color: #343943;
+
+      text-align: center;
+
+      font-size: 10px;
+      font-weight: 750;
+
+      white-space: nowrap;
+
+      transition:
+        background .25s ease,
+        transform .25s ease;
+    }
+
+
+    .choice-option:first-child {
       animation:
-        chooseWater
-        4.2s
+        optionOne
+        3.2s
+        ease-in-out
+        infinite;
+    }
+
+
+    .choice-option:last-child {
+      animation:
+        optionTwo
+        3.2s
         ease-in-out
         infinite;
     }
@@ -636,10 +614,12 @@
 
     .choice-question {
       left: 50%;
-      top: 8px;
+      top: 5px;
 
       transform:
         translateX(-50%);
+
+      white-space: nowrap;
     }
 
 
@@ -1485,6 +1465,74 @@
     }
 
 
+    @keyframes choiceGroupFocus {
+
+      0%,
+      18%,
+      100% {
+        transform: translateY(0);
+
+        box-shadow: none;
+
+        opacity: .78;
+      }
+
+      7%,
+      13% {
+        transform:
+          translateY(-2px)
+          scale(1.015);
+
+        box-shadow:
+          0 8px 18px
+          rgba(92,111,255,.10);
+
+        opacity: 1;
+      }
+
+    }
+
+
+    @keyframes optionOne {
+
+      0%,
+      18%,
+      100% {
+        background: #f2f3f7;
+
+        transform: scale(1);
+      }
+
+      28%,
+      43% {
+        background: #e7ebff;
+
+        transform: scale(1.035);
+      }
+
+    }
+
+
+    @keyframes optionTwo {
+
+      0%,
+      52%,
+      100% {
+        background: #f2f3f7;
+
+        transform: scale(1);
+      }
+
+      63%,
+      80% {
+        background: #e7ebff;
+
+        transform: scale(1.035);
+      }
+
+    }
+
+
     @keyframes chooseWater {
 
       0%,
@@ -1904,12 +1952,11 @@
               TRY THIS
             </span>
 
-            “Basketball or water?”
+            Give two clear options that fit what you're doing.
             Accept the answer through speech, pointing, gesture, AAC,
             or another clear signal.
 
           </div>
-
 
 
           <div class="e-visual visual-blue choice-stage">
@@ -1920,24 +1967,86 @@
             </div>
 
 
-            <div class="choice-card ball-choice">
+            <div class="choice-group soccer-choice">
 
-              <div class="choice-ball"></div>
+              <div class="choice-category">
+                Soccer
+              </div>
 
-              <span>
-                Basketball
-              </span>
+              <div class="choice-options">
+
+                <div class="choice-option">
+                  Kick
+                </div>
+
+                <div class="choice-option">
+                  Pass
+                </div>
+
+              </div>
 
             </div>
 
 
-            <div class="choice-card water-choice">
+            <div class="choice-group basketball-choice">
 
-              <div class="choice-bottle"></div>
+              <div class="choice-category">
+                Basketball
+              </div>
 
-              <span>
-                Water
-              </span>
+              <div class="choice-options">
+
+                <div class="choice-option">
+                  Shoot
+                </div>
+
+                <div class="choice-option">
+                  Pass
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="choice-group track-choice">
+
+              <div class="choice-category">
+                Track
+              </div>
+
+              <div class="choice-options">
+
+                <div class="choice-option">
+                  Walk
+                </div>
+
+                <div class="choice-option">
+                  Run
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="choice-group break-choice">
+
+              <div class="choice-category">
+                Break
+              </div>
+
+              <div class="choice-options">
+
+                <div class="choice-option">
+                  Sit
+                </div>
+
+                <div class="choice-option">
+                  Water
+                </div>
+
+              </div>
 
             </div>
 
