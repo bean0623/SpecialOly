@@ -436,12 +436,17 @@
     .choice-stage {
       position: relative;
 
+      flex: 0 0 218px;
+      height: 218px;
+      min-height: 218px;
+
       display: flex;
+      flex-direction: column;
+
       align-items: center;
-      justify-content: center;
 
       padding:
-        8px 12px 21px;
+        8px 12px 9px;
 
       touch-action: pan-y;
 
@@ -457,11 +462,16 @@
     }
 
 
+
+    /* ---------- CAROUSEL ---------- */
+
     .choice-carousel {
       position: relative;
 
+      flex: 0 0 105px;
+
       width: 100%;
-      height: 100%;
+      height: 105px;
 
       overflow: hidden;
     }
@@ -502,7 +512,7 @@
       width: min(100%, 338px);
       height: 100%;
 
-      min-height: 98px;
+      min-height: 96px;
 
       display: grid;
 
@@ -514,7 +524,7 @@
       gap: 13px;
 
       padding:
-        9px 14px 9px 9px;
+        8px 14px 8px 9px;
 
       overflow: hidden;
 
@@ -528,7 +538,7 @@
         rgba(255,255,255,.87);
 
       box-shadow:
-        0 16px 34px
+        0 14px 30px
         rgba(61,75,142,.085),
         inset 0 1px 0
         rgba(255,255,255,.96);
@@ -559,27 +569,6 @@
         );
 
       pointer-events: none;
-    }
-
-
-    .choice-panel::after {
-      content: "";
-
-      position: absolute;
-
-      left: 10px;
-      right: 10px;
-      bottom: 0;
-
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(92,111,255,.12),
-          transparent
-        );
     }
 
 
@@ -713,10 +702,186 @@
 
       font-size: 9px;
       font-weight: 820;
+    }
 
-      letter-spacing: .055em;
 
-      text-transform: lowercase;
+
+    /* =====================================================
+       SLIDE 1 — YES / NO IMAGE
+       ===================================================== */
+
+    .choice-bottom {
+      flex: 1 1 auto;
+
+      width: 100%;
+
+      min-height: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 4px;
+
+      padding-top: 3px;
+    }
+
+
+    .choice-dots {
+      flex: 0 0 auto;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 6px;
+
+      min-height: 8px;
+    }
+
+
+    .choice-dot {
+      width: 6px;
+      height: 6px;
+
+      padding: 0;
+
+      border: 0;
+
+      border-radius: 999px;
+
+      background:
+        rgba(92,111,255,.20);
+
+      cursor: pointer;
+
+      transition:
+        width .3s
+        cubic-bezier(.22,.8,.22,1),
+        background .3s ease,
+        transform .2s ease;
+    }
+
+
+    .choice-dot.active {
+      width: 17px;
+
+      background:
+        rgba(92,111,255,.94);
+    }
+
+
+    .choice-dot:active {
+      transform: scale(.88);
+    }
+
+
+    .yes-no-reference {
+      position: relative;
+
+      flex: 1 1 auto;
+
+      width: min(100%, 255px);
+
+      min-height: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(50,55,75,.055);
+
+      border-radius: 13px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 7px 18px
+        rgba(48,58,112,.055);
+    }
+
+
+    .yes-no-reference img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      max-height: 72px;
+
+      object-fit: contain;
+
+      object-position: center;
+
+      animation:
+        yesNoFloat
+        4.6s
+        ease-in-out
+        infinite;
+    }
+
+
+    .yes-no-fallback {
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 18px;
+
+      width: 100%;
+      height: 100%;
+
+      color: var(--text);
+
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+
+    .yes-no-fallback .yes {
+      color: #64ad32;
+    }
+
+
+    .yes-no-fallback .no {
+      color: #b53535;
+    }
+
+
+    .choice-swipe-hint {
+      position: absolute;
+
+      right: 10px;
+      top: 7px;
+
+      z-index: 10;
+
+      color:
+        rgba(87,92,106,.42);
+
+      font-size: 8px;
+      font-weight: 720;
+
+      opacity: 0;
+
+      animation:
+        swipeHint
+        5s
+        1s
+        ease-in-out
+        1
+        forwards;
+
+      pointer-events: none;
     }
 
 
@@ -1093,90 +1258,6 @@
         3.8s
         ease-in-out
         infinite;
-    }
-
-
-
-    /* =====================================================
-       MANUAL CAROUSEL CONTROLS
-       ===================================================== */
-
-    .choice-dots {
-      position: absolute;
-
-      left: 50%;
-      bottom: 6px;
-
-      z-index: 10;
-
-      display: flex;
-
-      gap: 6px;
-
-      transform:
-        translateX(-50%);
-    }
-
-
-    .choice-dot {
-      width: 6px;
-      height: 6px;
-
-      padding: 0;
-
-      border: 0;
-
-      border-radius: 999px;
-
-      background:
-        rgba(92,111,255,.20);
-
-      cursor: pointer;
-
-      transition:
-        width .3s
-        cubic-bezier(.22,.8,.22,1),
-        background .3s ease,
-        transform .2s ease;
-    }
-
-
-    .choice-dot.active {
-      width: 17px;
-
-      background:
-        rgba(92,111,255,.94);
-    }
-
-
-    .choice-dot:active {
-      transform: scale(.88);
-    }
-
-
-    .choice-swipe-hint {
-      position: absolute;
-
-      right: 12px;
-      bottom: 5px;
-
-      color:
-        rgba(87,92,106,.42);
-
-      font-size: 8px;
-      font-weight: 720;
-
-      opacity: 0;
-
-      animation:
-        swipeHint
-        5s
-        1s
-        ease-in-out
-        1
-        forwards;
-
-      pointer-events: none;
     }
 
 
@@ -1575,19 +1656,21 @@
       display: grid;
 
       grid-template-columns:
-        1fr 1fr;
+        1.1fr .9fr;
 
       align-items: center;
 
-      gap: 6px;
+      gap: 10px;
 
       padding:
-        8px 14px;
+        8px 12px;
     }
 
 
     .energy-photo-wrap {
       position: relative;
+
+      width: 100%;
 
       display: flex;
 
@@ -1599,17 +1682,20 @@
     .energy-ring {
       position: absolute;
 
-      width: 91px;
-      height: 91px;
+      width: 148px;
+      height: 100px;
 
-      border-radius: 50%;
+      border-radius: 18px;
 
       border:
         2px solid
-        rgba(236,141,66,.17);
+        rgba(236,141,66,.16);
+
+      background:
+        rgba(255,255,255,.18);
 
       animation:
-        happyPulse
+        happyPulseRectangle
         3s
         ease-in-out
         infinite;
@@ -1617,16 +1703,23 @@
 
 
     .energy-photo {
-      width: 74px;
-      height: 74px;
+      position: relative;
+
+      z-index: 2;
+
+      width: 138px;
+      height: 90px;
+
+      max-width: 100%;
 
       object-fit: cover;
+      object-position: center 43%;
 
-      border-radius: 50%;
+      border-radius: 14px;
 
       box-shadow:
-        0 10px 22px
-        rgba(51,40,32,.11);
+        0 10px 24px
+        rgba(51,40,32,.12);
 
       animation:
         photoBreathe
@@ -1637,15 +1730,21 @@
 
 
     .energy-fallback {
-      width: 74px;
-      height: 74px;
+      position: relative;
+
+      z-index: 2;
+
+      width: 138px;
+      height: 90px;
+
+      max-width: 100%;
 
       display: none;
 
       align-items: center;
       justify-content: center;
 
-      border-radius: 50%;
+      border-radius: 14px;
 
       background:
         linear-gradient(
@@ -1985,8 +2084,6 @@
 
 
 
-    /* ---------- OPTION CARDS ---------- */
-
     @keyframes optionBreathe {
 
       0%,
@@ -2013,8 +2110,6 @@
     }
 
 
-
-    /* ---------- SOCCER ---------- */
 
     @keyframes soccerKickFoot {
 
@@ -2127,9 +2222,6 @@
     }
 
 
-
-    /* ---------- BASKETBALL ---------- */
-
     @keyframes realisticBasketBounce {
 
       0%,
@@ -2197,9 +2289,6 @@
 
     }
 
-
-
-    /* ---------- TRACK ---------- */
 
     @keyframes runnerTravel {
 
@@ -2286,9 +2375,6 @@
     }
 
 
-
-    /* ---------- BREAK ---------- */
-
     @keyframes bottleLift {
 
       0%,
@@ -2361,8 +2447,23 @@
     }
 
 
+    @keyframes yesNoFloat {
 
-    /* ---------- SWIPE HINT ---------- */
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+      50% {
+        transform:
+          translateY(-1px)
+          scale(1.012);
+      }
+
+    }
+
 
     @keyframes swipeHint {
 
@@ -2396,9 +2497,6 @@
 
     }
 
-
-
-    /* ---------- EXISTING ---------- */
 
     @keyframes actionFocus {
 
@@ -2463,17 +2561,17 @@
     }
 
 
-    @keyframes happyPulse {
+    @keyframes happyPulseRectangle {
 
       0%,
       100% {
-        transform: scale(.94);
+        transform: scale(.97);
 
-        opacity: .5;
+        opacity: .55;
       }
 
       50% {
-        transform: scale(1.07);
+        transform: scale(1.035);
 
         opacity: 1;
       }
@@ -2489,7 +2587,7 @@
       }
 
       50% {
-        transform: scale(1.025);
+        transform: scale(1.022);
       }
 
     }
@@ -2591,6 +2689,21 @@
       }
 
 
+      .e-visual.choice-stage {
+        flex-basis: 205px;
+
+        height: 205px;
+        min-height: 205px;
+      }
+
+
+      .choice-carousel {
+        flex-basis: 100px;
+
+        height: 100px;
+      }
+
+
       .choice-panel {
         grid-template-columns:
           76px minmax(0,1fr);
@@ -2598,7 +2711,7 @@
         gap: 9px;
 
         padding:
-          8px 10px 8px 8px;
+          7px 10px 7px 8px;
       }
 
 
@@ -2619,6 +2732,44 @@
           8px 5px;
 
         font-size: 12px;
+      }
+
+
+      .yes-no-reference {
+        width: min(100%, 225px);
+      }
+
+
+      .yes-no-reference img {
+        max-height: 64px;
+      }
+
+
+      .energy-stage {
+        grid-template-columns:
+          1.12fr .88fr;
+
+        gap: 8px;
+
+        padding:
+          8px 10px;
+      }
+
+
+      .energy-ring {
+        width: 132px;
+        height: 91px;
+
+        border-radius: 17px;
+      }
+
+
+      .energy-photo,
+      .energy-fallback {
+        width: 124px;
+        height: 83px;
+
+        border-radius: 13px;
       }
 
     }
@@ -2688,56 +2839,120 @@
       }
 
 
-      .choice-stage {
+      .e-visual.choice-stage {
+        flex-basis: 175px;
+
+        height: 175px;
+        min-height: 175px;
+
         padding:
-          6px 8px 17px;
+          5px 8px 6px;
+      }
+
+
+      .choice-carousel {
+        flex-basis: 84px;
+
+        height: 84px;
       }
 
 
       .choice-panel {
         grid-template-columns:
-          61px minmax(0,1fr);
+          58px minmax(0,1fr);
 
-        min-height: 82px;
+        min-height: 78px;
 
-        gap: 7px;
+        gap: 6px;
 
         padding:
-          7px;
+          6px;
       }
 
 
       .choice-object {
-        width: 56px;
-        height: 56px;
+        width: 53px;
+        height: 53px;
 
-        border-radius: 15px;
+        border-radius: 14px;
       }
 
 
       .sport-svg {
-        width: 53px;
-        height: 53px;
+        width: 50px;
+        height: 50px;
       }
 
 
       .choice-category {
-        margin-bottom: 5px;
+        margin-bottom: 4px;
 
-        font-size: 8.5px;
+        font-size: 8px;
       }
 
 
       .choice-option {
         padding:
-          6px 4px;
+          5px 3px;
 
-        font-size: 10.5px;
+        font-size: 10px;
       }
 
 
       .choice-or {
-        font-size: 8px;
+        font-size: 7px;
+      }
+
+
+      .choice-bottom {
+        gap: 2px;
+
+        padding-top: 2px;
+      }
+
+
+      .yes-no-reference {
+        width: min(100%, 185px);
+
+        border-radius: 10px;
+      }
+
+
+      .yes-no-reference img {
+        max-height: 51px;
+      }
+
+
+      .choice-dots {
+        min-height: 6px;
+      }
+
+
+      .choice-dot {
+        width: 5px;
+        height: 5px;
+      }
+
+
+      .choice-dot.active {
+        width: 14px;
+      }
+
+
+      .energy-ring {
+        width: 112px;
+        height: 78px;
+
+        border-radius: 15px;
+      }
+
+
+      .energy-photo,
+      .energy-fallback {
+        width: 105px;
+        height: 71px;
+
+        border-radius: 11px;
       }
 
 
@@ -2777,6 +2992,7 @@
       .break-bottle-group,
       .bottle-water,
       .chair-group,
+      .yes-no-reference img,
       .action-demo-card,
       .signal-row,
       .time-dot,
@@ -2802,10 +3018,6 @@
 
   <div class="e-app">
 
-
-    <!-- =================================================
-         TOP
-         ================================================= -->
 
     <header class="e-topbar">
 
@@ -2833,10 +3045,6 @@
 
 
 
-    <!-- =================================================
-         PROGRESS
-         ================================================= -->
-
     <div class="e-progress">
 
       <div class="e-progress-piece active"></div>
@@ -2849,10 +3057,6 @@
     </div>
 
 
-
-    <!-- =================================================
-         SLIDES
-         ================================================= -->
 
     <main class="e-stage">
 
@@ -2904,9 +3108,7 @@
             <div class="choice-carousel">
 
 
-              <!-- =========================================
-                   SOCCER
-                   ========================================= -->
+              <!-- SOCCER -->
 
               <div
                 class="choice-scene active"
@@ -2932,7 +3134,6 @@
                         ry="5"
                       ></ellipse>
 
-
                       <ellipse
                         class="soccer-ground soccer-shadow"
                         cx="49"
@@ -2940,7 +3141,6 @@
                         rx="13"
                         ry="3.2"
                       ></ellipse>
-
 
                       <g class="soccer-ball-group">
 
@@ -3022,7 +3222,6 @@
                   </div>
 
 
-
                   <div class="choice-copy">
 
                     <div class="choice-category">
@@ -3054,9 +3253,7 @@
 
 
 
-              <!-- =========================================
-                   BASKETBALL
-                   ========================================= -->
+              <!-- BASKETBALL -->
 
               <div
                 class="choice-scene"
@@ -3064,7 +3261,6 @@
               >
 
                 <div class="choice-panel">
-
 
                   <div class="choice-object">
 
@@ -3082,7 +3278,6 @@
                         y2="65"
                       ></line>
 
-
                       <ellipse
                         class="basket-shadow"
                         cx="48"
@@ -3090,7 +3285,6 @@
                         rx="17"
                         ry="4"
                       ></ellipse>
-
 
                       <g class="basket-ball-group">
 
@@ -3120,7 +3314,6 @@
                     </svg>
 
                   </div>
-
 
 
                   <div class="choice-copy">
@@ -3154,9 +3347,7 @@
 
 
 
-              <!-- =========================================
-                   TRACK
-                   ========================================= -->
+              <!-- TRACK -->
 
               <div
                 class="choice-scene"
@@ -3164,7 +3355,6 @@
               >
 
                 <div class="choice-panel">
-
 
                   <div class="choice-object">
 
@@ -3228,7 +3418,6 @@
                           y2="42"
                         ></line>
 
-
                         <line
                           class="runner-arm runner-arm-a"
                           x1="28"
@@ -3244,7 +3433,6 @@
                           x2="40"
                           y2="36"
                         ></line>
-
 
                         <line
                           class="runner-limb runner-leg-a"
@@ -3267,7 +3455,6 @@
                     </svg>
 
                   </div>
-
 
 
                   <div class="choice-copy">
@@ -3301,9 +3488,7 @@
 
 
 
-              <!-- =========================================
-                   BREAK
-                   ========================================= -->
+              <!-- BREAK -->
 
               <div
                 class="choice-scene"
@@ -3311,7 +3496,6 @@
               >
 
                 <div class="choice-panel">
-
 
                   <div class="choice-object">
 
@@ -3328,7 +3512,6 @@
                         x2="86"
                         y2="66"
                       ></line>
-
 
                       <g class="chair-group">
 
@@ -3405,7 +3588,6 @@
                   </div>
 
 
-
                   <div class="choice-copy">
 
                     <div class="choice-category">
@@ -3440,34 +3622,68 @@
 
 
 
-            <!-- DOTS — ALSO TAPPABLE -->
+            <div class="choice-bottom">
 
-            <div class="choice-dots">
 
-              <button
-                class="choice-dot active"
-                data-choice-dot="0"
-                aria-label="Show soccer example"
-                aria-current="true"
-              ></button>
+              <div class="choice-dots">
 
-              <button
-                class="choice-dot"
-                data-choice-dot="1"
-                aria-label="Show basketball example"
-              ></button>
+                <button
+                  class="choice-dot active"
+                  data-choice-dot="0"
+                  aria-label="Show soccer example"
+                  aria-current="true"
+                ></button>
 
-              <button
-                class="choice-dot"
-                data-choice-dot="2"
-                aria-label="Show track example"
-              ></button>
+                <button
+                  class="choice-dot"
+                  data-choice-dot="1"
+                  aria-label="Show basketball example"
+                ></button>
 
-              <button
-                class="choice-dot"
-                data-choice-dot="3"
-                aria-label="Show break example"
-              ></button>
+                <button
+                  class="choice-dot"
+                  data-choice-dot="2"
+                  aria-label="Show track example"
+                ></button>
+
+                <button
+                  class="choice-dot"
+                  data-choice-dot="3"
+                  aria-label="Show break example"
+                ></button>
+
+              </div>
+
+
+              <div class="yes-no-reference">
+
+                <img
+                  src="Yes and No.jpg"
+                  alt="Yes and No shown on opposite sides of a balance"
+                  onerror="
+                    this.style.display='none';
+                    this.nextElementSibling.style.display='flex';
+                  "
+                >
+
+                <div class="yes-no-fallback">
+
+                  <span class="yes">
+                    YES
+                  </span>
+
+                  <span>
+                    or
+                  </span>
+
+                  <span class="no">
+                    NO
+                  </span>
+
+                </div>
+
+              </div>
+
 
             </div>
 
@@ -3522,7 +3738,6 @@
           </div>
 
 
-
           <div class="e-visual visual-green action-demo">
 
 
@@ -3543,7 +3758,6 @@
             </div>
 
 
-
             <div class="action-demo-card">
 
               <div class="mini-bottle"></div>
@@ -3557,7 +3771,6 @@
               </small>
 
             </div>
-
 
 
             <div class="action-demo-card">
@@ -3620,7 +3833,6 @@
           </div>
 
 
-
           <div class="e-visual visual-purple signal-list">
 
 
@@ -3641,7 +3853,6 @@
             </div>
 
 
-
             <div class="signal-row">
 
               <div class="signal-word">
@@ -3657,7 +3868,6 @@
               </div>
 
             </div>
-
 
 
             <div class="signal-row">
@@ -3723,7 +3933,6 @@
           </div>
 
 
-
           <div class="e-visual visual-orange timeline">
 
 
@@ -3743,7 +3952,6 @@
               </div>
 
 
-
               <div class="time-step">
 
                 <div class="time-dot">
@@ -3757,7 +3965,6 @@
               </div>
 
 
-
               <div class="time-step">
 
                 <div class="time-dot">
@@ -3769,7 +3976,6 @@
                 </span>
 
               </div>
-
 
 
               <div class="time-step">
@@ -3839,7 +4045,6 @@
           </div>
 
 
-
           <div class="e-visual visual-warm energy-stage">
 
 
@@ -3865,7 +4070,6 @@
 
 
             </div>
-
 
 
             <div class="energy-actions">
@@ -3937,7 +4141,6 @@
           </div>
 
 
-
           <div class="e-visual visual-sky clue-stage">
 
 
@@ -3962,7 +4165,6 @@
               </div>
 
 
-
               <div class="clue-card">
 
                 <div class="jump-symbol"></div>
@@ -3977,7 +4179,6 @@
               <div class="clue-arrow">
                 →
               </div>
-
 
 
               <div class="clue-card">
@@ -4007,10 +4208,6 @@
     </main>
 
 
-
-    <!-- =================================================
-         CONTROLS
-         ================================================= -->
 
     <div class="e-controls">
 
@@ -4043,20 +4240,11 @@
 
   <script>
 
-    /* =====================================================
-       GLOBAL
-       ===================================================== */
-
     const reducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
-
-
-    /* =====================================================
-       MAIN SIX-SLIDE STEPPER
-       ===================================================== */
 
     const slides =
       Array.from(
@@ -4096,10 +4284,6 @@
 
 
 
-    /* =====================================================
-       SLIDE 1 EXAMPLE CAROUSEL
-       ===================================================== */
-
     const choiceStage =
       document.getElementById(
         "choiceStage"
@@ -4129,8 +4313,6 @@
     let choicePointerStartX = null;
 
     let choicePointerStartY = null;
-
-    let choicePointerId = null;
 
 
 
@@ -4414,10 +4596,6 @@
 
 
 
-    /* =====================================================
-       TAPPABLE DOTS
-       ===================================================== */
-
     choiceDots.forEach(
       (dot,index) => {
 
@@ -4481,10 +4659,6 @@
 
 
 
-    /* =====================================================
-       MANUAL DRAG / SWIPE INSIDE SLIDE 1
-       ===================================================== */
-
     if (choiceStage) {
 
       choiceStage.addEventListener(
@@ -4496,9 +4670,6 @@
 
           choicePointerStartY =
             event.clientY;
-
-          choicePointerId =
-            event.pointerId;
 
 
           choiceStage.classList.add(
@@ -4520,7 +4691,6 @@
           }
 
           catch (error) {
-            /* No action needed */
           }
 
         }
@@ -4589,8 +4759,6 @@
 
           choicePointerStartY = null;
 
-          choicePointerId = null;
-
 
           choiceStage.classList.remove(
             "dragging"
@@ -4607,8 +4775,6 @@
           choicePointerStartX = null;
 
           choicePointerStartY = null;
-
-          choicePointerId = null;
 
 
           choiceStage.classList.remove(
@@ -4656,10 +4822,6 @@
     }
 
 
-
-    /* =====================================================
-       MAIN SLIDE RENDER
-       ===================================================== */
 
     function render() {
 
@@ -4731,10 +4893,6 @@
 
 
 
-    /* =====================================================
-       NEXT / BACK
-       ===================================================== */
-
     nextButton.addEventListener(
       "click",
       () => {
@@ -4779,15 +4937,6 @@
     );
 
 
-
-    /* =====================================================
-       MAIN-PAGE SWIPE
-
-       IMPORTANT:
-       Swipes that START inside the Slide 1 example
-       carousel are ignored here, because the carousel
-       handles those itself.
-       ===================================================== */
 
     let touchStartX = null;
 
@@ -4898,10 +5047,6 @@
 
 
 
-    /* =====================================================
-       KEYBOARD
-       ===================================================== */
-
     document.addEventListener(
       "keydown",
       event => {
@@ -4964,10 +5109,6 @@
     );
 
 
-
-    /* =====================================================
-       VISIBILITY
-       ===================================================== */
 
     document.addEventListener(
       "visibilitychange",
