@@ -436,17 +436,18 @@
     .choice-stage {
       position: relative;
 
-      flex: 0 0 218px;
-      height: 218px;
-      min-height: 218px;
+      flex: 0 0 137px;
+      height: 137px;
+      min-height: 137px;
 
       display: flex;
       flex-direction: column;
 
       align-items: center;
+      justify-content: center;
 
       padding:
-        8px 12px 9px;
+        8px 12px 21px;
 
       touch-action: pan-y;
 
@@ -467,8 +468,6 @@
 
     .choice-carousel {
       position: relative;
-
-      flex: 0 0 105px;
 
       width: 100%;
       height: 105px;
@@ -707,30 +706,16 @@
 
 
     /* =====================================================
-       SLIDE 1 — YES / NO IMAGE
+       SLIDE 1 — CAROUSEL DOTS
        ===================================================== */
 
-    .choice-bottom {
-      flex: 1 1 auto;
-
-      width: 100%;
-
-      min-height: 0;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 4px;
-
-      padding-top: 3px;
-    }
-
-
     .choice-dots {
-      flex: 0 0 auto;
+      position: absolute;
+
+      left: 50%;
+      bottom: 7px;
+
+      z-index: 10;
 
       display: flex;
 
@@ -739,7 +724,7 @@
 
       gap: 6px;
 
-      min-height: 8px;
+      transform: translateX(-50%);
     }
 
 
@@ -779,84 +764,6 @@
     }
 
 
-    .yes-no-reference {
-      position: relative;
-
-      flex: 1 1 auto;
-
-      width: min(100%, 255px);
-
-      min-height: 0;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-
-      border:
-        1px solid
-        rgba(50,55,75,.055);
-
-      border-radius: 13px;
-
-      background: #ffffff;
-
-      box-shadow:
-        0 7px 18px
-        rgba(48,58,112,.055);
-    }
-
-
-    .yes-no-reference img {
-      display: block;
-
-      width: 100%;
-      height: 100%;
-
-      max-height: 72px;
-
-      object-fit: contain;
-
-      object-position: center;
-
-      animation:
-        yesNoFloat
-        4.6s
-        ease-in-out
-        infinite;
-    }
-
-
-    .yes-no-fallback {
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 18px;
-
-      width: 100%;
-      height: 100%;
-
-      color: var(--text);
-
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-
-    .yes-no-fallback .yes {
-      color: #64ad32;
-    }
-
-
-    .yes-no-fallback .no {
-      color: #b53535;
-    }
-
-
     .choice-swipe-hint {
       position: absolute;
 
@@ -882,6 +789,72 @@
         forwards;
 
       pointer-events: none;
+    }
+
+
+
+    /* =====================================================
+       SLIDE 1 — YES / NO IMAGE OUTSIDE BLUE BOX
+       ===================================================== */
+
+    .yes-no-outside {
+      flex: 0 0 auto;
+
+      width: 100%;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 8px;
+    }
+
+
+    .yes-no-outside img {
+      display: block;
+
+      width: min(235px, 66%);
+      height: 72px;
+
+      object-fit: contain;
+      object-position: center;
+
+      border-radius: 10px;
+
+      animation:
+        yesNoFloat
+        4.6s
+        ease-in-out
+        infinite;
+    }
+
+
+    .yes-no-fallback {
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 18px;
+
+      width: 220px;
+      height: 65px;
+
+      color: var(--text);
+
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+
+    .yes-no-fallback .yes {
+      color: #64ad32;
+    }
+
+
+    .yes-no-fallback .no {
+      color: #b53535;
     }
 
 
@@ -1656,14 +1629,14 @@
       display: grid;
 
       grid-template-columns:
-        1.1fr .9fr;
+        1.18fr .82fr;
 
       align-items: center;
 
       gap: 10px;
 
       padding:
-        8px 12px;
+        7px 11px;
     }
 
 
@@ -1671,6 +1644,7 @@
       position: relative;
 
       width: 100%;
+      height: 100%;
 
       display: flex;
 
@@ -1679,13 +1653,17 @@
     }
 
 
+    /*
+      Larger soft frame behind the image.
+    */
+
     .energy-ring {
       position: absolute;
 
-      width: 148px;
-      height: 100px;
+      width: 180px;
+      height: 116px;
 
-      border-radius: 18px;
+      border-radius: 19px;
 
       border:
         2px solid
@@ -1702,24 +1680,29 @@
     }
 
 
+    /*
+      Larger photo while remaining inside
+      the orange visual area.
+    */
+
     .energy-photo {
       position: relative;
 
       z-index: 2;
 
-      width: 138px;
-      height: 90px;
+      width: 169px;
+      height: 106px;
 
       max-width: 100%;
 
       object-fit: cover;
       object-position: center 43%;
 
-      border-radius: 14px;
+      border-radius: 15px;
 
       box-shadow:
-        0 10px 24px
-        rgba(51,40,32,.12);
+        0 12px 26px
+        rgba(51,40,32,.13);
 
       animation:
         photoBreathe
@@ -1734,8 +1717,8 @@
 
       z-index: 2;
 
-      width: 138px;
-      height: 90px;
+      width: 169px;
+      height: 106px;
 
       max-width: 100%;
 
@@ -1744,7 +1727,7 @@
       align-items: center;
       justify-content: center;
 
-      border-radius: 14px;
+      border-radius: 15px;
 
       background:
         linear-gradient(
@@ -1753,7 +1736,7 @@
           #da9a71
         );
 
-      font-size: 31px;
+      font-size: 34px;
     }
 
 
@@ -1798,11 +1781,15 @@
     }
 
 
+    /*
+      Replaces "High energy ≠ loud".
+    */
+
     .energy-note {
       position: absolute;
 
       left: 50%;
-      bottom: 7px;
+      bottom: 6px;
 
       transform:
         translateX(-50%);
@@ -1810,17 +1797,23 @@
       z-index: 7;
 
       padding:
-        5px 9px;
+        5px 10px;
 
       border-radius: 999px;
 
       background:
-        rgba(255,255,255,.89);
+        rgba(255,255,255,.91);
+
+      box-shadow:
+        0 4px 12px
+        rgba(67,53,43,.045);
 
       color: #5d616a;
 
       font-size: 9.5px;
       font-weight: 760;
+
+      letter-spacing: .01em;
 
       white-space: nowrap;
     }
@@ -1860,6 +1853,7 @@
       min-height: 68px;
 
       display: flex;
+
       flex-direction: column;
 
       align-items: center;
@@ -1867,8 +1861,7 @@
 
       gap: 4px;
 
-      padding:
-        7px;
+      padding: 7px;
 
       border-radius: 15px;
 
@@ -2083,7 +2076,6 @@
     }
 
 
-
     @keyframes optionBreathe {
 
       0%,
@@ -2110,6 +2102,8 @@
     }
 
 
+
+    /* ---------- SOCCER ---------- */
 
     @keyframes soccerKickFoot {
 
@@ -2222,6 +2216,9 @@
     }
 
 
+
+    /* ---------- BASKETBALL ---------- */
+
     @keyframes realisticBasketBounce {
 
       0%,
@@ -2289,6 +2286,9 @@
 
     }
 
+
+
+    /* ---------- TRACK ---------- */
 
     @keyframes runnerTravel {
 
@@ -2375,6 +2375,9 @@
     }
 
 
+
+    /* ---------- BREAK ---------- */
+
     @keyframes bottleLift {
 
       0%,
@@ -2447,6 +2450,9 @@
     }
 
 
+
+    /* ---------- YES / NO ---------- */
+
     @keyframes yesNoFloat {
 
       0%,
@@ -2458,12 +2464,15 @@
 
       50% {
         transform:
-          translateY(-1px)
+          translateY(-2px)
           scale(1.012);
       }
 
     }
 
+
+
+    /* ---------- SWIPE HINT ---------- */
 
     @keyframes swipeHint {
 
@@ -2497,6 +2506,9 @@
 
     }
 
+
+
+    /* ---------- OTHER SLIDES ---------- */
 
     @keyframes actionFocus {
 
@@ -2571,7 +2583,7 @@
       }
 
       50% {
-        transform: scale(1.035);
+        transform: scale(1.025);
 
         opacity: 1;
       }
@@ -2587,7 +2599,7 @@
       }
 
       50% {
-        transform: scale(1.022);
+        transform: scale(1.018);
       }
 
     }
@@ -2689,18 +2701,21 @@
       }
 
 
-      .e-visual.choice-stage {
-        flex-basis: 205px;
 
-        height: 205px;
-        min-height: 205px;
+      /* ---------- SLIDE 1 ---------- */
+
+      .e-visual.choice-stage {
+        flex-basis: 132px;
+
+        height: 132px;
+        min-height: 132px;
+
+        margin-top: 10px;
       }
 
 
       .choice-carousel {
-        flex-basis: 100px;
-
-        height: 100px;
+        height: 101px;
       }
 
 
@@ -2735,30 +2750,35 @@
       }
 
 
-      .yes-no-reference {
-        width: min(100%, 225px);
+      .yes-no-outside {
+        margin-top: 7px;
       }
 
 
-      .yes-no-reference img {
-        max-height: 64px;
+      .yes-no-outside img {
+        width: min(225px, 68%);
+
+        height: 68px;
       }
 
+
+
+      /* ---------- SLIDE 5 ---------- */
 
       .energy-stage {
         grid-template-columns:
-          1.12fr .88fr;
+          1.18fr .82fr;
 
-        gap: 8px;
+        gap: 7px;
 
         padding:
-          8px 10px;
+          7px 8px;
       }
 
 
       .energy-ring {
-        width: 132px;
-        height: 91px;
+        width: 153px;
+        height: 101px;
 
         border-radius: 17px;
       }
@@ -2766,10 +2786,33 @@
 
       .energy-photo,
       .energy-fallback {
-        width: 124px;
-        height: 83px;
+        width: 144px;
+        height: 93px;
 
         border-radius: 13px;
+      }
+
+
+      .energy-actions {
+        gap: 5px;
+      }
+
+
+      .energy-pill {
+        padding:
+          6px 7px;
+
+        font-size: 9.5px;
+      }
+
+
+      .energy-note {
+        bottom: 5px;
+
+        padding:
+          4px 8px;
+
+        font-size: 8.7px;
       }
 
     }
@@ -2839,21 +2882,22 @@
       }
 
 
-      .e-visual.choice-stage {
-        flex-basis: 175px;
 
-        height: 175px;
-        min-height: 175px;
+      /* ---------- SLIDE 1 ---------- */
+
+      .e-visual.choice-stage {
+        flex-basis: 103px;
+
+        height: 103px;
+        min-height: 103px;
 
         padding:
-          5px 8px 6px;
+          5px 8px 17px;
       }
 
 
       .choice-carousel {
-        flex-basis: 84px;
-
-        height: 84px;
+        height: 81px;
       }
 
 
@@ -2861,12 +2905,12 @@
         grid-template-columns:
           58px minmax(0,1fr);
 
-        min-height: 78px;
+        min-height: 76px;
 
         gap: 6px;
 
         padding:
-          6px;
+          5px 6px;
       }
 
 
@@ -2904,27 +2948,8 @@
       }
 
 
-      .choice-bottom {
-        gap: 2px;
-
-        padding-top: 2px;
-      }
-
-
-      .yes-no-reference {
-        width: min(100%, 185px);
-
-        border-radius: 10px;
-      }
-
-
-      .yes-no-reference img {
-        max-height: 51px;
-      }
-
-
       .choice-dots {
-        min-height: 6px;
+        bottom: 5px;
       }
 
 
@@ -2939,20 +2964,64 @@
       }
 
 
-      .energy-ring {
-        width: 112px;
-        height: 78px;
+      .yes-no-outside {
+        margin-top: 4px;
+      }
 
-        border-radius: 15px;
+
+      .yes-no-outside img {
+        width: min(185px, 62%);
+
+        height: 52px;
+      }
+
+
+
+      /* ---------- SLIDE 5 ---------- */
+
+      .energy-stage {
+        grid-template-columns:
+          1.18fr .82fr;
+
+        padding:
+          5px 7px;
+
+        gap: 6px;
+      }
+
+
+      .energy-ring {
+        width: 126px;
+        height: 82px;
+
+        border-radius: 14px;
       }
 
 
       .energy-photo,
       .energy-fallback {
-        width: 105px;
-        height: 71px;
+        width: 119px;
+        height: 76px;
 
         border-radius: 11px;
+      }
+
+
+      .energy-pill {
+        padding:
+          5px 6px;
+
+        font-size: 8.7px;
+      }
+
+
+      .energy-note {
+        bottom: 4px;
+
+        padding:
+          3px 7px;
+
+        font-size: 7.8px;
       }
 
 
@@ -2992,7 +3061,7 @@
       .break-bottle-group,
       .bottle-water,
       .chair-group,
-      .yes-no-reference img,
+      .yes-no-outside img,
       .action-demo-card,
       .signal-row,
       .time-dot,
@@ -3018,6 +3087,10 @@
 
   <div class="e-app">
 
+
+    <!-- =================================================
+         TOP
+         ================================================= -->
 
     <header class="e-topbar">
 
@@ -3045,6 +3118,10 @@
 
 
 
+    <!-- =================================================
+         PROGRESS
+         ================================================= -->
+
     <div class="e-progress">
 
       <div class="e-progress-piece active"></div>
@@ -3057,6 +3134,10 @@
     </div>
 
 
+
+    <!-- =================================================
+         SLIDES
+         ================================================= -->
 
     <main class="e-stage">
 
@@ -3099,6 +3180,8 @@
 
 
 
+          <!-- BLUE SPORTS EXAMPLE BOX -->
+
           <div
             class="e-visual visual-blue choice-stage"
             id="choiceStage"
@@ -3134,6 +3217,7 @@
                         ry="5"
                       ></ellipse>
 
+
                       <ellipse
                         class="soccer-ground soccer-shadow"
                         cx="49"
@@ -3141,6 +3225,7 @@
                         rx="13"
                         ry="3.2"
                       ></ellipse>
+
 
                       <g class="soccer-ball-group">
 
@@ -3222,6 +3307,7 @@
                   </div>
 
 
+
                   <div class="choice-copy">
 
                     <div class="choice-category">
@@ -3262,6 +3348,7 @@
 
                 <div class="choice-panel">
 
+
                   <div class="choice-object">
 
                     <svg
@@ -3278,6 +3365,7 @@
                         y2="65"
                       ></line>
 
+
                       <ellipse
                         class="basket-shadow"
                         cx="48"
@@ -3285,6 +3373,7 @@
                         rx="17"
                         ry="4"
                       ></ellipse>
+
 
                       <g class="basket-ball-group">
 
@@ -3314,6 +3403,7 @@
                     </svg>
 
                   </div>
+
 
 
                   <div class="choice-copy">
@@ -3356,6 +3446,7 @@
 
                 <div class="choice-panel">
 
+
                   <div class="choice-object">
 
                     <svg
@@ -3373,6 +3464,7 @@
                         rx="10"
                       ></rect>
 
+
                       <path
                         class="track-ground"
                         d="
@@ -3384,6 +3476,7 @@
                         "
                       ></path>
 
+
                       <line
                         class="track-line"
                         x1="8"
@@ -3391,6 +3484,7 @@
                         x2="89"
                         y2="49"
                       ></line>
+
 
                       <line
                         class="track-line"
@@ -3410,6 +3504,7 @@
                           r="5.3"
                         ></circle>
 
+
                         <line
                           class="runner-shirt"
                           x1="28"
@@ -3417,6 +3512,7 @@
                           x2="28"
                           y2="42"
                         ></line>
+
 
                         <line
                           class="runner-arm runner-arm-a"
@@ -3426,6 +3522,7 @@
                           y2="37"
                         ></line>
 
+
                         <line
                           class="runner-arm runner-arm-b"
                           x1="28"
@@ -3434,6 +3531,7 @@
                           y2="36"
                         ></line>
 
+
                         <line
                           class="runner-limb runner-leg-a"
                           x1="28"
@@ -3441,6 +3539,7 @@
                           x2="17"
                           y2="55"
                         ></line>
+
 
                         <line
                           class="runner-limb runner-leg-b"
@@ -3455,6 +3554,7 @@
                     </svg>
 
                   </div>
+
 
 
                   <div class="choice-copy">
@@ -3497,6 +3597,7 @@
 
                 <div class="choice-panel">
 
+
                   <div class="choice-object">
 
                     <svg
@@ -3513,6 +3614,7 @@
                         y2="66"
                       ></line>
 
+
                       <g class="chair-group">
 
                         <rect
@@ -3524,6 +3626,7 @@
                           rx="5"
                         ></rect>
 
+
                         <rect
                           class="chair-seat"
                           x="17"
@@ -3533,6 +3636,7 @@
                           rx="3"
                         ></rect>
 
+
                         <line
                           class="chair-leg"
                           x1="21"
@@ -3540,6 +3644,7 @@
                           x2="19"
                           y2="65"
                         ></line>
+
 
                         <line
                           class="chair-leg"
@@ -3563,6 +3668,7 @@
                           rx="6"
                         ></rect>
 
+
                         <rect
                           class="bottle-cap"
                           x="64"
@@ -3571,6 +3677,7 @@
                           height="6"
                           rx="2"
                         ></rect>
+
 
                         <rect
                           class="bottle-water"
@@ -3586,6 +3693,7 @@
                     </svg>
 
                   </div>
+
 
 
                   <div class="choice-copy">
@@ -3622,68 +3730,34 @@
 
 
 
-            <div class="choice-bottom">
+            <!-- TAPPABLE DOTS -->
 
+            <div class="choice-dots">
 
-              <div class="choice-dots">
+              <button
+                class="choice-dot active"
+                data-choice-dot="0"
+                aria-label="Show soccer example"
+                aria-current="true"
+              ></button>
 
-                <button
-                  class="choice-dot active"
-                  data-choice-dot="0"
-                  aria-label="Show soccer example"
-                  aria-current="true"
-                ></button>
+              <button
+                class="choice-dot"
+                data-choice-dot="1"
+                aria-label="Show basketball example"
+              ></button>
 
-                <button
-                  class="choice-dot"
-                  data-choice-dot="1"
-                  aria-label="Show basketball example"
-                ></button>
+              <button
+                class="choice-dot"
+                data-choice-dot="2"
+                aria-label="Show track example"
+              ></button>
 
-                <button
-                  class="choice-dot"
-                  data-choice-dot="2"
-                  aria-label="Show track example"
-                ></button>
-
-                <button
-                  class="choice-dot"
-                  data-choice-dot="3"
-                  aria-label="Show break example"
-                ></button>
-
-              </div>
-
-
-              <div class="yes-no-reference">
-
-                <img
-                  src="Yes and No.jpg"
-                  alt="Yes and No shown on opposite sides of a balance"
-                  onerror="
-                    this.style.display='none';
-                    this.nextElementSibling.style.display='flex';
-                  "
-                >
-
-                <div class="yes-no-fallback">
-
-                  <span class="yes">
-                    YES
-                  </span>
-
-                  <span>
-                    or
-                  </span>
-
-                  <span class="no">
-                    NO
-                  </span>
-
-                </div>
-
-              </div>
-
+              <button
+                class="choice-dot"
+                data-choice-dot="3"
+                aria-label="Show break example"
+              ></button>
 
             </div>
 
@@ -3692,6 +3766,39 @@
               swipe ↔
             </div>
 
+
+          </div>
+
+
+
+          <!-- YES / NO IMAGE OUTSIDE THE BLUE BOX -->
+
+          <div class="yes-no-outside">
+
+            <img
+              src="Yes and No.jpg"
+              alt="Yes and No shown on opposite sides of a balance"
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
+            >
+
+            <div class="yes-no-fallback">
+
+              <span class="yes">
+                YES
+              </span>
+
+              <span>
+                or
+              </span>
+
+              <span class="no">
+                NO
+              </span>
+
+            </div>
 
           </div>
 
@@ -3738,6 +3845,7 @@
           </div>
 
 
+
           <div class="e-visual visual-green action-demo">
 
 
@@ -3758,6 +3866,7 @@
             </div>
 
 
+
             <div class="action-demo-card">
 
               <div class="mini-bottle"></div>
@@ -3771,6 +3880,7 @@
               </small>
 
             </div>
+
 
 
             <div class="action-demo-card">
@@ -3833,6 +3943,7 @@
           </div>
 
 
+
           <div class="e-visual visual-purple signal-list">
 
 
@@ -3853,6 +3964,7 @@
             </div>
 
 
+
             <div class="signal-row">
 
               <div class="signal-word">
@@ -3868,6 +3980,7 @@
               </div>
 
             </div>
+
 
 
             <div class="signal-row">
@@ -3933,6 +4046,7 @@
           </div>
 
 
+
           <div class="e-visual visual-orange timeline">
 
 
@@ -3952,6 +4066,7 @@
               </div>
 
 
+
               <div class="time-step">
 
                 <div class="time-dot">
@@ -3965,6 +4080,7 @@
               </div>
 
 
+
               <div class="time-step">
 
                 <div class="time-dot">
@@ -3976,6 +4092,7 @@
                 </span>
 
               </div>
+
 
 
               <div class="time-step">
@@ -4045,6 +4162,7 @@
           </div>
 
 
+
           <div class="e-visual visual-warm energy-stage">
 
 
@@ -4072,6 +4190,7 @@
             </div>
 
 
+
             <div class="energy-actions">
 
               <div class="energy-pill">
@@ -4090,7 +4209,7 @@
 
 
             <div class="energy-note">
-              High energy ≠ loud
+              Warm. Positive. Present.
             </div>
 
 
@@ -4141,6 +4260,7 @@
           </div>
 
 
+
           <div class="e-visual visual-sky clue-stage">
 
 
@@ -4165,6 +4285,7 @@
               </div>
 
 
+
               <div class="clue-card">
 
                 <div class="jump-symbol"></div>
@@ -4179,6 +4300,7 @@
               <div class="clue-arrow">
                 →
               </div>
+
 
 
               <div class="clue-card">
@@ -4208,6 +4330,10 @@
     </main>
 
 
+
+    <!-- =================================================
+         CONTROLS
+         ================================================= -->
 
     <div class="e-controls">
 
@@ -4240,11 +4366,20 @@
 
   <script>
 
+    /* =====================================================
+       GLOBAL
+       ===================================================== */
+
     const reducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
+
+
+    /* =====================================================
+       MAIN SIX-SLIDE STEPPER
+       ===================================================== */
 
     const slides =
       Array.from(
@@ -4283,6 +4418,10 @@
     let current = 0;
 
 
+
+    /* =====================================================
+       SLIDE 1 EXAMPLE CAROUSEL
+       ===================================================== */
 
     const choiceStage =
       document.getElementById(
@@ -4596,6 +4735,10 @@
 
 
 
+    /* =====================================================
+       TAPPABLE DOTS
+       ===================================================== */
+
     choiceDots.forEach(
       (dot,index) => {
 
@@ -4658,6 +4801,10 @@
     );
 
 
+
+    /* =====================================================
+       MANUAL DRAG / SWIPE INSIDE SLIDE 1
+       ===================================================== */
 
     if (choiceStage) {
 
@@ -4823,6 +4970,10 @@
 
 
 
+    /* =====================================================
+       MAIN SLIDE RENDER
+       ===================================================== */
+
     function render() {
 
       slides.forEach(
@@ -4893,6 +5044,10 @@
 
 
 
+    /* =====================================================
+       NEXT / BACK
+       ===================================================== */
+
     nextButton.addEventListener(
       "click",
       () => {
@@ -4937,6 +5092,10 @@
     );
 
 
+
+    /* =====================================================
+       MAIN PAGE SWIPE
+       ===================================================== */
 
     let touchStartX = null;
 
@@ -5047,6 +5206,10 @@
 
 
 
+    /* =====================================================
+       KEYBOARD
+       ===================================================== */
+
     document.addEventListener(
       "keydown",
       event => {
@@ -5109,6 +5272,10 @@
     );
 
 
+
+    /* =====================================================
+       VISIBILITY
+       ===================================================== */
 
     document.addEventListener(
       "visibilitychange",
