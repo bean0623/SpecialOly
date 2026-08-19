@@ -561,8 +561,6 @@
 
 
 
-    /* ---------- CAROUSEL ---------- */
-
     .choice-carousel {
 
       position: relative;
@@ -607,8 +605,6 @@
     }
 
 
-
-    /* ---------- SLIDING BRICK ---------- */
 
     .choice-panel {
 
@@ -682,8 +678,6 @@
 
 
 
-    /* ---------- OBJECT AREA ---------- */
-
     .choice-object {
 
       position: relative;
@@ -726,8 +720,6 @@
     }
 
 
-
-    /* ---------- TEXT ---------- */
 
     .choice-copy {
 
@@ -942,7 +934,7 @@
 
 
     /* =====================================================
-       SLIDE 1 — YES / NO IMAGE
+       SLIDE 1 — YES / NO
        ===================================================== */
 
     .yes-no-outside {
@@ -963,18 +955,19 @@
 
 
     /*
-      Sliding sports brick max width = 338px.
-
-      This image frame maxes out at 330px,
-      so visually it is just slightly smaller.
+      Keep the entire visual contained inside
+      a clear white box instead of letting
+      the YES and NO spill out.
     */
 
     .yes-no-frame {
 
       position: relative;
 
-      width: min(330px, 96%);
-      height: 118px;
+      width:
+        min(295px, 84%);
+
+      height: 102px;
 
       display: flex;
 
@@ -983,9 +976,17 @@
 
       overflow: hidden;
 
+      border:
+        1px solid
+        rgba(29,29,31,.055);
+
       border-radius: 16px;
 
-      background: transparent;
+      background: #ffffff;
+
+      box-shadow:
+        0 8px 22px
+        rgba(42,46,68,.055);
 
       animation:
         yesNoFloat
@@ -998,11 +999,11 @@
 
 
     /*
-      The original image contains a lot of white space.
+      Only a mild zoom.
 
-      The stronger scale here makes the actual YES / NO
-      artwork much larger instead of only enlarging
-      the invisible white margins around it.
+      This compensates for the white padding
+      built into the original JPG without
+      cropping the YES or NO letters.
     */
 
     .yes-no-frame img {
@@ -1012,13 +1013,12 @@
       width: 100%;
       height: 100%;
 
-      object-fit: cover;
+      object-fit: contain;
 
-      object-position:
-        center 54%;
+      object-position: center;
 
       transform:
-        scale(1.62);
+        scale(1.22);
 
       transform-origin:
         center center;
@@ -1041,7 +1041,7 @@
 
       color: var(--text);
 
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 820;
 
     }
@@ -1065,12 +1065,13 @@
 
 
     /* =====================================================
-       SOCCER ANIMATION
+       SOCCER
        ===================================================== */
 
     .soccer-ground {
 
-      fill: rgba(61,72,101,.11);
+      fill:
+        rgba(61,72,101,.11);
 
     }
 
@@ -1142,8 +1143,7 @@
     .choice-scene.active
     .soccer-foot {
 
-      transform-box:
-        view-box;
+      transform-box: view-box;
 
       transform-origin:
         24px 51px;
@@ -1161,8 +1161,7 @@
     .choice-scene.active
     .soccer-ball-group {
 
-      transform-box:
-        view-box;
+      transform-box: view-box;
 
       transform-origin:
         50px 44px;
@@ -1180,11 +1179,9 @@
     .choice-scene.active
     .soccer-shadow {
 
-      transform-box:
-        fill-box;
+      transform-box: fill-box;
 
-      transform-origin:
-        center;
+      transform-origin: center;
 
       animation:
         soccerShadowMove
@@ -1197,7 +1194,7 @@
 
 
     /* =====================================================
-       BASKETBALL ANIMATION
+       BASKETBALL
        ===================================================== */
 
     .basket-floor {
@@ -1249,8 +1246,7 @@
     .choice-scene.active
     .basket-ball-group {
 
-      transform-box:
-        view-box;
+      transform-box: view-box;
 
       transform-origin:
         48px 37px;
@@ -1268,11 +1264,9 @@
     .choice-scene.active
     .basket-shadow {
 
-      transform-box:
-        fill-box;
+      transform-box: fill-box;
 
-      transform-origin:
-        center;
+      transform-origin: center;
 
       animation:
         realisticBasketShadow
@@ -1285,7 +1279,7 @@
 
 
     /* =====================================================
-       TRACK ANIMATION
+       TRACK
        ===================================================== */
 
     .track-sky {
@@ -1362,8 +1356,7 @@
     .choice-scene.active
     .runner-whole {
 
-      transform-box:
-        view-box;
+      transform-box: view-box;
 
       animation:
         runnerTravel
@@ -1378,8 +1371,7 @@
     .choice-scene.active
     .runner-arm-a {
 
-      transform-box:
-        fill-box;
+      transform-box: fill-box;
 
       transform-origin:
         top center;
@@ -1397,8 +1389,7 @@
     .choice-scene.active
     .runner-arm-b {
 
-      transform-box:
-        fill-box;
+      transform-box: fill-box;
 
       transform-origin:
         top center;
@@ -1416,8 +1407,7 @@
     .choice-scene.active
     .runner-leg-a {
 
-      transform-box:
-        fill-box;
+      transform-box: fill-box;
 
       transform-origin:
         top center;
@@ -1435,8 +1425,7 @@
     .choice-scene.active
     .runner-leg-b {
 
-      transform-box:
-        fill-box;
+      transform-box: fill-box;
 
       transform-origin:
         top center;
@@ -1452,7 +1441,7 @@
 
 
     /* =====================================================
-       BREAK ANIMATION
+       BREAK
        ===================================================== */
 
     .break-floor {
@@ -1524,8 +1513,7 @@
     .choice-scene.active
     .break-bottle-group {
 
-      transform-box:
-        view-box;
+      transform-box: view-box;
 
       transform-origin:
         65px 45px;
@@ -1556,8 +1544,7 @@
     .choice-scene.active
     .chair-group {
 
-      transform-box:
-        view-box;
+      transform-box: view-box;
 
       transform-origin:
         33px 57px;
@@ -1573,7 +1560,7 @@
 
 
     /* =====================================================
-       SLIDE 2 — SAY IT + SHOW IT
+       SLIDE 2
        ===================================================== */
 
     .action-demo {
@@ -1587,8 +1574,7 @@
 
       gap: 7px;
 
-      padding:
-        10px;
+      padding: 10px;
 
     }
 
@@ -1785,7 +1771,7 @@
 
 
     /* =====================================================
-       SLIDE 3 — SAME GESTURE
+       SLIDE 3
        ===================================================== */
 
     .signal-list {
@@ -1882,7 +1868,7 @@
 
 
     /* =====================================================
-       SLIDE 4 — TIME TO RESPOND
+       SLIDE 4
        ===================================================== */
 
     .timeline {
@@ -2044,7 +2030,7 @@
 
 
     /* =====================================================
-       SLIDE 5 — ENERGY
+       SLIDE 5
        ===================================================== */
 
     .energy-stage {
@@ -2226,7 +2212,7 @@
 
 
     /* =====================================================
-       SLIDE 6 — READ THE MOMENT
+       SLIDE 6
        ===================================================== */
 
     .clue-stage {
@@ -2238,8 +2224,7 @@
       align-items: center;
       justify-content: center;
 
-      padding:
-        11px;
+      padding: 11px;
 
     }
 
@@ -2273,8 +2258,7 @@
 
       gap: 4px;
 
-      padding:
-        7px;
+      padding: 7px;
 
       border-radius: 15px;
 
@@ -2527,7 +2511,6 @@
 
       }
 
-
       to {
 
         opacity: 1;
@@ -2549,31 +2532,18 @@
         transform:
           translateY(0);
 
-        box-shadow:
-          inset 0 1px 0
-          rgba(255,255,255,.95);
-
       }
-
 
       50% {
 
         transform:
           translateY(-1.5px);
 
-        box-shadow:
-          inset 0 1px 0
-          rgba(255,255,255,1),
-          0 7px 14px
-          rgba(92,111,255,.065);
-
       }
 
     }
 
 
-
-    /* ---------- SOCCER ---------- */
 
     @keyframes soccerKickFoot {
 
@@ -2586,7 +2556,6 @@
 
       }
 
-
       20% {
 
         transform:
@@ -2595,7 +2564,6 @@
 
       }
 
-
       29% {
 
         transform:
@@ -2603,7 +2571,6 @@
           rotate(14deg);
 
       }
-
 
       36%,
       100% {
@@ -2630,7 +2597,6 @@
 
       }
 
-
       38% {
 
         transform:
@@ -2639,7 +2605,6 @@
           rotate(72deg);
 
       }
-
 
       67% {
 
@@ -2650,7 +2615,6 @@
 
       }
 
-
       86% {
 
         transform:
@@ -2659,7 +2623,6 @@
           rotate(330deg);
 
       }
-
 
       100% {
 
@@ -2687,7 +2650,6 @@
 
       }
 
-
       38% {
 
         transform:
@@ -2697,7 +2659,6 @@
         opacity: .32;
 
       }
-
 
       67%,
       86% {
@@ -2709,7 +2670,6 @@
         opacity: .55;
 
       }
-
 
       100% {
 
@@ -2725,8 +2685,6 @@
 
 
 
-    /* ---------- BASKETBALL ---------- */
-
     @keyframes realisticBasketBounce {
 
       0%,
@@ -2739,7 +2697,6 @@
 
       }
 
-
       7% {
 
         transform:
@@ -2748,7 +2705,6 @@
           scaleY(1.04);
 
       }
-
 
       48% {
 
@@ -2759,7 +2715,6 @@
 
       }
 
-
       88% {
 
         transform:
@@ -2768,7 +2723,6 @@
           scaleY(1.02);
 
       }
-
 
       95% {
 
@@ -2795,7 +2749,6 @@
 
       }
 
-
       48% {
 
         transform:
@@ -2804,7 +2757,6 @@
         opacity: .25;
 
       }
-
 
       95% {
 
@@ -2819,8 +2771,6 @@
 
 
 
-    /* ---------- TRACK ---------- */
-
     @keyframes runnerTravel {
 
       0% {
@@ -2831,7 +2781,6 @@
 
       }
 
-
       45% {
 
         transform:
@@ -2840,7 +2789,6 @@
 
       }
 
-
       53% {
 
         transform:
@@ -2848,7 +2796,6 @@
           translateY(0);
 
       }
-
 
       100% {
 
@@ -2872,7 +2819,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -2893,7 +2839,6 @@
           rotate(-30deg);
 
       }
-
 
       50% {
 
@@ -2916,7 +2861,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -2938,7 +2882,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -2949,8 +2892,6 @@
     }
 
 
-
-    /* ---------- BREAK ---------- */
 
     @keyframes bottleLift {
 
@@ -2964,7 +2905,6 @@
 
       }
 
-
       45% {
 
         transform:
@@ -2973,7 +2913,6 @@
 
       }
 
-
       62% {
 
         transform:
@@ -2981,7 +2920,6 @@
           rotate(3deg);
 
       }
-
 
       78% {
 
@@ -3007,7 +2945,6 @@
 
       }
 
-
       45% {
 
         transform:
@@ -3015,7 +2952,6 @@
           rotate(3deg);
 
       }
-
 
       62% {
 
@@ -3039,7 +2975,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -3051,33 +2986,26 @@
 
 
 
-    /* ---------- YES / NO ---------- */
-
     @keyframes yesNoFloat {
 
       0%,
       100% {
 
         transform:
-          translateY(0)
-          scale(1);
+          translateY(0);
 
       }
-
 
       50% {
 
         transform:
-          translateY(-2px)
-          scale(1.01);
+          translateY(-2px);
 
       }
 
     }
 
 
-
-    /* ---------- SWIPE HINT ---------- */
 
     @keyframes swipeHint {
 
@@ -3090,13 +3018,11 @@
 
       }
 
-
       18% {
 
         opacity: .75;
 
       }
-
 
       38% {
 
@@ -3107,7 +3033,6 @@
 
       }
 
-
       58% {
 
         opacity: .75;
@@ -3117,13 +3042,11 @@
 
       }
 
-
       82% {
 
         opacity: .55;
 
       }
-
 
       100% {
 
@@ -3138,8 +3061,6 @@
 
 
 
-    /* ---------- OTHER SLIDES ---------- */
-
     @keyframes actionFocus {
 
       0%,
@@ -3151,7 +3072,6 @@
         box-shadow: none;
 
       }
-
 
       20%,
       42% {
@@ -3182,7 +3102,6 @@
 
       }
 
-
       25% {
 
         transform:
@@ -3209,7 +3128,6 @@
         background: white;
 
       }
-
 
       18%,
       38% {
@@ -3238,7 +3156,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -3262,7 +3179,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -3283,7 +3199,6 @@
           translateY(0);
 
       }
-
 
       50% {
 
@@ -3307,7 +3222,6 @@
         box-shadow: none;
 
       }
-
 
       17%,
       35% {
@@ -3336,7 +3250,6 @@
 
       }
 
-
       50% {
 
         transform:
@@ -3354,6 +3267,7 @@
 
     @media
     (max-width: 600px) {
+
 
       .e-card {
 
@@ -3473,6 +3387,11 @@
 
 
 
+      /*
+        Smaller than the sliding white card.
+        The full YES / NO artwork remains visible.
+      */
+
       .yes-no-outside {
 
         margin-top: 7px;
@@ -3481,16 +3400,14 @@
 
 
 
-      /*
-        Nearly the width of the sliding brick.
-      */
-
       .yes-no-frame {
 
         width:
-          min(330px, 96%);
+          min(285px, 82%);
 
-        height: 118px;
+        height: 100px;
+
+        border-radius: 15px;
 
       }
 
@@ -3498,8 +3415,10 @@
 
       .yes-no-frame img {
 
+        object-fit: contain;
+
         transform:
-          scale(1.62);
+          scale(1.22);
 
       }
 
@@ -3561,6 +3480,7 @@
 
       }
 
+
     }
 
 
@@ -3573,6 +3493,7 @@
     (max-height: 720px)
     and
     (max-width: 600px) {
+
 
       .e-topbar {
 
@@ -3651,8 +3572,6 @@
       }
 
 
-
-      /* ---------- SLIDE 1 ---------- */
 
       .e-visual.choice-stage {
 
@@ -3777,9 +3696,9 @@
       .yes-no-frame {
 
         width:
-          min(300px, 92%);
+          min(245px, 78%);
 
-        height: 96px;
+        height: 82px;
 
       }
 
@@ -3788,13 +3707,11 @@
       .yes-no-frame img {
 
         transform:
-          scale(1.58);
+          scale(1.18);
 
       }
 
 
-
-      /* ---------- SLIDE 5 ---------- */
 
       .energy-stage {
 
@@ -3859,6 +3776,7 @@
 
       }
 
+
     }
 
 
@@ -3869,6 +3787,7 @@
 
     @media
     (prefers-reduced-motion: reduce) {
+
 
       .e-slide,
       .choice-option,
@@ -3901,7 +3820,9 @@
 
       }
 
+
     }
+
 
   </style>
 
@@ -3915,10 +3836,6 @@
   <div class="e-app">
 
 
-
-    <!-- =================================================
-         TOP BAR
-         ================================================= -->
 
     <header class="e-topbar">
 
@@ -3948,10 +3865,6 @@
 
 
 
-    <!-- =================================================
-         PROGRESS
-         ================================================= -->
-
     <div class="e-progress">
 
 
@@ -3972,16 +3885,12 @@
 
 
 
-    <!-- =================================================
-         SLIDES
-         ================================================= -->
-
     <main class="e-stage">
 
 
 
       <!-- =================================================
-           01 — SIMPLE QUESTIONS
+           SLIDE 1
            ================================================= -->
 
       <section class="e-slide active">
@@ -4010,19 +3919,18 @@
 
           <div class="e-try">
 
+
             <span class="e-try-label">
               TRY THIS
             </span>
 
+
             Give two clear options for the athlete to choose.
+
 
           </div>
 
 
-
-          <!-- =================================================
-               SLIDING SPORTS EXAMPLES
-               ================================================= -->
 
           <div
             class="e-visual visual-blue choice-stage"
@@ -4034,9 +3942,7 @@
 
 
 
-              <!-- =============================================
-                   SOCCER
-                   ============================================= -->
+              <!-- SOCCER -->
 
               <div
                 class="choice-scene active"
@@ -4219,9 +4125,7 @@
 
 
 
-              <!-- =============================================
-                   BASKETBALL
-                   ============================================= -->
+              <!-- BASKETBALL -->
 
               <div
                 class="choice-scene"
@@ -4338,9 +4242,7 @@
 
 
 
-              <!-- =============================================
-                   TRACK
-                   ============================================= -->
+              <!-- TRACK -->
 
               <div
                 class="choice-scene"
@@ -4506,9 +4408,7 @@
 
 
 
-              <!-- =============================================
-                   BREAK
-                   ============================================= -->
+              <!-- BREAK -->
 
               <div
                 class="choice-scene"
@@ -4667,10 +4567,6 @@
 
 
 
-            <!-- =================================================
-                 DOTS
-                 ================================================= -->
-
             <div class="choice-dots">
 
 
@@ -4716,9 +4612,7 @@
 
 
 
-          <!-- =================================================
-               LARGE YES / NO IMAGE
-               ================================================= -->
+          <!-- YES / NO WHITE BOX -->
 
           <div class="yes-no-outside">
 
@@ -4771,7 +4665,7 @@
 
 
       <!-- =================================================
-           02 — WORDS + ACTIONS
+           SLIDE 2
            ================================================= -->
 
       <section class="e-slide">
@@ -4888,7 +4782,7 @@
 
 
       <!-- =================================================
-           03 — SAME GESTURE
+           SLIDE 3
            ================================================= -->
 
       <section class="e-slide">
@@ -5009,7 +4903,7 @@
 
 
       <!-- =================================================
-           04 — GIVE IT TIME
+           SLIDE 4
            ================================================= -->
 
       <section class="e-slide">
@@ -5145,7 +5039,7 @@
 
 
       <!-- =================================================
-           05 — YOUR ENERGY
+           SLIDE 5
            ================================================= -->
 
       <section class="e-slide">
@@ -5249,7 +5143,7 @@
 
 
       <!-- =================================================
-           06 — READ THE MOMENT
+           SLIDE 6
            ================================================= -->
 
       <section class="e-slide">
@@ -5415,20 +5309,12 @@
 
   <script>
 
-    /* =====================================================
-       GLOBAL
-       ===================================================== */
-
     const reducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
 
-
-    /* =====================================================
-       MAIN SIX-SLIDE STEPPER
-       ===================================================== */
 
     const slides =
       Array.from(
@@ -5474,7 +5360,7 @@
 
 
     /* =====================================================
-       SLIDE 1 EXAMPLE CAROUSEL
+       SLIDE 1 CAROUSEL
        ===================================================== */
 
     const choiceStage =
@@ -5512,10 +5398,6 @@
 
 
 
-    /* =====================================================
-       CAROUSEL TRANSITION
-       ===================================================== */
-
     function animateChoiceChange(
       oldScene,
       newScene,
@@ -5531,25 +5413,36 @@
       ) {
 
 
-        if (oldScene) {
+        if (
+          oldScene
+        ) {
+
 
           oldScene.classList.remove(
             "active"
           );
 
+
         }
 
 
-        if (newScene) {
+
+        if (
+          newScene
+        ) {
+
 
           newScene.classList.add(
             "active"
           );
 
+
         }
 
 
+
         return;
+
 
       }
 
@@ -5702,10 +5595,6 @@
 
 
 
-    /* =====================================================
-       SHOW A SPECIFIC EXAMPLE
-       ===================================================== */
-
     function showChoice(
       targetIndex,
       direction = 1,
@@ -5717,8 +5606,10 @@
         targetIndex < 0
       ) {
 
+
         targetIndex =
           choiceScenes.length - 1;
+
 
       }
 
@@ -5729,8 +5620,10 @@
         choiceScenes.length
       ) {
 
+
         targetIndex =
           0;
+
 
       }
 
@@ -5741,7 +5634,9 @@
         choiceIndex
       ) {
 
+
         return;
+
 
       }
 
@@ -5780,7 +5675,8 @@
 
 
           const active =
-            index === choiceIndex;
+            index ===
+            choiceIndex;
 
 
 
@@ -5838,10 +5734,6 @@
 
 
 
-    /* =====================================================
-       NEXT / PREVIOUS EXAMPLE
-       ===================================================== */
-
     function nextChoice(
       manual = false
     ) {
@@ -5873,10 +5765,6 @@
     }
 
 
-
-    /* =====================================================
-       AUTO ROTATION
-       ===================================================== */
 
     function scheduleChoiceAuto(
       delay = 4700
@@ -5928,10 +5816,6 @@
     }
 
 
-
-    /* =====================================================
-       TAPPABLE DOTS
-       ===================================================== */
 
     choiceDots.forEach(
 
@@ -6018,10 +5902,6 @@
 
 
 
-    /* =====================================================
-       MANUAL SWIPE INSIDE SLIDE 1
-       ===================================================== */
-
     if (
       choiceStage
     ) {
@@ -6066,9 +5946,6 @@
           }
 
           catch (error) {
-
-
-            /* No action needed */
 
 
           }
@@ -6268,10 +6145,6 @@
 
 
 
-    /* =====================================================
-       RENDER MAIN SLIDE
-       ===================================================== */
-
     function render() {
 
 
@@ -6363,10 +6236,6 @@
 
 
 
-    /* =====================================================
-       NEXT / BACK BUTTONS
-       ===================================================== */
-
     nextButton.addEventListener(
 
       "click",
@@ -6430,10 +6299,6 @@
     );
 
 
-
-    /* =====================================================
-       MAIN PAGE SWIPE
-       ===================================================== */
 
     let touchStartX =
       null;
@@ -6587,10 +6452,6 @@
 
 
 
-    /* =====================================================
-       KEYBOARD
-       ===================================================== */
-
     document.addEventListener(
 
       "keydown",
@@ -6678,10 +6539,6 @@
 
 
 
-    /* =====================================================
-       TAB VISIBILITY
-       ===================================================== */
-
     document.addEventListener(
 
       "visibilitychange",
@@ -6719,10 +6576,6 @@
     );
 
 
-
-    /* =====================================================
-       INITIALIZE
-       ===================================================== */
 
     render();
 
