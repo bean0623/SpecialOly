@@ -133,11 +133,6 @@
     }
 
 
-    /*
-      Actual photograph.
-      Lower opacity + reduced saturation keeps it sophisticated.
-    */
-
     .home-hero::before {
       content: "";
 
@@ -158,10 +153,6 @@
         contrast(.92);
     }
 
-
-    /*
-      White fade makes text readable without hiding the photograph.
-    */
 
     .home-hero::after {
       content: "";
@@ -396,8 +387,6 @@
       transform: scale(.985);
     }
 
-
-    /* tiny blue line = only accent on cards */
 
     .home-action::before {
       content: "";
@@ -670,6 +659,17 @@
     }
 
 
+    .home-action.behavior-action h2 {
+      margin: 0;
+
+      font-size: 24px;
+
+      line-height: 1.02;
+
+      letter-spacing: -.04em;
+    }
+
+
     .home-action p {
       margin: 6px 0 0;
 
@@ -809,7 +809,7 @@
 
 
     /* =====================================================
-       PHONE — IMPORTANT
+       PHONE
        ===================================================== */
 
     @media
@@ -836,11 +836,6 @@
         font-size: 11px;
       }
 
-
-      /*
-        Smaller hero so we don't burn
-        half the screen before navigation.
-      */
 
       .home-hero {
         min-height: 254px;
@@ -908,11 +903,6 @@
         line-height: 1.36;
       }
 
-
-      /*
-        Compact one-line-ish mobile cards.
-        This is what makes the page much shorter.
-      */
 
       .home-actions {
         grid-template-columns: 1fr;
@@ -985,6 +975,20 @@
         margin: 0;
 
         font-size: 16px;
+
+        align-self: center;
+      }
+
+
+      .home-action.behavior-action h2 {
+        grid-column: 2;
+        grid-row: auto;
+
+        margin: 0;
+
+        font-size: 18.5px;
+
+        line-height: 1.04;
 
         align-self: center;
       }
@@ -1207,7 +1211,7 @@
 
         <a
           href="behavior.html"
-          class="home-action"
+          class="home-action behavior-action"
         >
 
           <div class="action-top">
@@ -1232,13 +1236,9 @@
 
 
           <h2>
-            What do I do?
+            Specific Scenarios:<br>
+            How to React
           </h2>
-
-
-          <p>
-            Real situations. Quick responses.
-          </p>
 
         </a>
 
