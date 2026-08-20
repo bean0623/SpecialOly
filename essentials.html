@@ -1,67 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-
-  <title>
-    60-Second Essentials | Volunteer Communication Guide
-  </title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>60-Second Essentials | Volunteer Communication Guide</title>
 
   <style>
-
     :root {
-
       --bg: #f5f5f3;
       --card: #ffffff;
-
       --text: #1d1d1f;
       --muted: #646872;
       --soft: #93969e;
-
       --line: rgba(29,29,31,.075);
-
       --accent: #5c6fff;
       --accent-soft: #edf0ff;
-
       --green: #35a876;
       --orange: #ec8d42;
       --purple: #8065d6;
-
-      --shadow:
-        0 18px 48px
-        rgba(24,27,39,.065);
-
+      --shadow: 0 18px 48px rgba(24,27,39,.065);
     }
 
+    * { box-sizing: border-box; }
 
-
-    * {
-
-      box-sizing: border-box;
-
-    }
-
-
-
-    html,
-    body {
-
+    html, body {
       margin: 0;
-
       width: 100%;
       height: 100%;
-
       background: var(--bg);
       color: var(--text);
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -70,4050 +37,1382 @@
         "Helvetica Neue",
         Arial,
         sans-serif;
-
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-
       overflow: hidden;
-
     }
 
-
-
-    button,
-    a {
-
-      -webkit-tap-highlight-color: transparent;
-
-    }
-
-
-
-    button {
-
-      font: inherit;
-
-    }
-
-
-
-    /* =====================================================
-       APP
-       ===================================================== */
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
 
     .e-app {
-
       width: min(760px, 100%);
-
       height: 100vh;
       height: 100dvh;
-
       margin: 0 auto;
-
       display: flex;
       flex-direction: column;
-
-      padding:
-        calc(5px + env(safe-area-inset-top))
-        14px
-        calc(8px + env(safe-area-inset-bottom));
-
+      padding: calc(5px + env(safe-area-inset-top)) 14px calc(8px + env(safe-area-inset-bottom));
     }
-
-
-
-    /* =====================================================
-       TOP BAR
-       ===================================================== */
 
     .e-topbar {
-
       flex: 0 0 auto;
-
       height: 45px;
-
       display: grid;
-
-      grid-template-columns:
-        1fr auto 1fr;
-
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-
       gap: 8px;
-
     }
-
-
 
     .e-home {
-
       justify-self: start;
-
       color: var(--text);
-
       text-decoration: none;
-
       font-size: 13px;
       font-weight: 720;
-
     }
-
-
 
     .e-title {
-
       color: var(--soft);
-
       font-size: 11.5px;
       font-weight: 700;
-
       white-space: nowrap;
-
     }
-
-
 
     .e-counter {
-
       justify-self: end;
-
       color: var(--soft);
-
       font-size: 11px;
       font-weight: 700;
-
     }
-
-
-
-    /* =====================================================
-       PROGRESS
-       ===================================================== */
 
     .e-progress {
-
       flex: 0 0 auto;
-
       display: grid;
-
-      grid-template-columns:
-        repeat(6,1fr);
-
+      grid-template-columns: repeat(6,1fr);
       gap: 5px;
-
-      margin:
-        3px 2px 9px;
-
+      margin: 3px 2px 9px;
     }
-
-
 
     .e-progress-piece {
-
       height: 4px;
-
       border-radius: 999px;
-
       background: #dedfe4;
-
-      transition:
-        background .25s ease,
-        transform .25s ease;
-
+      transition: background .25s ease, transform .25s ease;
     }
-
-
 
     .e-progress-piece.done,
     .e-progress-piece.active {
-
       background: var(--accent);
-
     }
 
-
-
-    .e-progress-piece.active {
-
-      transform: scaleY(1.3);
-
-    }
-
-
-
-    /* =====================================================
-       STAGE
-       ===================================================== */
+    .e-progress-piece.active { transform: scaleY(1.3); }
 
     .e-stage {
-
       position: relative;
-
       flex: 1 1 auto;
-
       min-height: 0;
-
     }
-
-
 
     .e-slide {
-
       display: none;
-
       height: 100%;
-
     }
-
-
 
     .e-slide.active {
-
       display: flex;
-
-      animation:
-        slideEnter
-        .3s
-        cubic-bezier(.22,.8,.22,1)
-        both;
-
+      animation: slideEnter .3s cubic-bezier(.22,.8,.22,1) both;
     }
-
-
-
-    /* =====================================================
-       MAIN CARD
-       ===================================================== */
 
     .e-card {
-
       flex: 1 1 auto;
-
       min-height: 0;
-
       width: 100%;
-
       display: flex;
       flex-direction: column;
-
       overflow: hidden;
-
       padding: 17px;
-
-      border:
-        1px solid
-        var(--line);
-
+      border: 1px solid var(--line);
       border-radius: 27px;
-
       background: var(--card);
-
       box-shadow: var(--shadow);
-
     }
-
-
 
     .e-label {
-
       margin-bottom: 5px;
-
       color: var(--accent);
-
       font-size: 10.5px;
       font-weight: 820;
-
       letter-spacing: .075em;
-
       text-transform: uppercase;
-
     }
-
-
 
     .e-card h1 {
-
       margin: 0;
-
       max-width: 680px;
-
-      font-size:
-        clamp(
-          33px,
-          8.5vw,
-          45px
-        );
-
+      font-size: clamp(33px, 8.5vw, 45px);
       line-height: .98;
-
       letter-spacing: -.052em;
-
     }
-
-
 
     .e-copy {
-
-      margin:
-        9px 0 0;
-
+      margin: 9px 0 0;
       color: var(--muted);
-
-      font-size:
-        clamp(
-          16.5px,
-          4.2vw,
-          19px
-        );
-
+      font-size: clamp(16.5px, 4.2vw, 19px);
       line-height: 1.39;
-
       letter-spacing: -.012em;
-
     }
 
-
-
-    .e-copy strong {
-
-      color: var(--text);
-
-    }
-
-
-
-    /* =====================================================
-       TRY THIS
-       ===================================================== */
+    .e-copy strong { color: var(--text); }
 
     .e-try {
-
       margin-top: 10px;
-
-      padding:
-        10px 12px;
-
+      padding: 10px 12px;
       border-radius: 15px;
-
       background: #f1f1ef;
-
       color: #4b4f58;
-
       font-size: 13.5px;
-
       line-height: 1.4;
-
     }
-
-
 
     .e-try-label {
-
       margin-right: 4px;
-
       color: var(--text);
-
       font-weight: 800;
-
     }
-
-
-
-    /* =====================================================
-       VISUAL AREAS
-       ===================================================== */
 
     .e-visual {
-
       position: relative;
-
       flex: 0 0 134px;
-
       height: 134px;
       min-height: 134px;
-
       margin-top: 11px;
-
       overflow: hidden;
-
       border-radius: 21px;
-
     }
-
-
 
     .visual-blue {
-
-      background:
-        linear-gradient(
-          180deg,
-          #f3f5ff,
-          #ebefff
-        );
-
+      background: linear-gradient(180deg, #f3f5ff, #ebefff);
     }
-
-
 
     .visual-green {
-
-      background:
-        linear-gradient(
-          180deg,
-          #f1faf6,
-          #e7f7ef
-        );
-
+      background: linear-gradient(180deg, #f1faf6, #e7f7ef);
     }
-
-
 
     .visual-purple {
-
-      background:
-        linear-gradient(
-          180deg,
-          #f6f3ff,
-          #eeeaff
-        );
-
+      background: linear-gradient(180deg, #f6f3ff, #eeeaff);
     }
-
-
 
     .visual-orange {
-
-      background:
-        linear-gradient(
-          180deg,
-          #fff7ec,
-          #ffeed8
-        );
-
+      background: linear-gradient(180deg, #fff7ec, #ffeed8);
     }
-
-
 
     .visual-warm {
-
-      background:
-        linear-gradient(
-          180deg,
-          #fff6f2,
-          #ffece5
-        );
-
+      background: linear-gradient(180deg, #fff6f2, #ffece5);
     }
-
-
 
     .visual-sky {
-
-      background:
-        linear-gradient(
-          180deg,
-          #f1f8fc,
-          #e8f4fa
-        );
-
+      background: linear-gradient(180deg, #f1f8fc, #e8f4fa);
     }
 
-
-
-    /* =====================================================
-       NEW SUPPORTING PHOTOS — SLIDES 2, 3, 4, 6
-       ===================================================== */
-
+    /* SUPPORT PHOTOS — TALLER, LESS CROPPED */
     .support-photo-area {
-
       flex: 0 0 auto;
-
       width: 100%;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
-      margin-top: 13px;
-
+      margin-top: 12px;
     }
-
-
 
     .support-photo {
-
       display: block;
-
-      object-fit: cover;
-
-      border-radius: 17px;
-
-      box-shadow:
-        0 10px 26px
-        rgba(35,39,55,.08);
-
-      animation:
-        supportPhotoFloat
-        5.2s
-        ease-in-out
-        infinite;
-
+      object-fit: contain;
+      object-position: center center;
+      border-radius: 18px;
+      background: transparent;
+      box-shadow: 0 10px 26px rgba(35,39,55,.08);
+      animation: supportPhotoFloat 5.2s ease-in-out infinite;
     }
-
-
-
-    /*
-      Slide 2:
-      Wider because the demonstration/stretching
-      works best when we can see several people.
-    */
 
     .support-photo.slide2-photo {
-
-      width:
-        min(355px, 74%);
-
-      height: 124px;
-
-      object-position:
-        center 42%;
-
+      width: min(355px, 74%);
+      height: 172px;
     }
-
-
-
-    /*
-      Slide 3:
-      Slightly more intimate crop for the high five.
-    */
 
     .support-photo.slide3-photo {
-
-      width:
-        min(315px, 66%);
-
-      height: 126px;
-
-      object-position:
-        center 38%;
-
+      width: min(320px, 67%);
+      height: 168px;
     }
-
-
-
-    /*
-      Slide 4:
-      Wide enough to preserve the relationship
-      between athlete and volunteer.
-    */
 
     .support-photo.slide4-photo {
-
-      width:
-        min(345px, 72%);
-
-      height: 122px;
-
-      object-position:
-        center 42%;
-
+      width: min(345px, 72%);
+      height: 166px;
     }
-
-
-
-    /*
-      Slide 6:
-      Keep more of the environment visible because
-      context is the actual point of the slide.
-    */
 
     .support-photo.slide6-photo {
-
-      width:
-        min(365px, 76%);
-
-      height: 124px;
-
-      object-position:
-        center 43%;
-
+      width: min(365px, 76%);
+      height: 170px;
     }
-
-
 
     .support-photo-fallback {
-
       display: none;
-
-      width: 280px;
-      height: 105px;
-
+      width: 300px;
+      height: 140px;
       align-items: center;
       justify-content: center;
-
       border-radius: 17px;
-
       background: #f4f4f2;
-
       color: #868a92;
-
       text-align: center;
-
       font-size: 11px;
       font-weight: 700;
-
     }
 
-
-
-    /* =====================================================
-       SLIDE 1 — SIMPLE QUESTIONS
-       ===================================================== */
-
+    /* SLIDE 1 */
     .choice-stage {
-
       position: relative;
-
       flex: 0 0 137px;
-
       height: 137px;
       min-height: 137px;
-
       display: flex;
       flex-direction: column;
-
       align-items: center;
       justify-content: center;
-
-      padding:
-        8px 12px 21px;
-
+      padding: 8px 12px 21px;
       touch-action: pan-y;
-
       cursor: grab;
-
       user-select: none;
       -webkit-user-select: none;
-
     }
 
-
-
-    .choice-stage.dragging {
-
-      cursor: grabbing;
-
-    }
-
-
-
-    /* ---------- CAROUSEL ---------- */
+    .choice-stage.dragging { cursor: grabbing; }
 
     .choice-carousel {
-
       position: relative;
-
       width: 100%;
       height: 105px;
-
       overflow: hidden;
-
     }
-
-
 
     .choice-scene {
-
       position: absolute;
-
       inset: 0;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       opacity: 0;
-
       pointer-events: none;
-
       z-index: 1;
-
     }
-
-
 
     .choice-scene.active {
-
       opacity: 1;
-
       pointer-events: auto;
-
       z-index: 2;
-
     }
-
-
-
-    /* ---------- SLIDING BRICK ---------- */
 
     .choice-panel {
-
       position: relative;
-
       width: min(100%, 338px);
       height: 100%;
-
       min-height: 96px;
-
       display: grid;
-
-      grid-template-columns:
-        86px minmax(0,1fr);
-
+      grid-template-columns: 86px minmax(0,1fr);
       align-items: center;
-
       gap: 13px;
-
-      padding:
-        8px 14px 8px 9px;
-
+      padding: 8px 14px 8px 9px;
       overflow: hidden;
-
-      border:
-        1px solid
-        rgba(50,55,75,.055);
-
+      border: 1px solid rgba(50,55,75,.055);
       border-radius: 21px;
-
-      background:
-        rgba(255,255,255,.87);
-
+      background: rgba(255,255,255,.87);
       box-shadow:
-        0 14px 30px
-        rgba(61,75,142,.085),
-        inset 0 1px 0
-        rgba(255,255,255,.96);
-
+        0 14px 30px rgba(61,75,142,.085),
+        inset 0 1px 0 rgba(255,255,255,.96);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-
     }
-
-
 
     .choice-panel::before {
-
       content: "";
-
       position: absolute;
-
       width: 160px;
       height: 160px;
-
       right: -78px;
       top: -105px;
-
       border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(92,111,255,.14),
-          transparent 70%
-        );
-
+      background: radial-gradient(circle, rgba(92,111,255,.14), transparent 70%);
       pointer-events: none;
-
     }
-
-
-
-    /* ---------- OBJECT AREA ---------- */
 
     .choice-object {
-
       position: relative;
-
       width: 78px;
       height: 78px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       overflow: hidden;
-
       border-radius: 19px;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.98),
-          rgba(243,246,255,.88)
-        );
-
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(243,246,255,.88));
       box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.98),
-        0 8px 19px
-        rgba(54,66,126,.06);
-
+        inset 0 1px 0 rgba(255,255,255,.98),
+        0 8px 19px rgba(54,66,126,.06);
     }
-
-
 
     .sport-svg {
-
       width: 72px;
       height: 72px;
-
       overflow: visible;
-
     }
-
-
-
-    /* ---------- TEXT ---------- */
 
     .choice-copy {
-
       position: relative;
-
       z-index: 2;
-
       min-width: 0;
-
     }
-
-
 
     .choice-category {
-
       margin-bottom: 7px;
-
       color: #707583;
-
       font-size: 9.5px;
       font-weight: 830;
-
       letter-spacing: .085em;
-
       text-transform: uppercase;
-
     }
-
-
 
     .choice-options {
-
       display: grid;
-
-      grid-template-columns:
-        minmax(0,1fr)
-        auto
-        minmax(0,1fr);
-
+      grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
       align-items: center;
-
       gap: 7px;
-
     }
-
-
 
     .choice-option {
-
       min-width: 0;
-
-      padding:
-        8px 7px;
-
-      border:
-        1px solid
-        rgba(92,111,255,.065);
-
+      padding: 8px 7px;
+      border: 1px solid rgba(92,111,255,.065);
       border-radius: 12px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #fafaff,
-          #eef1ff
-        );
-
+      background: linear-gradient(180deg, #fafaff, #eef1ff);
       color: #343943;
-
       text-align: center;
-
       font-size: 13px;
       font-weight: 790;
-
       letter-spacing: -.015em;
-
-      box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.95);
-
-      animation:
-        optionBreathe
-        3.6s
-        ease-in-out
-        infinite;
-
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.95);
+      animation: optionBreathe 3.6s ease-in-out infinite;
     }
 
-
-
-    .choice-option:last-child {
-
-      animation-delay: .55s;
-
-    }
-
-
+    .choice-option:last-child { animation-delay: .55s; }
 
     .choice-or {
-
       color: #9b9ea7;
-
       font-size: 9px;
       font-weight: 820;
-
     }
-
-
-
-    /* =====================================================
-       SLIDE 1 — DOTS
-       ===================================================== */
 
     .choice-dots {
-
       position: absolute;
-
       left: 50%;
       bottom: 7px;
-
       z-index: 10;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       gap: 6px;
-
-      transform:
-        translateX(-50%);
-
+      transform: translateX(-50%);
     }
-
-
 
     .choice-dot {
-
       width: 6px;
       height: 6px;
-
       padding: 0;
-
       border: 0;
-
       border-radius: 999px;
-
-      background:
-        rgba(92,111,255,.20);
-
+      background: rgba(92,111,255,.20);
       cursor: pointer;
-
       transition:
-        width .3s
-        cubic-bezier(.22,.8,.22,1),
+        width .3s cubic-bezier(.22,.8,.22,1),
         background .3s ease,
         transform .2s ease;
-
     }
-
-
 
     .choice-dot.active {
-
       width: 17px;
-
-      background:
-        rgba(92,111,255,.94);
-
+      background: rgba(92,111,255,.94);
     }
 
-
-
-    .choice-dot:active {
-
-      transform:
-        scale(.88);
-
-    }
-
-
+    .choice-dot:active { transform: scale(.88); }
 
     .choice-swipe-hint {
-
       position: absolute;
-
       right: 10px;
       top: 7px;
-
       z-index: 10;
-
-      color:
-        rgba(87,92,106,.42);
-
+      color: rgba(87,92,106,.42);
       font-size: 8px;
       font-weight: 720;
-
       opacity: 0;
-
-      animation:
-        swipeHint
-        5s
-        1s
-        ease-in-out
-        1
-        forwards;
-
+      animation: swipeHint 5s 1s ease-in-out 1 forwards;
       pointer-events: none;
-
     }
-
-
-
-    /* =====================================================
-       SLIDE 1 — YES / NO IMAGE
-       ===================================================== */
 
     .yes-no-outside {
-
       flex: 0 0 auto;
-
       width: 100%;
-
       display: flex;
-
       justify-content: center;
       align-items: center;
-
       margin-top: 8px;
-
     }
-
-
 
     .yes-no-frame {
-
       position: relative;
-
-      width:
-        min(330px, 92%);
-
+      width: min(330px, 92%);
       height: 112px;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       overflow: hidden;
-
       border: 0;
       border-radius: 0;
-
       background: transparent;
-
       box-shadow: none;
-
-      animation:
-        yesNoFloat
-        4.6s
-        ease-in-out
-        infinite;
-
+      animation: yesNoFloat 4.6s ease-in-out infinite;
     }
-
-
 
     .yes-no-frame img {
-
       display: block;
-
       width: 100%;
       height: 100%;
-
       object-fit: contain;
-
       object-position: center;
-
-      transform:
-        scale(1.34);
-
-      transform-origin:
-        center center;
-
+      transform: scale(1.34);
+      transform-origin: center center;
     }
-
-
 
     .yes-no-fallback {
-
       display: none;
-
       align-items: center;
       justify-content: center;
-
       gap: 18px;
-
       width: 100%;
       height: 100%;
-
       color: var(--text);
-
       font-size: 24px;
       font-weight: 820;
-
     }
 
+    .yes-no-fallback .yes { color: #64ad32; }
+    .yes-no-fallback .no { color: #b53535; }
 
+    /* SOCCER ANIMATION */
+    .soccer-ground { fill: rgba(61,72,101,.11); }
+    .soccer-ball-body { fill: #fbfbfc; stroke: #454a55; stroke-width: 1.8; }
+    .soccer-panel { fill: #3f444e; }
+    .soccer-seam { fill: none; stroke: #757b86; stroke-width: 1.1; opacity: .72; }
+    .soccer-shoe-body { fill: #5c6fff; }
+    .soccer-shoe-sole { fill: #333943; }
+    .soccer-shoe-line { stroke: rgba(255,255,255,.9); stroke-width: 1.2; stroke-linecap: round; }
 
-    .yes-no-fallback .yes {
-
-      color: #64ad32;
-
+    .choice-scene.active .soccer-foot {
+      transform-box: view-box;
+      transform-origin: 24px 51px;
+      animation: soccerKickFoot 4.4s cubic-bezier(.3,.7,.22,1) infinite;
     }
 
-
-
-    .yes-no-fallback .no {
-
-      color: #b53535;
-
+    .choice-scene.active .soccer-ball-group {
+      transform-box: view-box;
+      transform-origin: 50px 44px;
+      animation: soccerBallMove 4.4s cubic-bezier(.22,.8,.22,1) infinite;
     }
 
-
-
-    /* =====================================================
-       SOCCER ANIMATION
-       ===================================================== */
-
-    .soccer-ground {
-
-      fill: rgba(61,72,101,.11);
-
+    .choice-scene.active .soccer-shadow {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: soccerShadowMove 4.4s ease-in-out infinite;
     }
 
+    /* BASKETBALL ANIMATION */
+    .basket-floor { stroke: rgba(75,83,104,.17); stroke-width: 1.3; }
+    .basket-shadow { fill: rgba(102,67,40,.13); }
+    .basket-ball { fill: #ec8d42; stroke: #b76425; stroke-width: 1.3; }
+    .basket-line { fill: none; stroke: #88491f; stroke-width: 1.15; stroke-linecap: round; }
 
-
-    .soccer-ball-body {
-
-      fill: #fbfbfc;
-
-      stroke: #454a55;
-
-      stroke-width: 1.8;
-
+    .choice-scene.active .basket-ball-group {
+      transform-box: view-box;
+      transform-origin: 48px 37px;
+      animation: realisticBasketBounce 1.58s cubic-bezier(.42,0,.58,1) infinite;
     }
 
-
-
-    .soccer-panel {
-
-      fill: #3f444e;
-
+    .choice-scene.active .basket-shadow {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: realisticBasketShadow 1.58s ease-in-out infinite;
     }
 
+    /* TRACK ANIMATION */
+    .track-sky { fill: #eef5ff; }
+    .track-ground { fill: #cf8062; }
+    .track-line { stroke: rgba(255,255,255,.82); stroke-width: 1.3; }
+    .runner-head { fill: #dda078; }
+    .runner-shirt { stroke: #5c6fff; stroke-width: 5.8; stroke-linecap: round; }
+    .runner-limb { stroke: #343b4d; stroke-width: 3.3; stroke-linecap: round; }
+    .runner-arm { stroke: #dda078; stroke-width: 3.1; stroke-linecap: round; }
 
-
-    .soccer-seam {
-
-      fill: none;
-
-      stroke: #757b86;
-
-      stroke-width: 1.1;
-
-      opacity: .72;
-
+    .choice-scene.active .runner-whole {
+      transform-box: view-box;
+      animation: runnerTravel 3.7s cubic-bezier(.42,0,.2,1) infinite;
     }
 
-
-
-    .soccer-shoe-body {
-
-      fill: #5c6fff;
-
+    .choice-scene.active .runner-arm-a {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: armSwingA .55s ease-in-out infinite;
     }
 
-
-
-    .soccer-shoe-sole {
-
-      fill: #333943;
-
+    .choice-scene.active .runner-arm-b {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: armSwingB .55s ease-in-out infinite;
     }
 
-
-
-    .soccer-shoe-line {
-
-      stroke:
-        rgba(255,255,255,.9);
-
-      stroke-width: 1.2;
-
-      stroke-linecap: round;
-
+    .choice-scene.active .runner-leg-a {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: legSwingA .55s ease-in-out infinite;
     }
 
-
-
-    .choice-scene.active
-    .soccer-foot {
-
-      transform-box:
-        view-box;
-
-      transform-origin:
-        24px 51px;
-
-      animation:
-        soccerKickFoot
-        4.4s
-        cubic-bezier(.3,.7,.22,1)
-        infinite;
-
+    .choice-scene.active .runner-leg-b {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: legSwingB .55s ease-in-out infinite;
     }
 
+    /* BREAK ANIMATION */
+    .break-floor { stroke: rgba(71,79,98,.16); stroke-width: 1.3; }
+    .chair-back, .chair-seat { fill: #f2f3f6; stroke: #656b78; stroke-width: 2; }
+    .chair-leg { stroke: #656b78; stroke-width: 2; stroke-linecap: round; }
+    .bottle-body { fill: rgba(126,190,229,.13); stroke: #5f79a8; stroke-width: 1.8; }
+    .bottle-cap { fill: #5f79a8; }
+    .bottle-water { fill: rgba(89,163,215,.40); }
 
-
-    .choice-scene.active
-    .soccer-ball-group {
-
-      transform-box:
-        view-box;
-
-      transform-origin:
-        50px 44px;
-
-      animation:
-        soccerBallMove
-        4.4s
-        cubic-bezier(.22,.8,.22,1)
-        infinite;
-
+    .choice-scene.active .break-bottle-group {
+      transform-box: view-box;
+      transform-origin: 65px 45px;
+      animation: bottleLift 3.8s cubic-bezier(.22,.8,.22,1) infinite;
     }
 
-
-
-    .choice-scene.active
-    .soccer-shadow {
-
-      transform-box:
-        fill-box;
-
-      transform-origin:
-        center;
-
-      animation:
-        soccerShadowMove
-        4.4s
-        ease-in-out
-        infinite;
-
+    .choice-scene.active .bottle-water {
+      animation: waterShift 3.8s ease-in-out infinite;
     }
 
-
-
-    /* =====================================================
-       BASKETBALL ANIMATION
-       ===================================================== */
-
-    .basket-floor {
-
-      stroke:
-        rgba(75,83,104,.17);
-
-      stroke-width: 1.3;
-
+    .choice-scene.active .chair-group {
+      transform-box: view-box;
+      transform-origin: 33px 57px;
+      animation: chairSettle 3.8s ease-in-out infinite;
     }
 
-
-
-    .basket-shadow {
-
-      fill:
-        rgba(102,67,40,.13);
-
-    }
-
-
-
-    .basket-ball {
-
-      fill: #ec8d42;
-
-      stroke: #b76425;
-
-      stroke-width: 1.3;
-
-    }
-
-
-
-    .basket-line {
-
-      fill: none;
-
-      stroke: #88491f;
-
-      stroke-width: 1.15;
-
-      stroke-linecap: round;
-
-    }
-
-
-
-    .choice-scene.active
-    .basket-ball-group {
-
-      transform-box:
-        view-box;
-
-      transform-origin:
-        48px 37px;
-
-      animation:
-        realisticBasketBounce
-        1.58s
-        cubic-bezier(.42,0,.58,1)
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .basket-shadow {
-
-      transform-box:
-        fill-box;
-
-      transform-origin:
-        center;
-
-      animation:
-        realisticBasketShadow
-        1.58s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    /* =====================================================
-       TRACK ANIMATION
-       ===================================================== */
-
-    .track-sky {
-
-      fill: #eef5ff;
-
-    }
-
-
-
-    .track-ground {
-
-      fill: #cf8062;
-
-    }
-
-
-
-    .track-line {
-
-      stroke:
-        rgba(255,255,255,.82);
-
-      stroke-width: 1.3;
-
-    }
-
-
-
-    .runner-head {
-
-      fill: #dda078;
-
-    }
-
-
-
-    .runner-shirt {
-
-      stroke: #5c6fff;
-
-      stroke-width: 5.8;
-
-      stroke-linecap: round;
-
-    }
-
-
-
-    .runner-limb {
-
-      stroke: #343b4d;
-
-      stroke-width: 3.3;
-
-      stroke-linecap: round;
-
-    }
-
-
-
-    .runner-arm {
-
-      stroke: #dda078;
-
-      stroke-width: 3.1;
-
-      stroke-linecap: round;
-
-    }
-
-
-
-    .choice-scene.active
-    .runner-whole {
-
-      transform-box:
-        view-box;
-
-      animation:
-        runnerTravel
-        3.7s
-        cubic-bezier(.42,0,.2,1)
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .runner-arm-a {
-
-      transform-box:
-        fill-box;
-
-      transform-origin:
-        top center;
-
-      animation:
-        armSwingA
-        .55s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .runner-arm-b {
-
-      transform-box:
-        fill-box;
-
-      transform-origin:
-        top center;
-
-      animation:
-        armSwingB
-        .55s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .runner-leg-a {
-
-      transform-box:
-        fill-box;
-
-      transform-origin:
-        top center;
-
-      animation:
-        legSwingA
-        .55s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .runner-leg-b {
-
-      transform-box:
-        fill-box;
-
-      transform-origin:
-        top center;
-
-      animation:
-        legSwingB
-        .55s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    /* =====================================================
-       BREAK ANIMATION
-       ===================================================== */
-
-    .break-floor {
-
-      stroke:
-        rgba(71,79,98,.16);
-
-      stroke-width: 1.3;
-
-    }
-
-
-
-    .chair-back,
-    .chair-seat {
-
-      fill: #f2f3f6;
-
-      stroke: #656b78;
-
-      stroke-width: 2;
-
-    }
-
-
-
-    .chair-leg {
-
-      stroke: #656b78;
-
-      stroke-width: 2;
-
-      stroke-linecap: round;
-
-    }
-
-
-
-    .bottle-body {
-
-      fill:
-        rgba(126,190,229,.13);
-
-      stroke: #5f79a8;
-
-      stroke-width: 1.8;
-
-    }
-
-
-
-    .bottle-cap {
-
-      fill: #5f79a8;
-
-    }
-
-
-
-    .bottle-water {
-
-      fill:
-        rgba(89,163,215,.40);
-
-    }
-
-
-
-    .choice-scene.active
-    .break-bottle-group {
-
-      transform-box:
-        view-box;
-
-      transform-origin:
-        65px 45px;
-
-      animation:
-        bottleLift
-        3.8s
-        cubic-bezier(.22,.8,.22,1)
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .bottle-water {
-
-      animation:
-        waterShift
-        3.8s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .choice-scene.active
-    .chair-group {
-
-      transform-box:
-        view-box;
-
-      transform-origin:
-        33px 57px;
-
-      animation:
-        chairSettle
-        3.8s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    /* =====================================================
-       SLIDE 2 — SAY IT + SHOW IT
-       ===================================================== */
-
+    /* SLIDE 2 */
     .action-demo {
-
       height: 100%;
-
       display: grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
+      grid-template-columns: repeat(3,1fr);
       gap: 7px;
-
-      padding:
-        10px;
-
+      padding: 10px;
     }
-
-
 
     .action-demo-card {
-
       position: relative;
-
       overflow: hidden;
-
       display: flex;
       flex-direction: column;
-
       align-items: center;
       justify-content: center;
-
       gap: 6px;
-
       border-radius: 16px;
-
-      background:
-        rgba(255,255,255,.77);
-
-      border:
-        1px solid
-        rgba(39,43,55,.055);
-
+      background: rgba(255,255,255,.77);
+      border: 1px solid rgba(39,43,55,.055);
     }
-
-
 
     .action-demo-card strong {
-
       font-size: 11px;
-
       letter-spacing: -.01em;
-
     }
-
-
 
     .action-demo-card small {
-
       color: var(--soft);
-
       font-size: 9px;
       font-weight: 650;
-
     }
 
+    .action-demo-card:nth-child(1) { animation: actionFocus 4.8s ease-in-out infinite; }
+    .action-demo-card:nth-child(2) { animation: actionFocus 4.8s 1.6s ease-in-out infinite; }
+    .action-demo-card:nth-child(3) { animation: actionFocus 4.8s 3.2s ease-in-out infinite; }
 
-
-    .action-demo-card:nth-child(1) {
-
-      animation:
-        actionFocus
-        4.8s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .action-demo-card:nth-child(2) {
-
-      animation:
-        actionFocus
-        4.8s
-        1.6s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .action-demo-card:nth-child(3) {
-
-      animation:
-        actionFocus
-        4.8s
-        3.2s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    .gesture-thumb {
-
-      font-size: 26px;
-
-    }
-
-
+    .gesture-thumb { font-size: 26px; }
 
     .mini-bottle {
-
       position: relative;
-
       width: 17px;
       height: 32px;
-
-      border:
-        2px solid
-        #5c76a5;
-
-      border-radius:
-        5px 5px 7px 7px;
-
-      background:
-        rgba(91,157,205,.15);
-
+      border: 2px solid #5c76a5;
+      border-radius: 5px 5px 7px 7px;
+      background: rgba(91,157,205,.15);
     }
-
-
 
     .mini-bottle::before {
-
       content: "";
-
       position: absolute;
-
       width: 8px;
       height: 5px;
-
       top: -7px;
       left: 2px;
-
-      border:
-        2px solid
-        #5c76a5;
-
+      border: 2px solid #5c76a5;
       border-bottom: 0;
-
     }
-
-
 
     .stand-marker {
-
       position: relative;
-
       width: 36px;
       height: 26px;
-
     }
-
-
 
     .stand-marker::before {
-
       content: "";
-
       position: absolute;
-
       width: 26px;
       height: 5px;
-
       left: 5px;
       bottom: 0;
-
       border-radius: 50%;
-
-      background:
-        rgba(55,164,116,.25);
-
+      background: rgba(55,164,116,.25);
     }
-
-
 
     .stand-marker::after {
-
       content: "↓";
-
       position: absolute;
-
       left: 50%;
       top: -7px;
-
-      transform:
-        translateX(-50%);
-
+      transform: translateX(-50%);
       color: var(--green);
-
       font-size: 23px;
       font-weight: 800;
-
     }
 
-
-
-    /* =====================================================
-       SLIDE 3 — SAME GESTURE
-       ===================================================== */
-
+    /* SLIDE 3 */
     .signal-list {
-
       height: 100%;
-
       display: flex;
       flex-direction: column;
-
       justify-content: center;
-
       gap: 7px;
-
-      padding:
-        9px 12px;
-
+      padding: 9px 12px;
     }
-
-
 
     .signal-row {
-
       display: grid;
-
-      grid-template-columns:
-        1fr 28px 1fr;
-
+      grid-template-columns: 1fr 28px 1fr;
       align-items: center;
-
       min-height: 31px;
-
-      padding:
-        5px 9px;
-
+      padding: 5px 9px;
       border-radius: 13px;
-
-      background:
-        rgba(255,255,255,.75);
-
+      background: rgba(255,255,255,.75);
       font-size: 11px;
-
-      animation:
-        signalGlow
-        4.5s
-        ease-in-out
-        infinite;
-
+      animation: signalGlow 4.5s ease-in-out infinite;
     }
 
+    .signal-row:nth-child(2) { animation-delay: 1.5s; }
+    .signal-row:nth-child(3) { animation-delay: 3s; }
 
+    .signal-word { font-weight: 780; }
+    .signal-arrow { text-align: center; color: var(--soft); }
+    .signal-action { color: #525864; font-weight: 650; }
 
-    .signal-row:nth-child(2) {
-
-      animation-delay: 1.5s;
-
-    }
-
-
-
-    .signal-row:nth-child(3) {
-
-      animation-delay: 3s;
-
-    }
-
-
-
-    .signal-word {
-
-      font-weight: 780;
-
-    }
-
-
-
-    .signal-arrow {
-
-      text-align: center;
-
-      color: var(--soft);
-
-    }
-
-
-
-    .signal-action {
-
-      color: #525864;
-
-      font-weight: 650;
-
-    }
-
-
-
-    /* =====================================================
-       SLIDE 4 — TIME TO RESPOND
-       ===================================================== */
-
+    /* SLIDE 4 */
     .timeline {
-
       height: 100%;
-
       display: flex;
       flex-direction: column;
-
       justify-content: center;
-
-      padding:
-        12px 16px;
-
+      padding: 12px 16px;
     }
-
-
 
     .timeline-track {
-
       position: relative;
-
       display: grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
+      grid-template-columns: repeat(4,1fr);
       align-items: center;
-
     }
 
-
-
     .timeline-track::before {
-
       content: "";
-
       position: absolute;
-
       left: 9%;
       right: 9%;
       top: 14px;
-
       height: 2px;
-
-      background:
-        rgba(92,111,255,.17);
-
+      background: rgba(92,111,255,.17);
     }
-
-
 
     .time-step {
-
       position: relative;
-
       z-index: 2;
-
       text-align: center;
-
     }
 
-
-
     .time-dot {
-
       width: 28px;
       height: 28px;
-
-      margin:
-        0 auto 6px;
-
+      margin: 0 auto 6px;
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       border-radius: 50%;
-
       background: white;
-
-      border:
-        2px solid
-        rgba(92,111,255,.23);
-
+      border: 2px solid rgba(92,111,255,.23);
       color: var(--accent);
-
       font-size: 10px;
       font-weight: 820;
-
-      animation:
-        timelinePulse
-        4s
-        ease-in-out
-        infinite;
-
+      animation: timelinePulse 4s ease-in-out infinite;
     }
 
-
-
-    .time-step:nth-child(2)
-    .time-dot {
-
-      animation-delay: 1s;
-
-    }
-
-
-
-    .time-step:nth-child(3)
-    .time-dot {
-
-      animation-delay: 2s;
-
-    }
-
-
-
-    .time-step:nth-child(4)
-    .time-dot {
-
-      animation-delay: 3s;
-
-    }
-
-
+    .time-step:nth-child(2) .time-dot { animation-delay: 1s; }
+    .time-step:nth-child(3) .time-dot { animation-delay: 2s; }
+    .time-step:nth-child(4) .time-dot { animation-delay: 3s; }
 
     .time-step span {
-
       color: #565b65;
-
       font-size: 9px;
       font-weight: 720;
-
     }
-
-
 
     .timeline-example {
-
-      margin:
-        13px auto 0;
-
-      padding:
-        7px 11px;
-
+      margin: 13px auto 0;
+      padding: 7px 11px;
       border-radius: 999px;
-
-      background:
-        rgba(255,255,255,.75);
-
+      background: rgba(255,255,255,.75);
       color: #3f444f;
-
       font-size: 10.5px;
       font-weight: 720;
-
     }
 
-
-
-    /* =====================================================
-       SLIDE 5 — ENERGY
-       ===================================================== */
-
+    /* SLIDE 5 */
     .energy-stage {
-
       height: 100%;
-
       display: grid;
-
-      grid-template-columns:
-        1.18fr .82fr;
-
+      grid-template-columns: 1.18fr .82fr;
       align-items: center;
-
       gap: 10px;
-
-      padding:
-        7px 11px;
-
+      padding: 7px 11px;
     }
-
-
 
     .energy-photo-wrap {
-
       position: relative;
-
       width: 100%;
       height: 100%;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
     }
-
-
 
     .energy-ring {
-
       position: absolute;
-
       width: 180px;
       height: 116px;
-
       border-radius: 19px;
-
-      border:
-        2px solid
-        rgba(236,141,66,.16);
-
-      background:
-        rgba(255,255,255,.18);
-
-      animation:
-        happyPulseRectangle
-        3s
-        ease-in-out
-        infinite;
-
+      border: 2px solid rgba(236,141,66,.16);
+      background: rgba(255,255,255,.18);
+      animation: happyPulseRectangle 3s ease-in-out infinite;
     }
-
-
 
     .energy-photo {
-
       position: relative;
-
       z-index: 2;
-
       width: 169px;
       height: 106px;
-
       max-width: 100%;
-
       object-fit: cover;
-
-      object-position:
-        center 43%;
-
+      object-position: center 43%;
       border-radius: 15px;
-
-      box-shadow:
-        0 12px 26px
-        rgba(51,40,32,.13);
-
-      animation:
-        photoBreathe
-        3.5s
-        ease-in-out
-        infinite;
-
+      box-shadow: 0 12px 26px rgba(51,40,32,.13);
+      animation: photoBreathe 3.5s ease-in-out infinite;
     }
-
-
 
     .energy-fallback {
-
       position: relative;
-
       z-index: 2;
-
       width: 169px;
       height: 106px;
-
       max-width: 100%;
-
       display: none;
-
       align-items: center;
       justify-content: center;
-
       border-radius: 15px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #f0be9a,
-          #da9a71
-        );
-
+      background: linear-gradient(180deg, #f0be9a, #da9a71);
       font-size: 34px;
-
     }
-
-
 
     .energy-actions {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 6px;
-
     }
-
-
 
     .energy-pill {
-
-      padding:
-        7px 9px;
-
+      padding: 7px 9px;
       border-radius: 12px;
-
-      background:
-        rgba(255,255,255,.76);
-
+      background: rgba(255,255,255,.76);
       color: #424750;
-
       font-size: 10px;
       font-weight: 720;
-
-      animation:
-        energyRise
-        3.8s
-        ease-in-out
-        infinite;
-
+      animation: energyRise 3.8s ease-in-out infinite;
     }
 
+    .energy-pill:nth-child(2) { animation-delay: .55s; }
+    .energy-pill:nth-child(3) { animation-delay: 1.1s; }
 
-
-    .energy-pill:nth-child(2) {
-
-      animation-delay: .55s;
-
-    }
-
-
-
-    .energy-pill:nth-child(3) {
-
-      animation-delay: 1.1s;
-
-    }
-
-
-
-    /* =====================================================
-       SLIDE 6 — READ THE MOMENT
-       ===================================================== */
-
+    /* SLIDE 6 */
     .clue-stage {
-
       height: 100%;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
-      padding:
-        11px;
-
+      padding: 11px;
     }
-
-
 
     .clue-flow {
-
       width: 100%;
-
       display: grid;
-
-      grid-template-columns:
-        1fr 20px 1fr 20px 1fr;
-
+      grid-template-columns: 1fr 20px 1fr 20px 1fr;
       align-items: center;
-
     }
-
-
 
     .clue-card {
-
       min-height: 68px;
-
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
       justify-content: center;
-
       gap: 4px;
-
-      padding:
-        7px;
-
+      padding: 7px;
       border-radius: 15px;
-
-      background:
-        rgba(255,255,255,.76);
-
+      background: rgba(255,255,255,.76);
       text-align: center;
-
-      animation:
-        clueFocus
-        5.4s
-        ease-in-out
-        infinite;
-
+      animation: clueFocus 5.4s ease-in-out infinite;
     }
 
+    .clue-card:nth-of-type(2) { animation-delay: 1.8s; }
+    .clue-card:nth-of-type(3) { animation-delay: 3.6s; }
 
-
-    .clue-card:nth-of-type(2) {
-
-      animation-delay: 1.8s;
-
-    }
-
-
-
-    .clue-card:nth-of-type(3) {
-
-      animation-delay: 3.6s;
-
-    }
-
-
-
-    .clue-card strong {
-
-      font-size: 10.5px;
-
-    }
-
-
+    .clue-card strong { font-size: 10.5px; }
 
     .clue-card span {
-
       color: var(--muted);
-
       font-size: 9px;
       line-height: 1.2;
-
     }
-
-
 
     .clue-arrow {
-
       text-align: center;
-
       color: #8d929d;
-
       font-size: 18px;
-
     }
-
-
 
     .jump-symbol {
-
       position: relative;
-
       width: 22px;
       height: 25px;
-
-      animation:
-        littleJump
-        1.35s
-        ease-in-out
-        infinite;
-
+      animation: littleJump 1.35s ease-in-out infinite;
     }
-
-
 
     .jump-symbol::before {
-
       content: "";
-
       position: absolute;
-
       width: 10px;
       height: 10px;
-
       left: 6px;
       top: 0;
-
       border-radius: 50%;
-
       background: var(--orange);
-
     }
-
-
 
     .jump-symbol::after {
-
       content: "";
-
       position: absolute;
-
       width: 19px;
       height: 12px;
-
       left: 1.5px;
       top: 11px;
-
-      border-radius:
-        8px 8px 5px 5px;
-
+      border-radius: 8px 8px 5px 5px;
       background: var(--orange);
-
     }
-
-
-
-    /* =====================================================
-       CONTROLS
-       ===================================================== */
 
     .e-controls {
-
       flex: 0 0 auto;
-
       display: grid;
-
-      grid-template-columns:
-        1fr auto;
-
+      grid-template-columns: 1fr auto;
       align-items: center;
-
       gap: 10px;
-
       padding-top: 9px;
-
     }
-
-
 
     .e-back,
     .e-next {
-
       min-height: 41px;
-
       border: 0;
-
       border-radius: 999px;
-
       font: inherit;
-
       font-size: 13px;
       font-weight: 760;
-
       cursor: pointer;
-
     }
-
-
 
     .e-back {
-
       justify-self: start;
-
-      padding:
-        0 13px;
-
+      padding: 0 13px;
       background: transparent;
-
       color: #737780;
-
     }
 
-
-
-    .e-back.hidden {
-
-      visibility: hidden;
-
-    }
-
-
+    .e-back.hidden { visibility: hidden; }
 
     .e-next {
-
       min-width: 88px;
-
-      padding:
-        0 18px;
-
+      padding: 0 18px;
       background: #1d1e23;
-
       color: white;
-
-      box-shadow:
-        0 8px 19px
-        rgba(29,30,35,.14);
-
-      transition:
-        transform .15s ease;
-
+      box-shadow: 0 8px 19px rgba(29,30,35,.14);
+      transition: transform .15s ease;
     }
 
-
-
-    .e-next:active {
-
-      transform:
-        scale(.96);
-
-    }
-
-
+    .e-next:active { transform: scale(.96); }
 
     .e-footer-note {
-
       flex: 0 0 auto;
-
       margin-top: 5px;
-
       text-align: center;
-
       color: #999ba1;
-
       font-size: 9.5px;
       line-height: 1.3;
-
     }
-
-
-
-    /* =====================================================
-       ANIMATIONS
-       ===================================================== */
 
     @keyframes slideEnter {
-
-      from {
-
-        opacity: 0;
-
-        transform:
-          translateX(9px);
-
-      }
-
-
-      to {
-
-        opacity: 1;
-
-        transform:
-          translateX(0);
-
-      }
-
+      from { opacity: 0; transform: translateX(9px); }
+      to { opacity: 1; transform: translateX(0); }
     }
-
-
 
     @keyframes supportPhotoFloat {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(0);
-
-      }
-
-
-      50% {
-
-        transform:
-          translateY(-2px);
-
-      }
-
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
     }
-
-
 
     @keyframes optionBreathe {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(0);
-
-      }
-
-
-      50% {
-
-        transform:
-          translateY(-1.5px);
-
-      }
-
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-1.5px); }
     }
-
-
 
     @keyframes soccerKickFoot {
-
-      0%,
-      13% {
-
-        transform:
-          translateX(-3px)
-          rotate(-11deg);
-
-      }
-
-
-      20% {
-
-        transform:
-          translateX(-8px)
-          rotate(-24deg);
-
-      }
-
-
-      29% {
-
-        transform:
-          translateX(8px)
-          rotate(14deg);
-
-      }
-
-
-      36%,
-      100% {
-
-        transform:
-          translateX(1px)
-          rotate(-3deg);
-
-      }
-
+      0%, 13% { transform: translateX(-3px) rotate(-11deg); }
+      20% { transform: translateX(-8px) rotate(-24deg); }
+      29% { transform: translateX(8px) rotate(14deg); }
+      36%, 100% { transform: translateX(1px) rotate(-3deg); }
     }
-
-
 
     @keyframes soccerBallMove {
-
-      0%,
-      27% {
-
-        transform:
-          translateX(-4px)
-          translateY(0)
-          rotate(0deg);
-
-      }
-
-
-      38% {
-
-        transform:
-          translateX(10px)
-          translateY(-4px)
-          rotate(72deg);
-
-      }
-
-
-      67% {
-
-        transform:
-          translateX(27px)
-          translateY(0)
-          rotate(255deg);
-
-      }
-
-
-      86% {
-
-        transform:
-          translateX(31px)
-          translateY(0)
-          rotate(330deg);
-
-      }
-
-
-      100% {
-
-        transform:
-          translateX(-4px)
-          translateY(0)
-          rotate(360deg);
-
-      }
-
+      0%, 27% { transform: translateX(-4px) translateY(0) rotate(0deg); }
+      38% { transform: translateX(10px) translateY(-4px) rotate(72deg); }
+      67% { transform: translateX(27px) translateY(0) rotate(255deg); }
+      86% { transform: translateX(31px) translateY(0) rotate(330deg); }
+      100% { transform: translateX(-4px) translateY(0) rotate(360deg); }
     }
-
-
 
     @keyframes soccerShadowMove {
-
-      0%,
-      27% {
-
-        transform:
-          translateX(-3px)
-          scaleX(.8);
-
-        opacity: .65;
-
-      }
-
-
-      38% {
-
-        transform:
-          translateX(10px)
-          scaleX(.6);
-
-        opacity: .32;
-
-      }
-
-
-      67%,
-      86% {
-
-        transform:
-          translateX(28px)
-          scaleX(.78);
-
-        opacity: .55;
-
-      }
-
-
-      100% {
-
-        transform:
-          translateX(-3px)
-          scaleX(.8);
-
-        opacity: .65;
-
-      }
-
+      0%, 27% { transform: translateX(-3px) scaleX(.8); opacity: .65; }
+      38% { transform: translateX(10px) scaleX(.6); opacity: .32; }
+      67%, 86% { transform: translateX(28px) scaleX(.78); opacity: .55; }
+      100% { transform: translateX(-3px) scaleX(.8); opacity: .65; }
     }
-
-
 
     @keyframes realisticBasketBounce {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(17px)
-          scaleX(1.08)
-          scaleY(.90);
-
-      }
-
-
-      7% {
-
-        transform:
-          translateY(13px)
-          scaleX(.96)
-          scaleY(1.04);
-
-      }
-
-
-      48% {
-
-        transform:
-          translateY(-13px)
-          scaleX(1)
-          scaleY(1);
-
-      }
-
-
-      88% {
-
-        transform:
-          translateY(10px)
-          scaleX(.98)
-          scaleY(1.02);
-
-      }
-
-
-      95% {
-
-        transform:
-          translateY(17px)
-          scaleX(1.10)
-          scaleY(.88);
-
-      }
-
+      0%, 100% { transform: translateY(17px) scaleX(1.08) scaleY(.90); }
+      7% { transform: translateY(13px) scaleX(.96) scaleY(1.04); }
+      48% { transform: translateY(-13px) scaleX(1) scaleY(1); }
+      88% { transform: translateY(10px) scaleX(.98) scaleY(1.02); }
+      95% { transform: translateY(17px) scaleX(1.10) scaleY(.88); }
     }
-
-
 
     @keyframes realisticBasketShadow {
-
-      0%,
-      100% {
-
-        transform:
-          scaleX(1.08);
-
-        opacity: .72;
-
-      }
-
-
-      48% {
-
-        transform:
-          scaleX(.58);
-
-        opacity: .25;
-
-      }
-
-
-      95% {
-
-        transform:
-          scaleX(1.10);
-
-        opacity: .74;
-
-      }
-
+      0%, 100% { transform: scaleX(1.08); opacity: .72; }
+      48% { transform: scaleX(.58); opacity: .25; }
+      95% { transform: scaleX(1.10); opacity: .74; }
     }
-
-
 
     @keyframes runnerTravel {
-
-      0% {
-
-        transform:
-          translateX(-13px)
-          translateY(1px);
-
-      }
-
-
-      45% {
-
-        transform:
-          translateX(30px)
-          translateY(-2px);
-
-      }
-
-
-      53% {
-
-        transform:
-          translateX(34px)
-          translateY(0);
-
-      }
-
-
-      100% {
-
-        transform:
-          translateX(-13px)
-          translateY(1px);
-
-      }
-
+      0% { transform: translateX(-13px) translateY(1px); }
+      45% { transform: translateX(30px) translateY(-2px); }
+      53% { transform: translateX(34px) translateY(0); }
+      100% { transform: translateX(-13px) translateY(1px); }
     }
-
-
 
     @keyframes armSwingA {
-
-      0%,
-      100% {
-
-        transform:
-          rotate(27deg);
-
-      }
-
-
-      50% {
-
-        transform:
-          rotate(-32deg);
-
-      }
-
+      0%, 100% { transform: rotate(27deg); }
+      50% { transform: rotate(-32deg); }
     }
-
-
 
     @keyframes armSwingB {
-
-      0%,
-      100% {
-
-        transform:
-          rotate(-30deg);
-
-      }
-
-
-      50% {
-
-        transform:
-          rotate(28deg);
-
-      }
-
+      0%, 100% { transform: rotate(-30deg); }
+      50% { transform: rotate(28deg); }
     }
-
-
 
     @keyframes legSwingA {
-
-      0%,
-      100% {
-
-        transform:
-          rotate(-25deg);
-
-      }
-
-
-      50% {
-
-        transform:
-          rotate(33deg);
-
-      }
-
+      0%, 100% { transform: rotate(-25deg); }
+      50% { transform: rotate(33deg); }
     }
-
-
 
     @keyframes legSwingB {
-
-      0%,
-      100% {
-
-        transform:
-          rotate(31deg);
-
-      }
-
-
-      50% {
-
-        transform:
-          rotate(-28deg);
-
-      }
-
+      0%, 100% { transform: rotate(31deg); }
+      50% { transform: rotate(-28deg); }
     }
-
-
 
     @keyframes bottleLift {
-
-      0%,
-      20%,
-      100% {
-
-        transform:
-          translateY(0)
-          rotate(0deg);
-
-      }
-
-
-      45% {
-
-        transform:
-          translateY(-9px)
-          rotate(-4deg);
-
-      }
-
-
-      62% {
-
-        transform:
-          translateY(-8px)
-          rotate(3deg);
-
-      }
-
-
-      78% {
-
-        transform:
-          translateY(0)
-          rotate(0deg);
-
-      }
-
+      0%, 20%, 100% { transform: translateY(0) rotate(0deg); }
+      45% { transform: translateY(-9px) rotate(-4deg); }
+      62% { transform: translateY(-8px) rotate(3deg); }
+      78% { transform: translateY(0) rotate(0deg); }
     }
-
-
 
     @keyframes waterShift {
-
-      0%,
-      20%,
-      100% {
-
-        transform:
-          translateY(0)
-          rotate(0deg);
-
-      }
-
-
-      45% {
-
-        transform:
-          translateY(1px)
-          rotate(3deg);
-
-      }
-
-
-      62% {
-
-        transform:
-          translateY(-1px)
-          rotate(-3deg);
-
-      }
-
+      0%, 20%, 100% { transform: translateY(0) rotate(0deg); }
+      45% { transform: translateY(1px) rotate(3deg); }
+      62% { transform: translateY(-1px) rotate(-3deg); }
     }
-
-
 
     @keyframes chairSettle {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(0);
-
-      }
-
-
-      50% {
-
-        transform:
-          translateY(1px);
-
-      }
-
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(1px); }
     }
-
-
 
     @keyframes yesNoFloat {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(0);
-
-      }
-
-
-      50% {
-
-        transform:
-          translateY(-2px);
-
-      }
-
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
     }
-
-
 
     @keyframes swipeHint {
-
-      0% {
-
-        opacity: 0;
-
-        transform:
-          translateX(0);
-
-      }
-
-
-      18% {
-
-        opacity: .75;
-
-      }
-
-
-      38% {
-
-        opacity: .75;
-
-        transform:
-          translateX(-4px);
-
-      }
-
-
-      58% {
-
-        opacity: .75;
-
-        transform:
-          translateX(4px);
-
-      }
-
-
-      82% {
-
-        opacity: .55;
-
-      }
-
-
-      100% {
-
-        opacity: 0;
-
-        transform:
-          translateX(0);
-
-      }
-
+      0% { opacity: 0; transform: translateX(0); }
+      18% { opacity: .75; }
+      38% { opacity: .75; transform: translateX(-4px); }
+      58% { opacity: .75; transform: translateX(4px); }
+      82% { opacity: .55; }
+      100% { opacity: 0; transform: translateX(0); }
     }
-
-
 
     @keyframes actionFocus {
-
-      0%,
-      100% {
-
-        transform:
-          scale(1);
-
-        box-shadow: none;
-
-      }
-
-
-      20%,
-      42% {
-
-        transform:
-          translateY(-3px)
-          scale(1.025);
-
-        box-shadow:
-          0 9px 20px
-          rgba(53,168,118,.10);
-
-      }
-
+      0%, 100% { transform: scale(1); box-shadow: none; }
+      20%, 42% { transform: translateY(-3px) scale(1.025); box-shadow: 0 9px 20px rgba(53,168,118,.10); }
     }
-
-
 
     @keyframes signalGlow {
-
-      0%,
-      100% {
-
-        transform:
-          translateX(0);
-
-        box-shadow: none;
-
-      }
-
-
-      25% {
-
-        transform:
-          translateX(3px);
-
-        box-shadow:
-          0 7px 16px
-          rgba(92,111,255,.08);
-
-      }
-
+      0%, 100% { transform: translateX(0); box-shadow: none; }
+      25% { transform: translateX(3px); box-shadow: 0 7px 16px rgba(92,111,255,.08); }
     }
-
-
 
     @keyframes timelinePulse {
-
-      0%,
-      100% {
-
-        transform:
-          scale(.92);
-
-        background: white;
-
-      }
-
-
-      18%,
-      38% {
-
-        transform:
-          scale(1.12);
-
-        background:
-          var(--accent-soft);
-
-      }
-
+      0%, 100% { transform: scale(.92); background: white; }
+      18%, 38% { transform: scale(1.12); background: var(--accent-soft); }
     }
-
-
 
     @keyframes happyPulseRectangle {
-
-      0%,
-      100% {
-
-        transform:
-          scale(.97);
-
-        opacity: .55;
-
-      }
-
-
-      50% {
-
-        transform:
-          scale(1.025);
-
-        opacity: 1;
-
-      }
-
+      0%, 100% { transform: scale(.97); opacity: .55; }
+      50% { transform: scale(1.025); opacity: 1; }
     }
-
-
 
     @keyframes photoBreathe {
-
-      0%,
-      100% {
-
-        transform:
-          scale(1);
-
-      }
-
-
-      50% {
-
-        transform:
-          scale(1.018);
-
-      }
-
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.018); }
     }
-
-
 
     @keyframes energyRise {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(0);
-
-      }
-
-
-      50% {
-
-        transform:
-          translateY(-3px);
-
-      }
-
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
-
-
 
     @keyframes clueFocus {
-
-      0%,
-      100% {
-
-        transform:
-          scale(1);
-
-        box-shadow: none;
-
-      }
-
-
-      17%,
-      35% {
-
-        transform:
-          translateY(-3px)
-          scale(1.03);
-
-        box-shadow:
-          0 8px 18px
-          rgba(46,67,93,.08);
-
-      }
-
+      0%, 100% { transform: scale(1); box-shadow: none; }
+      17%, 35% { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 18px rgba(46,67,93,.08); }
     }
-
-
 
     @keyframes littleJump {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(2px);
-
-      }
-
-
-      50% {
-
-        transform:
-          translateY(-5px);
-
-      }
-
+      0%, 100% { transform: translateY(2px); }
+      50% { transform: translateY(-5px); }
     }
 
-
-
-    /* =====================================================
-       PHONE
-       ===================================================== */
-
-    @media
-    (max-width: 600px) {
-
+    @media (max-width: 600px) {
       .e-card {
-
         padding: 16px;
-
         border-radius: 24px;
-
       }
-
-
 
       .e-card h1 {
-
-        font-size:
-          clamp(
-            32px,
-            8.4vw,
-            39px
-          );
-
+        font-size: clamp(32px, 8.4vw, 39px);
       }
-
-
 
       .e-copy {
-
         font-size: 16px;
-
         line-height: 1.38;
-
       }
 
-
-
-      .e-try {
-
-        font-size: 13px;
-
-      }
-
-
+      .e-try { font-size: 13px; }
 
       .e-visual {
-
         flex-basis: 128px;
-
         height: 128px;
         min-height: 128px;
-
       }
 
-
-
-      /* ---------- SUPPORT PHOTOS ---------- */
-
-      .support-photo-area {
-
-        margin-top: 11px;
-
-      }
-
-
+      .support-photo-area { margin-top: 11px; }
 
       .support-photo.slide2-photo {
-
-        width:
-          min(330px, 76%);
-
-        height: 116px;
-
+        width: min(330px, 76%);
+        height: 154px;
       }
-
-
 
       .support-photo.slide3-photo {
-
-        width:
-          min(290px, 67%);
-
-        height: 116px;
-
+        width: min(295px, 68%);
+        height: 150px;
       }
-
-
 
       .support-photo.slide4-photo {
-
-        width:
-          min(320px, 74%);
-
-        height: 114px;
-
+        width: min(320px, 74%);
+        height: 148px;
       }
-
-
 
       .support-photo.slide6-photo {
-
-        width:
-          min(335px, 77%);
-
-        height: 116px;
-
+        width: min(338px, 77%);
+        height: 152px;
       }
 
-
-
-      /* ---------- SLIDE 1 ---------- */
+      .support-photo-fallback {
+        width: 270px;
+        height: 126px;
+      }
 
       .e-visual.choice-stage {
-
         flex-basis: 132px;
-
         height: 132px;
         min-height: 132px;
-
         margin-top: 10px;
-
       }
 
-
-
-      .choice-carousel {
-
-        height: 101px;
-
-      }
-
-
+      .choice-carousel { height: 101px; }
 
       .choice-panel {
-
-        grid-template-columns:
-          76px minmax(0,1fr);
-
+        grid-template-columns: 76px minmax(0,1fr);
         gap: 9px;
-
-        padding:
-          7px 10px 7px 8px;
-
+        padding: 7px 10px 7px 8px;
       }
 
-
-
       .choice-object {
-
         width: 68px;
         height: 68px;
-
       }
 
-
-
       .sport-svg {
-
         width: 64px;
         height: 64px;
-
       }
-
-
 
       .choice-option {
-
-        padding:
-          8px 5px;
-
+        padding: 8px 5px;
         font-size: 12px;
-
       }
 
-
-
-      .yes-no-outside {
-
-        margin-top: 8px;
-
-      }
-
-
+      .yes-no-outside { margin-top: 8px; }
 
       .yes-no-frame {
-
-        width:
-          min(320px, 90%);
-
+        width: min(320px, 90%);
         height: 108px;
-
       }
 
-
-
-      .yes-no-frame img {
-
-        transform:
-          scale(1.32);
-
-      }
-
-
-
-      /* ---------- SLIDE 5 ---------- */
+      .yes-no-frame img { transform: scale(1.32); }
 
       .energy-stage {
-
-        grid-template-columns:
-          1.18fr .82fr;
-
+        grid-template-columns: 1.18fr .82fr;
         gap: 7px;
-
-        padding:
-          7px 8px;
-
+        padding: 7px 8px;
       }
 
-
-
       .energy-ring {
-
         width: 153px;
         height: 101px;
-
         border-radius: 17px;
-
       }
-
-
 
       .energy-photo,
       .energy-fallback {
-
         width: 144px;
         height: 93px;
-
         border-radius: 13px;
-
       }
 
-
-
-      .energy-actions {
-
-        gap: 5px;
-
-      }
-
-
+      .energy-actions { gap: 5px; }
 
       .energy-pill {
-
-        padding:
-          6px 7px;
-
+        padding: 6px 7px;
         font-size: 9.5px;
-
       }
-
     }
 
+    @media (max-height: 720px) and (max-width: 600px) {
+      .e-topbar { height: 40px; }
+      .e-progress { margin-bottom: 6px; }
 
+      .e-card { padding: 13px; }
 
-    /* =====================================================
-       SHORT PHONES
-       ===================================================== */
+      .e-label { font-size: 9.5px; }
 
-    @media
-    (max-height: 720px)
-    and
-    (max-width: 600px) {
-
-      .e-topbar {
-
-        height: 40px;
-
-      }
-
-
-
-      .e-progress {
-
-        margin-bottom: 6px;
-
-      }
-
-
-
-      .e-card {
-
-        padding: 13px;
-
-      }
-
-
-
-      .e-label {
-
-        font-size: 9.5px;
-
-      }
-
-
-
-      .e-card h1 {
-
-        font-size: 29px;
-
-      }
-
-
+      .e-card h1 { font-size: 29px; }
 
       .e-copy {
-
         margin-top: 7px;
-
         font-size: 14.5px;
-
         line-height: 1.33;
-
       }
-
-
 
       .e-try {
-
         margin-top: 8px;
-
-        padding:
-          8px 10px;
-
+        padding: 8px 10px;
         font-size: 12px;
-
       }
-
-
 
       .e-visual {
-
         flex-basis: 108px;
-
         height: 108px;
         min-height: 108px;
-
         margin-top: 8px;
-
       }
 
-
-
-      /* ---------- SUPPORT PHOTOS ---------- */
-
-      .support-photo-area {
-
-        margin-top: 7px;
-
-      }
-
-
+      .support-photo-area { margin-top: 7px; }
 
       .support-photo {
-
         border-radius: 14px;
-
       }
-
-
 
       .support-photo.slide2-photo {
-
-        width:
-          min(285px, 72%);
-
-        height: 86px;
-
+        width: min(285px, 72%);
+        height: 116px;
       }
-
-
 
       .support-photo.slide3-photo {
-
-        width:
-          min(250px, 64%);
-
-        height: 88px;
-
+        width: min(252px, 64%);
+        height: 110px;
       }
-
-
 
       .support-photo.slide4-photo {
-
-        width:
-          min(275px, 70%);
-
-        height: 86px;
-
+        width: min(276px, 70%);
+        height: 108px;
       }
-
-
 
       .support-photo.slide6-photo {
-
-        width:
-          min(290px, 73%);
-
-        height: 86px;
-
+        width: min(290px, 73%);
+        height: 112px;
       }
 
-
-
-      /* ---------- SLIDE 1 ---------- */
+      .support-photo-fallback {
+        width: 240px;
+        height: 100px;
+      }
 
       .e-visual.choice-stage {
-
         flex-basis: 103px;
-
         height: 103px;
         min-height: 103px;
-
-        padding:
-          5px 8px 17px;
-
+        padding: 5px 8px 17px;
       }
 
-
-
-      .choice-carousel {
-
-        height: 81px;
-
-      }
-
-
+      .choice-carousel { height: 81px; }
 
       .choice-panel {
-
-        grid-template-columns:
-          58px minmax(0,1fr);
-
+        grid-template-columns: 58px minmax(0,1fr);
         min-height: 76px;
-
         gap: 6px;
-
-        padding:
-          5px 6px;
-
+        padding: 5px 6px;
       }
-
-
 
       .choice-object {
-
         width: 53px;
         height: 53px;
-
         border-radius: 14px;
-
       }
-
-
 
       .sport-svg {
-
         width: 50px;
         height: 50px;
-
       }
-
-
 
       .choice-category {
-
         margin-bottom: 4px;
-
         font-size: 8px;
-
       }
-
-
 
       .choice-option {
-
-        padding:
-          5px 3px;
-
+        padding: 5px 3px;
         font-size: 10px;
-
       }
 
+      .choice-or { font-size: 7px; }
 
-
-      .choice-or {
-
-        font-size: 7px;
-
-      }
-
-
-
-      .choice-dots {
-
-        bottom: 5px;
-
-      }
-
-
+      .choice-dots { bottom: 5px; }
 
       .choice-dot {
-
         width: 5px;
         height: 5px;
-
       }
 
+      .choice-dot.active { width: 14px; }
 
-
-      .choice-dot.active {
-
-        width: 14px;
-
-      }
-
-
-
-      .yes-no-outside {
-
-        margin-top: 5px;
-
-      }
-
-
+      .yes-no-outside { margin-top: 5px; }
 
       .yes-no-frame {
-
-        width:
-          min(285px, 86%);
-
+        width: min(285px, 86%);
         height: 90px;
-
       }
 
-
-
-      .yes-no-frame img {
-
-        transform:
-          scale(1.24);
-
-      }
-
-
-
-      /* ---------- SLIDE 5 ---------- */
+      .yes-no-frame img { transform: scale(1.24); }
 
       .energy-stage {
-
-        grid-template-columns:
-          1.18fr .82fr;
-
-        padding:
-          5px 7px;
-
+        grid-template-columns: 1.18fr .82fr;
+        padding: 5px 7px;
         gap: 6px;
-
       }
-
-
 
       .energy-ring {
-
         width: 126px;
         height: 82px;
-
         border-radius: 14px;
-
       }
-
-
 
       .energy-photo,
       .energy-fallback {
-
         width: 119px;
         height: 76px;
-
         border-radius: 11px;
-
       }
-
-
 
       .energy-pill {
-
-        padding:
-          5px 6px;
-
+        padding: 5px 6px;
         font-size: 8.7px;
-
       }
 
-
-
-      .e-controls {
-
-        padding-top: 6px;
-
-      }
-
-
+      .e-controls { padding-top: 6px; }
 
       .e-back,
       .e-next {
-
         min-height: 37px;
-
       }
-
     }
 
-
-
-    /* =====================================================
-       REDUCED MOTION
-       ===================================================== */
-
-    @media
-    (prefers-reduced-motion: reduce) {
-
+    @media (prefers-reduced-motion: reduce) {
       .e-slide,
       .support-photo,
       .choice-option,
@@ -4140,2929 +1439,712 @@
       .clue-card,
       .jump-symbol,
       .choice-swipe-hint {
-
-        animation:
-          none !important;
-
+        animation: none !important;
       }
-
     }
-
   </style>
-
 </head>
 
-
-
 <body>
-
-
   <div class="e-app">
-
-
-
-    <!-- =================================================
-         TOP BAR
-         ================================================= -->
-
     <header class="e-topbar">
-
-
-      <a
-        href="index.html"
-        class="e-home"
-      >
-        ← Home
-      </a>
-
-
-      <div class="e-title">
-        60-Second Essentials
-      </div>
-
-
-      <div
-        class="e-counter"
-        id="counter"
-      >
-        1 / 6
-      </div>
-
-
+      <a href="index.html" class="e-home">← Home</a>
+      <div class="e-title">60-Second Essentials</div>
+      <div class="e-counter" id="counter">1 / 6</div>
     </header>
 
-
-
-    <!-- =================================================
-         PROGRESS
-         ================================================= -->
-
     <div class="e-progress">
-
-
       <div class="e-progress-piece active"></div>
-
       <div class="e-progress-piece"></div>
-
       <div class="e-progress-piece"></div>
-
       <div class="e-progress-piece"></div>
-
       <div class="e-progress-piece"></div>
-
       <div class="e-progress-piece"></div>
-
-
     </div>
-
-
-
-    <!-- =================================================
-         SLIDES
-         ================================================= -->
 
     <main class="e-stage">
 
-
-
-      <!-- =================================================
-           01 — SIMPLE QUESTIONS
-           ================================================= -->
-
+      <!-- 01 -->
       <section class="e-slide active">
-
-
         <article class="e-card">
-
-
-          <div class="e-label">
-            01 · Simple questions
-          </div>
-
-
-          <h1>
-            Offer simple yes/no questions.
-          </h1>
-
-
+          <div class="e-label">01 · Simple questions</div>
+          <h1>Offer simple yes/no questions.</h1>
           <p class="e-copy">
-
             If an athlete can't easily answer an open-ended question,
             ask <strong>yes/no</strong> or give two clear choices.
-
           </p>
 
-
           <div class="e-try">
-
-            <span class="e-try-label">
-              TRY THIS
-            </span>
-
+            <span class="e-try-label">TRY THIS</span>
             Give two clear options for the athlete to choose.
-
           </div>
 
-
-
-          <div
-            class="e-visual visual-blue choice-stage"
-            id="choiceStage"
-          >
-
-
+          <div class="e-visual visual-blue choice-stage" id="choiceStage">
             <div class="choice-carousel">
 
-
-
-              <!-- =============================================
-                   SOCCER
-                   ============================================= -->
-
-              <div
-                class="choice-scene active"
-                data-choice-index="0"
-              >
-
-
+              <div class="choice-scene active" data-choice-index="0">
                 <div class="choice-panel">
-
-
                   <div class="choice-object">
-
-
-                    <svg
-                      class="sport-svg"
-                      viewBox="0 0 96 76"
-                      aria-hidden="true"
-                    >
-
-
-                      <ellipse
-                        class="soccer-ground"
-                        cx="51"
-                        cy="64"
-                        rx="31"
-                        ry="5"
-                      ></ellipse>
-
-
-                      <ellipse
-                        class="soccer-ground soccer-shadow"
-                        cx="49"
-                        cy="58"
-                        rx="13"
-                        ry="3.2"
-                      ></ellipse>
-
-
+                    <svg class="sport-svg" viewBox="0 0 96 76" aria-hidden="true">
+                      <ellipse class="soccer-ground" cx="51" cy="64" rx="31" ry="5"></ellipse>
+                      <ellipse class="soccer-ground soccer-shadow" cx="49" cy="58" rx="13" ry="3.2"></ellipse>
                       <g class="soccer-ball-group">
-
-
-                        <circle
-                          class="soccer-ball-body"
-                          cx="49"
-                          cy="44"
-                          r="13"
-                        ></circle>
-
-
-                        <polygon
-                          class="soccer-panel"
-                          points="
-                            49,37
-                            55,41
-                            53,48
-                            45,48
-                            43,41
-                          "
-                        ></polygon>
-
-
-                        <path
-                          class="soccer-seam"
-                          d="
-                            M43 41
-                            L36 37
-
-                            M55 41
-                            L62 37
-
-                            M45 48
-                            L40 55
-
-                            M53 48
-                            L58 55
-                          "
-                        ></path>
-
-
+                        <circle class="soccer-ball-body" cx="49" cy="44" r="13"></circle>
+                        <polygon class="soccer-panel" points="49,37 55,41 53,48 45,48 43,41"></polygon>
+                        <path class="soccer-seam" d="M43 41 L36 37 M55 41 L62 37 M45 48 L40 55 M53 48 L58 55"></path>
                       </g>
-
-
                       <g class="soccer-foot">
-
-
-                        <path
-                          class="soccer-shoe-body"
-                          d="
-                            M13 46
-
-                            C18 44 23 44 28 46
-
-                            L37 52
-
-                            C39 54 38 58 35 59
-
-                            L17 59
-
-                            C13 59 11 56 12 52
-
-                            Z
-                          "
-                        ></path>
-
-
-                        <path
-                          class="soccer-shoe-sole"
-                          d="
-                            M12 57
-
-                            C20 59 29 59 37 56
-
-                            L38 60
-
-                            L13 61
-
-                            Z
-                          "
-                        ></path>
-
-
-                        <path
-                          class="soccer-shoe-line"
-                          d="
-                            M21 48
-                            L27 53
-
-                            M24 47
-                            L30 52
-                          "
-                        ></path>
-
-
+                        <path class="soccer-shoe-body" d="M13 46 C18 44 23 44 28 46 L37 52 C39 54 38 58 35 59 L17 59 C13 59 11 56 12 52 Z"></path>
+                        <path class="soccer-shoe-sole" d="M12 57 C20 59 29 59 37 56 L38 60 L13 61 Z"></path>
+                        <path class="soccer-shoe-line" d="M21 48 L27 53 M24 47 L30 52"></path>
                       </g>
-
-
                     </svg>
-
-
                   </div>
-
-
 
                   <div class="choice-copy">
-
-
-                    <div class="choice-category">
-                      Soccer
-                    </div>
-
-
+                    <div class="choice-category">Soccer</div>
                     <div class="choice-options">
-
-
-                      <div class="choice-option">
-                        Kick
-                      </div>
-
-
-                      <div class="choice-or">
-                        or
-                      </div>
-
-
-                      <div class="choice-option">
-                        Pass
-                      </div>
-
-
+                      <div class="choice-option">Kick</div>
+                      <div class="choice-or">or</div>
+                      <div class="choice-option">Pass</div>
                     </div>
-
-
                   </div>
-
-
                 </div>
-
-
               </div>
 
-
-
-              <!-- =============================================
-                   BASKETBALL
-                   ============================================= -->
-
-              <div
-                class="choice-scene"
-                data-choice-index="1"
-              >
-
-
+              <div class="choice-scene" data-choice-index="1">
                 <div class="choice-panel">
-
-
                   <div class="choice-object">
-
-
-                    <svg
-                      class="sport-svg"
-                      viewBox="0 0 96 76"
-                      aria-hidden="true"
-                    >
-
-
-                      <line
-                        class="basket-floor"
-                        x1="14"
-                        y1="65"
-                        x2="82"
-                        y2="65"
-                      ></line>
-
-
-                      <ellipse
-                        class="basket-shadow"
-                        cx="48"
-                        cy="61"
-                        rx="17"
-                        ry="4"
-                      ></ellipse>
-
-
+                    <svg class="sport-svg" viewBox="0 0 96 76" aria-hidden="true">
+                      <line class="basket-floor" x1="14" y1="65" x2="82" y2="65"></line>
+                      <ellipse class="basket-shadow" cx="48" cy="61" rx="17" ry="4"></ellipse>
                       <g class="basket-ball-group">
-
-
-                        <circle
-                          class="basket-ball"
-                          cx="48"
-                          cy="34"
-                          r="15"
-                        ></circle>
-
-
-                        <path
-                          class="basket-line"
-                          d="
-                            M33 34
-                            H63
-
-                            M48 19
-                            V49
-
-                            M38 21
-                            C46 28 46 40 38 47
-
-                            M58 21
-                            C50 28 50 40 58 47
-                          "
-                        ></path>
-
-
+                        <circle class="basket-ball" cx="48" cy="34" r="15"></circle>
+                        <path class="basket-line" d="M33 34 H63 M48 19 V49 M38 21 C46 28 46 40 38 47 M58 21 C50 28 50 40 58 47"></path>
                       </g>
-
-
                     </svg>
-
-
                   </div>
-
-
 
                   <div class="choice-copy">
-
-
-                    <div class="choice-category">
-                      Basketball
-                    </div>
-
-
+                    <div class="choice-category">Basketball</div>
                     <div class="choice-options">
-
-
-                      <div class="choice-option">
-                        Shoot
-                      </div>
-
-
-                      <div class="choice-or">
-                        or
-                      </div>
-
-
-                      <div class="choice-option">
-                        Pass
-                      </div>
-
-
+                      <div class="choice-option">Shoot</div>
+                      <div class="choice-or">or</div>
+                      <div class="choice-option">Pass</div>
                     </div>
-
-
                   </div>
-
-
                 </div>
-
-
               </div>
 
-
-
-              <!-- =============================================
-                   TRACK
-                   ============================================= -->
-
-              <div
-                class="choice-scene"
-                data-choice-index="2"
-              >
-
-
+              <div class="choice-scene" data-choice-index="2">
                 <div class="choice-panel">
-
-
                   <div class="choice-object">
-
-
-                    <svg
-                      class="sport-svg"
-                      viewBox="0 0 96 76"
-                      aria-hidden="true"
-                    >
-
-
-                      <rect
-                        class="track-sky"
-                        x="5"
-                        y="8"
-                        width="86"
-                        height="29"
-                        rx="10"
-                      ></rect>
-
-
-                      <path
-                        class="track-ground"
-                        d="
-                          M5 37
-                          H91
-                          V68
-                          H5
-                          Z
-                        "
-                      ></path>
-
-
-                      <line
-                        class="track-line"
-                        x1="8"
-                        y1="49"
-                        x2="89"
-                        y2="49"
-                      ></line>
-
-
-                      <line
-                        class="track-line"
-                        x1="8"
-                        y1="61"
-                        x2="89"
-                        y2="61"
-                      ></line>
-
-
+                    <svg class="sport-svg" viewBox="0 0 96 76" aria-hidden="true">
+                      <rect class="track-sky" x="5" y="8" width="86" height="29" rx="10"></rect>
+                      <path class="track-ground" d="M5 37 H91 V68 H5 Z"></path>
+                      <line class="track-line" x1="8" y1="49" x2="89" y2="49"></line>
+                      <line class="track-line" x1="8" y1="61" x2="89" y2="61"></line>
                       <g class="runner-whole">
-
-
-                        <circle
-                          class="runner-head"
-                          cx="28"
-                          cy="20"
-                          r="5.3"
-                        ></circle>
-
-
-                        <line
-                          class="runner-shirt"
-                          x1="28"
-                          y1="28"
-                          x2="28"
-                          y2="42"
-                        ></line>
-
-
-                        <line
-                          class="runner-arm runner-arm-a"
-                          x1="28"
-                          y1="31"
-                          x2="17"
-                          y2="37"
-                        ></line>
-
-
-                        <line
-                          class="runner-arm runner-arm-b"
-                          x1="28"
-                          y1="31"
-                          x2="40"
-                          y2="36"
-                        ></line>
-
-
-                        <line
-                          class="runner-limb runner-leg-a"
-                          x1="28"
-                          y1="42"
-                          x2="17"
-                          y2="55"
-                        ></line>
-
-
-                        <line
-                          class="runner-limb runner-leg-b"
-                          x1="28"
-                          y1="42"
-                          x2="41"
-                          y2="52"
-                        ></line>
-
-
+                        <circle class="runner-head" cx="28" cy="20" r="5.3"></circle>
+                        <line class="runner-shirt" x1="28" y1="28" x2="28" y2="42"></line>
+                        <line class="runner-arm runner-arm-a" x1="28" y1="31" x2="17" y2="37"></line>
+                        <line class="runner-arm runner-arm-b" x1="28" y1="31" x2="40" y2="36"></line>
+                        <line class="runner-limb runner-leg-a" x1="28" y1="42" x2="17" y2="55"></line>
+                        <line class="runner-limb runner-leg-b" x1="28" y1="42" x2="41" y2="52"></line>
                       </g>
-
-
                     </svg>
-
-
                   </div>
-
-
 
                   <div class="choice-copy">
-
-
-                    <div class="choice-category">
-                      Track
-                    </div>
-
-
+                    <div class="choice-category">Track</div>
                     <div class="choice-options">
-
-
-                      <div class="choice-option">
-                        Walk
-                      </div>
-
-
-                      <div class="choice-or">
-                        or
-                      </div>
-
-
-                      <div class="choice-option">
-                        Run
-                      </div>
-
-
+                      <div class="choice-option">Walk</div>
+                      <div class="choice-or">or</div>
+                      <div class="choice-option">Run</div>
                     </div>
-
-
                   </div>
-
-
                 </div>
-
-
               </div>
 
-
-
-              <!-- =============================================
-                   BREAK
-                   ============================================= -->
-
-              <div
-                class="choice-scene"
-                data-choice-index="3"
-              >
-
-
+              <div class="choice-scene" data-choice-index="3">
                 <div class="choice-panel">
-
-
                   <div class="choice-object">
-
-
-                    <svg
-                      class="sport-svg"
-                      viewBox="0 0 96 76"
-                      aria-hidden="true"
-                    >
-
-
-                      <line
-                        class="break-floor"
-                        x1="10"
-                        y1="66"
-                        x2="86"
-                        y2="66"
-                      ></line>
-
-
+                    <svg class="sport-svg" viewBox="0 0 96 76" aria-hidden="true">
+                      <line class="break-floor" x1="10" y1="66" x2="86" y2="66"></line>
                       <g class="chair-group">
-
-
-                        <rect
-                          class="chair-back"
-                          x="17"
-                          y="25"
-                          width="25"
-                          height="25"
-                          rx="5"
-                        ></rect>
-
-
-                        <rect
-                          class="chair-seat"
-                          x="17"
-                          y="46"
-                          width="29"
-                          height="9"
-                          rx="3"
-                        ></rect>
-
-
-                        <line
-                          class="chair-leg"
-                          x1="21"
-                          y1="54"
-                          x2="19"
-                          y2="65"
-                        ></line>
-
-
-                        <line
-                          class="chair-leg"
-                          x1="41"
-                          y1="54"
-                          x2="43"
-                          y2="65"
-                        ></line>
-
-
+                        <rect class="chair-back" x="17" y="25" width="25" height="25" rx="5"></rect>
+                        <rect class="chair-seat" x="17" y="46" width="29" height="9" rx="3"></rect>
+                        <line class="chair-leg" x1="21" y1="54" x2="19" y2="65"></line>
+                        <line class="chair-leg" x1="41" y1="54" x2="43" y2="65"></line>
                       </g>
-
-
                       <g class="break-bottle-group">
-
-
-                        <rect
-                          class="bottle-body"
-                          x="59"
-                          y="26"
-                          width="19"
-                          height="36"
-                          rx="6"
-                        ></rect>
-
-
-                        <rect
-                          class="bottle-cap"
-                          x="64"
-                          y="21"
-                          width="9"
-                          height="6"
-                          rx="2"
-                        ></rect>
-
-
-                        <rect
-                          class="bottle-water"
-                          x="61"
-                          y="44"
-                          width="15"
-                          height="15"
-                          rx="4"
-                        ></rect>
-
-
+                        <rect class="bottle-body" x="59" y="26" width="19" height="36" rx="6"></rect>
+                        <rect class="bottle-cap" x="64" y="21" width="9" height="6" rx="2"></rect>
+                        <rect class="bottle-water" x="61" y="44" width="15" height="15" rx="4"></rect>
                       </g>
-
-
                     </svg>
-
-
                   </div>
-
-
 
                   <div class="choice-copy">
-
-
-                    <div class="choice-category">
-                      Break
-                    </div>
-
-
+                    <div class="choice-category">Break</div>
                     <div class="choice-options">
-
-
-                      <div class="choice-option">
-                        Sit
-                      </div>
-
-
-                      <div class="choice-or">
-                        or
-                      </div>
-
-
-                      <div class="choice-option">
-                        Water
-                      </div>
-
-
+                      <div class="choice-option">Sit</div>
+                      <div class="choice-or">or</div>
+                      <div class="choice-option">Water</div>
                     </div>
-
-
                   </div>
-
-
                 </div>
-
-
               </div>
-
-
             </div>
-
-
 
             <div class="choice-dots">
-
-
-              <button
-                class="choice-dot active"
-                data-choice-dot="0"
-                aria-label="Show soccer example"
-                aria-current="true"
-              ></button>
-
-
-              <button
-                class="choice-dot"
-                data-choice-dot="1"
-                aria-label="Show basketball example"
-              ></button>
-
-
-              <button
-                class="choice-dot"
-                data-choice-dot="2"
-                aria-label="Show track example"
-              ></button>
-
-
-              <button
-                class="choice-dot"
-                data-choice-dot="3"
-                aria-label="Show break example"
-              ></button>
-
-
+              <button class="choice-dot active" data-choice-dot="0" aria-label="Show soccer example" aria-current="true"></button>
+              <button class="choice-dot" data-choice-dot="1" aria-label="Show basketball example"></button>
+              <button class="choice-dot" data-choice-dot="2" aria-label="Show track example"></button>
+              <button class="choice-dot" data-choice-dot="3" aria-label="Show break example"></button>
             </div>
 
-
-
-            <div class="choice-swipe-hint">
-              swipe ↔
-            </div>
-
-
+            <div class="choice-swipe-hint">swipe ↔</div>
           </div>
 
-
-
           <div class="yes-no-outside">
-
-
             <div class="yes-no-frame">
-
-
               <img
                 src="Yes and No.jpg"
                 alt="Yes and No shown on opposite sides of a balance"
-                onerror="
-                  this.style.display='none';
-                  this.nextElementSibling.style.display='flex';
-                "
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               >
-
-
               <div class="yes-no-fallback">
-
-
-                <span class="yes">
-                  YES
-                </span>
-
-
-                <span>
-                  or
-                </span>
-
-
-                <span class="no">
-                  NO
-                </span>
-
-
+                <span class="yes">YES</span>
+                <span>or</span>
+                <span class="no">NO</span>
               </div>
-
-
             </div>
-
-
           </div>
-
-
         </article>
-
-
       </section>
 
-
-
-      <!-- =================================================
-           02 — WORDS + ACTIONS
-           ================================================= -->
-
+      <!-- 02 -->
       <section class="e-slide">
-
-
         <article class="e-card">
-
-
-          <div class="e-label">
-            02 · Words + actions
-          </div>
-
-
-          <h1>
-            Say it + show it.
-          </h1>
-
-
+          <div class="e-label">02 · Words + actions</div>
+          <h1>Say it + show it.</h1>
           <p class="e-copy">
-
             Pair short words with something the athlete can
             <strong>see</strong>. Your gesture can help give the words meaning.
-
           </p>
 
-
           <div class="e-try">
-
-
-            <span class="e-try-label">
-              TRY THIS
-            </span>
-
-
+            <span class="e-try-label">TRY THIS</span>
             Say less. Make the important part visible.
-
-
           </div>
-
-
 
           <div class="e-visual visual-green action-demo">
-
-
             <div class="action-demo-card">
-
-
-              <div class="gesture-thumb">
-                👍
-              </div>
-
-
-              <strong>
-                “Yes.”
-              </strong>
-
-
-              <small>
-                + thumbs up
-              </small>
-
-
+              <div class="gesture-thumb">👍</div>
+              <strong>“Yes.”</strong>
+              <small>+ thumbs up</small>
             </div>
 
-
-
             <div class="action-demo-card">
-
-
               <div class="mini-bottle"></div>
-
-
-              <strong>
-                “Water?”
-              </strong>
-
-
-              <small>
-                + show bottle
-              </small>
-
-
+              <strong>“Water?”</strong>
+              <small>+ show bottle</small>
             </div>
-
-
 
             <div class="action-demo-card">
-
-
               <div class="stand-marker"></div>
-
-
-              <strong>
-                “Stand here.”
-              </strong>
-
-
-              <small>
-                + point
-              </small>
-
-
+              <strong>“Stand here.”</strong>
+              <small>+ point</small>
             </div>
-
-
           </div>
 
-
-
-          <!-- NEW SLIDE 2 PHOTO -->
-
           <div class="support-photo-area">
-
-
             <img
               src="slide2-show-it.jpg"
               class="support-photo slide2-photo"
               alt="Volunteer demonstrating a movement while athletes follow along"
-              onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-              "
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             >
-
-
-            <div class="support-photo-fallback">
-              Demonstrate the movement
-            </div>
-
-
+            <div class="support-photo-fallback">Demonstrate the movement</div>
           </div>
-
-
         </article>
-
-
       </section>
 
-
-
-      <!-- =================================================
-           03 — SAME GESTURE
-           ================================================= -->
-
+      <!-- 03 -->
       <section class="e-slide">
-
-
         <article class="e-card">
-
-
-          <div class="e-label">
-            03 · Be consistent
-          </div>
-
-
-          <h1>
-            Use the same gesture for the same meaning.
-          </h1>
-
-
+          <div class="e-label">03 · Be consistent</div>
+          <h1>Use the same gesture for the same meaning.</h1>
           <p class="e-copy">
-
             Once a gesture means something, use it the same way every time.
             Consistency makes it easier to understand.
-
           </p>
 
-
           <div class="e-try">
-
-
-            <span class="e-try-label">
-              TRY THIS
-            </span>
-
-
+            <span class="e-try-label">TRY THIS</span>
             Use signals the athlete or program already knows whenever possible.
-
-
           </div>
-
-
 
           <div class="e-visual visual-purple signal-list">
-
-
             <div class="signal-row">
-
-
-              <div class="signal-word">
-                GOOD JOB
-              </div>
-
-
-              <div class="signal-arrow">
-                →
-              </div>
-
-
-              <div class="signal-action">
-                ✋ High five
-              </div>
-
-
+              <div class="signal-word">GOOD JOB</div>
+              <div class="signal-arrow">→</div>
+              <div class="signal-action">✋ High five</div>
             </div>
 
-
-
             <div class="signal-row">
-
-
-              <div class="signal-word">
-                LET'S GO
-              </div>
-
-
-              <div class="signal-arrow">
-                →
-              </div>
-
-
-              <div class="signal-action">
-                ✊ Fist up
-              </div>
-
-
+              <div class="signal-word">LET'S GO</div>
+              <div class="signal-arrow">→</div>
+              <div class="signal-action">✊ Fist up</div>
             </div>
 
-
-
             <div class="signal-row">
-
-
-              <div class="signal-word">
-                WATER
-              </div>
-
-
-              <div class="signal-arrow">
-                →
-              </div>
-
-
-              <div class="signal-action">
-                Hold bottle up
-              </div>
-
-
+              <div class="signal-word">WATER</div>
+              <div class="signal-arrow">→</div>
+              <div class="signal-action">Hold bottle up</div>
             </div>
-
-
           </div>
 
-
-
-          <!-- NEW SLIDE 3 PHOTO -->
-
           <div class="support-photo-area">
-
-
             <img
               src="slide3-high-five.jpg"
               class="support-photo slide3-photo"
               alt="Athlete and volunteer sharing a high five"
-              onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-              "
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             >
-
-
-            <div class="support-photo-fallback">
-              Keep signals familiar and consistent
-            </div>
-
-
+            <div class="support-photo-fallback">Keep signals familiar and consistent</div>
           </div>
-
-
         </article>
-
-
       </section>
 
-
-
-      <!-- =================================================
-           04 — GIVE IT TIME
-           ================================================= -->
-
+      <!-- 04 -->
       <section class="e-slide">
-
-
         <article class="e-card">
-
-
-          <div class="e-label">
-            04 · Give it time
-          </div>
-
-
-          <h1>
-            Give athletes time to react and respond.
-          </h1>
-
-
+          <div class="e-label">04 · Give it time</div>
+          <h1>Give athletes time to react and respond.</h1>
           <p class="e-copy">
-
             Give one clear cue and leave time to respond.
             If repeating isn't helping,
             <strong>change your approach</strong>.
-
           </p>
 
-
           <div class="e-try">
-
-
-            <span class="e-try-label">
-              TRY THIS
-            </span>
-
-
+            <span class="e-try-label">TRY THIS</span>
             “Pass.” → wait → show one pass → let them try.
-
-
           </div>
-
-
 
           <div class="e-visual visual-orange timeline">
-
-
             <div class="timeline-track">
-
-
               <div class="time-step">
-
-
-                <div class="time-dot">
-                  1
-                </div>
-
-
-                <span>
-                  SAY
-                </span>
-
-
+                <div class="time-dot">1</div>
+                <span>SAY</span>
               </div>
 
-
-
               <div class="time-step">
-
-
-                <div class="time-dot">
-                  2
-                </div>
-
-
-                <span>
-                  WAIT
-                </span>
-
-
+                <div class="time-dot">2</div>
+                <span>WAIT</span>
               </div>
 
-
-
               <div class="time-step">
-
-
-                <div class="time-dot">
-                  3
-                </div>
-
-
-                <span>
-                  SHOW
-                </span>
-
-
+                <div class="time-dot">3</div>
+                <span>SHOW</span>
               </div>
 
-
-
               <div class="time-step">
-
-
-                <div class="time-dot">
-                  4
-                </div>
-
-
-                <span>
-                  TRY
-                </span>
-
-
+                <div class="time-dot">4</div>
+                <span>TRY</span>
               </div>
-
-
             </div>
 
-
-
-            <div class="timeline-example">
-              Don't just add more words.
-            </div>
-
-
+            <div class="timeline-example">Don't just add more words.</div>
           </div>
 
-
-
-          <!-- NEW SLIDE 4 PHOTO -->
-
           <div class="support-photo-area">
-
-
             <img
               src="slide4-wait.jpg"
               class="support-photo slide4-photo"
               alt="Volunteer waiting supportively beside an athlete"
-              onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-              "
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             >
-
-
-            <div class="support-photo-fallback">
-              Give the athlete time
-            </div>
-
-
+            <div class="support-photo-fallback">Give the athlete time</div>
           </div>
-
-
         </article>
-
-
       </section>
 
-
-
-      <!-- =================================================
-           05 — YOUR ENERGY
-           ================================================= -->
-
+      <!-- 05 -->
       <section class="e-slide">
-
-
         <article class="e-card">
-
-
-          <div class="e-label">
-            05 · Your energy
-          </div>
-
-
-          <h1>
-            Always have a smile and show your good energy.
-          </h1>
-
-
+          <div class="e-label">05 · Your energy</div>
+          <h1>Always have a smile and show your good energy.</h1>
           <p class="e-copy">
-
             Some athletes notice facial expression and body language closely.
             If you look frustrated, they may think it's directed at them.
-
           </p>
 
-
           <div class="e-try">
-
-
-            <span class="e-try-label">
-              TRY THIS
-            </span>
-
-
+            <span class="e-try-label">TRY THIS</span>
             Smile. Encourage. Celebrate attempts.
             High five or fist bump if the athlete likes them.
-
-
           </div>
 
-
-
           <div class="e-visual visual-warm energy-stage">
-
-
             <div class="energy-photo-wrap">
-
-
               <div class="energy-ring"></div>
-
-
               <img
                 src="smile-photo.jpg"
                 class="energy-photo"
                 alt="A volunteer smiling warmly"
-                onerror="
-                  this.style.display='none';
-                  this.nextElementSibling.style.display='flex';
-                "
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               >
-
-
-              <div class="energy-fallback">
-                😊
-              </div>
-
-
+              <div class="energy-fallback">😊</div>
             </div>
-
-
 
             <div class="energy-actions">
-
-
-              <div class="energy-pill">
-                😊 “Nice!”
-              </div>
-
-
-              <div class="energy-pill">
-                ✋ High five?
-              </div>
-
-
-              <div class="energy-pill">
-                ✊ “Let's go!”
-              </div>
-
-
+              <div class="energy-pill">😊 “Nice!”</div>
+              <div class="energy-pill">✋ High five?</div>
+              <div class="energy-pill">✊ “Let's go!”</div>
             </div>
-
-
           </div>
-
-
         </article>
-
-
       </section>
 
-
-
-      <!-- =================================================
-           06 — READ THE MOMENT
-           ================================================= -->
-
+      <!-- 06 -->
       <section class="e-slide">
-
-
         <article class="e-card">
-
-
-          <div class="e-label">
-            06 · Read the moment
-          </div>
-
-
-          <h1>
-            What came before can explain what you're seeing.
-          </h1>
-
-
+          <div class="e-label">06 · Read the moment</div>
+          <h1>What came before can explain what you're seeing.</h1>
           <p class="e-copy">
-
             Jumping, yelling, walking away, or pushing away can mean different things.
             <strong>Check what happened just before.</strong>
-
           </p>
 
-
           <div class="e-try">
-
-
-            <span class="e-try-label">
-              TRY THIS
-            </span>
-
-
+            <span class="e-try-label">TRY THIS</span>
             Make what's next clear:
             “One more, then basketball.”
             “Your turn is next.”
-
-
           </div>
-
-
 
           <div class="e-visual visual-sky clue-stage">
-
-
             <div class="clue-flow">
-
-
               <div class="clue-card">
-
-
-                <strong>
-                  WAITING
-                </strong>
-
-
-                <span>
-                  in line
-                </span>
-
-
+                <strong>WAITING</strong>
+                <span>in line</span>
               </div>
 
-
-
-              <div class="clue-arrow">
-                →
-              </div>
-
-
+              <div class="clue-arrow">→</div>
 
               <div class="clue-card">
-
-
                 <div class="jump-symbol"></div>
-
-
-                <strong>
-                  JUMPING
-                </strong>
-
-
+                <strong>JUMPING</strong>
               </div>
 
-
-
-              <div class="clue-arrow">
-                →
-              </div>
-
-
+              <div class="clue-arrow">→</div>
 
               <div class="clue-card">
-
-
-                <strong>
-                  YOUR TURN
-                </strong>
-
-
-                <span>
-                  is next
-                </span>
-
-
+                <strong>YOUR TURN</strong>
+                <span>is next</span>
               </div>
-
-
             </div>
-
-
           </div>
 
-
-
-          <!-- NEW SLIDE 6 PHOTO -->
-
           <div class="support-photo-area">
-
-
             <img
               src="slide6-context.jpg"
               class="support-photo slide6-photo"
               alt="Athlete and volunteers in a busy sports environment"
-              onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-              "
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             >
-
-
-            <div class="support-photo-fallback">
-              Look at the whole situation
-            </div>
-
-
+            <div class="support-photo-fallback">Look at the whole situation</div>
           </div>
-
-
         </article>
-
-
       </section>
-
-
     </main>
 
-
-
-    <!-- =================================================
-         CONTROLS
-         ================================================= -->
-
     <div class="e-controls">
-
-
-      <button
-        class="e-back hidden"
-        id="backButton"
-      >
-        ← Back
-      </button>
-
-
-      <button
-        class="e-next"
-        id="nextButton"
-      >
-        Next
-      </button>
-
-
+      <button class="e-back hidden" id="backButton">← Back</button>
+      <button class="e-next" id="nextButton">Next</button>
     </div>
-
-
 
     <div class="e-footer-note">
-
       Starting points, not a script — learn what works for the athlete in front of you.
-
     </div>
-
-
   </div>
 
-
-
   <script>
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* =====================================================
-       GLOBAL
-       ===================================================== */
-
-    const reducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-
-
-    /* =====================================================
-       MAIN SIX-SLIDE STEPPER
-       ===================================================== */
-
-    const slides =
-      Array.from(
-        document.querySelectorAll(
-          ".e-slide"
-        )
-      );
-
-
-
-    const progress =
-      Array.from(
-        document.querySelectorAll(
-          ".e-progress-piece"
-        )
-      );
-
-
-
-    const counter =
-      document.getElementById(
-        "counter"
-      );
-
-
-
-    const backButton =
-      document.getElementById(
-        "backButton"
-      );
-
-
-
-    const nextButton =
-      document.getElementById(
-        "nextButton"
-      );
-
-
-
+    const slides = Array.from(document.querySelectorAll(".e-slide"));
+    const progress = Array.from(document.querySelectorAll(".e-progress-piece"));
+    const counter = document.getElementById("counter");
+    const backButton = document.getElementById("backButton");
+    const nextButton = document.getElementById("nextButton");
     let current = 0;
 
-
-
-    /* =====================================================
-       SLIDE 1 EXAMPLE CAROUSEL
-       ===================================================== */
-
-    const choiceStage =
-      document.getElementById(
-        "choiceStage"
-      );
-
-
-
-    const choiceScenes =
-      Array.from(
-        document.querySelectorAll(
-          ".choice-scene"
-        )
-      );
-
-
-
-    const choiceDots =
-      Array.from(
-        document.querySelectorAll(
-          ".choice-dot"
-        )
-      );
-
-
-
+    const choiceStage = document.getElementById("choiceStage");
+    const choiceScenes = Array.from(document.querySelectorAll(".choice-scene"));
+    const choiceDots = Array.from(document.querySelectorAll(".choice-dot"));
     let choiceIndex = 0;
-
     let choiceTimer = null;
-
     let choicePointerStartX = null;
-
     let choicePointerStartY = null;
 
-
-
-    /* =====================================================
-       CAROUSEL TRANSITION
-       ===================================================== */
-
-    function animateChoiceChange(
-      oldScene,
-      newScene,
-      direction
-    ) {
-
-
-      if (
-        reducedMotion ||
-        !oldScene ||
-        !newScene ||
-        oldScene === newScene
-      ) {
-
-
-        if (oldScene) {
-
-          oldScene.classList.remove(
-            "active"
-          );
-
-        }
-
-
-        if (newScene) {
-
-          newScene.classList.add(
-            "active"
-          );
-
-        }
-
-
+    function animateChoiceChange(oldScene, newScene, direction) {
+      if (reducedMotion || !oldScene || !newScene || oldScene === newScene) {
+        if (oldScene) oldScene.classList.remove("active");
+        if (newScene) newScene.classList.add("active");
         return;
-
       }
 
-
-
-      const distance =
-        direction > 0
-          ? 34
-          : -34;
-
-
-
-      oldScene.style.zIndex =
-        "1";
-
-
-      newScene.style.zIndex =
-        "2";
-
-
-
-      newScene.classList.add(
-        "active"
-      );
-
-
+      const distance = direction > 0 ? 34 : -34;
+      oldScene.style.zIndex = "1";
+      newScene.style.zIndex = "2";
+      newScene.classList.add("active");
 
       oldScene.animate(
-
         [
-
-          {
-
-            opacity: 1,
-
-            transform:
-              "translateX(0) scale(1)",
-
-            filter:
-              "blur(0px)"
-
-          },
-
-
-          {
-
-            opacity: 0,
-
-            transform:
-              `translateX(${-distance}px) scale(.985)`,
-
-            filter:
-              "blur(2px)"
-
-          }
-
+          { opacity: 1, transform: "translateX(0) scale(1)", filter: "blur(0px)" },
+          { opacity: 0, transform: `translateX(${-distance}px) scale(.985)`, filter: "blur(2px)" }
         ],
-
-
         {
-
           duration: 390,
-
-          easing:
-            "cubic-bezier(.22,.8,.22,1)",
-
-          fill:
-            "forwards"
-
+          easing: "cubic-bezier(.22,.8,.22,1)",
+          fill: "forwards"
         }
-
       );
-
-
 
       newScene.animate(
-
         [
-
-          {
-
-            opacity: 0,
-
-            transform:
-              `translateX(${distance}px) scale(.985)`,
-
-            filter:
-              "blur(2px)"
-
-          },
-
-
-          {
-
-            opacity: 1,
-
-            transform:
-              "translateX(0) scale(1)",
-
-            filter:
-              "blur(0px)"
-
-          }
-
+          { opacity: 0, transform: `translateX(${distance}px) scale(.985)`, filter: "blur(2px)" },
+          { opacity: 1, transform: "translateX(0) scale(1)", filter: "blur(0px)" }
         ],
-
-
         {
-
           duration: 430,
-
-          easing:
-            "cubic-bezier(.22,.8,.22,1)",
-
-          fill:
-            "both"
-
+          easing: "cubic-bezier(.22,.8,.22,1)",
+          fill: "both"
         }
-
       );
 
-
-
-      window.setTimeout(
-
-        () => {
-
-
-          oldScene.classList.remove(
-            "active"
-          );
-
-
-          oldScene.style.zIndex =
-            "";
-
-
-          newScene.style.zIndex =
-            "";
-
-
-        },
-
-        440
-
-      );
-
-
+      window.setTimeout(() => {
+        oldScene.classList.remove("active");
+        oldScene.style.zIndex = "";
+        newScene.style.zIndex = "";
+      }, 440);
     }
 
+    function showChoice(targetIndex, direction = 1, manual = false) {
+      if (targetIndex < 0) targetIndex = choiceScenes.length - 1;
+      if (targetIndex >= choiceScenes.length) targetIndex = 0;
+      if (targetIndex === choiceIndex) return;
 
+      const oldScene = choiceScenes[choiceIndex];
+      const newScene = choiceScenes[targetIndex];
 
-    /* =====================================================
-       SHOW A SPECIFIC EXAMPLE
-       ===================================================== */
+      animateChoiceChange(oldScene, newScene, direction);
+      choiceIndex = targetIndex;
 
-    function showChoice(
-      targetIndex,
-      direction = 1,
-      manual = false
-    ) {
-
-
-      if (
-        targetIndex < 0
-      ) {
-
-        targetIndex =
-          choiceScenes.length - 1;
-
-      }
-
-
-
-      if (
-        targetIndex >=
-        choiceScenes.length
-      ) {
-
-        targetIndex =
-          0;
-
-      }
-
-
-
-      if (
-        targetIndex ===
-        choiceIndex
-      ) {
-
-        return;
-
-      }
-
-
-
-      const oldScene =
-        choiceScenes[
-          choiceIndex
-        ];
-
-
-
-      const newScene =
-        choiceScenes[
-          targetIndex
-        ];
-
-
-
-      animateChoiceChange(
-        oldScene,
-        newScene,
-        direction
-      );
-
-
-
-      choiceIndex =
-        targetIndex;
-
-
-
-      choiceDots.forEach(
-
-        (dot,index) => {
-
-
-          const active =
-            index === choiceIndex;
-
-
-
-          dot.classList.toggle(
-            "active",
-            active
-          );
-
-
-
-          if (
-            active
-          ) {
-
-
-            dot.setAttribute(
-              "aria-current",
-              "true"
-            );
-
-
-          }
-
-          else {
-
-
-            dot.removeAttribute(
-              "aria-current"
-            );
-
-
-          }
-
-
+      choiceDots.forEach((dot, index) => {
+        const active = index === choiceIndex;
+        dot.classList.toggle("active", active);
+        if (active) {
+          dot.setAttribute("aria-current", "true");
+        } else {
+          dot.removeAttribute("aria-current");
         }
+      });
 
-      );
-
-
-
-      if (
-        manual
-      ) {
-
-
-        scheduleChoiceAuto(
-          8500
-        );
-
-
-      }
-
-
+      if (manual) scheduleChoiceAuto(8500);
     }
 
-
-
-    /* =====================================================
-       NEXT / PREVIOUS EXAMPLE
-       ===================================================== */
-
-    function nextChoice(
-      manual = false
-    ) {
-
-
-      showChoice(
-        choiceIndex + 1,
-        1,
-        manual
-      );
-
-
+    function nextChoice(manual = false) {
+      showChoice(choiceIndex + 1, 1, manual);
     }
 
-
-
-    function previousChoice(
-      manual = false
-    ) {
-
-
-      showChoice(
-        choiceIndex - 1,
-        -1,
-        manual
-      );
-
-
+    function previousChoice(manual = false) {
+      showChoice(choiceIndex - 1, -1, manual);
     }
 
+    function scheduleChoiceAuto(delay = 4700) {
+      window.clearTimeout(choiceTimer);
+      if (reducedMotion || current !== 0) return;
 
-
-    /* =====================================================
-       AUTO ROTATION
-       ===================================================== */
-
-    function scheduleChoiceAuto(
-      delay = 4700
-    ) {
-
-
-      window.clearTimeout(
-        choiceTimer
-      );
-
-
-
-      if (
-        reducedMotion ||
-        current !== 0
-      ) {
-
-
-        return;
-
-
-      }
-
-
-
-      choiceTimer =
-        window.setTimeout(
-
-          () => {
-
-
-            nextChoice(
-              false
-            );
-
-
-            scheduleChoiceAuto(
-              4700
-            );
-
-
-          },
-
-          delay
-
-        );
-
-
+      choiceTimer = window.setTimeout(() => {
+        nextChoice(false);
+        scheduleChoiceAuto(4700);
+      }, delay);
     }
 
-
-
-    /* =====================================================
-       TAPPABLE DOTS
-       ===================================================== */
-
-    choiceDots.forEach(
-
-      (dot,index) => {
-
-
-        dot.addEventListener(
-
-          "click",
-
-          event => {
-
-
-            event.stopPropagation();
-
-
-
-            if (
-              index ===
-              choiceIndex
-            ) {
-
-
-              scheduleChoiceAuto(
-                8500
-              );
-
-
-              return;
-
-
-            }
-
-
-
-            let direction =
-              index > choiceIndex
-                ? 1
-                : -1;
-
-
-
-            if (
-              choiceIndex === 3 &&
-              index === 0
-            ) {
-
-
-              direction = 1;
-
-
-            }
-
-
-
-            if (
-              choiceIndex === 0 &&
-              index === 3
-            ) {
-
-
-              direction = -1;
-
-
-            }
-
-
-
-            showChoice(
-              index,
-              direction,
-              true
-            );
-
-
-          }
-
-        );
-
-
-      }
-
-    );
-
-
-
-    /* =====================================================
-       MANUAL SWIPE INSIDE SLIDE 1
-       ===================================================== */
-
-    if (
-      choiceStage
-    ) {
-
-
-      choiceStage.addEventListener(
-
-        "pointerdown",
-
-        event => {
-
-
-          choicePointerStartX =
-            event.clientX;
-
-
-          choicePointerStartY =
-            event.clientY;
-
-
-
-          choiceStage.classList.add(
-            "dragging"
-          );
-
-
-
-          window.clearTimeout(
-            choiceTimer
-          );
-
-
-
-          try {
-
-
-            choiceStage.setPointerCapture(
-              event.pointerId
-            );
-
-
-          }
-
-          catch (error) {
-
-
-            /* No action needed */
-
-
-          }
-
-
+    choiceDots.forEach((dot, index) => {
+      dot.addEventListener("click", event => {
+        event.stopPropagation();
+
+        if (index === choiceIndex) {
+          scheduleChoiceAuto(8500);
+          return;
         }
 
-      );
+        let direction = index > choiceIndex ? 1 : -1;
+        if (choiceIndex === 3 && index === 0) direction = 1;
+        if (choiceIndex === 0 && index === 3) direction = -1;
 
+        showChoice(index, direction, true);
+      });
+    });
 
+    if (choiceStage) {
+      choiceStage.addEventListener("pointerdown", event => {
+        choicePointerStartX = event.clientX;
+        choicePointerStartY = event.clientY;
+        choiceStage.classList.add("dragging");
+        window.clearTimeout(choiceTimer);
 
-      choiceStage.addEventListener(
+        try {
+          choiceStage.setPointerCapture(event.pointerId);
+        } catch (error) {}
+      });
 
-        "pointerup",
+      choiceStage.addEventListener("pointerup", event => {
+        if (choicePointerStartX === null) return;
 
-        event => {
+        const xDifference = event.clientX - choicePointerStartX;
+        const yDifference = event.clientY - choicePointerStartY;
+        const isHorizontal = Math.abs(xDifference) > Math.abs(yDifference) * 1.15;
 
-
-          if (
-            choicePointerStartX ===
-            null
-          ) {
-
-
-            return;
-
-
+        if (isHorizontal && Math.abs(xDifference) > 34) {
+          if (xDifference < 0) {
+            nextChoice(true);
+          } else {
+            previousChoice(true);
           }
-
-
-
-          const xDifference =
-            event.clientX -
-            choicePointerStartX;
-
-
-
-          const yDifference =
-            event.clientY -
-            choicePointerStartY;
-
-
-
-          const isHorizontal =
-            Math.abs(
-              xDifference
-            ) >
-            Math.abs(
-              yDifference
-            ) * 1.15;
-
-
-
-          if (
-            isHorizontal &&
-            Math.abs(
-              xDifference
-            ) > 34
-          ) {
-
-
-            if (
-              xDifference < 0
-            ) {
-
-
-              nextChoice(
-                true
-              );
-
-
-            }
-
-            else {
-
-
-              previousChoice(
-                true
-              );
-
-
-            }
-
-
-          }
-
-          else {
-
-
-            scheduleChoiceAuto(
-              5000
-            );
-
-
-          }
-
-
-
-          choicePointerStartX =
-            null;
-
-
-          choicePointerStartY =
-            null;
-
-
-
-          choiceStage.classList.remove(
-            "dragging"
-          );
-
-
+        } else {
+          scheduleChoiceAuto(5000);
         }
 
-      );
+        choicePointerStartX = null;
+        choicePointerStartY = null;
+        choiceStage.classList.remove("dragging");
+      });
 
+      choiceStage.addEventListener("pointercancel", () => {
+        choicePointerStartX = null;
+        choicePointerStartY = null;
+        choiceStage.classList.remove("dragging");
+        scheduleChoiceAuto(5000);
+      });
 
+      choiceStage.addEventListener("mouseenter", () => {
+        window.clearTimeout(choiceTimer);
+      });
 
-      choiceStage.addEventListener(
-
-        "pointercancel",
-
-        () => {
-
-
-          choicePointerStartX =
-            null;
-
-
-          choicePointerStartY =
-            null;
-
-
-
-          choiceStage.classList.remove(
-            "dragging"
-          );
-
-
-
-          scheduleChoiceAuto(
-            5000
-          );
-
-
-        }
-
-      );
-
-
-
-      choiceStage.addEventListener(
-
-        "mouseenter",
-
-        () => {
-
-
-          window.clearTimeout(
-            choiceTimer
-          );
-
-
-        }
-
-      );
-
-
-
-      choiceStage.addEventListener(
-
-        "mouseleave",
-
-        () => {
-
-
-          if (
-            choicePointerStartX ===
-            null
-          ) {
-
-
-            scheduleChoiceAuto(
-              3500
-            );
-
-
-          }
-
-
-        }
-
-      );
-
-
+      choiceStage.addEventListener("mouseleave", () => {
+        if (choicePointerStartX === null) scheduleChoiceAuto(3500);
+      });
     }
-
-
-
-    /* =====================================================
-       RENDER MAIN SLIDE
-       ===================================================== */
 
     function render() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === current);
+      });
 
+      progress.forEach((piece, index) => {
+        piece.classList.toggle("done", index < current);
+        piece.classList.toggle("active", index === current);
+      });
 
-      slides.forEach(
+      counter.textContent = `${current + 1} / ${slides.length}`;
+      backButton.classList.toggle("hidden", current === 0);
+      nextButton.textContent = current === slides.length - 1 ? "Done" : "Next";
 
-        (slide,index) => {
-
-
-          slide.classList.toggle(
-            "active",
-            index === current
-          );
-
-
-        }
-
-      );
-
-
-
-      progress.forEach(
-
-        (piece,index) => {
-
-
-          piece.classList.toggle(
-            "done",
-            index < current
-          );
-
-
-
-          piece.classList.toggle(
-            "active",
-            index === current
-          );
-
-
-        }
-
-      );
-
-
-
-      counter.textContent =
-        `${current + 1} / ${slides.length}`;
-
-
-
-      backButton.classList.toggle(
-        "hidden",
-        current === 0
-      );
-
-
-
-      nextButton.textContent =
-        current ===
-        slides.length - 1
-          ? "Done"
-          : "Next";
-
-
-
-      if (
-        current === 0
-      ) {
-
-
-        scheduleChoiceAuto(
-          4700
-        );
-
-
+      if (current === 0) {
+        scheduleChoiceAuto(4700);
+      } else {
+        window.clearTimeout(choiceTimer);
       }
-
-      else {
-
-
-        window.clearTimeout(
-          choiceTimer
-        );
-
-
-      }
-
-
     }
 
+    nextButton.addEventListener("click", () => {
+      if (current < slides.length - 1) {
+        current++;
+        render();
+      } else {
+        window.location.href = "index.html";
+      }
+    });
 
+    backButton.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        render();
+      }
+    });
 
-    /* =====================================================
-       NEXT / BACK BUTTONS
-       ===================================================== */
+    let touchStartX = null;
+    let touchStartedInsideChoice = false;
 
-    nextButton.addEventListener(
+    document.addEventListener("touchstart", event => {
+      touchStartedInsideChoice = !!event.target.closest(".choice-stage");
 
-      "click",
+      if (touchStartedInsideChoice) {
+        touchStartX = null;
+        return;
+      }
 
-      () => {
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
 
+    document.addEventListener("touchend", event => {
+      if (touchStartedInsideChoice) {
+        touchStartedInsideChoice = false;
+        touchStartX = null;
+        return;
+      }
 
-        if (
-          current <
-          slides.length - 1
-        ) {
+      if (touchStartX === null) return;
 
+      const endX = event.changedTouches[0].clientX;
+      const difference = endX - touchStartX;
 
+      if (difference < -55 && current < slides.length - 1) {
+        current++;
+        render();
+      } else if (difference > 55 && current > 0) {
+        current--;
+        render();
+      }
+
+      touchStartX = null;
+    }, { passive: true });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowRight") {
+        if (current === 0 && event.shiftKey) {
+          nextChoice(true);
+        } else if (current < slides.length - 1) {
           current++;
-
-
           render();
-
-
         }
-
-        else {
-
-
-          window.location.href =
-            "index.html";
-
-
-        }
-
-
       }
 
-    );
-
-
-
-    backButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        if (
-          current > 0
-        ) {
-
-
+      if (event.key === "ArrowLeft") {
+        if (current === 0 && event.shiftKey) {
+          previousChoice(true);
+        } else if (current > 0) {
           current--;
-
-
           render();
-
-
         }
-
-
       }
+    });
 
-    );
-
-
-
-    /* =====================================================
-       MAIN PAGE SWIPE
-       ===================================================== */
-
-    let touchStartX =
-      null;
-
-
-
-    let touchStartedInsideChoice =
-      false;
-
-
-
-    document.addEventListener(
-
-      "touchstart",
-
-      event => {
-
-
-        touchStartedInsideChoice =
-          !!event.target.closest(
-            ".choice-stage"
-          );
-
-
-
-        if (
-          touchStartedInsideChoice
-        ) {
-
-
-          touchStartX =
-            null;
-
-
-          return;
-
-
-        }
-
-
-
-        touchStartX =
-          event.changedTouches[0]
-          .clientX;
-
-
-      },
-
-      {
-        passive: true
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        window.clearTimeout(choiceTimer);
+      } else if (current === 0) {
+        scheduleChoiceAuto(3000);
       }
-
-    );
-
-
-
-    document.addEventListener(
-
-      "touchend",
-
-      event => {
-
-
-        if (
-          touchStartedInsideChoice
-        ) {
-
-
-          touchStartedInsideChoice =
-            false;
-
-
-          touchStartX =
-            null;
-
-
-          return;
-
-
-        }
-
-
-
-        if (
-          touchStartX ===
-          null
-        ) {
-
-
-          return;
-
-
-        }
-
-
-
-        const endX =
-          event.changedTouches[0]
-          .clientX;
-
-
-
-        const difference =
-          endX -
-          touchStartX;
-
-
-
-        if (
-          difference < -55 &&
-          current <
-          slides.length - 1
-        ) {
-
-
-          current++;
-
-
-          render();
-
-
-        }
-
-        else if (
-          difference > 55 &&
-          current > 0
-        ) {
-
-
-          current--;
-
-
-          render();
-
-
-        }
-
-
-
-        touchStartX =
-          null;
-
-
-      },
-
-      {
-        passive: true
-      }
-
-    );
-
-
-
-    /* =====================================================
-       KEYBOARD
-       ===================================================== */
-
-    document.addEventListener(
-
-      "keydown",
-
-      event => {
-
-
-        if (
-          event.key ===
-          "ArrowRight"
-        ) {
-
-
-          if (
-            current === 0 &&
-            event.shiftKey
-          ) {
-
-
-            nextChoice(
-              true
-            );
-
-
-          }
-
-          else if (
-            current <
-            slides.length - 1
-          ) {
-
-
-            current++;
-
-
-            render();
-
-
-          }
-
-
-        }
-
-
-
-        if (
-          event.key ===
-          "ArrowLeft"
-        ) {
-
-
-          if (
-            current === 0 &&
-            event.shiftKey
-          ) {
-
-
-            previousChoice(
-              true
-            );
-
-
-          }
-
-          else if (
-            current > 0
-          ) {
-
-
-            current--;
-
-
-            render();
-
-
-          }
-
-
-        }
-
-
-      }
-
-    );
-
-
-
-    /* =====================================================
-       TAB VISIBILITY
-       ===================================================== */
-
-    document.addEventListener(
-
-      "visibilitychange",
-
-      () => {
-
-
-        if (
-          document.hidden
-        ) {
-
-
-          window.clearTimeout(
-            choiceTimer
-          );
-
-
-        }
-
-        else if (
-          current === 0
-        ) {
-
-
-          scheduleChoiceAuto(
-            3000
-          );
-
-
-        }
-
-
-      }
-
-    );
-
-
-
-    /* =====================================================
-       INITIALIZE
-       ===================================================== */
+    });
 
     render();
-
-
   </script>
-
-
 </body>
-
 </html>
