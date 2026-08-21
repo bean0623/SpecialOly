@@ -45,7 +45,7 @@
     }
 
     html {
-      background: var(--bg);
+      background: transparent;
       color-scheme: light;
     }
 
@@ -74,8 +74,8 @@
       z-index: -2;
       background:
         linear-gradient(
-          var(--page-photo-wash),
-          var(--page-photo-wash)
+          rgba(245,245,243,.78),
+          rgba(245,245,243,.78)
         ),
         url("athlete-background.jpg") center center / cover no-repeat;
       background-attachment: fixed;
@@ -160,7 +160,7 @@
       border: 1px solid var(--line);
       border-radius: 30px;
 
-      background: var(--glass-strong);
+      background: rgba(255,255,255,.72);
 
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -399,7 +399,7 @@
 
       border-radius: 23px;
 
-      background: var(--glass);
+      background: rgba(255,255,255,.78);
 
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -1872,22 +1872,7 @@
       isolation: isolate;
     }
 
-    .menu-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          rgba(245,245,243,.82),
-          rgba(245,245,243,.82)
-        ),
-        url("athlete-background.jpg") center / cover no-repeat;
-      z-index: -1;
-    }
-
-    .hero-single {
-      max-width: 760px;
-    }
+    
 
   </style>
 </head>
@@ -1942,9 +1927,47 @@
           </h1>
 
           <p class="hero-copy">
-            Every athlete communicates differently. Learn how to understand their words,
-            gestures, choices, AAC, and actions.
+            <strong>Start with the athlete.</strong>
+            This page shows how athletes communicate in different ways — through words,
+            gestures, choices, AAC, facial expressions, and movement.
+            Learn how to notice responses and build a connection.
           </p>
+
+        </div>
+
+        <div class="hero-method" aria-label="Four communication habits">
+
+          <div class="method-row">
+            <div class="method-number">1</div>
+            <div>
+              <strong>Talk directly</strong>
+              <span>Keep the athlete in the conversation.</span>
+            </div>
+          </div>
+
+          <div class="method-row">
+            <div class="method-number">2</div>
+            <div>
+              <strong>Show it</strong>
+              <span>Point, gesture, or demonstrate.</span>
+            </div>
+          </div>
+
+          <div class="method-row">
+            <div class="method-number">3</div>
+            <div>
+              <strong>Give time</strong>
+              <span>Don't rush the response.</span>
+            </div>
+          </div>
+
+          <div class="method-row">
+            <div class="method-number">4</div>
+            <div>
+              <strong>Notice</strong>
+              <span>A response may not be spoken.</span>
+            </div>
+          </div>
 
         </div>
 
