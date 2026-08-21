@@ -15,6 +15,10 @@
       --line: rgba(29,29,31,.085);
       --shadow: 0 18px 50px rgba(35,38,47,.07);
 
+      --page-photo-wash: rgba(245,245,243,.88);
+      --glass: rgba(255,255,255,.82);
+      --glass-strong: rgba(255,255,255,.92);
+
       --blue: #5b72f2;
       --blue-soft: #eef2ff;
 
@@ -60,6 +64,22 @@
         sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(
+          var(--page-photo-wash),
+          var(--page-photo-wash)
+        ),
+        url("milton_athlete_celebrates_victory.png") center center / cover no-repeat;
+      background-attachment: fixed;
+      pointer-events: none;
     }
 
     button,
@@ -140,7 +160,10 @@
       border: 1px solid var(--line);
       border-radius: 30px;
 
-      background: rgba(255,255,255,.92);
+      background: var(--glass-strong);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
       box-shadow: var(--shadow);
 
@@ -376,7 +399,10 @@
 
       border-radius: 23px;
 
-      background: var(--surface);
+      background: var(--glass);
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
 
       box-shadow:
         0 8px 24px
@@ -634,7 +660,10 @@
       border-radius: 30px;
 
       background:
-        rgba(255,255,255,.98);
+        rgba(255,255,255,.96);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
       box-shadow:
         0 30px 90px
@@ -1888,8 +1917,13 @@
 
           <p class="hero-copy">
 
-            Every athlete communicates differently. Learn how to understand their words,
-            gestures, choices, AAC, and actions.
+            <strong>
+              Start with the athlete.
+            </strong>
+
+            This page shows how athletes communicate in different ways — 
+            through words, gestures, choices, AAC, facial expressions, and movement.
+            Learn how to notice responses and build a connection.
 
           </p>
 
@@ -2077,7 +2111,7 @@
             </h2>
 
             <p>
-              Notice gestures, expressions, and movement.
+              Look for answers beyond speech.
             </p>
 
           </button>
@@ -2129,7 +2163,7 @@
             </h2>
 
             <p>
-              Another way athletes share thoughts and needs.
+              A non-verbal athlete's way of communicating.
             </p>
 
           </button>
@@ -2183,7 +2217,7 @@
             </h2>
 
             <p>
-              Simple words that work during sessions.
+              Short phrases for real moments.
             </p>
 
           </button>
@@ -2230,7 +2264,7 @@
             </h2>
 
             <p>
-              How to guide, encourage, and adjust.
+              A simple process for supporting athletes during drills.
             </p>
 
           </button>
@@ -2283,7 +2317,7 @@
             </h2>
 
             <p>
-              Small changes that help athletes feel comfortable.
+              Small things that can make a big difference.
             </p>
 
           </button>
@@ -2344,7 +2378,7 @@
             </h2>
 
             <p>
-              Support athletes without taking over.
+              Helpful without taking over.
             </p>
 
           </button>
@@ -2552,7 +2586,7 @@
       </div>
 
       <h2 id="aacTitle">
-        What is AAC? A non-verbal athlete's way of communicating.
+        What is AAC?
       </h2>
 
       <p class="panel-lead">
@@ -2837,7 +2871,7 @@
       </button>
 
       <div class="panel-label">
-        Helping during sports
+        During sports
       </div>
 
       <h2 id="sportsTitle">
@@ -3108,7 +3142,7 @@
       </div>
 
       <h2 id="respectTitle">
-        Support athletes without taking over.
+        Helpful without taking over.
       </h2>
 
       <p class="panel-lead">
