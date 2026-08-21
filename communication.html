@@ -77,7 +77,7 @@
           var(--page-photo-wash),
           var(--page-photo-wash)
         ),
-        url("milton_athlete_celebrates_victory.png") center center / cover no-repeat;
+        url("athlete-background.jpg") center center / cover no-repeat;
       background-attachment: fixed;
       pointer-events: none;
     }
@@ -1863,6 +1863,32 @@
       }
     }
 
+  
+    .menu-section {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 24px;
+      isolation: isolate;
+    }
+
+    .menu-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          rgba(245,245,243,.82),
+          rgba(245,245,243,.82)
+        ),
+        url("athlete-background.jpg") center / cover no-repeat;
+      z-index: -1;
+    }
+
+    .hero-single {
+      max-width: 760px;
+    }
+
   </style>
 </head>
 
@@ -1905,7 +1931,7 @@
 
       <section class="hero">
 
-        <div>
+        <div class="hero-single">
 
           <div class="eyebrow">
             03 · Communication
@@ -1916,108 +1942,9 @@
           </h1>
 
           <p class="hero-copy">
-
-            <strong>
-              Start with the athlete.
-            </strong>
-
-            This page shows how athletes communicate in different ways — 
-            through words, gestures, choices, AAC, facial expressions, and movement.
-            Learn how to notice responses and build a connection.
-
+            Every athlete communicates differently. Learn how to understand their words,
+            gestures, choices, AAC, and actions.
           </p>
-
-        </div>
-
-
-        <div
-          class="hero-method"
-          aria-label="Four communication habits"
-        >
-
-
-          <div class="method-row">
-
-            <div class="method-number">
-              1
-            </div>
-
-            <div>
-
-              <strong>
-                Talk directly
-              </strong>
-
-              <span>
-                Keep the athlete in the conversation.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="method-row">
-
-            <div class="method-number">
-              2
-            </div>
-
-            <div>
-
-              <strong>
-                Show it
-              </strong>
-
-              <span>
-                Point, gesture, or demonstrate.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="method-row">
-
-            <div class="method-number">
-              3
-            </div>
-
-            <div>
-
-              <strong>
-                Give time
-              </strong>
-
-              <span>
-                Don't rush the response.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="method-row">
-
-            <div class="method-number">
-              4
-            </div>
-
-            <div>
-
-              <strong>
-                Notice
-              </strong>
-
-              <span>
-                A response may not be spoken.
-              </span>
-
-            </div>
-
-          </div>
 
         </div>
 
